@@ -1759,7 +1759,7 @@ onMounted(() => {
   </div>
   <div>
     <img
-      src="../../assets/gameImages/gameScreen/blastOffScreen.png"
+      src="../../assets/audioFiles/spellSafari/spellSafariScreen.png"
       alt=""
       class="screen"
       id="blastOffScreen"
