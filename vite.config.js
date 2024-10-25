@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  base: '/audemywebsite/',  // replace 'your-repo-name' with the name of your GitHub repository
 })
