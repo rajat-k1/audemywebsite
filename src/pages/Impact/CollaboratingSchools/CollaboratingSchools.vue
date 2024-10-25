@@ -1,0 +1,53 @@
+<script setup>
+  import Map from "./Map.vue";
+  import Affiliates from "./Affiliates.vue";
+
+</script>
+
+<template>
+  <div
+    class="relative flex flex-col items-start justify-center mobile:justify-center w-full h-[10%] px-[15rem] mt-[21rem] mb-36 tablet:mb-[265px] mobile:mb-[129px]">
+
+    <img src="/src/assets/images/impact/light-green-bg-2.png" class="absolute w-full h-[125%] -top-[12rem] right-0 -z-10" />
+
+    <!-- HEADER -->
+    <div class="max-w-[519px]">
+      <h2 class="text-left ml-[2rem] font-poppins text-4.5xl tablet:text-[32px] mobile:text-[24px] mobile:text-center font-[400]">
+        Collaborating Schools</h2>
+    </div>
+
+    <!-- MAP AND LIST OF AFFILIATED SCHOOLS AND TEACHERS -->
+    <div class="flex items-center justify-center mobile:justify-center w-full h-[10%] mt-[4rem] mb-[6rem] tablet:mb-[265px] mobile:mb-[129px]">
+
+      <!-- MAP Content -->
+      <div class="shadow-[3px_4px_5px_#2F3E45] rounded-[16px] mr-[3rem]">
+        <Map />
+      </div>
+      
+      <div class="">
+        <Affiliates />
+      </div>
+
+    </div>
+
+    <!-- CALL TO ACTION -->
+    <div
+      class="flex content-center items-center mobile:justify-center w-full h-[10%] mb-36 tablet:mb-[265px] mobile:mb-[129px]">
+
+      <div class="w-1/2">
+        <p class="w-[504px] ml-[2rem] text-body text-xl font-poppins leading-8">As we expand our services, we'd love to have you
+          partner with us on this exciting journey!</p>
+      </div>
+
+      <div class="text-center w-1/2">
+        <a href="mailto:connect.audemy@gmail.com" target="_blank"
+          class="w-[244px] font-poppins font-semibold px-[4.20rem] py-4 border-[1.5px] border-[#0C0D0D] rounded-[8px] bg-primary-color hover:bg-[#0C587D] duration-300 text-base text-white shadow-[3px_4px_0px_#0C0D0D] ">
+          Get affiliated
+        </a>
+      </div>
+
+    </div>
+
+</div>
+</template>
+

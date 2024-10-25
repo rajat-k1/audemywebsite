@@ -1,32 +1,78 @@
 import { createWebHistory, createRouter } from "vue-router";
 
-
-import About from "../pages/About/About.vue"
-import Home from "../pages/Home/Home.vue"
-import Initiatives from "../pages/Initiatives/Initiatives.vue"
-// import Impact from "../pages/Impact/Impact.vue"
-import Sponsors from "../pages/Sponsors/Sponsors.vue"
-// import Gallery from "../pages/Gallery/Gallery.vue"
-import Technology from "../pages/Technology/Technology.vue"
-import Press from "../pages/Press/Press.vue"
-import Team from "../pages/Team/Team.vue"
-// import Play from "../pages/Play/Play.vue"
-import NotFound from "../pages/NotFound/NotFound.vue"
+import Home from "../pages/Home/Home.vue";
+import OurProjects from "../pages/OurProjects/OurProjects.vue";
+import GameZone from "../pages/GameZone/GameZone.vue";
+import LogIn from "../pages/LogIn/LogIn.vue";
+import NotFound from "../pages/NotFound/NotFound.vue";
+import SignUp from "../pages/SignUp/SignUp.vue";
+import AboutUs from "../pages/AboutUs/AboutUs.vue";
+import Impact from "../pages/Impact/Impact.vue";
+import AdditionGame from "../pages/GameZone/GameZoneList/AdditionGame.vue";
+import MultiplicationMadness from "../pages/GameZone/GameZoneList/MultiplicationMadness.vue";
+import SubtractionGame from "../pages/GameZone/GameZoneList/SubtractionGame.vue";
+import DivisionDuel from "../pages/GameZone/GameZoneList/DivisionDuel.vue";
+import Vocab from "../pages/GameZone/GameZoneList/Vocab.vue";
+import OddOneOut from "../pages/GameZone/GameZoneList/OddOneOut.vue";
+import PolarPairing from "../pages/GameZone/GameZoneList/PolarPairing.vue";
+// import SpellingBee from "../pages/GameZone/GameZoneList/SpellingBee/SpellingBee.vue";
+import SpellingBee from "../pages/GameZone/GameZoneList/SpellingBee.vue";
 
 const routes = [
-  { path: "/home", redirect:"/"},
-  { path: "/", name: "Home", component:Home},
-  { path: "/about", name: "About", component:About },
-  { path: "/gallery", name: "Gallery", component:() => import("../pages/Gallery/Gallery.vue") },
-  { path: "/contact", name: "Contact" },
-  { path: "/impact", name: "Impact", component:() => import("../pages/Impact/Impact.vue") },
-  { path: "/initiatives", name: "Initiatives", component:Initiatives },
-  { path: "/play", name: "Play", component: () => import("../pages/Play/Play.vue") },
-  { path: "/press", name: "Press", component:Press },
-  { path: "/sponsors", name: "Sponsors", component:Sponsors },
-  { path: "/team", name: "Team", component:Team },
-  { path: "/technology", name: "Technology", component:Technology },
-  { path: "/:pathMatch(.*)*", name: "not-found", component:NotFound },
+  { path: "/home", redirect: "/" },
+  { path: "/", name: "Home", component: Home },
+  { path: "/game-zone", name: "Game-Zone", component: GameZone },
+  { path: "/our-projects", name: "Our-Projects", component: OurProjects },
+  { path: "/impact", name: "Impact", component: Impact },
+  { path: "/about-us", name: "About-Us", component: AboutUs },
+  { path: "/login", name: "LogIn", component: LogIn },
+  { path: "/signup", name: "Sign Up", component: SignUp },
+  { path: "/:pathMatch(.*)*", name: "not-found", component: NotFound },
+  {
+    path: "/game/addition",
+    name: "AdditionGame",
+    component: AdditionGame,
+  },
+  {
+    path: "/game/multiplicationmadness",
+    name: "MultiplicationMadness",
+    component: MultiplicationMadness,
+  },
+  {
+    path: "/game/subtraction",
+    name: "SubtractionGame",
+    component: SubtractionGame,
+  },
+  {
+    path: "/game/vocabVortex",
+    name: "vocabVortex",
+    component: Vocab,
+  },
+  {
+    path: "/game/divisionDuel",
+    name: "DivisionDuel",
+    component: DivisionDuel,
+  },
+  {
+    path: "/game/oddoneout",
+    name: "OddOneOut",
+    component: OddOneOut,
+  },
+  {
+    path: "/game/polarpairing",
+    name: "PolarPairing",
+    component: PolarPairing,
+  },
+  {
+    path: "/game/spelling-bee",
+    name: "SpellingBee",
+    component: SpellingBee,
+  },
+  {
+    path: "/game/spellingbee",
+    name: "SpellingBee",
+    component: SpellingBee,
+  },
 ];
 
 const router = createRouter({

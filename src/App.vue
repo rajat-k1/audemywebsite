@@ -1,10 +1,8 @@
 <template>
-  <router-view></router-view>
+  <RouterView />
 </template>
 
 <script setup>
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style  scoped></style>
