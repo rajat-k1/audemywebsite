@@ -29,7 +29,10 @@ onBeforeUnmount(() => {
             class="w-[56px] h-[56px] border-[2px] border-[#0C0D0D] rounded-[8px] bg-white hover:bg-gray-100 z-50 flex justify-center items-center fixed desktop:bottom-20 desktop:right-20 tablet:right-10 bottom-10 right-5 cursor-pointer duration-300 ease-in-out"
             @click="scrollToTop"
         >
-            <img src="../assets/images/about-us/arrow-up.svg" alt="Arrow Up" />
+            <img
+                src="/public/assets/images/about-us/arrow-up.svg"
+                alt="Arrow Up"
+            />
         </button>
     </div>
 </template>
