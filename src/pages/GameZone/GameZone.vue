@@ -17,7 +17,7 @@ const changeCurrentPage = (page) => {
         <div class="px-20">
             <Header
                 :textColor="'text-white'"
-                :logoPath="'/src/assets/images/header/header-logo.png'"
+                :logoPath="'/assets/images/header/header-logo.png'"
             />
         </div>
         <div class="h-[45%] w-full flex flex-col justify-center items-center">
@@ -35,7 +35,7 @@ const changeCurrentPage = (page) => {
                     />
                     <button>
                         <img
-                            src="/src/assets/gameImages/buttons/search.svg"
+                            src="/assets/gameImages/buttons/search.svg"
                             alt="Search icon"
                             class="h-[16px] w-auto"
                         />
