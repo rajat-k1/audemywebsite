@@ -1,6 +1,6 @@
 <script setup>
 // Components
-import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton.vue"
+import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton.vue";
 import Header from "../../components/Header/Header.vue";
 import Footer from "../../components/Footer/Footer.vue";
 import Accolades from "./Accolades/Accolades.vue";
@@ -10,16 +10,16 @@ import CollaboratingSchools from "./CollaboratingSchools/CollaboratingSchools.vu
 import ImpactInAction from "./ImpactInAction/ImpactInAction.vue";
 </script>
 <template>
-  <ScrollUpButton />
+    <ScrollUpButton />
 
-  <div class="px-20 relative" ref="content">
-    <Header :logoPath="'/src/assets/images/header/header-logo-2.png'" />
-    <OurReach />
-  </div>
+    <div class="px-20 relative" ref="content">
+        <Header :logoPath="'/assets/images/header/header-logo-2.png'" />
+        <OurReach />
+    </div>
     <CollaboratingSchools />
-  
-  <ImpactInAction/>
-  <Accolades />
-  <PressList />
-  <Footer />
+
+    <ImpactInAction />
+    <Accolades />
+    <PressList />
+    <Footer />
 </template>
