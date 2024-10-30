@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col justify-center items-center h-screen font-poppins bg-[#FAEDD6]">
     <div class="flex mt-2 mb-2 w-1/2">
-      <button onclick="history.back()"> <img src="../../../assets/gameImages/buttons/arrow-back.svg"
+      <button onclick="history.back()"> <img src="/assets/gameImages/buttons/arrow-back.svg"
           class="bg-white border-2 rounded-lg border-black h-12 p-2 shadow-md hover:bg-gray-300" /></button>
     </div>
     <div class="flex flex-col my-2 mx-56 h-96 justify-center items-center">
