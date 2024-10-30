@@ -13,7 +13,7 @@ import CallToAction from "./CallToAction/CallToAction.vue";
     <ScrollUpButton />
 
     <div class="px-20 relative" ref="content">
-        <Header :logoPath="'/public/assets/images/header/header-logo-2.png'" />
+        <Header :logoPath="'/assets/images/header/header-logo-2.png'" />
         <Foundation />
         <CarlsJourney />
         <Volunteers />

@@ -2,17 +2,17 @@ const managementStaff = [
     {
         name: "Crystal Yang",
         role: "Founder & Chief Executive Officer",
-        image: "/public/assets/images/about-us/volunteers/crystal.png",
+        image: "/assets/images/about-us/volunteers/crystal.png",
     },
     {
         name: "Aruesha Srivastava",
         role: "Chief Operating Officer",
-        image: "/public/assets/images/about-us/volunteers/aruesha.png",
+        image: "/assets/images/about-us/volunteers/aruesha.png",
     },
     {
         name: "Anmol Bal",
         role: "Chief Financial Officer",
-        image: "/public/assets/images/about-us/volunteers/anmol.png",
+        image: "/assets/images/about-us/volunteers/anmol.png",
     },
 ];
 
@@ -20,32 +20,32 @@ const designStaff = [
     {
         name: "Eleonora Paoli",
         role: "Lead Designer",
-        image: "/public/assets/images/about-us/volunteers/eleonora.png",
+        image: "/assets/images/about-us/volunteers/eleonora.png",
     },
     {
         name: "Jessie Zhang",
         role: "UI/UX Designer",
-        image: "/public/assets/images/about-us/volunteers/jessie.png",
+        image: "/assets/images/about-us/volunteers/jessie.png",
     },
     {
         name: "Jhordan John",
         role: "UX/UI Designer",
-        image: "/public/assets/images/about-us/volunteers/jhordan.png",
+        image: "/assets/images/about-us/volunteers/jhordan.png",
     },
     {
         name: "Samantha Rodrigues",
         role: "UX/UI Designer",
-        image: "/public/assets/images/about-us/volunteers/samantha.png",
+        image: "/assets/images/about-us/volunteers/samantha.png",
     },
     {
         name: "Katerina Rabadzhyiska",
         role: "UX/UI Designer",
-        image: "/public/assets/images/about-us/volunteers/katerina.png",
+        image: "/assets/images/about-us/volunteers/katerina.png",
     },
     {
         name: "Priya Patel",
         role: "Illustrator",
-        image: "/public/assets/images/about-us/volunteers/priya.png",
+        image: "/assets/images/about-us/volunteers/priya.png",
     },
 ];
 
@@ -53,72 +53,72 @@ const developmentStaff = [
     {
         name: "Faruk Saridanismet",
         role: "Lead Developer",
-        image: "/public/assets/images/about-us/volunteers/default1.svg",
+        image: "/assets/images/about-us/volunteers/default1.svg",
     },
     {
         name: "Tim Chapin",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/tim.png",
+        image: "/assets/images/about-us/volunteers/tim.png",
     },
     {
         name: "Sherman Hamo Rasho",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/sherman.png",
+        image: "/assets/images/about-us/volunteers/sherman.png",
     },
     {
         name: "Josephraj Velpula",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/josephraj.png",
+        image: "/assets/images/about-us/volunteers/josephraj.png",
     },
     {
         name: "Shrikrishna Bhat",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/shrikrishna.png",
+        image: "/assets/images/about-us/volunteers/shrikrishna.png",
     },
     {
         name: "Pedro Venâncio",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/pedro.png",
+        image: "/assets/images/about-us/volunteers/pedro.png",
     },
     {
         name: "Alex Santos",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/alex.png",
+        image: "/assets/images/about-us/volunteers/alex.png",
     },
     {
         name: "Biruk Bizuayehu",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/biruk.png",
+        image: "/assets/images/about-us/volunteers/biruk.png",
     },
     {
         name: "Guna Thangavel",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/default2.svg",
+        image: "/assets/images/about-us/volunteers/default2.svg",
     },
     {
         name: "Rithik Kumar",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/default3.svg",
+        image: "/assets/images/about-us/volunteers/default3.svg",
     },
     {
         name: "Riya Divakaran",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/riya.png",
+        image: "/assets/images/about-us/volunteers/riya.png",
     },
     {
         name: "May Lynn",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/may.png",
+        image: "/assets/images/about-us/volunteers/may.png",
     },
     {
         name: "Eashan Sadasivuni",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/eashan.png",
+        image: "/assets/images/about-us/volunteers/eashan.png",
     },
     {
         name: "Shyaka Chaste",
         role: "Developer",
-        image: "/public/assets/images/about-us/volunteers/shyaka.png",
+        image: "/assets/images/about-us/volunteers/shyaka.png",
     },
 ];
 
@@ -126,27 +126,27 @@ const outreachStaff = [
     {
         name: "Asmitha Balamurugan",
         role: "Outreach",
-        image: "/public/assets/images/about-us/volunteers/asmitha.png",
+        image: "/assets/images/about-us/volunteers/asmitha.png",
     },
     {
         name: "Abby He",
         role: "Outreach",
-        image: "/public/assets/images/about-us/volunteers/abby.png",
+        image: "/assets/images/about-us/volunteers/abby.png",
     },
     {
         name: "Soujash Wawdhane",
         role: "Outreach",
-        image: "/public/assets/images/about-us/volunteers/soujash.png",
+        image: "/assets/images/about-us/volunteers/soujash.png",
     },
     {
         name: "Ilemona Jacob",
         role: "Outreach",
-        image: "/public/assets/images/about-us/volunteers/default2.svg",
+        image: "/assets/images/about-us/volunteers/default2.svg",
     },
     {
         name: "Leila Ismail",
         role: "Outreach",
-        image: "/public/assets/images/about-us/volunteers/default1.svg",
+        image: "/assets/images/about-us/volunteers/default1.svg",
     },
 ];
 
@@ -154,22 +154,22 @@ const socialmediaStaff = [
     {
         name: "Jeslyn Chang",
         role: "Social Media",
-        image: "/public/assets/images/about-us/volunteers/jeslyn.png",
+        image: "/assets/images/about-us/volunteers/jeslyn.png",
     },
     {
         name: "Yusuf Balikis",
         role: "Social Media",
-        image: "/public/assets/images/about-us/volunteers/yusuf.png",
+        image: "/assets/images/about-us/volunteers/yusuf.png",
     },
     {
         name: "Vicky Yu",
         role: "Video Editor",
-        image: "/public/assets/images/about-us/volunteers/vicky.png",
+        image: "/assets/images/about-us/volunteers/vicky.png",
     },
     {
         name: "Carlos Renan",
         role: "Video Editor",
-        image: "/public/assets/images/about-us/volunteers/carlos.png",
+        image: "/assets/images/about-us/volunteers/carlos.png",
     },
 ];
 
