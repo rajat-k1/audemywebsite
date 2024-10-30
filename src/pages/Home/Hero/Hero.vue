@@ -27,13 +27,13 @@
         <!-- Image Section -->
         <!-- Hero Image -->
         <img
-            src="/public/assets/images/hero/hero-image2.png"
+            src="/assets/images/hero/hero-image2.png"
             alt="Tablet with games"
             class="z-10 object-contain w-full h-max"
         />
         <!-- Hero Illustration Image -->
         <img
-            src="/public/assets/images/hero/hero-illustration.png"
+            src="/assets/images/hero/hero-illustration.png"
             alt=""
             class="absolute top-0 right-0 -z-10"
         />

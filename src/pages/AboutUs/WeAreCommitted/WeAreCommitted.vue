@@ -75,29 +75,29 @@ onUnmounted(() => {
         <div class="relative w-3/5">
             <!-- Background -->
             <img
-                src="/public/assets/images/our-projects/Mask group.png"
+                src="/assets/images/our-projects/Mask group.png"
                 class="absolute w-[90%] object-cover -top-48 -right-40 -z-10"
             />
             <!-- Image of students w/ Crystal -->
             <img
-                src="/public/assets/images/about-us/childPlaying-tablet.png"
+                src="/assets/images/about-us/childPlaying-tablet.png"
                 alt="Image of student"
                 class="absolute top-[4rem] right-40 z-10 object-contain w-[580px] h-max"
             />
 
             <!-- Star graphics -->
             <img
-                src="/public/assets/images/about-us/yellowStar.svg"
+                src="/assets/images/about-us/yellowStar.svg"
                 alt="Yellow Star"
                 class="absolute -top-[3rem] right-[15rem] z-10"
             />
             <img
-                src="/public/assets/images/impact/orangeStar.png"
+                src="/assets/images/impact/orangeStar.png"
                 alt="Orange Star"
                 class="absolute bottom-[10rem] left-[7rem] z-10"
             />
             <img
-                src="/public/assets/images/about-us/blueStar2.svg"
+                src="/assets/images/about-us/blueStar2.svg"
                 alt="Blue Star"
                 class="absolute w-[81px] bottom-[5rem] right-[5rem] z-10"
             />

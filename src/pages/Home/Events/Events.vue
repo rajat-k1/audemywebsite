@@ -62,12 +62,12 @@
                 <!-- Apple Background -->
                 <img
                     class="w-full h-full"
-                    src="/public/assets/images/events/apple-illustration.png"
+                    src="/assets/images/events/apple-illustration.png"
                 />
 
                 <img
                     class="absolute top-[50%] mobile:top-[40%] left-[100%] mobile:left-[77%] translate-x-[-50%] translate-y-[-25%] mobile:w-[205px] mobile:h-[264px]"
-                    src="/public/assets/images/events/events-image.svg"
+                    src="/assets/images/events/events-image.svg"
                 />
             </div>
         </div>

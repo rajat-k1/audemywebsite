@@ -13,7 +13,7 @@ const props = defineProps({
                 <!-- TEXT -->
                 <div class="mx-2">
                     <img
-                        src="/public/assets/images/impact/starBullet.svg"
+                        src="/assets/images/impact/starBullet.svg"
                         class="mr-2 inline-block"
                     />
                     <p

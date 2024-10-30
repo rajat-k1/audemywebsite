@@ -43,7 +43,7 @@ onUnmounted(() => {
 <template>
     <div class="flex w-full px-20 mt-60 mb-20 relative">
         <img
-            src="/public/assets/images/impact/light-green-bg-2.png"
+            src="/assets/images/impact/light-green-bg-2.png"
             class="absolute w-full h-[125%] -top-[12rem] right-0 -z-10"
         />
 

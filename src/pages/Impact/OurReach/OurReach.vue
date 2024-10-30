@@ -25,7 +25,7 @@
                 class="bg-[#E5F0F5] border-2 border-[#c5dbe2] p-5 rounded-lg text-center w-[300px] relative flex-col"
             >
                 <img
-                    src="/public/assets/images/impact/students 1.svg"
+                    src="/assets/images/impact/students 1.svg"
                     alt="Student Icon"
                     class="mx-auto relative -top-12"
                 />
@@ -45,7 +45,7 @@
                 class="bg-[#E5F0F5] border-2 border-[#c5dbe2] p-5 rounded-lg text-center w-[300px] relative"
             >
                 <img
-                    src="/public/assets/images/impact/problems 1.svg"
+                    src="/assets/images/impact/problems 1.svg"
                     alt="Problems Solved Icon"
                     class="mx-auto relative -top-12"
                 />
@@ -63,7 +63,7 @@
                 class="bg-[#E5F0F5] border-2 border-[#c5dbe2] p-5 rounded-lg text-center w-[300px] relative"
             >
                 <img
-                    src="/public/assets/images/impact/globe 1.svg"
+                    src="/assets/images/impact/globe 1.svg"
                     alt="Collaborating Schools Icon"
                     class="mx-auto relative -top-12"
                 />

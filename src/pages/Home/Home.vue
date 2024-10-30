@@ -14,23 +14,23 @@ import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton.vue";
 </script>
 
 <template>
-  <ScrollUpButton />
-  <div class="px-20 relative" ref="content">
-    <Header :logoPath="'/src/assets/images/header/header-logo-2.png'"/>
-    <Hero />
-  </div>
+    <ScrollUpButton />
+    <div class="px-20 relative" ref="content">
+        <Header :logoPath="'/src/assets/images/header/header-logo-2.png'" />
+        <Hero />
+    </div>
 
-  <div class="px-20 mobile:px-5 mt-40">
-    <AboutUs />
-    <Sponsors />
-    <Impact />
-  </div>
+    <div class="px-20 mobile:px-5 mt-40">
+        <AboutUs />
+        <Sponsors />
+        <Impact />
+    </div>
 
-  <Testimonials />
-  <div class="px-20 mobile:px-5">
-    <TechShowcase />
-    <Events />
-    <CTA />
-  </div>
-  <Footer />
+    <Testimonials />
+    <div class="px-20 mobile:px-5">
+        <TechShowcase />
+        <Events />
+        <CTA />
+    </div>
+    <Footer />
 </template>

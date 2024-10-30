@@ -8,7 +8,7 @@ import Affiliates from "./Affiliates.vue";
         class="relative flex flex-col items-start justify-center mobile:justify-center w-full h-[10%] px-[15rem] mt-[21rem] mb-36 tablet:mb-[265px] mobile:mb-[129px]"
     >
         <img
-            src="/public/assets/images/impact/light-green-bg-2.png"
+            src="/assets/images/impact/light-green-bg-2.png"
             class="absolute w-full h-[125%] -top-[12rem] right-0 -z-10"
         />
 

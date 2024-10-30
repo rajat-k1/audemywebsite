@@ -82,12 +82,12 @@ onUnmounted(() => {
         <div class="w-1/2">
             <!-- Background -->
             <img
-                src="/public/assets/images/our-projects/Mask group.png"
+                src="/assets/images/our-projects/Mask group.png"
                 class="absolute w-[40%] -top-48 right-0 -z-10"
             />
             <!-- Image of students w/ Crystal -->
             <img
-                src="/public/assets/images/our-projects/events1.svg"
+                src="/assets/images/our-projects/events1.svg"
                 alt="Image of students"
                 class="relative -top-20 right-28 z-10 object-contain w-full h-max"
             />

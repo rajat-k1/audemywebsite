@@ -34,18 +34,18 @@ const resetErrors = () => {
                 class="w-full flex flex-col justify-center items-center gap-14 z-10"
             >
                 <img
-                    src="/public/assets/images/LoginImg/icons.svg"
+                    src="/assets/images/LoginImg/icons.svg"
                     alt="logo icon"
                     class="w-[50%] h-[50%]"
                 />
                 <img
-                    src="/public/assets/images/LoginImg/logo-icon.svg"
+                    src="/assets/images/LoginImg/logo-icon.svg"
                     alt="logo icon"
                     class="w-[45%] h-[45%]"
                 />
             </div>
             <img
-                src="/public/assets/images/LoginImg/wave-icon.svg"
+                src="/assets/images/LoginImg/wave-icon.svg"
                 alt="wave icon"
                 class="absolute -bottom-[15%] right-0 w-full -z-1"
             />

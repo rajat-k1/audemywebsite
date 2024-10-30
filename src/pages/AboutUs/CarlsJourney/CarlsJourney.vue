@@ -5,7 +5,7 @@
         <!-- Left Portion -->
         <div class="flex items-center justify-center w-1/2">
             <img
-                src="/public/assets/images/about-us/CarlTheCaterpillar.png"
+                src="/assets/images/about-us/CarlTheCaterpillar.png"
                 alt="Carl The Caterpillar"
                 class="h-max"
             />

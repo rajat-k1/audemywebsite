@@ -31,7 +31,7 @@ let videoStoped = () => {
         >
             <img
                 class="w-[295px] h-[529px] tablet:w-[238px] tablet:h-[426px] mobile:w-[296px] mobile:h-[529px] max-w-none"
-                src="/public/assets/images/techShowcase/phone.svg"
+                src="/assets/images/techShowcase/phone.svg"
                 alt=""
             />
             <div

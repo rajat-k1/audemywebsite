@@ -5,13 +5,13 @@
         class="flex items-center w-full my-20 pt-40 pb-20 px-20 mobile:px-5 relative z-10 after:content-[''] after:absolute after:-top-40 after:left-0 after:bg-[url('/src/assets/images/our-projects/lightred-backgroundx.png')] after:w-[100%] after:h-[55rem] after:bg-cover after:bg-no-repeat after:-z-10"
     >
         <img
-            src="/public/assets/images/our-projects/lightred-background.png"
+            src="/assets/images/our-projects/lightred-background.png"
             class="absolute w-full h-[110%] -top-[3rem] right-0 -z-10"
         />
         <!-- Left Portion -->
         <div class="flex items-center justify-center w-1/2">
             <img
-                src="/public/assets/images/our-projects/Group 1205.png"
+                src="/assets/images/our-projects/Group 1205.png"
                 alt="Caterpillar"
                 class="h-max"
             />

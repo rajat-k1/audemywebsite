@@ -1,9 +1,9 @@
 <script setup>
-import Group1010 from "/public/assets/images/SignUpImg/Group 1010.png";
-import Group878 from "/public/assets/images/SignUpImg/Group 878.png";
-import OrangeStar from "/public/assets/images/SignUpImg/Group 895.png";
-import Book from "/public/assets/images/SignUpImg/Group 1106.png";
-import Star from "/public/assets/images/testimonials/star.svg";
+import Group1010 from "/assets/images/SignUpImg/Group 1010.png";
+import Group878 from "/assets/images/SignUpImg/Group 878.png";
+import OrangeStar from "/assets/images/SignUpImg/Group 895.png";
+import Book from "/assets/images/SignUpImg/Group 1106.png";
+import Star from "/assets/images/testimonials/star.svg";
 </script>
 <template>
     <div

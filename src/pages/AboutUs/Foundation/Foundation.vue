@@ -5,11 +5,11 @@
         class="flex flex-col items-center justify-start mobile:justify-center w-full h-auto mt-24 my-32 tablet:mb-[265px] mobile:mb-[129px]"
     >
         <img
-            src="/public/assets/images/about-us/top-blue-bg.png"
+            src="/assets/images/about-us/top-blue-bg.png"
             class="absolute w-full -top-[22rem] right-0 -z-10"
         />
         <img
-            src="/public/assets/images/about-us/Group 1206.png"
+            src="/assets/images/about-us/Group 1206.png"
             class="absolute top-[10rem] -z-10"
         />
 

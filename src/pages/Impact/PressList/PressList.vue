@@ -76,12 +76,12 @@ onUnmounted(() => {
         </div>
 
         <img
-            src="/public/assets/images/impact/orangeStar.png"
+            src="/assets/images/impact/orangeStar.png"
             class="absolute left-[18rem] bottom-[0rem]"
             alt="image"
         />
         <img
-            src="/public/assets/images/impact/blueStar.png"
+            src="/assets/images/impact/blueStar.png"
             class="absolute right-[16rem] bottom-[35rem]"
             alt="image"
         />

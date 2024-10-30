@@ -104,7 +104,7 @@ const teachers = [
             />
         </div>
         <img
-            src="/public/assets/images/impact/glasses.svg"
+            src="/assets/images/impact/glasses.svg"
             class="absolute -right-[1rem] -bottom-[1.3rem]"
         />
     </div>

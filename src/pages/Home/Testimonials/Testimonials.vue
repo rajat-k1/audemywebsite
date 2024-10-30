@@ -1,6 +1,6 @@
 <script setup>
-import Comment from "/public/assets/images/testimonials/comment.png";
-import Star from "/public/assets/images/testimonials/star.svg";
+import Comment from "/assets/images/testimonials/comment.png";
+import Star from "/assets/images/testimonials/star.svg";
 </script>
 
 <template>
@@ -8,7 +8,7 @@ import Star from "/public/assets/images/testimonials/star.svg";
         class="flex flex-col items-center gap-y-12 self-center mt-20 pt-80 pb-[18rem] px-20 mobile:px-5 relative z-10"
     >
         <img
-            src="/public/assets/images/testimonials/testimonials-bg.png"
+            src="/assets/images/testimonials/testimonials-bg.png"
             class="absolute top-[4rem] -z-10 h-[60rem] fill"
         />
 
@@ -27,7 +27,7 @@ import Star from "/public/assets/images/testimonials/star.svg";
                 class="relative bg-[#fff] shadow-[3px_4px_0px_#0C0D0D] border-2 border-[#2A3338] py-20 px-8 rounded-lg"
             >
                 <img
-                    src="/public/assets/images/testimonials/yellowStar2.svg"
+                    src="/assets/images/testimonials/yellowStar2.svg"
                     alt="Yellow star"
                     class="absolute top-[-2.5rem] left-[0rem] z-10 pulse"
                 />
@@ -48,7 +48,7 @@ import Star from "/public/assets/images/testimonials/star.svg";
                 class="relative bg-[#fff] shadow-[3px_4px_0px_#0C0D0D] border-2 border-[#2A3338] py-20 px-8 rounded-lg"
             >
                 <img
-                    src="/public/assets/images/testimonials/chatBalloon.svg"
+                    src="/assets/images/testimonials/chatBalloon.svg"
                     alt="Chat balloon"
                     class="absolute top-[2rem] right-[-2rem] z-10 pulse"
                 />
@@ -68,7 +68,7 @@ import Star from "/public/assets/images/testimonials/star.svg";
                 class="relative bg-[#fff] shadow-[3px_4px_0px_#0C0D0D] border-2 border-[#2A3338] py-20 px-8 rounded-lg"
             >
                 <img
-                    src="/public/assets/images/testimonials/orangeStar.svg"
+                    src="/assets/images/testimonials/orangeStar.svg"
                     alt="Yellow star"
                     class="absolute bottom-[-2.5rem] right-[1rem] z-10 pulse"
                 />

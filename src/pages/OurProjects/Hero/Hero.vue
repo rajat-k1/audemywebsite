@@ -30,7 +30,7 @@
                 </div>
             </div>
             <img
-                src="/public/assets/images/our-projects/header/banner.svg"
+                src="/assets/images/our-projects/header/banner.svg"
                 alt=""
                 class="absolute -top-3 right-0 -z-10 w-[50rem] h-auto"
             />

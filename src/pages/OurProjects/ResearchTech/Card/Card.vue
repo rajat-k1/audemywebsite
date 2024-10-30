@@ -6,7 +6,7 @@ const props = defineProps({
     text: String,
 });
 
-const path = "/public/assets/images/our-projects/researchtech/";
+const path = "/assets/images/our-projects/researchtech/";
 </script>
 
 <template>

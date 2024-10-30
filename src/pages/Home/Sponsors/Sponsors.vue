@@ -14,19 +14,16 @@ import SponsorsCarousel from "./SponsorsCarousel/SponsorsCarousel.vue";
                 class="w-full scroll-auto grid grid-cols-4 grid-row-a items-center"
             >
                 <img
-                    src="/public/assets/images/sponsors/google.png"
+                    src="/assets/images/sponsors/google.png"
                     alt="google logo"
                 />
                 <img
-                    src="/public/assets/images/sponsors/desmos.png"
+                    src="/assets/images/sponsors/desmos.png"
                     alt="desmos logo"
                 />
+                <img src="/assets/images/sponsors/aops.svg" alt="aops logo" />
                 <img
-                    src="/public/assets/images/sponsors/aops.svg"
-                    alt="aops logo"
-                />
-                <img
-                    src="/public/assets/images/sponsors/wolframalpha.svg"
+                    src="/assets/images/sponsors/wolframalpha.svg"
                     alt="wolframalpha logo"
                 />
             </div>

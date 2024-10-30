@@ -4,7 +4,7 @@ const props = defineProps({
     icon: String,
     text: String,
 });
-const path = "/public/assets/images/impact/";
+const path = "/assets/images/impact/";
 </script>
 
 <template>

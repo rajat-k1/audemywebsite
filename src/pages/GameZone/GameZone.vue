@@ -130,7 +130,7 @@ const changeCurrentPage = (page) => {
 
 <style>
 .bg-gamezone {
-    background-image: url("/public/assets/images/game-zone/background.svg");
+    background-image: url("/assets/images/game-zone/background.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

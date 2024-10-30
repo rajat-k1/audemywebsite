@@ -3,10 +3,10 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 
 const currentIndex = ref(0);
 const items = [
-    "/public/assets/images/sponsors/google.png",
-    "/public/assets/images/sponsors/desmos.png",
-    "/public/assets/images/sponsors/aops.svg",
-    "/public/assets/images/sponsors/wolframalpha.svg",
+    "/assets/images/sponsors/google.png",
+    "/assets/images/sponsors/desmos.png",
+    "/assets/images/sponsors/aops.svg",
+    "/assets/images/sponsors/wolframalpha.svg",
 ];
 
 let interval;
