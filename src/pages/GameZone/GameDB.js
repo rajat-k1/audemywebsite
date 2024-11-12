@@ -63,5 +63,33 @@ export const getMathGames = () => {
             textColor: "#DA6301",
             bgColor: "#FFDABA",
         },
+        {
+            icon: basedPath + "animalAddition.svg",
+            title: "Car Counting",
+            url: "/game/carcounting",
+            textColor: "#5391AC",
+            bgColor: "#EAF7FD",
+        },
+        {
+            icon: basedPath + "subtractionSafari.svg",
+            title: "Fruit Frenzy",
+            url: "/game/fruitfrenzy",
+            textColor: "#DA6301",
+            bgColor: "#FFDABA",
+        },
+        {
+            icon: basedPath + "multiplicationMadness.svg",
+            title: "Monkey Madness",
+            url: "/game/monkeymadness",
+            textColor: "#769400",
+            bgColor: "#DAF5B7",
+        },
+        {
+            icon: basedPath + "divisionDual.svg",
+            title: "Shape Shark",
+            url: "/game/shapeshark",
+            textColor: "#269C9A",
+            bgColor: "#DAF7F6",
+        },
     ];
 };
