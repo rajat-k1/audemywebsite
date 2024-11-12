@@ -17,6 +17,10 @@ import OddOneOut from "../pages/GameZone/GameZoneList/OddOneOut.vue";
 import PolarPairing from "../pages/GameZone/GameZoneList/PolarPairing.vue";
 // import SpellingBee from "../pages/GameZone/GameZoneList/SpellingBee/SpellingBee.vue";
 import SpellingBee from "../pages/GameZone/GameZoneList/SpellingBee.vue";
+import CarCounting from "../pages/GameZone/GameZoneList/CarCounting.vue";
+import FruitFrenzy from "../pages/GameZone/GameZoneList/FruitFrenzy.vue";
+import MonkeyMadness from "../pages/GameZone/GameZoneList/MonkeyMadness.vue";
+import ShapeShark from "../pages/GameZone/GameZoneList/ShapeShark.vue";
 
 const routes = [
     { path: "/home", redirect: "/" },
@@ -72,6 +76,26 @@ const routes = [
         path: "/game/spellingbee",
         name: "SpellingBee",
         component: SpellingBee,
+    },
+    {
+        path: "/game/carcounting",
+        name: "CarCounting",
+        component: CarCounting,
+    },
+    {
+        path: "/game/fruitfrenzy",
+        name: "FruitFrenzy",
+        component: FruitFrenzy,
+    },
+    {
+        path: "/game/monkeymadness",
+        name: "MonkeyMadness",
+        component: MonkeyMadness,
+    },
+    {
+        path: "/game/shapeshark",
+        name: "ShapeShark",
+        component: ShapeShark,
     },
 ];
 
