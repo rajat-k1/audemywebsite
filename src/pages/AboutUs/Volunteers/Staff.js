@@ -5,15 +5,16 @@ const managementStaff = [
         role: "Lead Designer",
         image: "/assets/images/about-us/volunteers/eleonora.png",
     },
-    {
-        name: "Aruesha Srivastava",
-        role: "Chief Operating Officer",
-        image: "/assets/images/about-us/volunteers/aruesha.png",
-    },
+    
     {
         name: "Anmol Bal",
         role: "Chief Financial Officer",
         image: "/assets/images/about-us/volunteers/anmol.png",
+    },
+    {
+        name: "Aruesha Srivastava",
+        role: "Chief Operating Officer",
+        image: "/assets/images/about-us/volunteers/aruesha.png",
     },
 ];
 const founderStaff = [
@@ -58,26 +59,17 @@ const developmentStaff = [
         role: "Lead Developer",
         image: "/assets/images/about-us/volunteers/default1.svg",
     },
-    {
-        name: "Tim Chapin",
+     {
+        name: "Shrikrishna Bhat",
         role: "Developer",
-        image: "/assets/images/about-us/volunteers/tim.png",
-    },
-    {
-        name: "Sherman Hamo Rasho",
-        role: "Developer",
-        image: "/assets/images/about-us/volunteers/sherman.png",
+        image: "/assets/images/about-us/volunteers/shrikrishna.png",
     },
     {
         name: "Josephraj Velpula",
         role: "Developer",
         image: "/assets/images/about-us/volunteers/josephraj.png",
     },
-    {
-        name: "Shrikrishna Bhat",
-        role: "Developer",
-        image: "/assets/images/about-us/volunteers/shrikrishna.png",
-    },
+   
     {
         name: "Pedro Venâncio",
         role: "Developer",
@@ -87,6 +79,16 @@ const developmentStaff = [
         name: "Alex Santos",
         role: "Developer",
         image: "/assets/images/about-us/volunteers/alex.png",
+    },
+     {
+        name: "Tim Chapin",
+        role: "Developer",
+        image: "/assets/images/about-us/volunteers/tim.png",
+    },
+      {
+        name: "Sherman Hamo Rasho",
+        role: "Developer",
+        image: "/assets/images/about-us/volunteers/sherman.png",
     },
     {
         name: "Biruk Bizuayehu",
