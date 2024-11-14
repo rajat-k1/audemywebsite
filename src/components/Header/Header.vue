@@ -6,7 +6,7 @@
       <!-- <RouterLink to="/home" class="hover:text-black"><img src="../../../src/assets/images/header/header-logo-2.png" alt="logo" class="hover:cursor-pointer absolute top-7 h-[60px]" /></RouterLink>-->
     </div>
     
-    <ul :class="'flex space-x-8 justify-center font-poppins font-semibold '+(textColor??'text-[#151e22]')">
+    <ul :class="'flex space-x-8 justify-center font-poppins font-semibold tablet:hidden mobile:hidden '+(textColor??'text-[#151e22]')">
       <li>
         <RouterLink to="/home" class="px-2 pb-2 hover:text-[#087bb4] hover:border-b-2 border-[#087bb4]">Home</RouterLink>
       </li>
