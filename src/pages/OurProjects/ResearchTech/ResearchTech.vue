@@ -10,8 +10,8 @@
     },
     {
       icon: 'network-circle.svg',
-      title: 'Google Cloud Natural Language Processing',
-      text: `Google Cloud's Natural Language Processing uses machine learning to turn speech into text, enabling users to interact with Audemy through an audio-focused interface. <a href="#" target="_blank" class="text-[#087BB4] underline text-[18px]"><b>Learn  more!</b></a>`,
+      title: 'Intel OpenVINO Natural Language Processing',
+      text: `Intel OpenVINO's Natural Language Processing uses machine learning to turn speech into text, enabling users to interact with Audemy through an audio-focused interface. <a href="https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html?cid=sem&source=sa360&campid=2024_ao_cbu_us_gmocoma_gmocrbu_awa_text-link_brand_exact_cd_HQ-ai-openvino_3500268603_google_b2b_is_non-pbm_intel&ad_group=AI_Brand-Openvino_Openvino_Exact&intel_term=intel+openvino&sa360id=43700079820169414&gad_source=1&gclid=CjwKCAiAudG5BhAREiwAWMlSjGynGEnU9rLJPetpdfSrDl8V2bxtLFPMuDgLA39EVai2d9PANXXxjhoCTqgQAvD_BwE&gclsrc=aw.ds" target="_blank" class="text-[#087BB4] underline text-[18px]"><b>Learn  more!</b></a>`,
     },
     {
       icon: 'eye.svg',
