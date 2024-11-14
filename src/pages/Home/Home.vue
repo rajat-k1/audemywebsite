@@ -15,7 +15,7 @@ import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton.vue";
 
 <template>
     <ScrollUpButton />
-    <div class="px-20 relative" ref="content">
+    <div class="px-20 mobile:px-5 relative" ref="content">
         <Header :logoPath="'/assets/images/header/header-logo-2.png'" />
         <Hero />
     </div>
