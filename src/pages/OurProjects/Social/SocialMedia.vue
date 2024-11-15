@@ -16,13 +16,15 @@
 
         <div class="mt-10 relative">
             <img
-                src="/public/assets/images/our-projects/Group 1020.png"
+                src="/public/assets/images/our-projects/tablet.png"
                 class="h-96"
             />
             <img
                 src="/public/assets/images/our-projects/Vector Stroke.png"
                 class="absolute -top-16 -right-28"
             />
+            <!-- iFrame: Latest Youtube Video Uploaded -->
+            <iframe class="absolute top-[0.95rem] left-[0.6rem] rounded-[6px]" width="545" height="354" src="https://www.youtube.com/embed?listType=playlist&list=UU_QnL2hAtkxcMUNYBUFm6rQ" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="flex items-center justify-center mt-10">
             <a
