@@ -4,7 +4,7 @@
     class="h-[715.41px] mobile:h-auto mobile:w-full relative mb-[221px] tablet:mb-[273px] mobile:mb-[119px]"
   >
     <div
-      class="flex justify-between items-end mobile:items-center h-full pb-[125px] mobile:pb-0 mobile:flex-col mobile:gap-14"
+      class="flex justify-between items-end mobile:items-center h-full pb-[125px] mobile:pb-0 mobile:flex-col mobile:gap-14 mobile:flex-col-reverse"
     >
       <div class="w-4/12 tablet:w-full mobile:w-full">
         <div

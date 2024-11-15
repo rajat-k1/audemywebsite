@@ -6,7 +6,7 @@ import Globe from "/assets/images/impact/globe 1.svg";
 
 <template>
     <div class="flex items-center justify-center mobile:flex-col-reverse">
-        <div class="w-6/12 mobile:w-full flex flex-col justify-start gap-y-8">
+        <div class="w-6/12 mobile:w-full flex flex-col justify-start gap-y-8 mobile:gap-y-3">
             <h1 class="font-poppins text-4xl max-w-[50%] leading-normal text-title mobile:text-[22px] mobile:max-w-full">
                 Our impact in less than a year
             </h1>

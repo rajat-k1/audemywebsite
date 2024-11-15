@@ -20,7 +20,7 @@ import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton.vue";
         <Hero />
     </div>
 
-    <div class="px-20 mobile:px-5 mt-40">
+    <div class="px-20 mobile:px-5 mt-40 mobile:mt-20">
         <AboutUs />
         <Sponsors />
         <Impact />

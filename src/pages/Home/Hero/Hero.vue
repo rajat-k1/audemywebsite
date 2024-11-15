@@ -18,12 +18,12 @@
 
             <a
                 href="/game-zone"
-                class="font-poppins font-semibold mobile:w-full px-16 py-4 border-[1.5px] border-[#0C0D0D] rounded-[8px] bg-[#FE892A] hover:bg-[#D6711F] text-base text-center text-[#0D0C0C] shadow-[3px_4px_0px_#0C0D0D] font-semibold self-start duration-300"
+                class="font-poppins mobile:w-full px-16 py-4 border-[1.5px] border-[#0C0D0D] rounded-[8px] bg-[#FE892A] hover:bg-[#D6711F] text-base text-center text-[#0D0C0C] shadow-[3px_4px_0px_#0C0D0D] font-semibold self-start duration-300"
             >
                 Play a game
             </a>
         </div>
-        <div class="w-6/12 mobile:w-full">
+        <div class="w-6/12 mobile:w-full mobile:mb-14">
             <!-- Image Section -->
             <!-- Hero Image -->
             <img
@@ -35,7 +35,7 @@
             <img
                 src="/assets/images/hero/hero-illustration.png"
                 alt=""
-                class="absolute top-0 right-0 -z-10"
+                class="absolute top-0 right-0 -z-10 mobile:hidden"
             />
         </div>
     </div>
