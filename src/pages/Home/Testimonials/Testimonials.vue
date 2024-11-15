@@ -5,14 +5,14 @@ import Star from "/assets/images/testimonials/star.svg";
 
 <template>
   <div
-    class="flex flex-col items-center gap-y-12 self-center mt-20 pt-80 pb-[18rem] px-20 mobile:px-5 relative z-10"
+    class="flex flex-col items-center gap-y-12 self-center mt-20 pt-80 mobile:pt-64 pb-[18rem] px-20 mobile:px-0 relative z-10"
   >
     <img
       src="/assets/images/testimonials/testimonials-bg.png"
       class="absolute top-[4rem] -z-10 h-[60rem] fill"
     />
 
-    <div class="font-poppins flex flex-col gap-y-3">
+    <div class="font-poppins flex flex-col gap-y-3 mobile:px-5">
       <h1 class="text-4.5xl text-center text-title mobile:text-[24px]">
         What people are saying
       </h1>
@@ -22,14 +22,14 @@ import Star from "/assets/images/testimonials/star.svg";
       </p>
     </div>
 
-    <div class="flex items-center justify-center h-auto w-full">
+    <div class="flex items-center justify-center h-auto w-full mobile:overflow-x-auto mobile:overflow-y-hidden">
       <div class="w-[85%] tablet:w-[95%] mobile:w-[95%]">
         <div
-          class="flex justify-between items-center w-full mobile:overflow-x-auto mobile:min-w-auto mobile:flex-grow-1 mobile:flex-shrink-0 min-h-[400px]"
+          class="flex justify-around items-center w-full min-h-[400px] mobile:min-h-[450px] mobile:gap-8"
         >
-          <div class="w-4/12">
+          <div class="w-4/12 mobile:w-[285px]">
             <div
-              class="relative bg-[#fff] shadow-[3px_4px_0px_#0C0D0D] border-2 border-[#2A3338] py-20 px-8 rounded-lg min-h-[344px] w-11/12 mobile:w-[285px] mobile:h-[280px]"
+              class="relative bg-[#fff] shadow-[3px_4px_0px_#0C0D0D] border-2 border-[#2A3338] py-20 mobile:py-16 px-8 rounded-lg min-h-[344px] w-11/12 mobile:w-[285px] mobile:h-[280px]"
             >
               <img
                 src="/assets/images/testimonials/yellowStar2.svg"
@@ -37,7 +37,7 @@ import Star from "/assets/images/testimonials/star.svg";
                 class="absolute top-[-2.5rem] left-[0rem] z-10 pulse"
               />
 
-              <div class="max-w-52 w-full flex flex-col gap-y-4 font-poppins">
+              <div class="max-w-52 w-full flex flex-col gap-y-4 mobile:justify-between mobile:h-full font-poppins">
                 <p class="">
                   “The blind students who played the games were very into it!”
                 </p>
@@ -49,17 +49,17 @@ import Star from "/assets/images/testimonials/star.svg";
             </div>
           </div>
 
-          <div class="w-4/12">
+          <div class="w-4/12 mobile:w-[285px]">
             <div
-              class="relative bg-[#fff] shadow-[3px_4px_0px_#0C0D0D] border-2 border-[#2A3338] py-20 px-8 rounded-lg min-h-[344px] w-11/12 mobile:w-[285px] mobile:h-[280px]"
+              class="relative bg-[#fff] shadow-[3px_4px_0px_#0C0D0D] border-2 border-[#2A3338] py-20 mobile:py-16 px-8 rounded-lg min-h-[344px] w-11/12 mobile:w-[285px] mobile:h-[280px]"
             >
               <img
                 src="/assets/images/testimonials/chatBalloon.svg"
                 alt="Chat balloon"
-                class="absolute top-[2rem] right-[-2rem] z-10 pulse"
+                class="absolute top-[2rem] right-[-2rem] mobile:right-[-1.4rem] z-10 pulse"
               />
 
-              <div class="max-w-52 w-full flex flex-col gap-y-4 font-poppins">
+              <div class="max-w-52 w-full flex flex-col gap-y-4 mobile:justify-between mobile:h-full font-poppins">
                 <p class="">
                   “Audemy’s games provide accessible and engaging educational
                   content for our blind students.”
@@ -71,9 +71,9 @@ import Star from "/assets/images/testimonials/star.svg";
             </div>
           </div>
 
-          <div class="w-4/12">
+          <div class="w-4/12 mobile:w-[285px]">
             <div
-              class="relative bg-[#fff] shadow-[3px_4px_0px_#0C0D0D] border-2 border-[#2A3338] py-20 px-8 rounded-lg min-h-[344px] w-11/12 mobile:w-[285px] mobile:h-[280px]"
+              class="relative bg-[#fff] shadow-[3px_4px_0px_#0C0D0D] border-2 border-[#2A3338] py-20 mobile:py-16 px-8 rounded-lg min-h-[344px] w-11/12 mobile:w-[285px] mobile:h-[280px]"
             >
               <img
                 src="/assets/images/testimonials/orangeStar.svg"
@@ -81,7 +81,7 @@ import Star from "/assets/images/testimonials/star.svg";
                 class="absolute bottom-[-2.5rem] right-[1rem] z-10 pulse"
               />
 
-              <div class="max-w-52 w-full flex flex-col gap-y-4 font-poppins">
+              <div class="max-w-52 w-full flex flex-col gap-y-4 mobile:justify-between mobile:h-full font-poppins">
                 <p class="">
                   “Audemy’s audio games are unique...my favorite game was car
                   counting because I love cars and math.”
