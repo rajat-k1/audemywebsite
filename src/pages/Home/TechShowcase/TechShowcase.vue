@@ -54,7 +54,7 @@ let videoStoped = () => {
                     @ended="videoStoped"
                     class="w-full h-full"
                 >
-                    <source src="" class="w-full" type="video/mp4" />
+                    <source src="/src/assets/videoFiles/JJ_Storybuilder_05_2024_Short.mp4" class="w-full" type="video/mp4" />
                     <span>browser does not support the video tag.</span>
                 </video>
             </div>
