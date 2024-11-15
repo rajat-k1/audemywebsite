@@ -5,7 +5,7 @@ import Star from "/assets/images/testimonials/star.svg";
 
 <template>
   <div
-    class="flex flex-col items-center gap-y-12 self-center mt-20 pt-80 mobile:pt-64 pb-[18rem] px-20 mobile:px-0 relative z-10"
+    class="flex flex-col items-center gap-y-12 self-center mt-20 pt-80 mobile:pt-64 pb-[18rem] mobile:pb-40 px-20 mobile:px-0 relative z-10"
   >
     <img
       src="/assets/images/testimonials/testimonials-bg.png"
