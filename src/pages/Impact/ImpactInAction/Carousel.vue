@@ -1,5 +1,6 @@
-<script>
-
+<script setup>
+  
+  
   
 </script>
 <template>
@@ -314,40 +315,40 @@
   }
 
  .carousel::before {
-    background-image: url("/src/assets/images/impact/carousel/leftChevron.svg");
+    background-image: url("/public/assets/images/impact/carousel/leftChevron.svg");
   }
 
   .carousel::after {
-    background-image: url("/src/assets/images/impact/carousel/rightChevron.svg");
+    background-image: url("/public/assets/images/impact/carousel/rightChevron.svg");
   }
 
   #carousel__slide1 {
-    background-image: url("/src/assets/images/impact/carousel/carousel1.jpg");
+    background-image: url("/public/assets/images/impact/carousel/carousel1.jpg");
     background-position: center;
     
   }
   #carousel__slide2 {
-    background-image: url("/src/assets/images/impact/carousel/carousel2.png");
+    background-image: url("/public/assets/images/impact/carousel/carousel2.png");
     background-position: center;
     background-size: cover;
   }
   #carousel__slide3 {
-    background-image: url("/src/assets/images/impact/carousel/carousel3.png");
+    background-image: url("/public/assets/images/impact/carousel/carousel3.png");
     background-position: center;
     background-size: cover;
   }
   #carousel__slide4 {
-    background-image: url("/src/assets/images/impact/carousel/carousel4.png");
+    background-image: url("/public/assets/images/impact/carousel/carousel4.png");
     background-position: center;
     background-size: cover;
   }
   #carousel__slide5 {
-    background-image: url("/src/assets/images/impact/carousel/carousel5.png");
+    background-image: url("/public/assets/images/impact/carousel/carousel5.png");
     background-position: center;
     background-size: cover;
   }
   #carousel__slide6 {
-    background-image: url("/src/assets/images/impact/carousel/carousel6.jpeg");
+    background-image: url("/public/assets/images/impact/carousel/carousel6.jpeg");
     background-position: center;
     background-size: cover;
   }
