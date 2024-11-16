@@ -29,7 +29,7 @@
             <img
                 src="/assets/images/hero/hero-image2.png"
                 alt="Tablet with games"
-                class="z-10 object-contain w-full h-max"
+                class="z-10 w-full"
             />
             <!-- Hero Illustration Image -->
             <img
