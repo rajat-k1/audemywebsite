@@ -7,8 +7,10 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="flex justify-between mobile:flex-col tablet:flex-row">
-        <div class="w-3/12 tablet:w-3/12 mb-4 tablet:mb-0">
+    <div
+        class="flex justify-between items-center mobile:flex-col tablet:flex-row"
+    >
+        <div class="w-3/12 tablet:w-3/12 mb-4 tablet:mb-0 items-center">
             <h3
                 class="font-poppins text-2xl tablet:text-[32px] mobile:text-[24px] text-start font-[400]"
             >
