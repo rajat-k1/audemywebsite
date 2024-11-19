@@ -6,7 +6,7 @@
         >
             <div class="mobile:text-center">
                 <p
-                    class="font-poppins w-[510px] text-[20px] tablet:text-[16px] leading-[30px] tablet:leading-[24px] tablet:w-[438px] mobile:w-full mx-auto text-left text-[#2F3E45]"
+                    class="font-poppins w-[510px] text-[20px] tablet:text-[16px] leading-[30px] tablet:leading-[24px] tablet:w-[438px] mobile:w-full mx-auto text-left text-[#2F3E45] mobile:mt-[20px]"
                 >
                     With your support, we can achieve even greater things in the
                     future.
@@ -15,7 +15,7 @@
 
             <!-- Buttons -->
             <div
-                class="flex mobile:flex-col desktop:flex-row justify-evenly mobile:gap-[20px] gap-[16px] mobile:mx-[16px] items-center"
+                class="flex mobile:flex-col desktop:flex-row justify-evenly mobile:gap-[20px] gap-[16px] mobile:mx-[16px] items-center mobile:mt-[20px]"
             >
                 <a
                     href="mailto:connect.audemy@gmail.com"

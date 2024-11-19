@@ -29,14 +29,13 @@ onMounted(() => {
             </div>
             <!-- Volunteer Staff Section -->
             <div
-                class="w-full mb-10 grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-3 gap-6"
+                class="w-full mb-10 grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-3 gap-6 items-center justify-between"
                 v-for="item in staff"
                 :key="item.staffTitle"
             >
                 <VonlunteerStaff
                     :staffTitle="item.staffTitle"
                     :staff="item.staff"
-                    class="p-4 bg-gray-100 rounded-md shadow-md"
                 />
             </div>
 

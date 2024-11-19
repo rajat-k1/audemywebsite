@@ -19,7 +19,7 @@ const path = "/assets/images/about-us/";
 
         <div class="ml-8">
             <h4
-                class="text-left text-body-text-color font-poppins text-[20px] tablet:text-[16px] font-[400]"
+                class="text-left text-body-text-color font-poppins text-[20px] tablet:text-[16px] font-[400] mobile:p-2"
                 v-html="text"
             ></h4>
         </div>

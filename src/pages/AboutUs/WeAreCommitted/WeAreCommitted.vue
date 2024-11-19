@@ -93,7 +93,7 @@ onUnmounted(() => {
             <img
                 src="/assets/images/impact/orangeStar.png"
                 alt="Orange Star"
-                class="absolute bottom-[10rem] left-[7rem] z-10 mobile:hidden"
+                class="absolute bottom-[10rem] left-[52rem] z-10 mobile:hidden"
             />
             <img
                 src="/assets/images/about-us/blueStar2.svg"
