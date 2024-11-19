@@ -61,7 +61,9 @@ const teachers = [
 </script>
 
 <template>
-    <div class="flex flex-row justify-center items-center w-full">
+    <div
+        class="flex flex-row justify-center items-center w-full mobile:w-[80vw] mobile:-ml-10"
+    >
         <button
             @click="changeCurrentPage(1)"
             :class="
@@ -87,18 +89,20 @@ const teachers = [
     </div>
 
     <div
-        class="relative w-[33vw] h-[19vw] pl-[1rem] pt-[6rem] rounded-b-[8px] bg-white border-b-2 border-l-2 border-r-2 border-black shadow-[1px_3px_4px_#2F3E45]"
+        class="relative w-[33vw] h-[19vw] pl-[1rem] pt-[6rem] rounded-b-[8px] bg-white border-b-2 border-l-2 border-r-2 border-black shadow-[1px_3px_4px_#2F3E45] mobile:w-[80vw] mobile:h-[80vw] mobile:-ml-10"
     >
         <div v-if="currentPage != 2">
             <SchoolsList
-                v-for="school in schools"
+                v-for="(school, index) in schools"
+                :key="index"
                 :name="school.name"
                 :link="school.link"
             />
         </div>
         <div v-if="currentPage === 2">
             <TeachersList
-                v-for="teacher in teachers"
+                v-for="(teacher, index) in teachers"
+                :key="index"
                 :name="teacher.name"
                 :link="teacher.link"
             />

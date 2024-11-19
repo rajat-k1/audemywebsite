@@ -96,13 +96,12 @@ export default {
     border-radius: 16px;
 }
 @media (max-width: 768px) {
-    /* Targets devices with a viewport width of 768px or smaller */
     #map {
-        height: 80vw; /* Makes it square by matching height to width */
+        height: 80vw;
         width: 80vw;
-        border-radius: 12px; /* Slightly smaller border radius for readability */
-        margin: 0 auto; /* Centers the map horizontally */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for better readability */
+        border-radius: 12px;
+        margin: 0 auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 }
 </style>

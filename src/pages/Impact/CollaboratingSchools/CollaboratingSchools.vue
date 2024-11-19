@@ -23,14 +23,14 @@ import Affiliates from "./Affiliates.vue";
 
         <!-- MAP AND LIST OF AFFILIATED SCHOOLS AND TEACHERS -->
         <div
-            class="flex items-center justify-center mobile:justify-center w-full h-[10%] mt-[4rem] mb-[6rem] tablet:mb-[265px] mobile:mb-[129px] mobile:flex-col"
+            class="flex items-center justify-center mobile:justify-center w-full h-[10%] mt-[4rem] mb-[6rem] tablet:mb-[265px] mobile:mb-[129px] mobile:flex-col mobile:gap-5"
         >
             <!-- MAP Content -->
             <div class="shadow-[3px_4px_5px_#2F3E45] rounded-[16px] mr-[3rem]">
                 <Map />
             </div>
 
-            <div class="mobile:hidden">
+            <div class="">
                 <Affiliates />
             </div>
         </div>
