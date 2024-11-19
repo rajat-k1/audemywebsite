@@ -58,13 +58,16 @@ onUnmounted(() => {
             </div>
 
             <div class="flex justify-center">
-                <div class="w-full">
+                <div
+                    class="w-full mobile:justify-center mobile:items-center mobile:text-center"
+                >
                     <div
                         id="div_about_us"
-                        class="flex justify-center mt-[40px] tablet:mt-[72px] mb-[63px] gap-4 tablet:gap-14 mobile:gap-4"
+                        class="flex justify-center mt-[40px] tablet:mt-[72px] mb-[63px] gap-4 tablet:gap-14 mobile:flex-col mobile:gap-6"
                     >
                         <PressListCard
-                            v-for="item in items"
+                            v-for="(item, index) in items"
+                            :key="index"
                             :image="item.image"
                             :text="item.text"
                             :author="item.author"
