@@ -33,73 +33,72 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="flex w-full pl-40 pr-20 mt-40 relative">
-        <!-- LEFT PORTION -->
-        <div
-            class="flex flex-col items-start justify-start mobile:justify-center w-2/5 h-auto mb-[6rem] tablet:mb-[265px] mobile:mb-[129px]"
-        >
-            <div>
-                <h3
-                    class="font-poppins text-small-text-color text-[#6e777c] text-[12px] font-[600] mobile:w-auto text-left tracking-[3.6px]"
-                >
-                    GROWTH & FUTURE HORIZONS
-                </h3>
-            </div>
-
-            <div class="max-w-[430px]">
-                <h2
-                    class="text-left font-poppins text-4.5xl tablet:text-[32px] mobile:text-[24px] mobile:text-center font-[400]"
-                >
-                    We are committed to do much more
-                </h2>
-            </div>
-
-            <div class="flex justify-center">
-                <div class="max-w-[744px] w-full">
-                    <div
-                        id="div_about_us"
-                        class="flex flex-col justify-between mt-[40px] tablet:mt-[72px] mb-[63px] gap-4 tablet:gap-14 mobile:gap-4"
+    <div
+        class="flex flex-wrap w-full pl-10 pr-10 mt-20 relative mobile:flex-col"
+    >
+        <!-- FLEX CONTAINER FOR ITEMS AND IMAGE -->
+        <div class="flex w-full justify-between items-center mobile:flex-col">
+            <!-- LEFT PORTION -->
+            <div
+                class="flex flex-col items-start justify-start w-1/2 mobile:w-full mobile:items-center mb-16"
+            >
+                <div>
+                    <h3
+                        class="font-poppins text-small-text-color text-[#6e777c] text-[12px] font-[600] mobile:w-auto text-left tracking-[3.6px] mobile:text-center"
                     >
-                        <WeAreCommittedCard
-                            v-for="item in items"
-                            :icon="item.icon"
-                            :text="item.text"
-                            :smallScreen="smallScreen"
-                        />
+                        GROWTH & FUTURE HORIZONS
+                    </h3>
+                </div>
+
+                <div class="max-w-[430px] w-full mobile:text-center">
+                    <h2
+                        class="font-poppins text-4xl tablet:text-[32px] mobile:text-[24px] font-[400]"
+                    >
+                        We are committed to do much more
+                    </h2>
+                </div>
+
+                <div class="flex justify-center mt-6 w-full">
+                    <div class="max-w-[744px] w-full">
+                        <div
+                            id="div_about_us"
+                            class="flex flex-col justify-between mt-[40px] gap-4 mobile:gap-4"
+                        >
+                            <WeAreCommittedCard
+                                v-for="(item, index) in items"
+                                :key="index"
+                                :icon="item.icon"
+                                :text="item.text"
+                                :smallScreen="smallScreen"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- RIGHT PORTION -->
-        <div class="relative w-3/5">
-            <!-- Background -->
-            <img
-                src="/assets/images/our-projects/Mask group.png"
-                class="absolute w-[90%] object-cover -top-48 -right-40 -z-10"
-            />
-            <!-- Image of students w/ Crystal -->
-            <img
-                src="/assets/images/about-us/childPlaying-tablet.png"
-                alt="Image of student"
-                class="absolute top-[4rem] right-40 z-10 object-contain w-[580px] h-max"
-            />
-
-            <!-- Star graphics -->
-            <img
-                src="/assets/images/about-us/yellowStar.svg"
-                alt="Yellow Star"
-                class="absolute -top-[3rem] right-[15rem] z-10"
-            />
+            <!-- RIGHT PORTION -->
+            <div
+                class="relative w-1/2 mobile:w-full mobile:mt-10 flex justify-center"
+            >
+                <img
+                    src="/assets/images/our-projects/Mask group.png"
+                    class="absolute w-[90%] object-cover -top-48 -right-40 -z-10 mobile:hidden"
+                />
+                <img
+                    src="/assets/images/about-us/childPlaying-tablet.png"
+                    alt="Image of student"
+                    class="z-10 object-contain w-[80%] h-auto mobile:w-full"
+                />
+            </div>
             <img
                 src="/assets/images/impact/orangeStar.png"
                 alt="Orange Star"
-                class="absolute bottom-[10rem] left-[7rem] z-10"
+                class="absolute bottom-[10rem] left-[52rem] z-10 mobile:hidden"
             />
             <img
                 src="/assets/images/about-us/blueStar2.svg"
                 alt="Blue Star"
-                class="absolute w-[81px] bottom-[5rem] right-[5rem] z-10"
+                class="absolute w-[81px] bottom-[5rem] right-[5rem] z-10 mobile:hidden"
             />
         </div>
     </div>
@@ -110,20 +109,18 @@ onUnmounted(() => {
     #div_about_us {
         flex-wrap: wrap;
     }
-}
 
-.scroll-top-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
+    h2 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .scroll-top-button {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        padding: 8px;
+        font-size: 14px;
+    }
 }
 </style>
