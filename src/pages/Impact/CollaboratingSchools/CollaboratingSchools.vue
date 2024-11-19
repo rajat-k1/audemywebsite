@@ -39,9 +39,11 @@ import Affiliates from "./Affiliates.vue";
         <div
             class="flex content-center items-center justify-center w-full h-[10%] mb-36 tablet:mb-[265px] mobile:mb-[129px] mobile:flex-col mobile:items-center mobile:gap-5"
         >
-            <div class="w-1/2 mobile:w-full mobile:text-center">
+            <div
+                class="w-1/2 mobile:w-full mobile:text-center mobile:items-center mobile:flex mobile:w-fit"
+            >
                 <p
-                    class="w-[504px] ml-[2rem] text-body text-xl font-poppins leading-8 mobile:ml-0 mobile:w-auto"
+                    class="w-[504px] ml-[2rem] text-body text-xl font-poppins leading-8 mobile:ml-0 mobile:w-fit-content mobile:text-center"
                 >
                     As we expand our services, we'd love to have you partner
                     with us on this exciting journey!
