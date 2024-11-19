@@ -71,10 +71,11 @@ onUnmounted(() => {
                 <div class="w-full">
                     <div
                         id="div_about_us"
-                        class="flex justify-between mt-[40px] tablet:mt-[72px] mb-[63px] gap-4 tablet:gap-14 mobile:gap-4"
+                        class="flex justify-between mt-[40px] tablet:mt-[72px] mb-[63px] gap-4 tablet:gap-14 mobile:gap-4 mobile:flex-col"
                     >
                         <AccoladesCard
-                            v-for="item in items"
+                            v-for="(item, index) in items"
+                            :key="index"
                             :icon="item.icon"
                             :text="item.text"
                             :smallScreen="smallScreen"
