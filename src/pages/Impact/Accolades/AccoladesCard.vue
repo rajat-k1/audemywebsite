@@ -14,19 +14,23 @@ const path = "/assets/images/impact/";
     >
         <div class="">
             <div
-                class="flex flex-col justify-evenly items-center w-[194px] h-[250px] tablet:w-[72px] tablet:h-[72px] rounded-[8px] border-[1.5px] border-[#0C0D0D] bg-white shadow-[4px_4px_0px_#0C0D0D]"
+                class="flex flex-col justify-evenly items-center w-[194px] h-[250px] tablet:w-[72px] tablet:h-[72px] rounded-[8px] border-[1.5px] border-[#0C0D0D] bg-white shadow-[4px_4px_0px_#0C0D0D] mobile:w-[160px] mobile:h-[160px]"
             >
                 <!-- TEXT -->
-                <div class="mx-2">
+                <div class="mx-2 overflow-hidden">
                     <h4
-                        class="text-center text-body-text-color font-poppins text-[20px] tablet:text-[16px] font-[400]"
+                        class="text-center text-body-text-color font-poppins text-[20px] tablet:text-[16px] font-[400] mobile:text-[14px] mobile:max-w-[140px] mobile:text-ellipsis"
                         v-html="text"
                     ></h4>
                 </div>
 
                 <!-- ICON -->
-                <div class="mx-6">
-                    <img :src="path + icon" alt="icon" />
+                <div class="mx-6 flex justify-center mobile:mx-4">
+                    <img
+                        :src="path + icon"
+                        alt="icon"
+                        class="mobile:w-[30px] mobile:h-[30px]"
+                    />
                 </div>
             </div>
         </div>

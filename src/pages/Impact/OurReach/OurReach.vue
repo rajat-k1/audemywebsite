@@ -20,7 +20,9 @@
             </div>
         </div>
 
-        <div class="mt-[5rem] flex justify-between">
+        <div
+            class="mt-[5rem] flex justify-between mobile:flex-col mobile:gap-5"
+        >
             <div
                 class="bg-[#E5F0F5] border-2 border-[#c5dbe2] p-5 rounded-lg text-center w-[300px] relative flex-col"
             >
