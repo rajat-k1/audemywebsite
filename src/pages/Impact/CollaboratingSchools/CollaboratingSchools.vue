@@ -15,7 +15,7 @@ import Affiliates from "./Affiliates.vue";
         <!-- HEADER -->
         <div class="max-w-[519px]">
             <h2
-                class="text-left ml-[2rem] font-poppins text-4.5xl tablet:text-[32px] mobile:text-[24px] mobile:text-center font-[400]"
+                class="text-left ml-[2rem] font-poppins text-4.5xl tablet:text-[32px] mobile:text-[24px] mobile:text-center font-[400] mobile:ml-0"
             >
                 Collaborating Schools
             </h2>
@@ -23,7 +23,7 @@ import Affiliates from "./Affiliates.vue";
 
         <!-- MAP AND LIST OF AFFILIATED SCHOOLS AND TEACHERS -->
         <div
-            class="flex items-center justify-center mobile:justify-center w-full h-[10%] mt-[4rem] mb-[6rem] tablet:mb-[265px] mobile:mb-[129px]"
+            class="flex items-center justify-center mobile:justify-center w-full h-[10%] mt-[4rem] mb-[6rem] tablet:mb-[265px] mobile:mb-[129px] mobile:flex-col mobile:gap-5"
         >
             <!-- MAP Content -->
             <div class="shadow-[3px_4px_5px_#2F3E45] rounded-[16px] mr-[3rem]">
@@ -37,22 +37,26 @@ import Affiliates from "./Affiliates.vue";
 
         <!-- CALL TO ACTION -->
         <div
-            class="flex content-center items-center mobile:justify-center w-full h-[10%] mb-36 tablet:mb-[265px] mobile:mb-[129px]"
+            class="flex content-center items-center justify-center w-full h-[10%] mb-36 tablet:mb-[265px] mobile:mb-[129px] mobile:flex-col mobile:items-center mobile:gap-5"
         >
-            <div class="w-1/2">
+            <div
+                class="w-1/2 mobile:text-center mobile:items-center mobile:flex mobile:w-fit"
+            >
                 <p
-                    class="w-[504px] ml-[2rem] text-body text-xl font-poppins leading-8"
+                    class="w-[504px] ml-[2rem] text-body text-xl font-poppins leading-8 mobile:ml-0 mobile:w-fit-content mobile:text-center"
                 >
                     As we expand our services, we'd love to have you partner
                     with us on this exciting journey!
                 </p>
             </div>
 
-            <div class="text-center w-1/2">
+            <div
+                class="text-center w-1/2 mobile:w-full mobile:flex mobile:justify-center"
+            >
                 <a
                     href="mailto:connect.audemy@gmail.com"
                     target="_blank"
-                    class="w-[244px] font-poppins font-semibold px-[4.20rem] py-4 border-[1.5px] border-[#0C0D0D] rounded-[8px] bg-primary-color hover:bg-[#0C587D] duration-300 text-base text-white shadow-[3px_4px_0px_#0C0D0D]"
+                    class="w-[244px] mobile:w-auto font-poppins font-semibold px-[4.20rem] py-4 border-[1.5px] border-[#0C0D0D] rounded-[8px] bg-primary-color hover:bg-[#0C587D] duration-300 text-base text-white shadow-[3px_4px_0px_#0C0D0D]"
                 >
                     Get affiliated
                 </a>

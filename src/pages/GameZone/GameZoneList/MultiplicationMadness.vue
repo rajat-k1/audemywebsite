@@ -5,7 +5,7 @@
           class="bg-white border-2 rounded-lg border-black h-12 p-2 shadow-md hover:bg-gray-300" /></button>
     </div>
     <div class="flex flex-col my-2 mx-56 h-96 justify-center items-center">
-      <div class="m-10 py-4">
+      <div class="m-10 py-4 text-center">
         <h1 class="text-4.5xl font-bold">Multiplication Madness</h1>
       </div>
       <div class="flex flex-col p-4 justify-center" id="content">
