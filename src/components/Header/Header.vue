@@ -155,4 +155,22 @@ button {
     top: 0.5rem;
     font-size: 2rem;
 }
+@media (max-width: 768px) {
+    ul {
+        position: fixed;
+        right: 4%;
+        top: 6rem;
+        width: 90%;
+        max-width: 200px;
+        z-index: 10;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        background-color: #fff;
+    }
+
+    li {
+        padding: 0.5rem 1rem;
+        text-align: center;
+    }
+}
 </style>
