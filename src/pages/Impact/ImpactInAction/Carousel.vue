@@ -1,4 +1,5 @@
 <script setup>
+
 import { onMounted } from "vue";
 
 // This is the slider function, we use it to navigate to the next or previous one.
@@ -45,6 +46,7 @@ onMounted(() => {
         }
     });
 });
+
 </script>
 
 <template>
@@ -86,6 +88,7 @@ onMounted(() => {
             />
         </div>
 
+
         <div
             class="carousel__slide absolute top-0 left-0 w-full h-full duration-500"
         >
@@ -123,5 +126,6 @@ onMounted(() => {
         />
     </div>
 </template>
+
 
 <style scoped></style>

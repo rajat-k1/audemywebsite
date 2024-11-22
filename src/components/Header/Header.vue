@@ -1,4 +1,5 @@
 <template>
+
     <header class="grid grid-cols-[auto_1fr] items-center py-12 relative">
         <div class="text-lg font-bold">
             <RouterLink to="/home">
@@ -107,6 +108,7 @@
             </ul>
         </div>
     </header>
+
 </template>
 
 <script setup>
