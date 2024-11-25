@@ -29,14 +29,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="flex w-full pl-40 pr-20 relative">
+    <div class="flex w-full px-20 relative mobile:flex-col mobile:px-6">
         <!-- LEFT PORTION -->
         <div
-            class="flex flex-col items-start justify-start mobile:justify-center w-1/2 h-auto mb-36 tablet:mb-[265px] mobile:mb-[129px]"
+            class="flex flex-col items-start justify-start mobile:justify-center w-1/2 mobile:w-full h-auto mb-36 tablet:mb-[265px] mobile:mb-[129px]"
         >
             <div>
                 <h3
-                    class="font-poppins text-small-text-color text-[#6e777c] text-[12px] font-[600] mobile:w-auto text-left tracking-[3.6px]"
+                    class="font-poppins text-small-text-color text-[#6e777c] text-[12px] font-[600] mobile:w-auto text-left tracking-[3.6px] mobile:text-center"
                 >
                     EDUCATIONAL EVENTS
                 </h3>
@@ -44,20 +44,21 @@ onUnmounted(() => {
 
             <div class="max-w-[519px]">
                 <h2
-                    class="text-left font-poppins text-4.5xl tablet:text-[32px] mobile:text-[24px] mobile:text-center font-[400]"
+                    class="text-left font-poppins text-4.5xl tablet:text-[32px] mobile:text-[24px] font-[400] mobile:text-center"
                 >
                     Have you heard about the events we organize?
                 </h2>
             </div>
 
-            <div class="flex justify-center">
+            <div class="flex justify-center mobile:justify-start">
                 <div class="max-w-[744px] w-full">
                     <div
                         id="div_about_us"
-                        class="flex flex-col justify-between mt-[40px] tablet:mt-[72px] mb-[63px] gap-4 tablet:gap-14 mobile:gap-4"
+                        class="flex flex-col justify-between mt-[40px] tablet:mt-[72px] mb-[63px] gap-4 tablet:gap-14"
                     >
                         <HaveYouHeardCard
-                            v-for="item in items"
+                            v-for="(item, index) in items"
+                            :key="index"
                             :icon="item.icon"
                             :text="item.text"
                             :smallScreen="smallScreen"
@@ -79,17 +80,17 @@ onUnmounted(() => {
         </div>
 
         <!-- RIGHT PORTION -->
-        <div class="w-1/2">
+        <div class="w-1/2 mobile:hidden mobile:w-full mobile:mt-10">
             <!-- Background -->
             <img
                 src="/assets/images/our-projects/Mask group.png"
-                class="absolute w-[40%] -top-48 right-0 -z-10"
+                class="absolute w-[40%] -top-48 right-0 -z-10 mobile:relative mobile:w-full mobile:top-0"
             />
             <!-- Image of students w/ Crystal -->
             <img
                 src="/assets/images/our-projects/events1.svg"
                 alt="Image of students"
-                class="relative -top-20 right-28 z-10 object-contain w-full h-max"
+                class="relative -top-20 right-28 z-10 object-contain w-full h-max mobile:right-0"
             />
         </div>
     </div>
@@ -100,20 +101,30 @@ onUnmounted(() => {
     #div_about_us {
         flex-wrap: wrap;
     }
-}
 
-.scroll-top-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
+    #div_about_us > * {
+        flex: 0 0 100%; /* Cards stack full width */
+    }
+
+    .mobile\:text-center {
+        text-align: center;
+    }
+
+    .mobile\:justify-start {
+        justify-content: start;
+    }
+
+    .mobile\:mt-10 {
+        margin-top: 2.5rem;
+    }
+
+    .mobile\:w-full {
+        width: 100%;
+    }
+
+    .mobile\:px-6 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
 }
 </style>
