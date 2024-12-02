@@ -1,7 +1,9 @@
 <script setup></script>
 
 <template>
-    <div class="flex items-center w-full mt-20 pt-60 pb-80 px-20 mobile:px-5">
+    <div
+        class="flex items-center w-full mt-20 pt-60 pb-80 px-20 mobile:px-0 mobile:mt-0 mobile:pt-0 mobile:pb-20"
+    >
         <!-- Left Portion -->
         <div class="flex items-center justify-center w-1/2">
             <img
