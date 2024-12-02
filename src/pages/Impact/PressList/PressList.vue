@@ -43,7 +43,7 @@ onUnmounted(() => {
         >
             <div class="">
                 <h3
-                    class="font-poppins text-small-text-color text-[12px] text-[#899296] font-[600] mobile:w-auto text-left tracking-[3.6px]"
+                    class="font-poppins text-small-text-color text-[12px] text-[#899296] font-[600] mobile:w-auto mobile:mx-20 text-left tracking-[3.6px]"
                 >
                     PRESS LIST
                 </h3>
@@ -51,7 +51,7 @@ onUnmounted(() => {
 
             <div class="my-8">
                 <h2
-                    class="text-left font-poppins text-4.5xl tablet:text-[32px] mobile:text-[24px] mobile:text-center font-[400]"
+                    class="text-left font-poppins text-4.5xl tablet:text-[32px] mobile:text-[24px] mobile:text-center mobile: items-center mobile: justify-center mobile:-mx-14 font-[400]"
                 >
                     Trusted by Leading Publications
                 </h2>

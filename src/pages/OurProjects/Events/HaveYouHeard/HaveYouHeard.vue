@@ -29,14 +29,16 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="flex w-full px-20 relative mobile:flex-col mobile:px-6">
+    <div
+        class="flex w-full px-20 relative mobile:flex-col mobile:px-6 mobile:mt-0 mobile:pt-0"
+    >
         <!-- LEFT PORTION -->
         <div
             class="flex flex-col items-start justify-start mobile:justify-center w-1/2 mobile:w-full h-auto mb-36 tablet:mb-[265px] mobile:mb-[129px]"
         >
-            <div>
+            <div class="mobile:w-full mobile:flex mobile:justify-center">
                 <h3
-                    class="font-poppins text-small-text-color text-[#6e777c] text-[12px] font-[600] mobile:w-auto text-left tracking-[3.6px] mobile:text-center"
+                    class="font-poppins text-small-text-color text-[#6e777c] text-[12px] font-[600] tracking-[3.6px] text-left mobile:text-center"
                 >
                     EDUCATIONAL EVENTS
                 </h3>
