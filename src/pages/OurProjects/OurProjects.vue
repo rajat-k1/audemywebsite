@@ -21,7 +21,7 @@ import Footer from "../../components/Footer/Footer.vue";
         <ResearchTech />
     </div>
 
-    <div id="div_events" class="py-40 mobile:px-5">
+    <div id="div_events" class="py-10 mobile:px-5">
         <HaveYouHeard />
         <KatyYouthHacks />
     </div>

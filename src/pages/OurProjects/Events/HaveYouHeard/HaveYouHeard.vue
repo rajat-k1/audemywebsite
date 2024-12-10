@@ -53,10 +53,12 @@ onUnmounted(() => {
             </div>
 
             <div class="flex justify-center mobile:justify-start">
-                <div class="max-w-[744px] w-full">
+                <div
+                    class="max-w-[744px] w-full mobile:items-center mobile:text-center"
+                >
                     <div
                         id="div_about_us"
-                        class="flex flex-col justify-between mt-[40px] tablet:mt-[72px] mb-[63px] gap-4 tablet:gap-14"
+                        class="flex flex-col justify-between mt-[40px] tablet:mt-[72px] mb-[63px] gap-4 tablet:gap-14 mobile:items-center mobile:text-center"
                     >
                         <HaveYouHeardCard
                             v-for="(item, index) in items"
@@ -70,11 +72,13 @@ onUnmounted(() => {
             </div>
 
             <!-- Div for Instagram Button -->
-            <div class="flex items-center justify-center">
+            <div
+                class="relative flex flex-col py-[8rem] items-center justify-start mobile:justify-center w-full h-auto mb-36 tablet:mb-[265px] mobile:mb-[12px] mobile:mt-0 mobile:pt-0 mobile:pb-0"
+            >
                 <a
                     href="https://www.instagram.com/audemyapp/"
                     target="_blank"
-                    class="font-poppins font-semibold px-9 py-4 border-[1.5px] border-[#0C0D0D] rounded-[8px] bg-primary-color hover:bg-[#0C587D] duration-300 text-base text-center text-[#fff] shadow-[3px_4px_0px_#0C0D0D]"
+                    class="font-poppins font-semibold px-9 py-4 border-[1.5px] border-[#0C0D0D] rounded-[8px] bg-primary-color hover:bg-[#0C587D] duration-300 text-base text-center text-[#fff] shadow-[3px_4px_0px_#0C0D0D] mobile:items-center mobile:text-center"
                 >
                     Follow us on Instagram
                 </a>

@@ -1,15 +1,21 @@
 <template>
     <div class="flex items-center mobile:flex-col-reverse gap-x-6 py-8">
-        <div class="w-6/12 mobile:w-full flex flex-col gap-y-4">
+        <div
+            class="w-6/12 mobile:w-full flex flex-col gap-y-4 mobile:items-center mobile:text-center"
+        >
             <div class="font-poppins">
-                <h1 class="text-4xl tablet:text-[24px] mobile:text-[24px] leading-normal text-title">
+                <h1
+                    class="text-4xl tablet:text-[24px] mobile:text-[24px] leading-normal text-title"
+                >
                     Have fun and learn with <br />
                     our educational games!
                 </h1>
             </div>
 
             <div>
-                <p class="font-poppins text-body text-xl mobile:text-[16px] max-w-md leading-8">
+                <p
+                    class="font-poppins text-body text-xl mobile:text-[16px] max-w-md leading-8"
+                >
                     Explore our free, interactive, audio-based games designed to
                     make learning engaging and inclusive for blind and visually
                     impaired children.
