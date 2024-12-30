@@ -1,3 +1,19 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+    "version": 2,
+    "builds": [
+        {
+            "src": "src/pages/api/generate_audio.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/generate-tts",
+            "dest": "/src/pages/api/generate_audio.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/public/$1"
+        }
+    ]
 }

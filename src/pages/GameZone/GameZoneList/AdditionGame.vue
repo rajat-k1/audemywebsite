@@ -1,26 +1,3 @@
-<!-- <template>
-    <div class="flex justify-center items-center h-screen">
-        <div
-            class="flex flex-col my-20 mx-56 bg-teal-300 bg-opacity-50 h-96 border-2 border-teal-500 rounded-lg shadow-lg justify-center items-center">
-            <div class="m-10 py-4">
-                <h1 class="barriecito-regular text-5xl font-bold">
-                    Animal Addition
-                </h1>
-            </div>
-            <div class="flex flex-col p-4 justify-center" id="content">
-                <div class="text-center pt-2 pb-1">
-                    You said: {{ transcript }}
-                </div>
-                <div class="text-center pt-1 pb-2">
-                    Result: {{ result }}
-                </div>
-                <div id="score" class="text-center pt-1 pb-2" ref="scoreRef">
-                    Score: {{ points }}
-                </div>
-            </div>
-        </div>
-    </div>
-</template> -->
 <template>
     <div class="flex flex-col justify-center items-center h-screen bg-teal-100">
         <div class="flex mt-2 mb-2 w-1/2">
@@ -52,7 +29,14 @@
 export default {
     data() {
         return {
-            answers: ["16", "27", "nine", "15", "29"],
+            questions: [
+                "What is 5 + 3?",
+                "What is 7 + 6?",
+                "What is 9 + 4?",
+                "What is 8 + 2?",
+                "What is 10 + 5?",
+            ],
+            answers: ["8", "13", "13", "10", "15"],
             recognition: null,
             isRecording: false,
             audioContext: null,
@@ -60,7 +44,7 @@ export default {
             audioNum: 0,
             transcript: "",
             result: "",
-            currentAudios: [], // Array to store active audio objects
+            currentAudios: [],
             recordSound: new Audio("/assets/generalAudio/ding-sound.mp3"),
         };
     },
@@ -92,8 +76,8 @@ export default {
                 this.audioNum++;
                 this.displayScore();
 
-                if (this.audioNum < this.answers.length) {
-                    await this.playAudio(this.audioNum);
+                if (this.audioNum < this.questions.length) {
+                    await this.playTTSAudio(this.audioNum); // Play next question
                 } else {
                     await this.endGame();
                 }
@@ -123,12 +107,29 @@ export default {
                 this.recordSound.pause();
             }
         },
-        async playAudio(audioNum) {
-            let path = `/assets/animalAddition/animal${audioNum + 1}.mp3`;
-            console.log("Playing audio path:", path);
-            await this.playAudioPath(path);
-            console.log("Waiting for user input...");
-            await this.waitForUserInput();
+        async playTTSAudio(audioNum) {
+            const question = this.questions[audioNum];
+            const audioBlob = await this.getTTSAudio(question); // Generate TTS for the question
+            const audioURL = URL.createObjectURL(audioBlob);
+            this.playAudioPath(audioURL);
+        },
+        async getTTSAudio(text) {
+            try {
+                const response = await fetch("/api/generate-tts", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ text }),
+                });
+                if (!response.ok) {
+                    throw new Error("Failed to generate TTS");
+                }
+                return await response.blob();
+            } catch (error) {
+                console.error("Error fetching TTS audio:", error);
+                return null;
+            }
         },
         playAudioPath(path) {
             return new Promise((resolve) => {
@@ -153,13 +154,6 @@ export default {
                 audio.currentTime = 0; // Reset playback time
             });
             this.currentAudios = []; // Clear the array
-        },
-        waitForUserInput() {
-            return new Promise((resolve) => {
-                console.log("Start speech recognition for user input.");
-                // this.startRecording();
-                resolve();
-            });
         },
         async checkAnswer(answer, audioNum, answers) {
             console.log(answers[audioNum]);
@@ -227,7 +221,7 @@ export default {
             }
             if (event.shiftKey) {
                 console.log("Audio button pressed!");
-                this.playAudio(this.audioNum);
+                this.playTTSAudio(this.audioNum); // Play TTS on Shift+Key
             }
         },
         handleKeyUp(event) {
@@ -257,8 +251,8 @@ export default {
     },
     async mounted() {
         await this.requestMicPermission();
-        await this.playIntroAudio();
-        await this.playAudio(this.audioNum);
+        // await this.playIntroAudio();
+        await this.playTTSAudio(this.audioNum); // Start with TTS intro
         window.addEventListener("keydown", this.handleKeyDown);
         window.addEventListener("keyup", this.handleKeyUp);
         window.addEventListener("beforeunload", this.handleBeforeUnload);
@@ -276,18 +270,3 @@ export default {
     },
 };
 </script>
-<style scoped>
-/* Background color */
-.bg-teal-100 {
-    background-color: #faedd6;
-    /* Light beige background similar to the image */
-}
-
-/* Font settings for title */
-.barriecito-regular {
-    font-family: "Barriecito", sans-serif;
-    color: #2f2f2f;
-    /* Dark text color similar to the example */
-    text-align: center;
-}
-</style>
