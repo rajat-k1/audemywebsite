@@ -2,7 +2,13 @@ import { TextToSpeechClient } from "@google-cloud/text-to-speech";
 import dotenv from "dotenv";
 
 dotenv.config();
-
+// Ensure that the environment variable is set
+if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+    console.error(
+        "GOOGLE_APPLICATION_CREDENTIALS environment variable is not set."
+    );
+    process.exit(1);
+}
 const client = new TextToSpeechClient();
 
 export default async function handler(req, res) {
