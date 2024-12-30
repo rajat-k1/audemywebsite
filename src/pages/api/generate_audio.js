@@ -16,6 +16,7 @@ export default async function handler(req, res) {
         return res.status(200).json({ message: "Welcome to the TTS API" });
     }
     if (req.method === "POST") {
+        print("POST request received");
         const { text } = req.body;
 
         if (!text) {
