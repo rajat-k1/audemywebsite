@@ -251,7 +251,7 @@ export default {
     },
     async mounted() {
         await this.requestMicPermission();
-        await this.playIntroAudio();
+        // await this.playIntroAudio();
         await this.playTTSAudio(this.audioNum); // Start with TTS intro
         window.addEventListener("keydown", this.handleKeyDown);
         window.addEventListener("keyup", this.handleKeyUp);
