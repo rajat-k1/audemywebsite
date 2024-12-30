@@ -107,12 +107,12 @@ export default {
                 this.recordSound.pause();
             }
         },
-        // async playTTSAudio(audioNum) {
-        //     const question = this.questions[audioNum];
-        //     const audioBlob = await this.getTTSAudio(question); // Generate TTS for the question
-        //     const audioURL = URL.createObjectURL(audioBlob);
-        //     this.playAudioPath(audioURL);
-        // },
+        async playTTSAudio(audioNum) {
+            const question = this.questions[audioNum];
+            const audioBlob = await this.getTTSAudio(question); // Generate TTS for the question
+            const audioURL = URL.createObjectURL(audioBlob);
+            this.playAudioPath(audioURL);
+        },
         async getTTSAudio(text) {
             try {
                 const response = await fetch("/api/generate-tts", {
@@ -251,7 +251,7 @@ export default {
     },
     async mounted() {
         await this.requestMicPermission();
-        // await this.playIntroAudio();
+        await this.playIntroAudio();
         await this.playTTSAudio(this.audioNum); // Start with TTS intro
         window.addEventListener("keydown", this.handleKeyDown);
         window.addEventListener("keyup", this.handleKeyUp);
