@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 // Ensure that the environment variable is set
-if (!JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS)) {
+if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
     console.error(
         "GOOGLE_APPLICATION_CREDENTIALS environment variable is not set."
     );
