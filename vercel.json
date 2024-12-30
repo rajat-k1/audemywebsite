@@ -1,3 +1,27 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+    "version": 2,
+    "builds": [
+        {
+            "src": "src/pages/api/generate_audio.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist",
+                "buildCommand": "vite build"
+            }
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/api/generate-tts",
+            "destination": "/src/pages/api/generate_audio.js"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/"
+        }
+    ]
 }
