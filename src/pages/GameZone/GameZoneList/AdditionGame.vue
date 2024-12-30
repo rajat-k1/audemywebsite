@@ -113,24 +113,24 @@ export default {
         //     const audioURL = URL.createObjectURL(audioBlob);
         //     this.playAudioPath(audioURL);
         // },
-        // async getTTSAudio(text) {
-        //     try {
-        //         const response = await fetch("/api/generate-tts", {
-        //             method: "POST",
-        //             headers: {
-        //                 "Content-Type": "application/json",
-        //             },
-        //             body: JSON.stringify({ text }),
-        //         });
-        //         if (!response.ok) {
-        //             throw new Error("Failed to generate TTS");
-        //         }
-        //         return await response.blob();
-        //     } catch (error) {
-        //         console.error("Error fetching TTS audio:", error);
-        //         return null;
-        //     }
-        // },
+        async getTTSAudio(text) {
+            try {
+                const response = await fetch("/api/generate-tts", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ text }),
+                });
+                if (!response.ok) {
+                    throw new Error("Failed to generate TTS");
+                }
+                return await response.blob();
+            } catch (error) {
+                console.error("Error fetching TTS audio:", error);
+                return null;
+            }
+        },
         playAudioPath(path) {
             return new Promise((resolve) => {
                 let audio = new Audio(path);
