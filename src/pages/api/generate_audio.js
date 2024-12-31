@@ -2,14 +2,20 @@ import { TextToSpeechClient } from "@google-cloud/text-to-speech";
 import dotenv from "dotenv";
 
 dotenv.config();
-// Ensure that the environment variable is set
-if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-    console.error(
-        "GOOGLE_APPLICATION_CREDENTIALS environment variable is not set."
-    );
-    process.exit(1);
-}
-const client = new TextToSpeechClient();
+export const getGCPCredentials = () => {
+    // for Vercel, use environment variables
+    return process.env.GCP_PRIVATE_KEY
+        ? {
+              credentials: {
+                  client_email: process.env.GCP_SERVICE_ACCOUNT_EMAIL,
+                  private_key: process.env.GCP_PRIVATE_KEY,
+              },
+              projectId: process.env.GCP_PROJECT_ID,
+          }
+        : // for local development, use gcloud CLI
+          {};
+};
+const client = new TextToSpeechClient(getGCPCredentials());
 
 export default async function handler(req, res) {
     if (req.method === "GET") {
