@@ -34,7 +34,7 @@
                 <div>
                     <h3 class="font-poppins text-3xl mb-2">1,000 +</h3>
                     <p class="font-poppins text-lg mt-2 font-semibold">
-                        Students impacted
+                        Blind students impacted
                     </p>
                     <p class="font-poppins text-sm mt-2 text-[#2f3e45]">
                         Our educational games and initiatives have increased
@@ -71,7 +71,7 @@
                 />
                 <h3 class="font-poppins text-3xl mb-2">7 +</h3>
                 <p class="font-poppins text-lg mt-2 font-semibold">
-                    Collaborating schools
+                    Collaborating schools for the blind
                 </p>
                 <p class="font-poppins text-sm mt-2 text-[#2f3e45]">
                     Audemy has been used by students and tested by teachers at
