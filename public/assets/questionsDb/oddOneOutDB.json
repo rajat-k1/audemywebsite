@@ -2,40 +2,40 @@
     "OddOneOutGame": {
         "Questions": {
             "Easy": [
-                { "Q": "Which word is the odd one out? cat, dog, fish, chair", "A": "chair" },
-                { "Q": "Which word is the odd one out? apple, banana, grape, table", "A": "table" },
-                { "Q": "Which word is the odd one out? car, bus, bike, pencil", "A": "pencil" },
-                { "Q": "Which word is the odd one out? sun, moon, star, shoe", "A": "shoe" },
-                { "Q": "Which word is the odd one out? red, blue, yellow, phone", "A": "phone" },
-                { "Q": "Which word is the odd one out? bed, pillow, blanket, dog", "A": "dog" },
-                { "Q": "Which word is the odd one out? water, milk, juice, couch", "A": "couch" },
-                { "Q": "Which word is the odd one out? fish, shark, whale, tree", "A": "tree" },
-                { "Q": "Which word is the odd one out? hat, scarf, gloves, apple", "A": "apple" },
-                { "Q": "Which word is the odd one out? ball, doll, toy, spoon", "A": "spoon" }
+                { "Q": "Which word is the odd one out? fish, dog, chair, cat", "A": "chair" },
+                { "Q": "Which word is the odd one out? grape, table, apple, banana", "A": "table" },
+                { "Q": "Which word is the odd one out? pencil, car, bus, bike", "A": "pencil" },
+                { "Q": "Which word is the odd one out? shoe, moon, sun, star", "A": "shoe" },
+                { "Q": "Which word is the odd one out? blue, yellow, phone, red", "A": "phone" },
+                { "Q": "Which word is the odd one out? dog, bed, blanket, pillow", "A": "dog" },
+                { "Q": "Which word is the odd one out? milk, couch, water, juice", "A": "couch" },
+                { "Q": "Which word is the odd one out? shark, fish, tree, whale", "A": "tree" },
+                { "Q": "Which word is the odd one out? hat, gloves, apple, scarf", "A": "apple" },
+                { "Q": "Which word is the odd one out? ball, spoon, doll, toy", "A": "spoon" }
             ],
             "Medium": [
-                { "Q": "Which word is the odd one out? lion, tiger, bear, table", "A": "table" },
-                { "Q": "Which word is the odd one out? milk, juice, soda, computer", "A": "computer" },
-                { "Q": "Which word is the odd one out? soccer, basketball, tennis, oven", "A": "oven" },
-                { "Q": "Which word is the odd one out? jacket, sweater, hat, laptop", "A": "laptop" },
-                { "Q": "Which word is the odd one out? orange, apple, grape, chair", "A": "chair" },
-                { "Q": "Which word is the odd one out? elephant, giraffe, zebra, desk", "A": "desk" },
-                { "Q": "Which word is the odd one out? clock, calendar, watch, bread", "A": "bread" },
-                { "Q": "Which word is the odd one out? school, teacher, student, couch", "A": "couch" },
-                { "Q": "Which word is the odd one out? house, apartment, building, phone", "A": "phone" },
-                { "Q": "Which word is the odd one out? mountain, hill, valley, table", "A": "table" }
+                { "Q": "Which word is the odd one out? table, tiger, bear, lion", "A": "table" },
+                { "Q": "Which word is the odd one out? soda, milk, computer, juice", "A": "computer" },
+                { "Q": "Which word is the odd one out? oven, soccer, basketball, tennis", "A": "oven" },
+                { "Q": "Which word is the odd one out? sweater, jacket, laptop, hat", "A": "laptop" },
+                { "Q": "Which word is the odd one out? chair, orange, apple, grape", "A": "chair" },
+                { "Q": "Which word is the odd one out? elephant, giraffe, desk, zebra", "A": "desk" },
+                { "Q": "Which word is the odd one out? bread, calendar, clock, watch", "A": "bread" },
+                { "Q": "Which word is the odd one out? student, school, couch, teacher", "A": "couch" },
+                { "Q": "Which word is the odd one out? apartment, house, phone, building", "A": "phone" },
+                { "Q": "Which word is the odd one out? mountain, table, hill, valley", "A": "table" }
             ],
             "Hard": [
-                { "Q": "Which word is the odd one out? microscope, telescope, stethoscope, chair", "A": "chair" },
-                { "Q": "Which word is the odd one out? triangle, square, circle, hammer", "A": "hammer" },
-                { "Q": "Which word is the odd one out? violin, guitar, piano, lamp", "A": "lamp" },
-                { "Q": "Which word is the odd one out? Antarctica, Asia, Europe, couch", "A": "couch" },
-                { "Q": "Which word is the odd one out? electricity, magnetism, gravity, television", "A": "television" },
-                { "Q": "Which word is the odd one out? rain, snow, wind, clock", "A": "clock" },
-                { "Q": "Which word is the odd one out? Shakespeare, Dickens, Austen, phone", "A": "phone" },
-                { "Q": "Which word is the odd one out? addition, subtraction, division, refrigerator", "A": "refrigerator" },
-                { "Q": "Which word is the odd one out? Jupiter, Saturn, Neptune, bed", "A": "bed" },
-                { "Q": "Which word is the odd one out? laptop, tablet, smartphone, fridge", "A": "fridge" }
+                { "Q": "Which word is the odd one out? telescope, chair, microscope, stethoscope", "A": "chair" },
+                { "Q": "Which word is the odd one out? triangle, hammer, square, circle", "A": "hammer" },
+                { "Q": "Which word is the odd one out? lamp, violin, guitar, piano", "A": "lamp" },
+                { "Q": "Which word is the odd one out? Antarctica, couch, Europe, Asia", "A": "couch" },
+                { "Q": "Which word is the odd one out? gravity, electricity, magnetism, television", "A": "television" },
+                { "Q": "Which word is the odd one out? snow, clock, rain, wind", "A": "clock" },
+                { "Q": "Which word is the odd one out? Austen, Dickens, phone, Shakespeare", "A": "phone" },
+                { "Q": "Which word is the odd one out? subtraction, refrigerator, division, addition", "A": "refrigerator" },
+                { "Q": "Which word is the odd one out? Jupiter, bed, Neptune, Saturn", "A": "bed" },
+                { "Q": "Which word is the odd one out? fridge, laptop, smartphone, tablet", "A": "fridge" }
             ]
         }
     }
