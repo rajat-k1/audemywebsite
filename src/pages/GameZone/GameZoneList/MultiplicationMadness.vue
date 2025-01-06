@@ -76,7 +76,7 @@ const generateQuestions = () => {
         }
     }
     // Fetch questions from JSON file
-    fetch("/public/assets/questionsDb/additionDb.json")
+    fetch("/assets/questionsDb/additionDb.json")
         .then((response) => response.json())
         .then((data) => {
             console.log(
