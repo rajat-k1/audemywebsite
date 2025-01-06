@@ -1,0 +1,42 @@
+{
+    "VocabVortexGame": {
+        "Questions": {
+            "Easy": [
+                { "Q": "Which word means the same as happy? joyful, angry, sleepy, sad", "A": "joyful" },
+                { "Q": "Which word means the same as big? tiny, large, small, loud", "A": "large" },
+                { "Q": "Which word means the same as cold? warm, sunny, chilly, hot", "A": "chilly" },
+                { "Q": "Which word means the same as fast? slow, quiet, quick, sleepy", "A": "quick" },
+                { "Q": "Which word means the same as smart? dull, slow, bright, heavy", "A": "bright" },
+                { "Q": "Which word means the same as kind? cruel, mean, harsh, nice", "A": "nice" },
+                { "Q": "Which word means the same as loud? silent, noisy, calm, soft", "A": "noisy" },
+                { "Q": "Which word means the same as funny? serious, happy, boring, amusing", "A": "amusing" },
+                { "Q": "Which word means the same as clean? messy, spotless, rough, dirty", "A": "spotless" },
+                { "Q": "Which word means the same as dark? bright, shadowy, light, sunny", "A": "shadowy" }
+            ],
+            "Medium": [
+                { "Q": "Which word means the same as begin? finish, pause, start, stop", "A": "start" },
+                { "Q": "Which word means the same as close? distant, shut, move, open", "A": "shut" },
+                { "Q": "Which word means the same as glad? angry, bored, happy, annoyed", "A": "happy" },
+                { "Q": "Which word means the same as bright? dull, shiny, dark, gloomy", "A": "shiny" },
+                { "Q": "Which word means the same as quick? heavy, lazy, fast, slow", "A": "fast" },
+                { "Q": "Which word means the same as hard? shiny, tough, soft, smooth", "A": "tough" },
+                { "Q": "Which word means the same as angry? happy, mad, calm, joyful", "A": "mad" },
+                { "Q": "Which word means the same as dirty? clean, neat, tidy, messy", "A": "messy" },
+                { "Q": "Which word means the same as brave? bold, cowardly, scared, strong", "A": "bold" },
+                { "Q": "Which word means the same as tired? energetic, alert, sleepy, awake", "A": "sleepy" }
+            ],
+            "Hard": [
+                { "Q": "Which word means the same as enormous? small, huge, tiny, narrow", "A": "huge" },
+                { "Q": "Which word means the same as silent? talkative, quiet, noisy, loud", "A": "quiet" },
+                { "Q": "Which word means the same as swift? clumsy, fast, slow, lazy", "A": "fast" },
+                { "Q": "Which word means the same as fragile? strong, delicate, sturdy, heavy", "A": "delicate" },
+                { "Q": "Which word means the same as ancient? old, modern, new, recent", "A": "old" },
+                { "Q": "Which word means the same as stubborn? agreeable, soft, flexible, determined", "A": "determined" },
+                { "Q": "Which word means the same as vanish? disappear, create, show, appear", "A": "disappear" },
+                { "Q": "Which word means the same as cautious? bold, clumsy, careless, careful", "A": "careful" },
+                { "Q": "Which word means the same as joyful? mad, angry, sad, happy", "A": "happy" },
+                { "Q": "Which word means the same as grateful? rude, upset, annoyed, thankful", "A": "thankful" }
+            ]
+        }
+    }
+}
