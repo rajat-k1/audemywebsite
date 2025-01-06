@@ -36,7 +36,7 @@
                     Game Over
                 </div>
                 <div class="text-center text-xl font-medium pt-2 pb-1">
-                    Score: {{ score }}
+                    Score: {{ score }} / 5
                 </div>
             </div>
         </div>
@@ -51,6 +51,7 @@ import {
     playQuestion,
     playSound,
     stopAudios,
+    playScore,
 } from "../../../Utilities/playAudio";
 import {
     startListening,
@@ -129,6 +130,9 @@ const handleKeyDown = (event) => {
                 setTimeout(() => {
                     playNextQuestion();
                 }, 2000);
+            } else {
+                console.log("Game Over!");
+                playScore(score.value);
             }
         });
     }

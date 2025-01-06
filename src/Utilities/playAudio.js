@@ -71,6 +71,15 @@ export function playAudioPath(path) {
     });
 }
 
+export function playScore(score) {
+    const scoreAudioPath = "/assets/generalAudio/" + score + "correct.mp3";
+    console.log("Playing Final score audio:", scoreAudioPath);
+    const audio = new Audio(scoreAudioPath);
+    audio.play();
+
+    return audio;
+}
+
 export function stopAudios(audioList) {
     audioList.forEach((audio) => {
         if (audio) {
