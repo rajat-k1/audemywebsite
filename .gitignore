@@ -27,3 +27,4 @@ dist-ssr
 # Virtual Environment
 .venv
 .vercel
+.env
