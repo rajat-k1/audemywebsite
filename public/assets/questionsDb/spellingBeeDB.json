@@ -1,0 +1,57 @@
+{
+    "SpellingBeeGame": {
+        "Questions": {
+            "Easy": [
+                { "Q": "How do you spell 'cat'?", "A": "cat" },
+                { "Q": "How do you spell 'dog'?", "A": "dog" },
+                { "Q": "How do you spell 'hat'?", "A": "hat" },
+                { "Q": "How do you spell 'bat'?", "A": "bat" },
+                { "Q": "How do you spell 'sun'?", "A": "sun" },
+                { "Q": "How do you spell 'pen'?", "A": "pen" },
+                { "Q": "How do you spell 'box'?", "A": "box" },
+                { "Q": "How do you spell 'car'?", "A": "car" },
+                { "Q": "How do you spell 'man'?", "A": "man" },
+                { "Q": "How do you spell 'run'?", "A": "run" },
+                { "Q": "How do you spell 'top'?", "A": "top" },
+                { "Q": "How do you spell 'cup'?", "A": "cup" },
+                { "Q": "How do you spell 'bed'?", "A": "bed" },
+                { "Q": "How do you spell 'pig'?", "A": "pig" },
+                { "Q": "How do you spell 'red'?", "A": "red" }
+            ],
+            "Medium": [
+                { "Q": "How do you spell 'apple'?", "A": "apple" },
+                { "Q": "How do you spell 'water'?", "A": "water" },
+                { "Q": "How do you spell 'house'?", "A": "house" },
+                { "Q": "How do you spell 'table'?", "A": "table" },
+                { "Q": "How do you spell 'chair'?", "A": "chair" },
+                { "Q": "How do you spell 'light'?", "A": "light" },
+                { "Q": "How do you spell 'mouse'?", "A": "mouse" },
+                { "Q": "How do you spell 'smile'?", "A": "smile" },
+                { "Q": "How do you spell 'cloud'?", "A": "cloud" },
+                { "Q": "How do you spell 'happy'?", "A": "happy" },
+                { "Q": "How do you spell 'pencil'?", "A": "pencil" },
+                { "Q": "How do you spell 'yellow'?", "A": "yellow" },
+                { "Q": "How do you spell 'garden'?", "A": "garden" },
+                { "Q": "How do you spell 'purple'?", "A": "purple" },
+                { "Q": "How do you spell 'monkey'?", "A": "monkey" }
+            ],
+            "Hard": [
+                { "Q": "How do you spell 'elephant'?", "A": "elephant" },
+                { "Q": "How do you spell 'balloon'?", "A": "balloon" },
+                { "Q": "How do you spell 'dolphin'?", "A": "dolphin" },
+                { "Q": "How do you spell 'rainbow'?", "A": "rainbow" },
+                { "Q": "How do you spell 'kangaroo'?", "A": "kangaroo" },
+                { "Q": "How do you spell 'pineapple'?", "A": "pineapple" },
+                { "Q": "How do you spell 'giraffe'?", "A": "giraffe" },
+                { "Q": "How do you spell 'octopus'?", "A": "octopus" },
+                { "Q": "How do you spell 'butterfly'?", "A": "butterfly" },
+                { "Q": "How do you spell 'mountain'?", "A": "mountain" },
+                { "Q": "How do you spell 'notebook'?", "A": "notebook" },
+                { "Q": "How do you spell 'chocolate'?", "A": "chocolate" },
+                { "Q": "How do you spell 'umbrella'?", "A": "umbrella" },
+                { "Q": "How do you spell 'treasure'?", "A": "treasure" },
+                { "Q": "How do you spell 'sandcastle'?", "A": "sandcastle" }
+            ]
+        }
+    }
+}
