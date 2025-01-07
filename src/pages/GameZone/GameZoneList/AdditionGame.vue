@@ -1,5 +1,7 @@
 <template>
-    <div class="flex flex-col justify-center items-center h-screen bg-teal-100">
+    <div
+        class="flex flex-col justify-center items-center h-screen font-poppins bg-[#FAEDD6]"
+    >
         <div class="flex mt-2 mb-2 w-1/2">
             <button onclick="history.back()">
                 <img
@@ -8,265 +10,168 @@
                 />
             </button>
         </div>
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col my-2 mx-56 h-96 justify-center items-center">
             <div class="m-10 py-4 text-center">
-                <h1 class="barriecito-regular text-6xl font-bold">
-                    Animal Addition
-                </h1>
-                <div class="flex flex-col p-4 justify-center" id="content">
-                    <div class="pt-2 pb-1">You said: {{ transcript }}</div>
-                    <div class="pt-1 pb-2">Result: {{ result }}</div>
-                    <div id="score" class="pt-1 pb-2" ref="scoreRef">
-                        Score: {{ points }}
+                <h1 class="text-4.5xl font-bold">Animal Addition</h1>
+            </div>
+            <div
+                v-if="numOfAudiosPlayed < 5"
+                class="flex flex-col p-4 justify-center"
+                id="content"
+            >
+                <div class="flex flex-row gap-4">
+                    <div class="p-2 px-5 text-[#087bb4]">
+                        &#9432; Hold 'SPACE' to say the answer
                     </div>
+                </div>
+                <div
+                    id="transcript"
+                    class="text-center text-xl font-bold pt-2 pb-1"
+                >
+                    You said: {{ transcription }}
+                </div>
+            </div>
+            <div v-else>
+                <div class="text-center text-3xl font-bold pt-2 pb-1">
+                    Game Over
+                </div>
+                <div class="text-center text-xl font-medium pt-2 pb-1">
+                    Score: {{ score }} / 5
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            questions: [
-                "What is 5 + 3?",
-                "What is 7 + 6?",
-                "What is 9 + 4?",
-                "What is 8 + 2?",
-                "What is 10 + 5?",
-            ],
-            answers: ["8", "13", "13", "10", "15"],
-            recognition: null,
-            isRecording: false,
-            audioContext: null,
-            points: 0,
-            audioNum: 0,
-            transcript: "",
-            result: "",
-            currentAudios: [],
-            recordSound: new Audio("/assets/generalAudio/ding-sound.mp3"),
-        };
-    },
-    methods: {
-        async requestMicPermission() {
-            try {
-                await navigator.mediaDevices.getUserMedia({ audio: true });
-                console.log("Microphone access granted");
-                this.audioContext = new (window.AudioContext ||
-                    window.webkitAudioContext)();
-                this.initializeSpeechRecognition();
-            } catch (error) {
-                console.error("Microphone access denied:", error);
-            }
-        },
-        initializeSpeechRecognition() {
-            window.SpeechRecognition =
-                window.SpeechRecognition || window.webkitSpeechRecognition;
-            this.recognition = new SpeechRecognition();
-            this.recognition.lang = "en-US";
-            this.recognition.continuous = false;
-            this.recognition.interimResults = false;
+<script setup>
+import { onMounted, onUnmounted, ref } from "vue";
+import { requestMicPermission } from "../../../Utilities/requestMicAccess";
+import {
+    playIntro,
+    playQuestion,
+    playSound,
+    stopAudios,
+    playScore,
+} from "../../../Utilities/playAudio";
+import {
+    startListening,
+    stopListening,
+} from "../../../Utilities/speechRecognition";
 
-            this.recognition.onresult = async (event) => {
-                const transcript = event.results[0][0].transcript;
-                console.log("Transcription:", transcript);
-                this.transcript = transcript;
-                await this.checkAnswer(transcript, this.audioNum, this.answers);
-                this.audioNum++;
-                this.displayScore();
+const currentAudios = [],
+    randQueNum = [];
+let numOfAudiosPlayed = ref(0),
+    score = ref(0);
+let questionsDb = [],
+    isListening = ref(false),
+    transcription = ref("");
 
-                if (this.audioNum < this.questions.length) {
-                    await this.playTTSAudio(this.audioNum); // Play next question
-                } else {
-                    await this.endGame();
-                }
-            };
-
-            this.recognition.onerror = (event) => {
-                console.error("Recognition error:", event.error);
-            };
-
-            this.recognition.onend = () => {
-                this.isRecording = false;
-                console.log("Stopped recording");
-            };
-        },
-        startRecording() {
-            if (!this.isRecording && this.audioContext) {
-                this.recognition.start();
-                this.isRecording = true;
-                console.log("Started recording...");
-                this.recordSound.play();
-            }
-        },
-        stopRecording() {
-            if (this.isRecording) {
-                this.recognition.stop();
-                this.isRecording = false;
-                this.recordSound.pause();
-            }
-        },
-        async playTTSAudio(audioNum) {
-            const question = this.questions[audioNum];
-            const audioBlob = await this.getTTSAudio(question); // Generate TTS for the question
-            const audioURL = URL.createObjectURL(audioBlob);
-            this.playAudioPath(audioURL);
-        },
-        async getTTSAudio(text) {
-            try {
-                const response = await fetch("/api/generate-tts", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ text }),
-                });
-                if (!response.ok) {
-                    throw new Error("Failed to generate TTS");
-                }
-                return await response.blob();
-            } catch (error) {
-                console.error("Error fetching TTS audio:", error);
-                return null;
-            }
-        },
-        playAudioPath(path) {
-            return new Promise((resolve) => {
-                let audio = new Audio(path);
-                this.currentAudios.push(audio); // Track the audio in the array
-                audio.play();
-
-                audio.onplay = () => {
-                    this.isRecording = true;
-                };
-
-                audio.onended = () => {
-                    this.isRecording = false;
-                    console.log("Audio ended.");
-                    resolve();
-                };
-            });
-        },
-        stopAllAudios() {
-            this.currentAudios.forEach((audio) => {
-                audio.pause(); // Stop the audio
-                audio.currentTime = 0; // Reset playback time
-            });
-            this.currentAudios = []; // Clear the array
-        },
-        async checkAnswer(answer, audioNum, answers) {
-            console.log(answers[audioNum]);
-            if (answer.trim() === answers[audioNum]) {
-                this.result = "Result: CORRECT";
-                await this.playAudioPath(
-                    "/assets/generalAudio/correctaudio.mp3"
-                );
-                this.points++;
-            } else {
-                this.result = "Result: INCORRECT";
-                await this.playAudioPath(
-                    "/assets/generalAudio/incorrectaudio.mp3"
-                );
-            }
-        },
-        displayScore() {
-            const myScoreDiv = this.$refs.scoreRef;
-            myScoreDiv.textContent = "Score: " + this.points;
-        },
-        async endGame() {
-            const myScoreDiv = this.$refs.scoreRef;
-            if (myScoreDiv) {
-                myScoreDiv.textContent = `Game Over! Your Final Score: ${this.points}/5`;
-            } else {
-                console.error("Score ref not found in endGame.");
-            }
-
-            await this.playAudioPath("/assets/generalAudio/youGot.mp3");
-            await this.playAnswer(this.points);
-            await this.playAudioPath("/assets/generalAudio/outof.mp3");
-            await this.playAnswer(5);
-        },
-        playAnswer(points) {
-            return new Promise((resolve) => {
-                const msg = new SpeechSynthesisUtterance();
-                msg.text = points.toString();
-                window.speechSynthesis.speak(msg);
-
-                msg.onend = () => resolve();
-            });
-        },
-        async playIntroAudio() {
-            return new Promise((resolve) => {
-                let audioIntro = new Audio(
-                    "/assets/animalAddition/additionintro.mp3"
-                );
-                this.currentAudios.push(audioIntro); // Track intro audio
-                console.log("Playing intro audio now ...");
-                console.log(
-                    "Attempting to play intro audio from path:",
-                    audioIntro.src
-                );
-                audioIntro.play();
-
-                audioIntro.onended = () => {
-                    console.log("Intro audio ended.");
-                    resolve();
-                };
-            });
-        },
-        handleKeyDown(event) {
-            if (event.key === " " && !this.isRecording) {
-                this.startRecording();
-            }
-            if (event.shiftKey) {
-                console.log("Audio button pressed!");
-                this.playTTSAudio(this.audioNum); // Play TTS on Shift+Key
-            }
-        },
-        handleKeyUp(event) {
-            if (event.key === " " && this.isRecording) {
-                this.stopRecording();
-            }
-        },
-        handleBeforeUnload(event) {
-            // Stop all audios and reset
-            this.stopAllAudios();
-            if (this.recognition) {
-                this.stopRecording();
-            }
-        },
-    },
-    playDingSound() {
-        this.dingAudio = new Audio("/assets/ding.mp3"); // Load the ding sound
-        this.dingAudio.loop = true; // Set to loop continuously
-        this.dingAudio.play(); // Play the ding sound
-    },
-    stopDingSound() {
-        if (this.dingAudio) {
-            this.dingAudio.pause(); // Stop the ding sound
-            this.dingAudio.currentTime = 0; // Reset the playback time
-            this.dingAudio = null; // Clear the audio object
+// Generate multiplication questions using Json file
+const generateQuestions = () => {
+    console.log("Generating Questions...");
+    // Generate 5 random numbers for the questions
+    while (randQueNum.length < 5) {
+        let num = Math.floor(Math.random() * 15);
+        if (!randQueNum.includes(num)) {
+            randQueNum.push(num);
         }
-    },
-    async mounted() {
-        await this.requestMicPermission();
-        // await this.playIntroAudio();
-        await this.playTTSAudio(this.audioNum); // Start with TTS intro
-        window.addEventListener("keydown", this.handleKeyDown);
-        window.addEventListener("keyup", this.handleKeyUp);
-        window.addEventListener("beforeunload", this.handleBeforeUnload);
-    },
-    beforeUnmount() {
-        // Stop all audios and speech recognition before the component is destroyed
-        this.stopAllAudios();
-        if (this.recognition) {
-            this.stopRecording();
-        }
-
-        window.removeEventListener("keydown", this.handleKeyDown);
-        window.removeEventListener("keyup", this.handleKeyUp);
-        window.removeEventListener("beforeunload", this.handleBeforeUnload);
-    },
+    }
+    // Fetch questions from JSON file
+    fetch("/assets/questionsDb/additionDb.json")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(
+                "Questions:",
+                data["AdditionGame"]["Questions"]["Easy"]
+            );
+            // Process the questions data as needed
+            questionsDb = data["AdditionGame"]["Questions"]["Easy"];
+        })
+        .catch((error) => {
+            console.error("Error fetching questions:", error);
+        });
 };
+
+// Play the next question
+const playNextQuestion = () => {
+    if (numOfAudiosPlayed.value < 5) {
+        const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
+        console.log(question);
+        currentAudios.push(playQuestion(question["Q"]));
+    }
+};
+
+// Handle the spacebar events
+const handleKeyDown = (event) => {
+    if (
+        event.code === "Space" &&
+        !isListening.value &&
+        numOfAudiosPlayed.value < 5
+    ) {
+        isListening.value = true;
+        startListening((transcript) => {
+            const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
+            console.log("Question is: ", question["Q"]);
+            console.log("User Answer:", transcript);
+            console.log("Correct Answer:", question["A"]);
+            transcription.value = transcript;
+            if (transcript.trim() === question["A"]) {
+                score.value++;
+                console.log("Correct Answer!");
+                playSound("correctaudio.mp3");
+            } else {
+                console.log("Wrong Answer!");
+                playSound("incorrectaudio.mp3");
+            }
+            stopListening();
+            isListening.value = false;
+            numOfAudiosPlayed.value++;
+            if (numOfAudiosPlayed.value < 5) {
+                setTimeout(() => {
+                    playNextQuestion();
+                }, 2000);
+            } else {
+                console.log("Game Over!");
+                playScore(score.value);
+            }
+        });
+    }
+};
+
+// Stop listening on keyup
+const handleKeyUp = (event) => {
+    if (event.code === "Space" && isListening.value) {
+        stopListening();
+        isListening.value = false;
+    }
+};
+
+onMounted(() => {
+    // Request microphone access on page load
+    console.log("Requesting microphone access...");
+    requestMicPermission();
+
+    // Generate questions
+    generateQuestions();
+
+    // Play introduction audio
+    const introAudio = playIntro("/animalAddition/additionintro.mp3");
+    currentAudios.push(introAudio);
+    console.log("AudiosList: ", currentAudios);
+
+    // Delay the start of the first question until the intro audio is finished
+    introAudio.onended = () => {
+        playNextQuestion();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+});
+
+onUnmounted(() => {
+    console.log("Navigated Back!");
+    stopAudios(currentAudios);
+    window.removeEventListener("keydown", handleKeyDown);
+    window.removeEventListener("keyup", handleKeyUp);
+});
 </script>

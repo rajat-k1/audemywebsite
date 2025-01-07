@@ -1,6 +1,6 @@
 export function playIntro(audioFile) {
     // Play introduction audio
-    const introAudioPath = "/assets/multiplicationmadness/" + audioFile;
+    const introAudioPath = "/assets" + audioFile;
     console.log("Playing introduction audio:", introAudioPath);
     const audio = new Audio(introAudioPath);
     audio.play();
