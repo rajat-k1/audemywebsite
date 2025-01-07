@@ -1,0 +1,72 @@
+{
+    "FruitFrenzy": {
+        "Questions": {
+            "Easy": [
+                { "Q": "There are 3 apples and 2 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "5" },
+                { "Q": "There are 4 oranges and 1 apple. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "5" },
+                { "Q": "There are 2 pears and 3 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "5" },
+                { "Q": "There are 5 grapes and 2 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "7" },
+                { "Q": "There are 6 apples and 3 oranges. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "9" },
+                { "Q": "There are 3 bananas and 4 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "7" },
+                { "Q": "There are 2 apples and 2 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "4" },
+                { "Q": "There are 3 oranges and 2 apples. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "5" },
+                { "Q": "There are 4 bananas and 1 orange. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "5" },
+                { "Q": "There are 2 pears and 3 apples. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "5" },
+                { "Q": "There are 3 grapes and 4 apples. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "7" },
+                { "Q": "There are 2 oranges and 2 grapes. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "4" },
+                { "Q": "There are 1 banana and 5 apples. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "6" },
+                { "Q": "There are 4 pears and 3 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "7" },
+                { "Q": "There are 5 bananas and 2 apples. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "7" },
+                { "Q": "There are 6 oranges and 2 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "8" },
+                { "Q": "There are 3 apples and 2 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "5" },
+                { "Q": "There are 4 bananas and 3 grapes. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "7" },
+                { "Q": "There are 2 oranges and 2 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "4" },
+                { "Q": "There are 3 grapes and 3 apples. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "6" }
+            ],
+            "Medium": [
+                { "Q": "There are 10 apples and 5 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "15" },
+                { "Q": "There are 8 pears and 7 oranges. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "15" },
+                { "Q": "There are 12 bananas and 8 grapes. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "20" },
+                { "Q": "There are 15 apples and 10 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "25" },
+                { "Q": "There are 9 grapes and 6 oranges. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "15" },
+                { "Q": "There are 10 bananas and 7 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "17" },
+                { "Q": "There are 14 oranges and 6 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "20" },
+                { "Q": "There are 11 apples and 9 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "20" },
+                { "Q": "There are 16 bananas and 4 oranges. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "20" },
+                { "Q": "There are 13 grapes and 7 apples. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "20" },
+                { "Q": "There are 12 apples and 8 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "20" },
+                { "Q": "There are 15 oranges and 5 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "20" },
+                { "Q": "There are 18 strawberries and 7 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "25" },
+                { "Q": "There are 14 apples and 6 cherries. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "20" },
+                { "Q": "There are 17 bananas and 3 oranges. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "20" },
+                { "Q": "There are 13 apples and 9 oranges. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "22" },
+                { "Q": "There are 19 strawberries and 5 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "24" },
+                { "Q": "There are 20 apples and 4 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "24" },
+                { "Q": "There are 21 cherries and 3 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "24" },
+                { "Q": "There are 16 apples and 4 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "20" }
+            ],
+            "Hard": [
+                { "Q": "There are 25 apples and 30 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "55" },
+                { "Q": "There are 40 pears and 35 oranges. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "75" },
+                { "Q": "There are 50 bananas and 25 grapes. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "75" },
+                { "Q": "There are 60 apples and 20 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "80" },
+                { "Q": "There are 45 grapes and 35 oranges. How many fruits are there in total? Hold the Spacebar and say your answer out loud.", "A": "80" },
+                { "Q": "There are 45 apples and 20 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "65" },
+                { "Q": "There are 50 oranges and 25 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "75" },
+                { "Q": "There are 30 bananas and 35 cherries. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "65" },
+                { "Q": "There are 55 strawberries and 20 apples. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "75" },
+                { "Q": "There are 40 bananas and 35 oranges. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "75" },
+                { "Q": "There are 38 apples and 42 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "80" },
+                { "Q": "There are 60 cherries and 30 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "90" },
+                { "Q": "There are 33 oranges and 47 apples. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "80" },
+                { "Q": "There are 70 bananas and 20 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "90" },
+                { "Q": "There are 25 strawberries and 50 apples. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "75" },
+                { "Q": "There are 40 oranges and 40 bananas. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "80" },
+                { "Q": "There are 55 cherries and 25 apples. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "80" },
+                { "Q": "There are 60 bananas and 30 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "90" },
+                { "Q": "There are 33 oranges and 47 apples. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "80" },
+                { "Q": "There are 70 bananas and 20 pears. How many fruits are there in total? Hold the Spacebar and say your answer out loud", "A": "90" }
+            ]
+        }
+    }
+}
