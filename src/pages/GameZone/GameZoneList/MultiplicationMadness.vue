@@ -77,15 +77,15 @@ const generateQuestions = () => {
         }
     }
     // Fetch questions from JSON file
-    fetch("/assets/questionsDb/additionDb.json")
+    fetch("/assets/questionsDb/multiplication.json")
         .then((response) => response.json())
         .then((data) => {
             console.log(
                 "Questions:",
-                data["AdditionGame"]["Questions"]["Easy"]
+                data["MultiplicationGame"]["Questions"]["Easy"]
             );
             // Process the questions data as needed
-            questionsDb = data["AdditionGame"]["Questions"]["Easy"];
+            questionsDb = data["MultiplicationGame"]["Questions"]["Easy"];
         })
         .catch((error) => {
             console.error("Error fetching questions:", error);
@@ -155,7 +155,9 @@ onMounted(() => {
     generateQuestions();
 
     // Play introduction audio
-    const introAudio = playIntro("multiplicationintro.mp3");
+    const introAudio = playIntro(
+        "/multiplicationmadness/multiplicationintro.mp3"
+    );
     currentAudios.push(introAudio);
     console.log("AudiosList: ", currentAudios);
 

@@ -1,0 +1,42 @@
+{
+    "OddOneOutGame": {
+        "Questions": {
+            "Easy": [
+                { "Q": "Which word is the odd one out? fish, dog, chair, cat", "A": "chair" },
+                { "Q": "Which word is the odd one out? grape, table, apple, banana", "A": "table" },
+                { "Q": "Which word is the odd one out? pencil, car, bus, bike", "A": "pencil" },
+                { "Q": "Which word is the odd one out? shoe, moon, sun, star", "A": "shoe" },
+                { "Q": "Which word is the odd one out? blue, yellow, phone, red", "A": "phone" },
+                { "Q": "Which word is the odd one out? dog, bed, blanket, pillow", "A": "dog" },
+                { "Q": "Which word is the odd one out? milk, couch, water, juice", "A": "couch" },
+                { "Q": "Which word is the odd one out? shark, fish, tree, whale", "A": "tree" },
+                { "Q": "Which word is the odd one out? hat, gloves, apple, scarf", "A": "apple" },
+                { "Q": "Which word is the odd one out? ball, spoon, doll, toy", "A": "spoon" }
+            ],
+            "Medium": [
+                { "Q": "Which word is the odd one out? table, tiger, bear, lion", "A": "table" },
+                { "Q": "Which word is the odd one out? soda, milk, computer, juice", "A": "computer" },
+                { "Q": "Which word is the odd one out? oven, soccer, basketball, tennis", "A": "oven" },
+                { "Q": "Which word is the odd one out? sweater, jacket, laptop, hat", "A": "laptop" },
+                { "Q": "Which word is the odd one out? chair, orange, apple, grape", "A": "chair" },
+                { "Q": "Which word is the odd one out? elephant, giraffe, desk, zebra", "A": "desk" },
+                { "Q": "Which word is the odd one out? bread, calendar, clock, watch", "A": "bread" },
+                { "Q": "Which word is the odd one out? student, school, couch, teacher", "A": "couch" },
+                { "Q": "Which word is the odd one out? apartment, house, phone, building", "A": "phone" },
+                { "Q": "Which word is the odd one out? mountain, table, hill, valley", "A": "table" }
+            ],
+            "Hard": [
+                { "Q": "Which word is the odd one out? telescope, chair, microscope, stethoscope", "A": "chair" },
+                { "Q": "Which word is the odd one out? triangle, hammer, square, circle", "A": "hammer" },
+                { "Q": "Which word is the odd one out? lamp, violin, guitar, piano", "A": "lamp" },
+                { "Q": "Which word is the odd one out? Antarctica, couch, Europe, Asia", "A": "couch" },
+                { "Q": "Which word is the odd one out? gravity, electricity, magnetism, television", "A": "television" },
+                { "Q": "Which word is the odd one out? snow, clock, rain, wind", "A": "clock" },
+                { "Q": "Which word is the odd one out? Austen, Dickens, phone, Shakespeare", "A": "phone" },
+                { "Q": "Which word is the odd one out? subtraction, refrigerator, division, addition", "A": "refrigerator" },
+                { "Q": "Which word is the odd one out? Jupiter, bed, Neptune, Saturn", "A": "bed" },
+                { "Q": "Which word is the odd one out? fridge, laptop, smartphone, tablet", "A": "fridge" }
+            ]
+        }
+    }
+}

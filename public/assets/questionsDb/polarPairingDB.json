@@ -1,0 +1,42 @@
+{
+    "PolarPairingGame": {
+        "Questions": {
+            "Easy": [
+                { "Q": "Which word is the opposite of Happy? Joyful, Sad, Excited, or Content?", "A": "Sad" },
+                { "Q": "Which word is the opposite of Big? Huge, Massive, Large, or Tiny?", "A": "Tiny" },
+                { "Q": "Which word is the opposite of Hot? Warm, Cold, Mild, or Boiling?", "A": "Cold" },
+                { "Q": "Which word is the opposite of Fast? Slow, Rapid, Speedy, or Quick?", "A": "Slow" },
+                { "Q": "Which word is the opposite of Up? Above, Down, Over, or Higher?", "A": "Down" },
+                { "Q": "Which word is the opposite of Light? Bright, Clear, Dark, or Shiny?", "A": "Dark" },
+                { "Q": "Which word is the opposite of Near? Beside, Far, Nearby, or Close?", "A": "Far" },
+                { "Q": "Which word is the opposite of Open? Closed, Free, Wide, or Uncovered?", "A": "Closed" },
+                { "Q": "Which word is the opposite of Soft? Smooth, Cushiony, Hard, or Gentle?", "A": "Hard" },
+                { "Q": "Which word is the opposite of Full? Packed, Overflowing, Loaded, or Empty?", "A": "Empty" }
+            ],
+            "Medium": [
+                { "Q": "Which word is the opposite of Easy? Light, Hard, Effortless, or Simple?", "A": "Hard" },
+                { "Q": "Which word is the opposite of Early? Soon, Quick, Late, or On time?", "A": "Late" },
+                { "Q": "Which word is the opposite of Strong? Tough, Firm, Powerful, or Weak?", "A": "Weak" },
+                { "Q": "Which word is the opposite of Bright? Glowing, Dull, Radiant, or Shiny?", "A": "Dull" },
+                { "Q": "Which word is the opposite of Quiet? Silent, Calm, Loud, or Peaceful?", "A": "Loud" },
+                { "Q": "Which word is the opposite of Tall? High, Short, Towering, or Elevated?", "A": "Short" },
+                { "Q": "Which word is the opposite of Clean? Dirty, Neat, Tidy, or Spotless?", "A": "Dirty" },
+                { "Q": "Which word is the opposite of Thick? Chunky, Dense, Thin, or Heavy?", "A": "Thin" },
+                { "Q": "Which word is the opposite of Cheap? Affordable, Low-cost, Expensive, or Inexpensive?", "A": "Expensive" },
+                { "Q": "Which word is the opposite of Young? Old, Juvenile, Fresh, or Youthful?", "A": "Old" }
+            ],
+            "Hard": [
+                { "Q": "Which word is the opposite of Increase? Decrease, Expand, Grow, or Rise?", "A": "Decrease" },
+                { "Q": "Which word is the opposite of Success? Triumph, Achievement, Failure, or Victory?", "A": "Failure" },
+                { "Q": "Which word is the opposite of Allow? Deny, Permit, Approve, or Accept?", "A": "Deny" },
+                { "Q": "Which word is the opposite of Urban? City, Country, Rural, or Metropolitan?", "A": "Rural" },
+                { "Q": "Which word is the opposite of Visible? Clear, Transparent, Invisible, or Apparent?", "A": "Invisible" },
+                { "Q": "Which word is the opposite of Include? Remove, Exclude, Contain, or Add?", "A": "Exclude" },
+                { "Q": "Which word is the opposite of Agree? Refuse, Disagree, Consent, or Approve?", "A": "Disagree" },
+                { "Q": "Which word is the opposite of Generous? Kind, Selfish, Giving, or Altruistic?", "A": "Selfish" },
+                { "Q": "Which word is the opposite of Permanent? Temporary, Lasting, Fixed, or Durable?", "A": "Temporary" },
+                { "Q": "Which word is the opposite of Optimistic? Hopeful, Cheerful, Pessimistic, or Positive?", "A": "Pessimistic" }
+            ]
+        }
+    }
+}

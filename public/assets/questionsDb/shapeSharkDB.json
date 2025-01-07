@@ -1,0 +1,132 @@
+{
+    "ShapeSharkGame": {
+        "Questions": {
+            "Easy": [
+                {
+                    "Q": "A shark found a shape with 3 sides. What shape is it?",
+                    "A": "triangle"
+                },
+                {
+                    "Q": "The shark swam to a shape with 4 equal sides. Name the shape!",
+                    "A": "square"
+                },
+                {
+                    "Q": "Sharks spotted a shape with no corners and a single curve. What is this shape?",
+                    "A": "circle"
+                },
+                {
+                    "Q": "A sharp-eyed shark noticed a shape with 4 sides, but opposite sides are equal. What's the name of the shape?",
+                    "A": "rectangle"
+                },
+                {
+                    "Q": "A shape with 3 sides has caught the shark's attention. What is it called?",
+                    "A": "triangle"
+                },
+                {
+                    "Q": "The shark swims past a shape with 5 sides. Can you name it?",
+                    "A": "pentagon"
+                },
+                {
+                    "Q": "Sharks surround a shape with 6 sides. What shape is this?",
+                    "A": "hexagon"
+                },
+                {
+                    "Q": "A playful shark circles a shape with 4 sides, but only two sides are equal in length. What is this shape?",
+                    "A": "trapezium"
+                },
+                {
+                    "Q": "A shark observes a shape with 8 sides. What is this shape called?",
+                    "A": "octagon"
+                },
+                {
+                    "Q": "A shape with 7 sides is seen underwater. What is its name?",
+                    "A": "heptagon"
+                }
+            ],
+            "Medium": [
+                {
+                    "Q": "Sharks discovered a shape with 5 corners and 5 sides. Name the shape!",
+                    "A": "pentagon"
+                },
+                {
+                    "Q": "The shark found a shape with 6 equal sides. What is this shape called?",
+                    "A": "hexagon"
+                },
+                {
+                    "Q": "While hunting, a shark swims past a shape with 8 sides. What shape is this?",
+                    "A": "octagon"
+                },
+                {
+                    "Q": "The shark notices a shape with 10 sides. Can you tell its name?",
+                    "A": "decagon"
+                },
+                {
+                    "Q": "A shape with 12 sides has caught the shark's attention. What is it called?",
+                    "A": "dodecagon"
+                },
+                {
+                    "Q": "A quick shark noticed a 9-sided shape nearby. What's the name of this shape?",
+                    "A": "nonagon"
+                },
+                {
+                    "Q": "The shark observes a shape with 3 sides and no equal length. What kind of triangle is this?",
+                    "A": "scalene triangle"
+                },
+                {
+                    "Q": "The shark swims past a shape with 4 sides and no equal angles. What type of shape is this?",
+                    "A": "irregular quadrilateral"
+                },
+                {
+                    "Q": "A triangle with all sides of equal length appears before the shark. What is this triangle called?",
+                    "A": "equilateral triangle"
+                },
+                {
+                    "Q": "The shark finds a polygon with 11 sides. Can you name it?",
+                    "A": "hendecagon"
+                }
+            ],
+            "Hard": [
+                {
+                    "Q": "The shark encounters a complex shape with 15 sides. What is this shape known as?",
+                    "A": "pentadecagon"
+                },
+                {
+                    "Q": "A polygon with 20 sides appears in front of the shark. What’s its name?",
+                    "A": "icosagon"
+                },
+                {
+                    "Q": "The shark observes a shape with 100 sides. Can you name this shape?",
+                    "A": "hectogon"
+                },
+                {
+                    "Q": "A 30-sided polygon surprises the shark. What is this shape called?",
+                    "A": "triacontagon"
+                },
+                {
+                    "Q": "The shark investigates a 50-sided shape. What's its name?",
+                    "A": "pentacontagon"
+                },
+                {
+                    "Q": "A 7-sided polygon floats in the shark's view. What is it called?",
+                    "A": "heptagon"
+                },
+                {
+                    "Q": "The shark passes a polygon with 13 sides. What is its name?",
+                    "A": "tridecagon"
+                },
+                {
+                    "Q": "A mysterious polygon with 40 sides appears. Can you name it?",
+                    "A": "tetracontagon"
+                },
+                {
+                    "Q": "The shark spots a polygon with 6 equal sides and angles. What is this regular shape called?",
+                    "A": "hexagon"
+                },
+                {
+                    "Q": "The shark finds a polygon with 25 sides. What's this shape known as?",
+                    "A": "pentacontapentagon"
+                }
+            ]
+        }
+    }
+}

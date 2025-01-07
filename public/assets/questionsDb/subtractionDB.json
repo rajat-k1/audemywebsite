@@ -1,0 +1,132 @@
+{
+    "SubtractionGame": {
+        "Questions": {
+            "Easy": [
+                {
+                    "Q": "If there are 8 zebras and 3 run off to graze, how many zebras are left?",
+                    "A": "5"
+                },
+                {
+                    "Q": "If there are 6 monkeys and 2 climb a tree, how many monkeys are left on the ground?",
+                    "A": "4"
+                },
+                {
+                    "Q": "If there are 10 parrots and 4 fly away, how many parrots are left?",
+                    "A": "6"
+                },
+                {
+                    "Q": "If there are 7 lions and 3 leave the pride, how many lions are left?",
+                    "A": "4"
+                },
+                {
+                    "Q": "If there are 9 turtles and 4 crawl into the water, how many turtles are left on the shore?",
+                    "A": "5"
+                },
+                {
+                    "Q": "If there are 5 giraffes and 1 moves to another tree, how many giraffes are left?",
+                    "A": "4"
+                },
+                {
+                    "Q": "If there are 6 deer and 2 hide in the forest, how many deer are left?",
+                    "A": "4"
+                },
+                {
+                    "Q": "If there are 8 elephants and 5 walk away, how many elephants are left?",
+                    "A": "3"
+                },
+                {
+                    "Q": "If there are 10 flamingos and 6 fly off, how many flamingos are left?",
+                    "A": "4"
+                },
+                {
+                    "Q": "If there are 12 snakes and 7 slither away, how many snakes are left?",
+                    "A": "5"
+                }
+            ],
+            "Medium": [
+                {
+                    "Q": "If there are 18 zebras and 9 run off to graze, how many zebras are left?",
+                    "A": "9"
+                },
+                {
+                    "Q": "If there are 20 leopards and 8 chase after prey, how many leopards are left?",
+                    "A": "12"
+                },
+                {
+                    "Q": "If there are 25 flamingos and 10 fly away, how many flamingos are left?",
+                    "A": "15"
+                },
+                {
+                    "Q": "If there are 30 antelopes and 12 run into the bushes, how many antelopes are left?",
+                    "A": "18"
+                },
+                {
+                    "Q": "If there are 22 crocodiles and 7 dive underwater, how many crocodiles are left?",
+                    "A": "15"
+                },
+                {
+                    "Q": "If there are 24 rhinos and 6 wander off, how many rhinos are left?",
+                    "A": "18"
+                },
+                {
+                    "Q": "If there are 28 camels and 14 move to another oasis, how many camels are left?",
+                    "A": "14"
+                },
+                {
+                    "Q": "If there are 26 penguins and 11 slide into the water, how many penguins are left?",
+                    "A": "15"
+                },
+                {
+                    "Q": "If there are 19 buffalo and 8 run into the woods, how many buffalo are left?",
+                    "A": "11"
+                },
+                {
+                    "Q": "If there are 21 foxes and 9 sneak into their dens, how many foxes are left?",
+                    "A": "12"
+                }
+            ],
+            "Hard": [
+                {
+                    "Q": "If there are 100 gazelles and 45 leap away, how many gazelles are left?",
+                    "A": "55"
+                },
+                {
+                    "Q": "If there are 150 flamingos and 75 fly away, how many flamingos are left?",
+                    "A": "75"
+                },
+                {
+                    "Q": "If there are 200 tigers and 88 move to another jungle, how many tigers are left?",
+                    "A": "112"
+                },
+                {
+                    "Q": "If there are 300 elephants and 125 migrate to another area, how many elephants are left?",
+                    "A": "175"
+                },
+                {
+                    "Q": "If there are 275 giraffes and 100 wander off, how many giraffes are left?",
+                    "A": "175"
+                },
+                {
+                    "Q": "If there are 400 monkeys and 150 swing away into the trees, how many monkeys are left?",
+                    "A": "250"
+                },
+                {
+                    "Q": "If there are 500 deer and 200 run into the forest, how many deer are left?",
+                    "A": "300"
+                },
+                {
+                    "Q": "If there are 450 seals and 225 dive into the ocean, how many seals are left?",
+                    "A": "225"
+                },
+                {
+                    "Q": "If there are 600 wolves and 300 run into the mountains, how many wolves are left?",
+                    "A": "300"
+                },
+                {
+                    "Q": "If there are 800 kangaroos and 400 hop away, how many kangaroos are left?",
+                    "A": "400"
+                }
+            ]
+        }
+    }
+}
