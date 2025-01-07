@@ -1,0 +1,132 @@
+{
+    "MonkeyMadnessGame": {
+        "Questions": {
+            "Easy": [
+                {
+                    "Q": "Two monkeys found 12 bananas hanging on a tree. How many bananas does each get if they split them equally?",
+                    "A": "6"
+                },
+                {
+                    "Q": "Three young monkeys gathered 15 bananas from the ground. How many bananas per monkey?",
+                    "A": "5"
+                },
+                {
+                    "Q": "Four curious monkeys stumbled upon a bundle of 20 bananas. What’s the share for each monkey?",
+                    "A": "5"
+                },
+                {
+                    "Q": "Six monkeys grabbed a total of 18 bananas. How many bananas does each monkey get?",
+                    "A": "3"
+                },
+                {
+                    "Q": "A group of five monkeys worked together to collect 25 bananas. How many bananas does each monkey take?",
+                    "A": "5"
+                },
+                {
+                    "Q": "Two cheeky monkeys took 8 bananas from the stash. How many bananas does each monkey enjoy?",
+                    "A": "4"
+                },
+                {
+                    "Q": "Three playful monkeys discovered 9 bananas near the river. How many bananas will each monkey receive?",
+                    "A": "3"
+                },
+                {
+                    "Q": "Four monkeys shared 16 bananas after a long day. How many bananas per monkey?",
+                    "A": "4"
+                },
+                {
+                    "Q": "Ten bananas were divided between two monkeys. How many bananas did each monkey get?",
+                    "A": "5"
+                },
+                {
+                    "Q": "A group of six monkeys had 24 bananas to share. How many bananas did each monkey take?",
+                    "A": "4"
+                }
+            ],
+            "Medium": [
+                {
+                    "Q": "Five forest monkeys spotted 40 bananas on a tall tree. What’s the share per monkey if they split evenly?",
+                    "A": "8"
+                },
+                {
+                    "Q": "Seven monkeys found a total of 49 bananas. How many bananas does each monkey take home?",
+                    "A": "7"
+                },
+                {
+                    "Q": "Four monkeys worked together to gather 28 bananas. How many bananas does each monkey receive?",
+                    "A": "7"
+                },
+                {
+                    "Q": "Nine monkeys picked 54 bananas from a grove. How many bananas per monkey?",
+                    "A": "6"
+                },
+                {
+                    "Q": "Eight monkeys grabbed 64 bananas during their adventure. How many bananas will each get?",
+                    "A": "8"
+                },
+                {
+                    "Q": "Ten monkeys shared 90 bananas they found by the lake. How many bananas does each one enjoy?",
+                    "A": "9"
+                },
+                {
+                    "Q": "Seven noisy monkeys collected 56 bananas. How many bananas for each one?",
+                    "A": "8"
+                },
+                {
+                    "Q": "Six tired monkeys ended up with 48 bananas after their search. How many bananas for each monkey?",
+                    "A": "8"
+                },
+                {
+                    "Q": "Four monkeys happily shared 36 bananas among themselves. How many bananas per monkey?",
+                    "A": "9"
+                },
+                {
+                    "Q": "A group of eight monkeys feasted on 72 bananas. What’s the fair share for each monkey?",
+                    "A": "9"
+                }
+            ],
+            "Hard": [
+                {
+                    "Q": "Twelve monkeys divided a stash of 144 bananas evenly. How many bananas for each monkey?",
+                    "A": "12"
+                },
+                {
+                    "Q": "Fifteen monkeys came across 180 bananas during their safari. How many bananas per monkey?",
+                    "A": "12"
+                },
+                {
+                    "Q": "Twenty jungle monkeys shared 240 bananas they discovered. How many bananas does each one get?",
+                    "A": "12"
+                },
+                {
+                    "Q": "Sixteen monkeys collected 192 bananas. What’s the share per monkey?",
+                    "A": "12"
+                },
+                {
+                    "Q": "Ten monkeys found a pile of 150 bananas near a cave. How many bananas does each monkey grab?",
+                    "A": "15"
+                },
+                {
+                    "Q": "Eight monkeys found 200 bananas hidden in the bushes. How many bananas for each monkey?",
+                    "A": "25"
+                },
+                {
+                    "Q": "Five clever monkeys split 125 bananas they carried back. How many bananas for each one?",
+                    "A": "25"
+                },
+                {
+                    "Q": "Four monkeys hauled 100 bananas back to their tree. How many bananas does each monkey receive?",
+                    "A": "25"
+                },
+                {
+                    "Q": "Eighteen energetic monkeys divided 360 bananas equally. How many bananas does each monkey munch on?",
+                    "A": "20"
+                },
+                {
+                    "Q": "Twenty monkeys came across a jackpot of 500 bananas! How many bananas for each monkey?",
+                    "A": "25"
+                }
+            ]
+        }
+    }
+}
