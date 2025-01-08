@@ -59,7 +59,8 @@ import {
 } from "../../../Utilities/speechRecognition";
 
 const currentAudios = [],
-    randQueNum = [];
+    randQueNum = [],
+    answers = [];
 let numOfAudiosPlayed = ref(0),
     score = ref(0);
 let questionsDb = [],
@@ -74,9 +75,18 @@ const generateQuestions = () => {
         let num = Math.floor(Math.random() * 5) + 1;
         if (!randQueNum.includes(num)) {
             randQueNum.push(num);
+            const answerMap = {
+                1: "one",
+                2: "two",
+                3: "three",
+                4: "four",
+                5: "five"
+            };
+            answers.push(answerMap[num]);
         }
     }
     console.log("Random Numbers: ", randQueNum);
+    console.log("Answers: ", answers);
 };
 
 // Play the next question
@@ -85,7 +95,6 @@ const playNextQuestion = async () => {
         const audiosToPlay = [];
 
         // Add the initial audio
-        //audiosToPlay.push("/assets/generalAudio/youGot.mp3");
         playQuestion("Question Number " + (numOfAudiosPlayed.value + 1));
 
         // Add the car passing by audios
@@ -105,7 +114,6 @@ const playNextQuestion = async () => {
         }
 
         // Add the final audio
-        //audiosToPlay.push("/assets/generalAudio/youGot.mp3");
         playQuestion("How many cars did you hear? Hold 'SPACE' to say the answer");
     }
 };
@@ -123,7 +131,7 @@ const handleKeyDown = (event) => {
             console.log("User Answer:", transcript);
             console.log("Correct Answer:", randQueNum[numOfAudiosPlayed.value]);
             transcription.value = transcript;
-            if (transcript.trim() === randQueNum[numOfAudiosPlayed.value]) {
+            if (transcript.trim() === answers[numOfAudiosPlayed.value]) {
                 score.value++;
                 console.log("Correct Answer!");
                 playSound("correctaudio.mp3");
