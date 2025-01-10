@@ -1,0 +1,42 @@
+{
+    "ColorQuizGame": {
+        "Questions": {
+            "Easy": [
+                { "Q": "What color is an orange?", "A": "orange" },
+                { "Q": "What color is the sky on a clear day?", "A": "blue" },
+                { "Q": "What color is grass?", "A": "green" },
+                { "Q": "What color is a banana?", "A": "yellow" },
+                { "Q": "What color is a strawberry?", "A": "red" },
+                { "Q": "What color is snow?", "A": "white" },
+                { "Q": "What color is chocolate?", "A": "brown" },
+                { "Q": "What color is coal?", "A": "black" },
+                { "Q": "What color is the sun?", "A": "yellow" },
+                { "Q": "What color is a flamingo?", "A": "pink" }
+            ],
+            "Medium": [
+                { "Q": "What color is mud?", "A": "brown" },
+                { "Q": "What color are blueberries?", "A": "blue" },
+                { "Q": "What color is a lemon?", "A": "yellow" },
+                { "Q": "What color is the ocean?", "A": "blue" },
+                { "Q": "What color is a pumpkin?", "A": "orange" },
+                { "Q": "What color is a carrot?", "A": "orange" },
+                { "Q": "What color are clouds during a storm?", "A": "gray" },
+                { "Q": "What color is a tomato?", "A": "red" },
+                { "Q": "What color is an apple?", "A": "red" },
+                { "Q": "What color is a lime?", "A": "green" }
+            ],
+            "Hard": [
+                { "Q": "What color are grapes?", "A": "purple" },
+                { "Q": "What color is copper?", "A": "brown" },
+                { "Q": "What color is a robin's egg?", "A": "blue" },
+                { "Q": "What color is sand on most beaches?", "A": "tan" },
+                { "Q": "What color is lava?", "A": "red" },
+                { "Q": "What color is the inside of a watermelon?", "A": "red" },
+                { "Q": "What color is rust?", "A": "brown" },
+                { "Q": "What color are autumn leaves?", "A": "yellow" },
+                { "Q": "What color is a peacock's feather?", "A": "blue" },
+                { "Q": "What color is a polar bear's fur?", "A": "white" }
+            ]
+        }
+    }
+}

@@ -30,6 +30,20 @@ export const getLanguageGames = () => {
             textColor: "#269C9A",
             bgColor: "#DAF7F6",
         },
+        {
+            icon: basedPath + "spellingBee.svg",
+            title: "Syllable Sorting",
+            url: "/game/syllableSorting",
+            textColor: "#9771EF",
+            bgColor: "#D5D1FF",
+        },
+        {
+            icon: basedPath + "storyBuilder.svg",
+            title: "Definition Detective",
+            url: "/game/definitionDetective",
+            textColor: "#DA6301",
+            bgColor: "#FFDABA",
+        },
     ];
 };
 

@@ -12,7 +12,7 @@
         </div>
         <div class="flex flex-col my-2 mx-56 h-96 justify-center items-center">
             <div class="m-10 py-4 text-center">
-                <h1 class="text-4.5xl font-bold">Car Counting</h1>
+                <h1 class="text-4.5xl font-bold">Syllable Sorting</h1>
             </div>
             <div
                 v-if="numOfAudiosPlayed < 5"
@@ -59,62 +59,45 @@ import {
 } from "../../../Utilities/speechRecognition";
 
 const currentAudios = [],
-    randQueNum = [],
-    answers = [];
+    randQueNum = [];
 let numOfAudiosPlayed = ref(0),
     score = ref(0);
 let questionsDb = [],
     isListening = ref(false),
     transcription = ref("");
 
-// Generate random number of cars as Questions
+// Generate multiplication questions using Json file
 const generateQuestions = () => {
     console.log("Generating Questions...");
     // Generate 5 random numbers for the questions
     while (randQueNum.length < 5) {
-        let num = Math.floor(Math.random() * 5) + 1;
+        let num = Math.floor(Math.random() * 15);
         if (!randQueNum.includes(num)) {
             randQueNum.push(num);
-            const answerMap = {
-                1: "one",
-                2: "two",
-                3: "three",
-                4: "four",
-                5: "five"
-            };
-            answers.push(answerMap[num]);
         }
     }
-    console.log("Random Numbers: ", randQueNum);
-    console.log("Answers: ", answers);
+    // Fetch questions from JSON file
+    fetch("/assets/questionsDb/SyllableGameDB.json")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(
+                "Questions:",
+                data["SyllableCountingGame"]["Questions"]["Easy"]
+            );
+            // Process the questions data as needed
+            questionsDb = data["SyllableCountingGame"]["Questions"]["Easy"];
+        })
+        .catch((error) => {
+            console.error("Error fetching questions:", error);
+        });
 };
 
 // Play the next question
-const playNextQuestion = async () => {
+const playNextQuestion = () => {
     if (numOfAudiosPlayed.value < 5) {
-        const audiosToPlay = [];
-
-        // Add the initial audio
-        playQuestion("Question Number " + (numOfAudiosPlayed.value + 1));
-
-        // Add the car passing by audios
-        for (let i = 0; i < randQueNum[numOfAudiosPlayed.value]; i++) {
-            audiosToPlay.push("/assets/carCounting/carpassby.mp3");
-        }
-
-        // Play all car audios in sequence
-        for (const audioSrc of audiosToPlay) {
-            await new Promise((resolve) => {
-                console.log("Playing - "+ audioSrc)
-                const audio = new Audio(audioSrc);
-                audio.play();
-                audio.onended = resolve;
-                currentAudios.push(audio);
-            });
-        }
-
-        // Add the final audio
-        playQuestion("How many cars did you hear? Hold 'SPACE' to say the answer");
+        const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
+        console.log(question);
+        currentAudios.push(playQuestion(question["Q"]));
     }
 };
 
@@ -126,12 +109,13 @@ const handleKeyDown = (event) => {
         numOfAudiosPlayed.value < 5
     ) {
         isListening.value = true;
-        playSound("ding-sound.mp3");
         startListening((transcript) => {
+            const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
+            console.log("Question is: ", question["Q"]);
             console.log("User Answer:", transcript);
-            console.log("Correct Answer:", randQueNum[numOfAudiosPlayed.value]);
+            console.log("Correct Answer:", question["A"]);
             transcription.value = transcript;
-            if (transcript.trim() === answers[numOfAudiosPlayed.value]) {
+            if (transcript.trim() === question["A"]) {
                 score.value++;
                 console.log("Correct Answer!");
                 playSound("correctaudio.mp3");
@@ -171,7 +155,7 @@ onMounted(() => {
     generateQuestions();
 
     // Play introduction audio
-    const introAudio = playIntro("/carCounting/carCountIntro.mp3");
+    const introAudio = playIntro("/syllableSorting/syllableIntro.mp3");
     currentAudios.push(introAudio);
     console.log("AudiosList: ", currentAudios);
 

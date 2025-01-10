@@ -21,6 +21,8 @@ import CarCounting from "../pages/GameZone/GameZoneList/CarCounting.vue";
 import FruitFrenzy from "../pages/GameZone/GameZoneList/FruitFrenzy.vue";
 import MonkeyMadness from "../pages/GameZone/GameZoneList/MonkeyMadness.vue";
 import ShapeShark from "../pages/GameZone/GameZoneList/ShapeShark.vue";
+import SyllableSorting from "../pages/GameZone/GameZoneList/SyllableSorting.vue";
+import DefinitionDetective from "../pages/GameZone/GameZoneList/DefinitionDetective.vue";
 
 const routes = [
     { path: "/home", redirect: "/" },
@@ -96,6 +98,16 @@ const routes = [
         path: "/game/shapeshark",
         name: "ShapeShark",
         component: ShapeShark,
+    },
+    {
+        path: "/game/syllableSorting",
+        name: "SyllableSorting",
+        component: SyllableSorting,
+    },
+    {
+        path: "/game/definitionDetective",
+        name: "DefinitionDetective",
+        component: DefinitionDetective,
     },
 ];
 

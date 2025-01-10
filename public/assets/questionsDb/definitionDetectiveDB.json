@@ -1,0 +1,42 @@
+{
+    "DefinitionDetectiveGame": {
+        "Questions": {
+            "Easy": [
+                { "Q": "What is the word for a soft and furry animal that purrs and loves milk?", "A": "cat" },
+                { "Q": "What is the word for a yellow fruit that monkeys love to eat?", "A": "banana" },
+                { "Q": "What is the word for something you use to write on paper, filled with ink?", "A": "pen" },
+                { "Q": "What is the word for a round object used in many sports, like soccer and basketball?", "A": "ball" },
+                { "Q": "What is the word for a big red fruit with seeds inside, often made into sauce?", "A": "tomato" },
+                { "Q": "What is the word for the place you sleep at night?", "A": "bed" },
+                { "Q": "What is the word for water falling from the sky?", "A": "rain" },
+                { "Q": "What is the word for a long, yellow vehicle that takes children to school?", "A": "bus" },
+                { "Q": "What is the word for a small insect that makes honey?", "A": "bee" },
+                { "Q": "What is the word for a person who teaches in a school?", "A": "teacher" }
+            ],
+            "Medium": [
+                { "Q": "What is the word for a place where books are kept and borrowed?", "A": "library" },
+                { "Q": "What is the word for a building where people watch movies?", "A": "cinema" },
+                { "Q": "What is the word for a tool used to cut paper or cloth?", "A": "scissors" },
+                { "Q": "What is the word for an animal that carries its baby in a pouch?", "A": "kangaroo" },
+                { "Q": "What is the word for a large body of water surrounded by land?", "A": "lake" },
+                { "Q": "What is the word for a person who fixes cars?", "A": "mechanic" },
+                { "Q": "What is the word for a machine used to cool food?", "A": "refrigerator" },
+                { "Q": "What is the word for a person who writes books?", "A": "author" },
+                { "Q": "What is the word for a large vehicle used to carry goods?", "A": "truck" },
+                { "Q": "What is the word for something people wear on their wrist to tell time?", "A": "watch" }
+            ],
+            "Hard": [
+                { "Q": "What is the word for a person who studies the stars and planets?", "A": "astronomer" },
+                { "Q": "What is the word for a formal agreement between countries?", "A": "treaty" },
+                { "Q": "What is the word for the process of water turning into vapor?", "A": "evaporation" },
+                { "Q": "What is the word for a person who explores unknown places?", "A": "adventurer" },
+                { "Q": "What is the word for the layer of air that surrounds the Earth?", "A": "atmosphere" },
+                { "Q": "What is the word for an animal that eats only plants?", "A": "herbivore" },
+                { "Q": "What is the word for a natural underground chamber?", "A": "cave" },
+                { "Q": "What is the word for a device used to measure temperature?", "A": "thermometer" },
+                { "Q": "What is the word for the art of creating maps?", "A": "cartography" },
+                { "Q": "What is the word for a material that allows electricity to flow through it?", "A": "conductor" }
+            ]
+        }
+    }
+}
