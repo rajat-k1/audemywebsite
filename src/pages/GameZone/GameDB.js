@@ -37,6 +37,13 @@ export const getLanguageGames = () => {
             textColor: "#9771EF",
             bgColor: "#D5D1FF",
         },
+        {
+            icon: basedPath + "storyBuilder.svg",
+            title: "Definition Detective",
+            url: "/game/definitionDetective",
+            textColor: "#DA6301",
+            bgColor: "#FFDABA",
+        },
     ];
 };
 
