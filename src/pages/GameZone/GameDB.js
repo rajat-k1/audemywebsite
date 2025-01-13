@@ -44,6 +44,20 @@ export const getLanguageGames = () => {
             textColor: "#DA6301",
             bgColor: "#FFDABA",
         },
+        {
+            icon: basedPath + "oddOneOut.svg",
+            title: "Part of Speech",
+            url: "/game/partofspeech",
+            textColor: "#DA6301",
+            bgColor: "#FFDABA",
+        },
+        {
+            icon: basedPath + "storyBuilder.svg",
+            title: "Color Game",
+            url: "/game/colorgame",
+            textColor: "#769400",
+            bgColor: "#DAF5B7",
+        },
     ];
 };
 
