@@ -3,11 +3,11 @@ import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
     plugins: [vue()],
-    base: "./", // Replace 'your-repo-name' with your actual repo name
+    base: "/", // Replace 'your-repo-name' with your actual repo name
     build: {
-        outDir: 'dist',
-        assetsDir: 'assets',
-      },
+        outDir: "dist",
+        assetsDir: "assets",
+    },
     server: {
         proxy: {
             "/api": "http://localhost:3000", // Redirect /api requests to the backend

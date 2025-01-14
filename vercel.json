@@ -20,9 +20,8 @@
             "destination": "/src/pages/api/generate_audio.js"
         },
         {
-            "source": "/(.*)",
-            "destination": "/"
-        },
-        { "source": "/(.*)", "destination": "/index.html" }
+            "source": "/",
+            "destination": "/index.html"
+        }
     ]
 }
