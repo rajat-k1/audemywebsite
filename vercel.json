@@ -15,7 +15,7 @@
         }
     ],
     "rewrites": [
-        { “source”: “/(.*)“, “destination”: “/index.html” },
+    
         {
             "source": "/api/generate-tts",
             "destination": "/src/pages/api/generate_audio.js"
@@ -23,6 +23,7 @@
         {
             "source": "/(.*)",
             "destination": "/"
-        }
+        },
+         
     ]
 }
