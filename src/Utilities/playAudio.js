@@ -82,7 +82,7 @@ export function playScore(score) {
 
 export function stopAudios(audioList) {
     audioList.forEach((audio) => {
-        if (audio) {
+        if (audio instanceof HTMLAudioElement) {
             audio.pause();
             audio.currentTime = 0;
         }
