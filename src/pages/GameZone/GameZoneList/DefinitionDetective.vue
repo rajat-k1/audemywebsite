@@ -155,7 +155,7 @@ onMounted(() => {
     generateQuestions();
 
     // Play introduction audio
-    const introAudio = playIntro("/syllableSorting/syllableIntro.mp3");
+    const introAudio = playIntro("/definitionDetective/definitionIntro.mp3");
     currentAudios.push(introAudio);
     console.log("AudiosList: ", currentAudios);
 
