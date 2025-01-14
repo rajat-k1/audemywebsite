@@ -20,7 +20,11 @@
             "destination": "/src/pages/api/generate_audio.js"
         },
         {
-            "source": "/",
+            "source": "/(.*\\.(js|css|png|jpg|svg|ico|json))",
+            "destination": "/$1"
+        },
+        {
+            "source": "/(.*)",
             "destination": "/index.html"
         }
     ]
