@@ -14,8 +14,16 @@
             <div class="m-10 py-4 text-center">
                 <h1 class="text-4.5xl font-bold">Car Counting</h1>
             </div>
+            <div v-if="playButton === false">
+                <button
+                    @click="playButton = true"
+                    class="bg-[#087bb4] text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-[#0d5f8b]"
+                >
+                    Play
+                </button>
+            </div>
             <div
-                v-if="numOfAudiosPlayed < 5"
+                v-else-if="numOfAudiosPlayed < 5"
                 class="flex flex-col p-4 justify-center"
                 id="content"
             >
@@ -44,7 +52,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, ref, watch } from "vue";
 import { requestMicPermission } from "../../../Utilities/requestMicAccess";
 import {
     playIntro,
@@ -65,7 +73,8 @@ let numOfAudiosPlayed = ref(0),
     score = ref(0);
 let questionsDb = [],
     isListening = ref(false),
-    transcription = ref("");
+    transcription = ref(""),
+    playButton = ref(false);
 
 // Generate random number of cars as Questions
 const generateQuestions = () => {
@@ -148,7 +157,9 @@ const handleKeyDown = (event) => {
                 }, 2000);
             } else {
                 console.log("Game Over!");
-                playScore(score.value);
+                setTimeout(() => {
+                    playScore(score.value);
+                }, 2000);
             }
         });
     }
@@ -170,15 +181,13 @@ onMounted(() => {
     // Generate questions
     generateQuestions();
 
-    // Play introduction audio
-    const introAudio = playIntro("/carCounting/carCountIntro.mp3");
-    currentAudios.push(introAudio);
-    console.log("AudiosList: ", currentAudios);
-
-    // Delay the start of the first question until the intro audio is finished
-    introAudio.onended = () => {
-        playNextQuestion();
-    };
+    watch(playButton, (newVal) => {
+        if (newVal) {
+        const introAudio = playIntro("/carCounting/carCountIntro.mp3");
+        currentAudios.push(introAudio);
+        introAudio.onended = playNextQuestion;
+        }
+    });
 
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
