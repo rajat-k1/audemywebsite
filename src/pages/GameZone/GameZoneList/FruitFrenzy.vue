@@ -14,8 +14,16 @@
             <div class="m-10 py-4 text-center">
                 <h1 class="text-4.5xl font-bold">Fruit Frenzy</h1>
             </div>
+            <div v-if="playButton === false">
+                <button
+                    @click="playButton = true"
+                    class="bg-[#087bb4] text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-[#0d5f8b]"
+                >
+                    Play
+                </button>
+            </div>
             <div
-                v-if="numOfAudiosPlayed < 5"
+                v-else-if="numOfAudiosPlayed < 5"
                 class="flex flex-col p-4 justify-center"
                 id="content"
             >
@@ -44,7 +52,7 @@
   </template>
   
   <script setup>
-  import { onMounted, onUnmounted, ref } from "vue";
+  import { onMounted, onUnmounted, ref, watch } from "vue";
   import { requestMicPermission } from "../../../Utilities/requestMicAccess";
   import {
     playIntro,
@@ -64,7 +72,8 @@
     score = ref(0);
   let questionsDb = [],
     isListening = ref(false),
-    transcription = ref("");
+    transcription = ref(""),
+    playButton = ref(false);
   
   // Generate multiplication questions using Json file
   const generateQuestions = () => {
@@ -132,7 +141,9 @@
                 }, 2000);
             } else {
                 console.log("Game Over!");
-                playScore(score.value);
+                setTimeout(() => {
+                    playScore(score.value);
+                }, 2000);
             }
         });
     }
@@ -153,18 +164,14 @@
   
     // Generate questions
     generateQuestions();
-  
-    // Play introduction audio
-    const introAudio = playIntro(
-        "/fruitFrenzy/fruitIntro.mp3"
-    );
-    currentAudios.push(introAudio);
-    console.log("AudiosList: ", currentAudios);
-  
-    // Delay the start of the first question until the intro audio is finished
-    introAudio.onended = () => {
-        playNextQuestion();
-    };
+
+    watch(playButton, (newVal) => {
+        if (newVal) {
+            const introAudio = playIntro("/fruitFrenzy/fruitIntro.mp3");
+            currentAudios.push(introAudio);
+            introAudio.onended = playNextQuestion;
+        }
+    });
   
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
