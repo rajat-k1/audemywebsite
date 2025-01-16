@@ -23,7 +23,7 @@
                 </button>
             </div>
             <div
-                v-else-if="numOfAudiosPlayed < 5"
+                v-else-if="numOfAudiosPlayed < 5 && playButton === true"
                 class="flex flex-col p-4 justify-center"
                 id="content"
             >
