@@ -1,0 +1,192 @@
+{
+    "AdditionGame": {
+        "Questions": {
+            "Easy": [
+                {
+                    "Q": "If there are 1 cat and 2 dogs, how many animals are there?",
+                    "A": "3"
+                },
+                {
+                    "Q": "If there are 2 cows and 3 chickens, how many animals are there?",
+                    "A": "5"
+                },
+                {
+                    "Q": "If there are 4 rabbits and 1 turtle, how many animals are there?",
+                    "A": "5"
+                },
+                {
+                    "Q": "If there are 3 birds and 2 fish, how many animals are there?",
+                    "A": "5"
+                },
+                {
+                    "Q": "If there are 5 horses and 0 sheep, how many animals are there?",
+                    "A": "5"
+                },
+                {
+                    "Q": "If there are 6 ducks and 1 goose, how many animals are there?",
+                    "A": "7"
+                },
+                {
+                    "Q": "If there are 2 pigs and 4 goats, how many animals are there?",
+                    "A": "6"
+                },
+                {
+                    "Q": "If there are 7 frogs and 2 lizards, how many animals are there?",
+                    "A": "9"
+                },
+                {
+                    "Q": "If there are 8 squirrels and 1 rabbit, how many animals are there?",
+                    "A": "9"
+                },
+                {
+                    "Q": "If there are 3 foxes and 5 raccoons, how many animals are there?",
+                    "A": "8"
+                },
+                {
+                    "Q": "If there are 4 wolves and 2 bears, how many animals are there?",
+                    "A": "6"
+                },
+                {
+                    "Q": "If there are 1 elephant and 1 tiger, how many animals are there?",
+                    "A": "2"
+                },
+                {
+                    "Q": "If there are 9 monkeys and 0 zebras, how many animals are there?",
+                    "A": "9"
+                },
+                {
+                    "Q": "If there are 0 kangaroos and 3 koalas, how many animals are there?",
+                    "A": "3"
+                },
+                {
+                    "Q": "If there are 5 penguins and 4 seals, how many animals are there?",
+                    "A": "9"
+                }
+            ],
+            "Medium": [
+                {
+                    "Q": "If there are 10 lions and 15 deer, how many animals are there?",
+                    "A": 25
+                },
+                {
+                    "Q": "If there are 12 sheep and 14 ducks, how many animals are there?",
+                    "A": 26
+                },
+                {
+                    "Q": "If there are 11 pandas and 13 koalas, how many animals are there?",
+                    "A": 24
+                },
+                {
+                    "Q": "If there are 9 buffalo and 16 snakes, how many animals are there?",
+                    "A": 25
+                },
+                {
+                    "Q": "If there are 8 donkeys and 17 flamingos, how many animals are there?",
+                    "A": 25
+                },
+                {
+                    "Q": "If there are 15 geese and 10 swans, how many animals are there?",
+                    "A": 25
+                },
+                {
+                    "Q": "If there are 14 owls and 11 bats, how many animals are there?",
+                    "A": 25
+                },
+                {
+                    "Q": "If there are 13 parrots and 12 squirrels, how many animals are there?",
+                    "A": 25
+                },
+                {
+                    "Q": "If there are 10 turtles and 20 rabbits, how many animals are there?",
+                    "A": 30
+                },
+                {
+                    "Q": "If there are 18 cats and 7 dogs, how many animals are there?",
+                    "A": 25
+                },
+                {
+                    "Q": "If there are 19 donkeys and 6 elephants, how many animals are there?",
+                    "A": 25
+                },
+                {
+                    "Q": "If there are 20 lions and 5 giraffes, how many animals are there?",
+                    "A": 25
+                },
+                {
+                    "Q": "If there are 21 snakes and 4 frogs, how many animals are there?",
+                    "A": 25
+                },
+                {
+                    "Q": "If there are 22 zebras and 3 bears, how many animals are there?",
+                    "A": 25
+                },
+                {
+                    "Q": "If there are 23 dolphins and 2 whales, how many animals are there?",
+                    "A": 25
+                }
+            ],
+            "Hard": [
+                {
+                    "Q": "If there are 100 chickens and 200 cows, how many animals are there?",
+                    "A": 300
+                },
+                {
+                    "Q": "If there are 150 parrots and 250 peacocks, how many animals are there?",
+                    "A": 400
+                },
+                {
+                    "Q": "If there are 125 dolphins and 375 sharks, how many animals are there?",
+                    "A": 500
+                },
+                {
+                    "Q": "If there are 300 penguins and 400 seals, how many animals are there?",
+                    "A": 700
+                },
+                {
+                    "Q": "If there are 225 flamingos and 275 owls, how many animals are there?",
+                    "A": 500
+                },
+                {
+                    "Q": "If there are 500 fish and 500 turtles, how many animals are there?",
+                    "A": 1000
+                },
+                {
+                    "Q": "If there are 450 goats and 550 sheep, how many animals are there?",
+                    "A": 1000
+                },
+                {
+                    "Q": "If there are 600 ducks and 400 geese, how many animals are there?",
+                    "A": 1000
+                },
+                {
+                    "Q": "If there are 800 horses and 200 zebras, how many animals are there?",
+                    "A": 1000
+                },
+                {
+                    "Q": "If there are 900 kangaroos and 100 koalas, how many animals are there?",
+                    "A": 1000
+                },
+                {
+                    "Q": "If there are 750 lizards and 250 snakes, how many animals are there?",
+                    "A": 1000
+                },
+                {
+                    "Q": "If there are 1000 ants and 1000 spiders, how many animals are there?",
+                    "A": 2000
+                },
+                {
+                    "Q": "If there are 1500 mice and 500 rats, how many animals are there?",
+                    "A": 2000
+                },
+                {
+                    "Q": "If there are 1200 bees and 800 butterflies, how many animals are there?",
+                    "A": 2000
+                },
+                {
+                    "Q": "If there are 1750 crabs and 250 lobsters, how many animals are there?",
+                    "A": 2000
+                }
+            ]
+        }
+    }
+}

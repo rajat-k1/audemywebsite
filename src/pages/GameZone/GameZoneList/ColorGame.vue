@@ -12,7 +12,7 @@
         </div>
         <div class="flex flex-col my-2 mx-56 h-96 justify-center items-center">
             <div class="m-10 py-4 text-center">
-                <h1 class="text-4.5xl font-bold">Vocabulary Vortex</h1>
+                <h1 class="text-4.5xl font-bold">Color Game</h1>
             </div>
             <div v-if="playButton === false">
                 <button
@@ -86,15 +86,15 @@ const generateQuestions = () => {
         }
     }
     // Fetch questions from JSON file
-    fetch("/assets/questionsDb/VocabVortexDB.json")
+    fetch("/assets/questionsDb/crazyColorsDB.json")
         .then((response) => response.json())
         .then((data) => {
             console.log(
                 "Questions:",
-                data["VocabVortexGame"]["Questions"]["Easy"]
+                data["ColorQuizGame"]["Questions"]["Easy"]
             );
             // Process the questions data as needed
-            questionsDb = data["VocabVortexGame"]["Questions"]["Easy"];
+            questionsDb = data["ColorQuizGame"]["Questions"]["Easy"];
         })
         .catch((error) => {
             console.error("Error fetching questions:", error);
@@ -167,7 +167,7 @@ onMounted(() => {
 
     watch(playButton, (newVal) => {
         if (newVal) {
-            const introAudio = playIntro("/vocabVortex/vortexintro.mp3");
+            const introAudio = playIntro("/colorGame/colorIntro.mp3");
             currentAudios.push(introAudio);
             introAudio.onended = playNextQuestion;
         }
