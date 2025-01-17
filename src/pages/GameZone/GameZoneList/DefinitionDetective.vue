@@ -80,7 +80,7 @@ const generateQuestions = () => {
     console.log("Generating Questions...");
     // Generate 5 random numbers for the questions
     while (randQueNum.length < 5) {
-        let num = Math.floor(Math.random() * 15);
+        let num = Math.floor(Math.random() * 10);
         if (!randQueNum.includes(num)) {
             randQueNum.push(num);
         }
@@ -167,12 +167,14 @@ onMounted(() => {
 
     watch(playButton, (newVal) => {
         if (newVal) {
-            const introAudio = playIntro("/definitionDetective/definitionIntro.mp3");
+            const introAudio = playIntro(
+                "/definitionDetective/definitionIntro.mp3"
+            );
             currentAudios.push(introAudio);
             introAudio.onended = playNextQuestion;
         }
     });
-    
+
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
 });
