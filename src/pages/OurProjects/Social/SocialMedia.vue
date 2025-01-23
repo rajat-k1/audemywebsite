@@ -16,11 +16,11 @@
 
         <div class="mt-10 relative">
             <img
-                src="/public/assets/images/our-projects/tablet.png"
+                src="/assets/images/our-projects/tablet.png"
                 class="h-96"
             />
             <img
-                src="/public/assets/images/our-projects/Vector Stroke.png"
+                src="/assets/images/our-projects/Vector Stroke.png"
                 class="absolute -top-16 -right-28"
             />
             <!-- iFrame: Latest Youtube Video Uploaded -->
