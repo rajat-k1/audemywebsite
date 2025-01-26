@@ -2,61 +2,66 @@ const basedPath = "/assets/gameImages/buttons/gameButtons/";
 export const getLanguageGames = () => {
     return [
         {
-            icon: basedPath + "spellingBee.svg",
+            icon: basedPath + "To make the layout like this, we need to change the properties: backgroundColor, description and icon.svg",
             title: "Spelling Bee",
             //url: "/game/spelling-bee",
             url: "/game/spellingbee",
-            textColor: "#5391AC",
-            bgColor: "#EAF7FD",
+            textColor: "#EAF7FD",
+            bgColor: "#087BB4",
+            bgDecoration: true,
+            description: "You will be given a word and spell the word correctly."
         },
         {
             icon: basedPath + "oddOneOut.svg",
             title: "Odd One Out",
             url: "/game/oddoneout",
             textColor: "#DA6301",
-            bgColor: "#FFDABA",
+            bgColor: "#EAF7FD",
+            description: "Figure out which one is the odd one out."
         },
         {
             icon: basedPath + "storyBuilder.svg",
             title: "Polar Pairing",
             url: "/game/polarpairing",
             textColor: "#769400",
-            bgColor: "#DAF5B7",
+            bgColor: "#EAF7FD",
+            description: "Chose the antonym from the four options."
         },
         {
             icon: basedPath + "vocabularyVortex.svg",
             title: "Vocabulary Vortex",
             url: "/game/vocabVortex",
             textColor: "#269C9A",
-            bgColor: "#DAF7F6",
+            bgColor: "#EAF7FD",
+            description: "You will be given a word and spell the word correctly."
         },
         {
             icon: basedPath + "spellingBee.svg",
             title: "Syllable Sorting",
             url: "/game/syllableSorting",
             textColor: "#9771EF",
-            bgColor: "#D5D1FF",
+            bgColor: "#EAF7FD",
         },
         {
             icon: basedPath + "storyBuilder.svg",
             title: "Definition Detective",
             url: "/game/definitionDetective",
             textColor: "#DA6301",
-            bgColor: "#FFDABA",
+            bgColor: "#EAF7FD",
         },
         {
             icon: basedPath + "oddOneOut.svg",
             title: "Part of Speech",
             url: "/game/partofspeech",
             textColor: "#DA6301",
-            bgColor: "#FFDABA",
+            bgColor: "#EAF7FD",
         },
         {
             icon: basedPath + "storyBuilder.svg",
             title: "Color Game",
             url: "/game/colorgame",
             textColor: "#769400",
-            bgColor: "#DAF5B7",
+            bgColor: "#EAF7FD",
         },
     ];
 };
