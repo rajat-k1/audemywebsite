@@ -2,38 +2,40 @@ const basedPath = "/assets/gameImages/buttons/gameButtons/";
 export const getLanguageGames = () => {
     return [
         {
-            icon: basedPath + "To make the layout like this, we need to change the properties: backgroundColor, description and icon.svg",
+            icon: basedPath + "spellingBee.svg",
             title: "Spelling Bee",
             //url: "/game/spelling-bee",
             url: "/game/spellingbee",
-            textColor: "#EAF7FD",
-            bgColor: "#087BB4",
+            textColor: "#000000",
+            bgColor: "#F8DA22",
             bgDecoration: true,
-            description: "You will be given a word and spell the word correctly."
+            description:
+                "You will be given a word and spell the word correctly.",
         },
         {
             icon: basedPath + "oddOneOut.svg",
             title: "Odd One Out",
             url: "/game/oddoneout",
-            textColor: "#DA6301",
-            bgColor: "#EAF7FD",
-            description: "Figure out which one is the odd one out."
+            textColor: "#000000",
+            bgColor: "#69E7FD",
+            description: "Figure out which one is the odd one out.",
         },
         {
-            icon: basedPath + "storyBuilder.svg",
+            icon: basedPath + "strawberry.svg",
             title: "Polar Pairing",
             url: "/game/polarpairing",
-            textColor: "#769400",
-            bgColor: "#EAF7FD",
-            description: "Chose the antonym from the four options."
+            textColor: "#000000",
+            bgColor: "#FC716C",
+            description: "Chose the antonym from the four options.",
         },
         {
-            icon: basedPath + "vocabularyVortex.svg",
+            icon: basedPath + "book.svg",
             title: "Vocabulary Vortex",
             url: "/game/vocabVortex",
-            textColor: "#269C9A",
-            bgColor: "#EAF7FD",
-            description: "You will be given a word and spell the word correctly."
+            textColor: "#000000",
+            bgColor: "#4C88F8",
+            description:
+                "You will be given a word and spell the word correctly.",
         },
         {
             icon: basedPath + "spellingBee.svg",
