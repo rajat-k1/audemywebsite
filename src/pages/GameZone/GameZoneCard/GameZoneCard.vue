@@ -42,7 +42,7 @@ const props = defineProps({
                 v-if="description"
                 id="description"
                 class="font-poppins text-[24px] mobile:text-[12px] tablet:text-[20px]"
-                :class="!bgDecoration ? 'text-[#6E777C]' : ''"
+                :style="!bgDecoration ? 'text-[#6E777C]' : ''"
             >
                 {{ description }}
             </h3>
