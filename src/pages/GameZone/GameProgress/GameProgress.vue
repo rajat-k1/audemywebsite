@@ -16,12 +16,12 @@
             <div class="flex flex-row items-center w-full">
                 <!-- Arrow Swipe Left -->
                 <div class="flex justify-center w-1/6">
-                    <button>
+                    <button @click="langScrollLeft" class=" py-32  px-4">
                         <img src="/assets/gameImages/buttons/arrow-slide-back.svg" class="h-14"/>
                     </button>
                 </div>
                 <!-- Horizontal Game List -->
-                <div class="flex flex-row overflow-auto gap-16 w-4/6 p-2">
+                <div class="flex flex-row overflow-auto gap-16 w-4/6 p-2 lang_gameList">
                     <div v-for="game in languageGames" class="basis-1/4 flex-none">
                         <div><img src="/assets/myProgress/stage1.svg" class="object-fill"/></div>
                         <div class="flex justify-center pt-2">{{ game.title }}</div>
@@ -30,7 +30,7 @@
                 </div>
                 <!-- Arrow Swipe Right -->
                 <div class="flex justify-center w-1/6">
-                    <button>
+                    <button @click="langScrollRight" class="py-32  px-4">
                         <img src="/assets/gameImages/buttons/arrow-slide-forward.svg" class="h-14"/>
                     </button>
                 </div>
@@ -61,12 +61,12 @@
             <div class="flex flex-row items-center w-full">
                 <!-- Arrow Swipe Left -->
                 <div class="flex justify-center w-1/6">
-                    <button>
+                    <button @click="mathScrollLeft" class="py-32  px-4">
                         <img src="/assets/gameImages/buttons/arrow-slide-back.svg" class="h-14"/>
                     </button>
                 </div>
                 <!-- Horizontal Game List -->
-                <div class="flex flex-row overflow-auto gap-16 w-4/6 p-2">
+                <div class="flex flex-row overflow-auto gap-16 w-4/6 p-2 math_gameList">
                     <div v-for="game in mathGames" class="basis-1/4 flex-none">
                         <div><img src="/assets/myProgress/stage2.svg" class="object-fill"/></div>
                         <div class="flex justify-center pt-2">{{ game.title }}</div>
@@ -75,7 +75,7 @@
                 </div>
                 <!-- Arrow Swipe Right -->
                 <div class="flex justify-center w-1/6">
-                    <button>
+                    <button @click="mathScrollRight" class="py-32  px-4">
                         <img src="/assets/gameImages/buttons/arrow-slide-forward.svg" class="h-14"/>
                     </button>
                 </div>
@@ -107,6 +107,28 @@ export default {
     let languageGames = ref(getLanguageGames());
     let mathGames = ref(getMathGames());
     return { userName, languageGames, mathGames };
-  }
+  },
+  methods: {
+    langScrollRight() {
+      let content = document.querySelector(".lang_gameList");
+      console.log(content);
+      content.scrollLeft += 100;
+    },
+    langScrollLeft() {
+      let content = document.querySelector(".lang_gameList");
+      console.log(content);
+      content.scrollLeft -= 100;
+    },
+    mathScrollRight() {
+      let content = document.querySelector(".math_gameList");
+      console.log(content);
+      content.scrollLeft += 100;
+    },
+    mathScrollLeft() {
+      let content = document.querySelector(".math_gameList");
+      console.log(content);
+      content.scrollLeft -= 100;
+    },
+  },
 };
 </script>
