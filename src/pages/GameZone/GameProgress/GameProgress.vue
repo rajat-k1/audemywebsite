@@ -11,10 +11,69 @@
             <div class="text-[25px]">
                 My Language Lab Journey
             </div>
+
+            <div>
+                <div>{{ languageGames }}</div>
+            </div>
             
             <!-- Games -->
-            <div>
-                <img src="/public/assets/gameImages/buttons/gameButtons/multiplicationMadness.svg" />
+            <div class="flex flex-row items-center w-full">
+                <!-- Arrow Swipe Left -->
+                <div class="flex justify-center w-1/6">
+                    <button class="text-4xl h-full">
+                        <img src="/assets/gameImages/buttons/arrow-slide-back.svg" class="h-12 hover:bg-gray-300"/>
+                    </button>
+                </div>
+                <!-- Horizontal Game List -->
+                <div class="flex overflow-auto gap-16 w-4/6 p-2">
+                    
+                    <div>
+                        <img src="/assets/myProgress/stage2.svg" class="object-fill"/>
+                        <div>GameName</div>
+                        <div>Level</div>
+                    </div>
+                    <div>
+                        <img src="/assets/myProgress/stage1.svg" class="object-fill"/>
+                        <div>GameName</div>
+                        <div>Level</div>
+                    </div>
+                    <div>
+                        <img src="/assets/myProgress/stage2.svg" class="object-fill"/>
+                        <div>GameName</div>
+                        <div>Level</div>
+                    </div>
+                    <div>
+                        <img src="/assets/myProgress/stage3.svg" class="object-fill"/>
+                        <div>GameName</div>
+                        <div>Level</div>
+                    </div>
+                    <div>
+                        <img src="/assets/myProgress/stage1.svg" class="object-fill"/>
+                        <div>GameName</div>
+                        <div>Level</div>
+                    </div>
+                    <div>
+                        <img src="/assets/myProgress/stage3.svg" class="object-fill"/>
+                        <div>GameName</div>
+                        <div>Level</div>
+                    </div>
+                    <div>
+                        <img src="/assets/myProgress/stage2.svg" class="object-fill"/>
+                        <div>GameName</div>
+                        <div>Level</div>
+                    </div>
+                    <div>
+                        <img src="/assets/myProgress/stage1.svg" class="object-fill"/>
+                        <div>GameName</div>
+                        <div>Level</div>
+                    </div>
+                </div>
+                <!-- Arrow Swipe Right -->
+                <div class="flex justify-center w-1/6">
+                    <button>
+                        <img src="/assets/gameImages/buttons/arrow-slide-forward.svg" class="h-12 hover:bg-gray-300"/>
+                    </button>
+                </div>
             </div>
 
             <!-- Progress Status -->
@@ -61,16 +120,14 @@
 
 <script>
 import { ref } from 'vue';
-import GameZoneCard from '../GameZoneCard/GameZoneCard.vue';
 import { getLanguageGames, getMathGames } from "../GameDB.js";
-import SampleImage from '../../../../public/assets/gameImages/buttons/gameButtons/multiplicationMadness.svg';
 
+let languageGames = ref();
+languageGames = getLanguageGames();
 
-const games = ref([]);
-const getGames = (type) => {
-    games.value = getLanguageGames();
-    console.log(games.value);
-};
+for (let i = 0; i < languageGames.length; i++) {
+    console.log(languageGames[i].title);
+}
 
 export default {
   setup() {
