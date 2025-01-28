@@ -35,19 +35,6 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Progress Status -->
-            <div class="flex flex-row gap-12 px-20 pt-10 items-center w-full">
-                <!-- Percentage -->
-                <div class="w-1/4">
-                    <div>25% achieved </div>
-                    <div class="text-gray-500 text-xs">5 more levels to unlock</div>
-                </div>
-                <!-- Progress Bar -->
-                <div class="w-3/4 bg-[#a999dd] rounded-xl h-3">
-                    <div class="bg-[#725AC0] h-3 rounded-xl" style="width: 25%"></div>
-                </div>
-            </div>
         </div>
 
         <!-- Math Magic Journey -->
@@ -78,19 +65,6 @@
                     <button @click="mathScrollRight" class="py-32  px-4">
                         <img src="/assets/gameImages/buttons/arrow-slide-forward.svg" class="h-14"/>
                     </button>
-                </div>
-            </div>
-
-            <!-- Progress Status -->
-            <div class="flex flex-row gap-12 px-20 items-center w-full">
-                <!-- Percentage -->
-                <div class="w-1/4">
-                    <div>55% achieved </div>
-                    <div class="text-gray-500 text-xs">5 more levels to unlock</div>
-                </div>
-                <!-- Progress Bar -->
-                <div class="w-3/4 bg-[#79e2e2] rounded-xl h-3">
-                    <div class="bg-[#28afb0] h-3 rounded-xl" style="width: 55%"></div>
                 </div>
             </div>
         </div>
