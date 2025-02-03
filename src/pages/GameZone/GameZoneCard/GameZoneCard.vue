@@ -9,6 +9,7 @@ const props = defineProps({
     textColor: String,
     bgColor: String,
     bgDecoration: Boolean,
+    bgImage: String,
 });
 </script>
 
@@ -25,9 +26,9 @@ const props = defineProps({
         />
         <img
             v-if="bgDecoration"
-            src="/assets/gameImages/bg-decoration.svg"
-            alt="Game icon"
-            class="h-full absolute top-0 right-0"
+            :src="bgImage"
+            alt="BG Game icon"
+            class="h-1/2 absolute top-2 right-2"
         />
         <div class="w-full absolute bottom-0 left-0 p-4 z-50">
             <div class="w-full" :class="{ 'mb-5': description }">

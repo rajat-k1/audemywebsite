@@ -9,6 +9,7 @@ export const getLanguageGames = () => {
             textColor: "#000000",
             bgColor: "#F7DA21",
             bgDecoration: true,
+            bgImage: "/assets/gameImages/bg-decoration.svg",
             description:
                 "You will be given a word and spell the word correctly.",
         },
@@ -26,7 +27,7 @@ export const getLanguageGames = () => {
             url: "/game/polarpairing",
             textColor: "#000000",
             bgColor: "#FF9A22",
-            description: "Chose the antonym from the four options.",
+            description: "Choose the antonym from the four options.",
         },
         {
             icon: basedPath + "book.svg",
@@ -43,6 +44,7 @@ export const getLanguageGames = () => {
             url: "/game/syllableSorting",
             textColor: "#000000",
             bgColor: "#6B7FFF",
+            description: "< To be added >",
         },
         {
             icon: basedPath + "definition.svg",
@@ -50,6 +52,7 @@ export const getLanguageGames = () => {
             url: "/game/definitionDetective",
             textColor: "#000000",
             bgColor: "#28B8CA",
+            description: "< To be added >",
         },
         {
             icon: basedPath + "pos.svg",
@@ -57,6 +60,7 @@ export const getLanguageGames = () => {
             url: "/game/partofspeech",
             textColor: "#000000",
             bgColor: "#00C275",
+            description: "< To be added >",
         },
         {
             icon: basedPath + "color-game.svg",
@@ -64,6 +68,7 @@ export const getLanguageGames = () => {
             url: "/game/colorgame",
             textColor: "#000000",
             bgColor: "#0EA1EA",
+            description: "< To be added >",
         },
     ];
 };
@@ -76,6 +81,7 @@ export const getMathGames = () => {
             url: "/game/addition",
             textColor: "#000000",
             bgColor: "#FF82E0",
+            description: "< To be added >",
         },
         {
             icon: basedPath + "subtraction.svg",
@@ -83,6 +89,9 @@ export const getMathGames = () => {
             url: "/game/subtraction",
             textColor: "#000000",
             bgColor: "#28B8CA",
+            bgDecoration: true,
+            bgImage: "/assets/gameImages/bg-sub.svg",
+            description: "< To be added >",
         },
         {
             icon: basedPath + "mul.svg",
@@ -90,6 +99,9 @@ export const getMathGames = () => {
             url: "/game/multiplicationmadness",
             textColor: "#000000",
             bgColor: "#6B7FFF",
+            bgDecoration: true,
+            bgImage: "/assets/gameImages/bg-mul.svg",
+            description: "< To be added >",
         },
         {
             icon: basedPath + "div.svg",
@@ -97,6 +109,7 @@ export const getMathGames = () => {
             url: "game/DivisionDuel",
             textColor: "#000000",
             bgColor: "#00C275",
+            description: "< To be added >",
         },
         {
             icon: basedPath + "cc.svg",
@@ -104,6 +117,9 @@ export const getMathGames = () => {
             url: "/game/carcounting",
             textColor: "#000000",
             bgColor: "#F7DA21",
+            bgDecoration: true,
+            bgImage: "/assets/gameImages/bg-cc.svg",
+            description: "< To be added >",
         },
         {
             icon: basedPath + "ff.svg",
@@ -111,6 +127,7 @@ export const getMathGames = () => {
             url: "/game/fruitfrenzy",
             textColor: "#000000",
             bgColor: "#FF9A22",
+            description: "< To be added >",
         },
         {
             icon: basedPath + "mm.svg",
@@ -118,6 +135,9 @@ export const getMathGames = () => {
             url: "/game/monkeymadness",
             textColor: "#000000",
             bgColor: "#F56A6C",
+            bgDecoration: true,
+            bgImage: "/assets/gameImages/bg-mm.svg",
+            description: "< To be added >",
         },
         {
             icon: basedPath + "ss.svg",
@@ -125,6 +145,7 @@ export const getMathGames = () => {
             url: "/game/shapeshark",
             textColor: "#000000",
             bgColor: "#0EA1EA",
+            description: "< To be added >",
         },
     ];
 };
