@@ -9,7 +9,7 @@ export const getLanguageGames = () => {
             textColor: "#323232",
             bgColor: "#F7DA21",
             bgDecoration: true,
-            bgImage: "/assets/gameImages/bg-decoration.svg",
+            bgImage: "/assets/gameImages/bg-spelling.svg",
             description: "Buzz your way to spelling mastery!",
         },
         {
@@ -34,8 +34,9 @@ export const getLanguageGames = () => {
             url: "/game/vocabVortex",
             textColor: "#323232",
             bgColor: "#F56A6C",
-            description:
-                "Dive into the vocabulary vortex and match the word to its definition.",
+            bgDecoration: true,
+            bgImage: "/assets/gameImages/bg-vocab.svg",
+            description: "Dive into the vocabulary vortex and match the word to its definition.",
         },
         {
             icon: basedPath + "book.svg",
@@ -43,6 +44,8 @@ export const getLanguageGames = () => {
             url: "/game/syllableSorting",
             textColor: "#323232",
             bgColor: "#6B7FFF",
+            bgDecoration: true,
+            bgImage: "/assets/gameImages/bg-syllable.svg",
             description: "Can you count the syllables in a given word?",
         },
         {
@@ -67,6 +70,8 @@ export const getLanguageGames = () => {
             url: "/game/definitionDetective",
             textColor: "#323232",
             bgColor: "#28B8CA",
+            bgDecoration: true,
+            bgImage: "/assets/gameImages/bg-definition.svg",
             description: "Find the correct word based on the definition.",
         },
     ];
