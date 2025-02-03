@@ -28,7 +28,7 @@ const props = defineProps({
             v-if="bgDecoration"
             :src="bgImage"
             alt="BG Game icon"
-            class="h-1/2 absolute top-2 right-2"
+            class="h-3/4 absolute top-0 right-0 rounded-xl"
         />
         <div class="w-full absolute bottom-0 left-0 p-4 z-50">
             <div class="w-full" :class="{ 'mb-5': description }">
@@ -42,7 +42,7 @@ const props = defineProps({
             <h3
                 v-if="description"
                 id="description"
-                class="font-poppins text-[24px] mobile:text-[12px] tablet:text-[20px]"
+                class="font-poppins  text-[24px] mobile:text-[12px] tablet:text-[20px]"
                 :style="!bgDecoration ? 'text-[#6E777C]' : ''"
             >
                 {{ description }}
