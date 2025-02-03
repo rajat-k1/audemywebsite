@@ -131,7 +131,8 @@ const handleKeyDown = (event) => {
             console.log("User Answer:", transcript);
             console.log("Correct Answer:", question["A"]);
             transcription.value = transcript;
-            if (transcript.trim() === question["A"]) {
+            const answers = question["A"].map((ans) => ans.toLowerCase());
+            if (answers.includes(transcript.trim().toLowerCase())) {
                 score.value++;
                 console.log("Correct Answer!");
                 playSound("correctaudio.mp3");
