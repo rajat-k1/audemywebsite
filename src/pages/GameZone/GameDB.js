@@ -10,16 +10,7 @@ export const getLanguageGames = () => {
             bgColor: "#F7DA21",
             bgDecoration: true,
             bgImage: "/assets/gameImages/bg-decoration.svg",
-            description:
-                "You will be given a word and spell the word correctly.",
-        },
-        {
-            icon: basedPath + "oddOneOut.svg",
-            title: "Odd One Out",
-            url: "/game/oddoneout",
-            textColor: "#323232",
-            bgColor: "#FF82E0",
-            description: "Figure out which one is the odd one out.",
+            description: "Buzz your way to spelling mastery!",
         },
         {
             icon: basedPath + "strawberry.svg",
@@ -27,7 +18,15 @@ export const getLanguageGames = () => {
             url: "/game/polarpairing",
             textColor: "#323232",
             bgColor: "#FF9A22",
-            description: "Choose the antonym from the four options.",
+            description: "Test your vocabulary with polar opposites.",
+        },
+        {
+            icon: basedPath + "oddOneOut.svg",
+            title: "Odd One Out",
+            url: "/game/oddoneout",
+            textColor: "#323232",
+            bgColor: "#FF82E0",
+            description: "Can you find what doesn’t belong?",
         },
         {
             icon: basedPath + "book.svg",
@@ -36,7 +35,7 @@ export const getLanguageGames = () => {
             textColor: "#323232",
             bgColor: "#F56A6C",
             description:
-                "You will be given a word and spell the word correctly.",
+                "Dive into the vocabulary vortex and match the word to its definition.",
         },
         {
             icon: basedPath + "book.svg",
@@ -44,23 +43,7 @@ export const getLanguageGames = () => {
             url: "/game/syllableSorting",
             textColor: "#323232",
             bgColor: "#6B7FFF",
-            description: "< To be added >",
-        },
-        {
-            icon: basedPath + "definition.svg",
-            title: "Definition Detective",
-            url: "/game/definitionDetective",
-            textColor: "#323232",
-            bgColor: "#28B8CA",
-            description: "< To be added >",
-        },
-        {
-            icon: basedPath + "pos.svg",
-            title: "Part of Speech",
-            url: "/game/partofspeech",
-            textColor: "#323232",
-            bgColor: "#00C275",
-            description: "< To be added >",
+            description: "Can you count the syllables in a given word?",
         },
         {
             icon: basedPath + "color-game.svg",
@@ -68,7 +51,23 @@ export const getLanguageGames = () => {
             url: "/game/colorgame",
             textColor: "#323232",
             bgColor: "#0EA1EA",
-            description: "< To be added >",
+            description: "Name the color of a given object!",
+        },
+        {
+            icon: basedPath + "pos.svg",
+            title: "Part of Speech",
+            url: "/game/partofspeech",
+            textColor: "#323232",
+            bgColor: "#00C275",
+            description: "Noun, verb, or adjective?",
+        },
+        {
+            icon: basedPath + "definition.svg",
+            title: "Definition Detective",
+            url: "/game/definitionDetective",
+            textColor: "#323232",
+            bgColor: "#28B8CA",
+            description: "Find the correct word based on the definition.",
         },
     ];
 };

@@ -16,7 +16,7 @@ const props = defineProps({
 <template>
     <div
         @click="$emit('selectGame', url)"
-        class="w-full h-[320px] mobile:h-[160px] rounded-[16px] border-[2px] border-[#323232] shadow-[4px_4px_0px_#323232] p-5 relative flex justify-center items-center"
+        class="w-full h-[320px] mobile:h-[160px] rounded-[16px] border-[5px] border-[#323232] shadow-2xl  p-5 relative flex justify-center items-center"
         :style="{ backgroundColor: bgColor, color: textColor ?? '#323232' }"
     >
         <img
@@ -31,22 +31,22 @@ const props = defineProps({
             class="h-3/4 absolute top-0 right-0 rounded-xl"
         />
         <div class="w-full absolute bottom-0 left-0 p-4 z-50">
-            <div class="w-full" :class="{ 'mb-5': description }">
-                <h3
+            <div class="w-full" :class="{ 'mb-0': description }">
+                <div
                     id="title"
                     class="font-poppins text-[50px] tablet:text-[40px] mobile:text-[20px] text-wrap font-semibold"
                 >
                     {{ title }}
-                </h3>
+                </div>
             </div>
-            <h3
+            <div
                 v-if="description"
                 id="description"
-                class="font-poppins  text-[24px] mobile:text-[12px] tablet:text-[20px]"
+                class="font-poppins text-[24px] mobile:text-[12px] tablet:text-[20px]"
                 :style="!bgDecoration ? 'text-[#6E777C]' : ''"
             >
                 {{ description }}
-            </h3>
+            </div>
         </div>
     </div>
 </template>
