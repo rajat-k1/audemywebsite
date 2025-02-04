@@ -46,15 +46,43 @@
             "Medium": [
                 {
                     "Q": "If there are 10 lions and 15 deer, how many animals are there?",
-                    "A": ["25", "twenty-five"]
+                    "A": ["25", "twenty-five", "twenty five"]
                 },
                 {
                     "Q": "If there are 12 sheep and 14 ducks, how many animals are there?",
-                    "A": ["26", "twenty-six"]
+                    "A": ["26", "twenty-six", "twenty six"]
                 },
                 {
                     "Q": "If there are 11 pandas and 13 koalas, how many animals are there?",
-                    "A": ["24", "twenty-four"]
+                    "A": ["24", "twenty-four", "twenty four"]
+                },
+                {
+                    "Q": "If there are 9 tigers and 18 zebras, how many animals are there?",
+                    "A": ["27", "twenty-seven", "twenty seven"]
+                },
+                {
+                    "Q": "If there are 15 monkeys and 12 parrots, how many animals are there?",
+                    "A": ["27", "twenty-seven", "twenty seven"]
+                },
+                {
+                    "Q": "If there are 8 wolves and 16 foxes, how many animals are there?",
+                    "A": ["24", "twenty-four", "twenty four"]
+                },
+                {
+                    "Q": "If there are 13 rabbits and 14 owls, how many animals are there?",
+                    "A": ["27", "twenty-seven", "twenty seven"]
+                },
+                {
+                    "Q": "If there are 17 cats and 9 hamsters, how many animals are there?",
+                    "A": ["26", "twenty-six", "twenty six"]
+                },
+                {
+                    "Q": "If there are 14 snakes and 11 frogs, how many animals are there?",
+                    "A": ["25", "twenty-five", "twenty five"]
+                },
+                {
+                    "Q": "If there are 10 elephants and 13 rhinos, how many animals are there?",
+                    "A": ["23", "twenty-three", "twenty three"]
                 }
             ],
             "Hard": [
