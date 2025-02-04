@@ -91,6 +91,7 @@ onUnmounted(() => {
             <img
                 src="/assets/images/our-projects/Mask group.png"
                 class="absolute w-[40%] -top-48 right-0 -z-10 mobile:relative mobile:w-full mobile:top-0"
+                alt="Mask Group Image"
             />
             <!-- Image of students w/ Crystal -->
             <img
