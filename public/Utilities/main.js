@@ -45,7 +45,7 @@
 		// Button.
 			$(
 				'<div id="navButton">' +
-					'<a href="#navPanel" class="toggle"></a>' +
+					'<a href="#navPanel" class="toggle" aria-label="Nav Panel"></a>' +
 				'</div>'
 			)
 				.appendTo($body);

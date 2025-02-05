@@ -89,7 +89,7 @@ const teachers = [
     </div>
 
     <div
-        class="relative w-[33vw] h-[19vw] pl-[1rem] pt-[6rem] rounded-b-[8px] bg-white border-b-2 border-l-2 border-r-2 border-black shadow-[1px_3px_4px_#2F3E45] mobile:w-[80vw] mobile:h-[80vw] mobile:-ml-10"
+        class="relative w-[33vw] pl-[1rem] py-[2rem] rounded-b-[8px] bg-white border-b-2 border-l-2 border-r-2 border-black shadow-[1px_3px_4px_#2F3E45] mobile:w-[80vw] mobile:h-[80vw] mobile:-ml-10"
     >
         <div v-if="currentPage != 2">
             <SchoolsList
@@ -110,6 +110,7 @@ const teachers = [
         <img
             src="/assets/images/impact/glasses.svg"
             class="absolute -right-[1rem] -bottom-[1.3rem]"
+            alt="Glasses Image"
         />
     </div>
 </template>

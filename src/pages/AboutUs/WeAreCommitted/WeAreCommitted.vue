@@ -83,6 +83,7 @@ onUnmounted(() => {
                 <img
                     src="/assets/images/our-projects/Mask group.png"
                     class="absolute w-[90%] object-cover -top-48 -right-40 -z-10 mobile:hidden"
+                    alt="Image"
                 />
                 <img
                     src="/assets/images/about-us/childPlaying-tablet.png"

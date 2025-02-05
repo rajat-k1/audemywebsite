@@ -15,6 +15,7 @@ const props = defineProps({
                     <img
                         src="/assets/images/impact/starBullet.svg"
                         class="mr-2 inline-block"
+                        alt="Star Bullet Image"
                     />
                     <a
                         class="text-center text-[16px] text-body-text-color font-poppins tablet:text-[16px] font-[400]"
