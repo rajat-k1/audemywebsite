@@ -24,7 +24,10 @@
                 </button>
             </div>
             <div
-                v-else-if="numOfAudiosPlayed < 5 && playButton === true"
+                v-else-if="
+                    numOfAudiosPlayed < allQuestionslength &&
+                    playButton === true
+                "
                 class="flex flex-col p-4 justify-center"
                 id="content"
             >
@@ -45,7 +48,7 @@
                     Game Over
                 </div>
                 <div class="text-center text-xl font-medium pt-2 pb-1">
-                    Score: {{ score }} / 5
+                    Score: {{ score }} / {{ allQuestionslength }}
                 </div>
             </div>
         </div>
@@ -76,26 +79,29 @@ let questionsDb = [],
     transcription = ref(""),
     playButton = ref(false);
 
+let allQuestionslength = 0;
 // Generate multiplication questions using Json file
 const generateQuestions = () => {
     console.log("Generating Questions...");
-    // Generate 5 random numbers for the questions
-    while (randQueNum.length < 5) {
-        let num = Math.floor(Math.random() * 10);
-        if (!randQueNum.includes(num)) {
-            randQueNum.push(num);
-        }
-    }
-    // Fetch questions from JSON file
     fetch("/assets/questionsDb/subtractionDB.json")
         .then((response) => response.json())
         .then((data) => {
-            console.log(
-                "Questions:",
-                data["SubtractionGame"]["Questions"]["Easy"]
-            );
-            // Process the questions data as needed
-            questionsDb = data["SubtractionGame"]["Questions"]["Easy"];
+            let allQuestions = [
+                ...data["SubtractionGame"]["Questions"]["Easy"],
+                ...data["SubtractionGame"]["Questions"]["Medium"],
+                ...data["SubtractionGame"]["Questions"]["Hard"],
+            ];
+            allQuestionslength = allQuestions.length;
+            while (randQueNum.length < allQuestionslength) {
+                let num = Math.floor(Math.random() * allQuestions.length);
+                if (!randQueNum.includes(num)) {
+                    randQueNum.push(num);
+                }
+            }
+
+            questionsDb = allQuestions;
+            console.log("Questions generated!");
+            console.log(questionsDb);
         })
         .catch((error) => {
             console.error("Error fetching questions:", error);
@@ -104,7 +110,7 @@ const generateQuestions = () => {
 
 // Play the next question
 const playNextQuestion = () => {
-    if (numOfAudiosPlayed.value < 5) {
+    if (numOfAudiosPlayed.value < allQuestionslength) {
         const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
         console.log(question);
         currentAudios.push(playQuestion(question["Q"]));
@@ -116,7 +122,7 @@ const handleKeyDown = (event) => {
     if (
         event.code === "Space" &&
         !isListening.value &&
-        numOfAudiosPlayed.value < 5
+        numOfAudiosPlayed.value < allQuestionslength
     ) {
         isListening.value = true;
         startListening((transcript) => {
@@ -125,7 +131,8 @@ const handleKeyDown = (event) => {
             console.log("User Answer:", transcript);
             console.log("Correct Answer:", question["A"]);
             transcription.value = transcript;
-            if (transcript.trim() === question["A"]) {
+            const answers = question["A"].map((ans) => ans.toLowerCase());
+            if (answers.includes(transcript.trim().toLowerCase())) {
                 score.value++;
                 console.log("Correct Answer!");
                 playSound("correctaudio.mp3");
@@ -136,7 +143,7 @@ const handleKeyDown = (event) => {
             stopListening();
             isListening.value = false;
             numOfAudiosPlayed.value++;
-            if (numOfAudiosPlayed.value < 5) {
+            if (numOfAudiosPlayed.value < allQuestionslength) {
                 setTimeout(() => {
                     playNextQuestion();
                 }, 2000);
