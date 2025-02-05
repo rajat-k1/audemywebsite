@@ -10,9 +10,9 @@
     <div class="max-w-[1040px] tablet:max-w-[742px] text-white text-left flex justify-between mobile:justify-start">
       <div class="mobile:hidden">
         <a href="#" class="font-poppins font-semiBold text-[16px] leading-[24px] text-[#B9D6DF]">AUDEMY</a>
-        <h3
+        <h1
           class="font-poppins font-bold text-[16px] text-[#B9D6DF] leading-[24px] mt-[36px] mb-[15px] whitespace-nowrap pt-[2px] pb-[2px]">
-          Contact</h3>
+          Contact</h1>
         <a href="mailto:connect.audemy@gmail.com"
           class="font-jakarta font-bold text-[14px] leading-[17.64px]">connect.audemy@gmail.com</a>
       </div>
@@ -20,8 +20,8 @@
       <!-- Second Column "Quick Links" -->
       <div class="mobile:pl-[16px] flex w-[364px] tablet:max-w-[329px] justify-between">
         <div class="w-[86px]">
-          <h3 class="mobile:hidden font-jakarta font-bold text-[16px] leading-[20px] text-[#B9D6DF] mb-[25px]">Quick links
-          </h3>
+          <h2 class="mobile:hidden font-jakarta font-bold text-[16px] leading-[20px] text-[#B9D6DF] mb-[25px]">Quick links
+          </h2>
           <ul>
             <li
               class="mb-[17px] font-jakarta font-bold text-[14px] text-white mobile:text-[#B9D6DF] leading-[18px]  w-max">

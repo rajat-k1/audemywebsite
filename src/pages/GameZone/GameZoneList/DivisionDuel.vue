@@ -7,6 +7,7 @@
               <img
                   src="/assets/gameImages/buttons/arrow-back.svg"
                   class="bg-white border-2 rounded-lg border-black h-12 p-2 shadow-md hover:bg-gray-300"
+                  alt="Back Button Image"
               />
           </button>
       </div>

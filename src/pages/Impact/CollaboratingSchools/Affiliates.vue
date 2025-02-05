@@ -110,6 +110,7 @@ const teachers = [
         <img
             src="/assets/images/impact/glasses.svg"
             class="absolute -right-[1rem] -bottom-[1.3rem]"
+            alt="Glasses Image"
         />
     </div>
 </template>
