@@ -75,8 +75,17 @@ const getCardClass = (index) => {
   <div class="w-full flex justify-center align-center">
     <div class="w-full gap-1 mobile:gap-0 flex flex-wrap justify-between">
       <div class="h-auto mb-10 mobile:w-full" :class="getCardClass(index)" v-for="(game, index) in games" :key="index">
-        <GameZoneCard :title="game.title" :icon="game.icon" :textColor="game.textColor" :bgColor="game.bgColor"
-        :url="game.url" @selectGame="openGame" :description="game.description" :bgDecoration="game.bgDecoration ?? false" :bgImage="game.bgImage" />
+        <GameZoneCard 
+          :title="game.title" 
+          :icon="game.icon" 
+          :textColor="game.textColor" 
+          :bgColor="game.bgColor"
+          :url="game.url" @selectGame="openGame" 
+          :description="game.description" 
+          :bgDecoration="game.bgDecoration ?? false" 
+          :bgImage="game.bgImage"
+          class="hover:scale-105 hover:transition hover:duration-500"
+        />
       </div>
     </div>
   </div>
