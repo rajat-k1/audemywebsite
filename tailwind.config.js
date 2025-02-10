@@ -32,6 +32,20 @@ export default {
         "info-state": "#0063F7",
         "success-state": "#06C270",
       },
+      keyframes: {
+        "fade-slide-in": {
+          "0%": { opacity: "0", transform: "translateY(-10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "fade-slide-out": {
+          "0%": { opacity: "1", transform: "translateY(0)" },
+          "100%": { opacity: "0", transform: "translateY(-10px)" },
+        },
+      },
+      animation: {
+        "fade-slide-in": "fade-slide-in 0.2s ease-out forwards",
+        "fade-slide-out": "fade-slide-out 0.2s ease-in forwards",
+      },
     },
   },
 
