@@ -1,20 +1,22 @@
 <template>
-    <div
-        class="flex flex-col justify-center items-center h-screen font-poppins bg-[#FAEDD6]"
-    >
-        <div class="flex mt-2 mb-2 w-1/2">
-            <button onclick="history.back()">
-                <img
-                    src="/assets/gameImages/buttons/arrow-back.svg"
-                    class="bg-white border-2 rounded-lg border-black h-12 p-2 shadow-md hover:bg-gray-300"
-                />
-            </button>
-        </div>
-        <div class="flex flex-col my-2 mx-56 h-96 justify-center items-center">
-            <div class="m-10 py-4 text-center">
-                <h1 class="text-4.5xl font-bold">Division Duel</h1>
-            </div>
-            <div v-if="playButton === false">
+
+  <div
+      class="flex flex-col justify-center items-center h-screen font-poppins bg-[#FAEDD6]"
+  >
+      <div class="flex mt-2 mb-2 w-1/2">
+          <button onclick="history.back()">
+              <img
+                  src="/assets/gameImages/buttons/arrow-back.svg"
+                  class="bg-white border-2 rounded-lg border-black h-12 p-2 shadow-md hover:bg-gray-300"
+                  alt="Back Button Image"
+              />
+          </button>
+      </div>
+      <div class="flex flex-col my-2 mx-56 h-96 justify-center items-center">
+          <div class="m-10 py-4 text-center">
+              <h1 class="text-4.5xl font-bold">Division Duel</h1>
+          </div>
+          <div v-if="playButton === false">
                 <button
                     @click="playButton = true"
                     class="bg-[#087bb4] text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-[#0d5f8b]"
@@ -158,8 +160,9 @@ const handleKeyDown = (event) => {
 };
 
 // Stop listening on keyup
-const handleKeyUp = (event) => {
+const handleKeyUp = async (event) => {
     if (event.code === "Space" && isListening.value) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         stopListening();
         isListening.value = false;
     }

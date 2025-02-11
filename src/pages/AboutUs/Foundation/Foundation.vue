@@ -7,10 +7,12 @@
         <img
             src="/assets/images/about-us/top-blue-bg.png"
             class="absolute w-full -top-[22rem] right-0 -z-10"
+            alt="Background image"
         />
         <img
             src="/assets/images/about-us/Group 1206.png"
             class="absolute top-[10rem] -z-10"
+            alt="Background image"
         />
 
         <div class="w-full">

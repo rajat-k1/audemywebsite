@@ -10,6 +10,7 @@ import Star from "/assets/images/testimonials/star.svg";
     <img
       src="/assets/images/testimonials/testimonials-bg.png"
       class="absolute top-[4rem] -z-10 h-[60rem] fill"
+      alt="Background image"
     />
 
     <div class="font-poppins flex flex-col gap-y-3 mobile:px-5">
@@ -41,10 +42,10 @@ import Star from "/assets/images/testimonials/star.svg";
                 <p class="">
                   “The blind students who played the games were very into it!”
                 </p>
-                <h4 class="text-small">
+                <h2 class="text-small">
                   &mdash; Teacher from the Texas School for the Blind and
                   Visually Impaired
-                </h4>
+                </h2>
               </div>
             </div>
           </div>
@@ -64,9 +65,9 @@ import Star from "/assets/images/testimonials/star.svg";
                   “Audemy’s games provide accessible and engaging educational
                   content for our blind students.”
                 </p>
-                <h4 class="text-small">
+                <h3 class="text-small">
                   &mdash; Staff from Kansas School for the Blind
-                </h4>
+                </h3>
               </div>
             </div>
           </div>

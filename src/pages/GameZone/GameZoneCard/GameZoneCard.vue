@@ -1,56 +1,63 @@
-<!-- <script setup>
-import { onMounted, defineProps, computed } from 'vue';
-
-const props = defineProps({
-  icon: String,
-  title: String,
-  url: String,
-  bgColor: String,
-  textColor: String,
-});
-</script>
-
-<template>
-  <div
-    class="w-[484px] h-[404px] rounded-[16px] border-[2px] border-[#0C0D0D] shadow-[4px_4px_0px_#0C0D0D] p-5 relative flex justify-center items-center" :style="{backgroundColor: props.bgColor || '#EAF7FD'}">
-    <img :src="icon" alt="Game icon" class="w-[280px] h-[200px]">
-    <h3 class="absolute bottom-10 font-paytone font-[800] text-[40px] text-stroke" :style="{color: props.textColor || '#5391AC'}">{{ title }}</h3>
-  </div>
-</template>
-
-<style>
-.text-stroke {
-  text-shadow: -1px -1px 0 #2F3E45, 1px -1px 0 #2F3E45, -1px 1px 0 #2F3E45, 1px 1px 0 #2F3E45;
-}
-</style> -->
-
 <script setup>
 import { defineProps } from "vue";
 
 const props = defineProps({
     icon: String,
     title: String,
+    description: String,
     url: String,
+    textColor: String,
+    bgColor: String,
+    bgDecoration: Boolean,
+    bgImage: String,
 });
 </script>
 
 <template>
     <div
         @click="$emit('selectGame', url)"
-        class="w-[484px] h-[404px] bg-[#EAF7FD] rounded-[16px] border-[2px] border-[#0C0D0D] shadow-[4px_4px_0px_#0C0D0D] p-5 relative flex justify-center items-center"
+        class="w-full h-[320px] mobile:h-[160px] rounded-[16px] border-[5px] border-[#323232] shadow-2xl  p-5 relative flex justify-center items-center"
+        :style="{ backgroundColor: bgColor, color: textColor ?? '#323232' }"
     >
-        <img :src="icon" alt="Game icon" width="w-[280px] h-[200px]" />
-        <h3
-            class="absolute bottom-10 font-paytone text-[#5391AC] font-[800] text-[40px] text-stroke"
-        >
-            {{ title }}
-        </h3>
+        <img
+            :src="icon"
+            alt="Game icon"
+            class="w-[100px] h-[100px] mobile:w-[40px] mobile:h-[40px] absolute top-4 right-5 mobile:top-5 mobile:right-1 z-20"
+        />
+        <img
+            v-if="bgDecoration"
+            :src="bgImage"
+            alt="BG Game icon"
+            class="h-3/4 absolute top-0 right-0 rounded-xl"
+        />
+        <div class="w-full absolute bottom-0 left-0 p-4 z-50">
+            <div class="w-full" :class="{ 'mb-0': description }">
+                <div
+                    id="title"
+                    class="font-poppins text-[50px] tablet:text-[40px] mobile:text-[20px] text-wrap font-semibold"
+                >
+                    {{ title }}
+                </div>
+            </div>
+            <div
+                v-if="description"
+                id="description"
+                class="font-poppins text-[24px] mobile:text-[12px] tablet:text-[20px]"
+                :style="!bgDecoration ? 'text-[#6E777C]' : ''"
+            >
+                {{ description }}
+            </div>
+        </div>
     </div>
 </template>
-
 <style>
-.text-stroke {
-    text-shadow: -1px -1px 0 #2f3e45, 1px -1px 0 #2f3e45, -1px 1px 0 #2f3e45,
-        1px 1px 0 #2f3e45;
+@media (max-width: 1020px) and (min-width: 768px) {
+    #title {
+        font-size: 40px;
+    }
+
+    #description {
+        display: none;
+    }
 }
 </style>

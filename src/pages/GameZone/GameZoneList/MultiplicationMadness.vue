@@ -7,6 +7,7 @@
                 <img
                     src="/assets/gameImages/buttons/arrow-back.svg"
                     class="bg-white border-2 rounded-lg border-black h-12 p-2 shadow-md hover:bg-gray-300"
+                    alt="Back Button Image"
                 />
             </button>
         </div>
@@ -157,8 +158,9 @@ const handleKeyDown = (event) => {
 };
 
 // Stop listening on keyup
-const handleKeyUp = (event) => {
+const handleKeyUp = async (event) => {
     if (event.code === "Space" && isListening.value) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         stopListening();
         isListening.value = false;
     }

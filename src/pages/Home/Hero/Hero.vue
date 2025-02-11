@@ -40,7 +40,7 @@
             <!-- Hero Illustration Image -->
             <img
                 src="/assets/images/hero/hero-illustration.png"
-                alt=""
+                alt="Hero Illustration"
                 class="absolute top-0 right-0 -z-10 mobile:hidden"
             />
         </div>

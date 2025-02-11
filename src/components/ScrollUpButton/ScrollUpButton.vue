@@ -30,7 +30,7 @@ onBeforeUnmount(() => {
             @click="scrollToTop"
         >
             <img
-                src="/public/assets/images/about-us/arrow-up.svg"
+                src="/assets/images/about-us/arrow-up.svg"
                 alt="Arrow Up"
             />
         </button>

@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="w-4/12 tablet:w-full mobile:w-full flex justify-center">
-                <img class="z-0" src="/assets/images/events/events-image.svg" />
+                <img class="z-0" src="/assets/images/events/events-image.svg" alt="Event's Image" />
             </div>
             <div class="w-4/12 tablet:w-full mobile:w-full">
                 <div
@@ -70,6 +70,7 @@
                 <img
                     class="w-full h-full"
                     src="/assets/images/events/apple-illustration.png"
+                    alt="Background Image"
                 />
             </div>
         </div>

@@ -45,6 +45,7 @@ onUnmounted(() => {
         <img
             src="/assets/images/impact/light-green-bg-2.png"
             class="absolute w-full h-[125%] -top-[12rem] right-0 -z-10"
+            alt="Background image"
         />
 
         <!-- MAIN CONTENT -->

@@ -55,7 +55,7 @@ onMounted(() => {
             src="/assets/images/impact/carousel/leftChevron.svg"
             id="left-chevron"
             class="absolute top-1/2 left-1 -translate-1/2 z-10 cursor-pointer"
-            alt=""
+            alt="Left Chevron Image"
         />
 
         <div
@@ -64,7 +64,7 @@ onMounted(() => {
             <img
                 src="/assets/images/impact/carousel/carousel1.jpg"
                 class="-z-10 w-full h-full object-cover"
-                alt=""
+                alt="Carousel Image"
             />
         </div>
 
@@ -74,7 +74,7 @@ onMounted(() => {
             <img
                 src="/assets/images/impact/carousel/carousel2.png"
                 class="-z-10 w-full h-full object-cover"
-                alt=""
+                alt="Carousel Image"
             />
         </div>
 
@@ -84,7 +84,7 @@ onMounted(() => {
             <img
                 src="/assets/images/impact/carousel/carousel3.png"
                 class="-z-10 w-full h-full object-cover"
-                alt=""
+                alt="Carousel Image"
             />
         </div>
 
@@ -95,7 +95,7 @@ onMounted(() => {
             <img
                 src="/assets/images/impact/carousel/carousel4.png"
                 class="-z-10 w-full h-full object-cover"
-                alt=""
+                alt="Carousel Image"
             />
         </div>
 
@@ -105,7 +105,7 @@ onMounted(() => {
             <img
                 src="/assets/images/impact/carousel/carousel5.png"
                 class="-z-10 w-full h-full object-cover"
-                alt=""
+                alt="Carousel Image"
             />
         </div>
 
@@ -115,14 +115,14 @@ onMounted(() => {
             <img
                 src="/assets/images/impact/carousel/carousel6.jpeg"
                 class="-z-10 w-full h-full object-cover"
-                alt=""
+                alt="Carousel Image"
             />
         </div>
         <img
             src="/assets/images/impact/carousel/rightChevron.svg"
             id="right-chevron"
             class="absolute top-1/2 right-1 -translate-1/2 z-10 cursor-pointer"
-            alt=""
+            alt="Right Chevron Image"
         />
     </div>
 </template>
