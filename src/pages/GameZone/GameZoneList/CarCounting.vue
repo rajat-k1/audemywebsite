@@ -168,8 +168,9 @@ const handleKeyDown = (event) => {
 };
 
 // Stop listening on keyup
-const handleKeyUp = (event) => {
+const handleKeyUp = async (event) => {
     if (event.code === "Space" && isListening.value) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         stopListening();
         isListening.value = false;
     }

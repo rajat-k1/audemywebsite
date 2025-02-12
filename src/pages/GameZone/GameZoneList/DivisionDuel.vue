@@ -1,4 +1,5 @@
 <template>
+
   <div
       class="flex flex-col justify-center items-center h-screen font-poppins bg-[#FAEDD6]"
   >
@@ -23,165 +24,174 @@
                     &nbsp;Play&nbsp;
                 </button>
             </div>
-          <div
-              v-else-if="numOfAudiosPlayed < 5 && playButton === true"
-              class="flex flex-col p-4 justify-center"
-              id="content"
-          >
-              <div class="flex flex-row gap-4">
-                  <div class="p-2 px-5 text-[#087bb4]">
-                      &#9432; Hold 'SPACE' to say the answer
-                  </div>
-              </div>
-              <div
-                  id="transcript"
-                  class="text-center text-xl font-bold pt-2 pb-1"
-              >
-                  You said: {{ transcription }}
-              </div>
-          </div>
-          <div v-else>
-              <div class="text-center text-3xl font-bold pt-2 pb-1">
-                  Game Over
-              </div>
-              <div class="text-center text-xl font-medium pt-2 pb-1">
-                  Score: {{ score }} / 5
-              </div>
-          </div>
-      </div>
-  </div>
+            <div
+                v-else-if="
+                    numOfAudiosPlayed < allQuestionslength &&
+                    playButton === true
+                "
+                class="flex flex-col p-4 justify-center"
+                id="content"
+            >
+                <div class="flex flex-row gap-4">
+                    <div class="p-2 px-5 text-[#087bb4]">
+                        &#9432; Hold 'SPACE' to say the answer
+                    </div>
+                </div>
+                <div
+                    id="transcript"
+                    class="text-center text-xl font-bold pt-2 pb-1"
+                >
+                    You said: {{ transcription }}
+                </div>
+            </div>
+            <div v-else>
+                <div class="text-center text-3xl font-bold pt-2 pb-1">
+                    Game Over
+                </div>
+                <div class="text-center text-xl font-medium pt-2 pb-1">
+                    Score: {{ score }} / {{ allQuestionslength }}
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
 import { onMounted, onUnmounted, ref, watch } from "vue";
 import { requestMicPermission } from "../../../Utilities/requestMicAccess";
 import {
-  playIntro,
-  playQuestion,
-  playSound,
-  stopAudios,
-  playScore,
+    playIntro,
+    playQuestion,
+    playSound,
+    stopAudios,
+    playScore,
 } from "../../../Utilities/playAudio";
 import {
-  startListening,
-  stopListening,
+    startListening,
+    stopListening,
 } from "../../../Utilities/speechRecognition";
 
 const currentAudios = [],
-  randQueNum = [];
+    randQueNum = [];
 let numOfAudiosPlayed = ref(0),
-  score = ref(0);
+    score = ref(0);
 let questionsDb = [],
-  isListening = ref(false),
-  transcription = ref(""),
-  playButton = ref(false);
+    isListening = ref(false),
+    transcription = ref(""),
+    playButton = ref(false);
+
+let allQuestionslength = 0;
 
 // Generate multiplication questions using Json file
 const generateQuestions = () => {
-  console.log("Generating Questions...");
-  // Generate 5 random numbers for the questions
-  while (randQueNum.length < 5) {
-      let num = Math.floor(Math.random() * 15);
-      if (!randQueNum.includes(num)) {
-          randQueNum.push(num);
-      }
-  }
-  // Fetch questions from JSON file
-  fetch("/assets/questionsDb/divisionDb.json")
-      .then((response) => response.json())
-      .then((data) => {
-          console.log(
-              "Questions:",
-              data["DivisionGame"]["Questions"]["Easy"]
-          );
-          // Process the questions data as needed
-          questionsDb = data["DivisionGame"]["Questions"]["Easy"];
-      })
-      .catch((error) => {
-          console.error("Error fetching questions:", error);
-      });
+    console.log("Generating Questions...");
+    fetch("/assets/questionsDb/divisionDb.json")
+        .then((response) => response.json())
+        .then((data) => {
+            let allQuestions = [
+                ...data["DivisionGame"]["Questions"]["Easy"],
+                ...data["DivisionGame"]["Questions"]["Medium"],
+                ...data["DivisionGame"]["Questions"]["Hard"],
+            ];
+            allQuestionslength = allQuestions.length;
+            while (randQueNum.length < allQuestionslength) {
+                let num = Math.floor(Math.random() * allQuestions.length);
+                if (!randQueNum.includes(num)) {
+                    randQueNum.push(num);
+                }
+            }
+
+            questionsDb = allQuestions;
+            console.log("Questions generated!");
+            console.log(questionsDb);
+        })
+        .catch((error) => {
+            console.error("Error fetching questions:", error);
+        });
 };
 
 // Play the next question
 const playNextQuestion = () => {
-  if (numOfAudiosPlayed.value < 5) {
-      const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
-      console.log(question);
-      currentAudios.push(playQuestion(question["Q"]));
-  }
+    if (numOfAudiosPlayed.value < allQuestionslength) {
+        const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
+        console.log(question);
+        currentAudios.push(playQuestion(question["Q"]));
+    }
 };
 
 // Handle the spacebar events
 const handleKeyDown = (event) => {
-  if (
-      event.code === "Space" &&
-      !isListening.value &&
-      numOfAudiosPlayed.value < 5
-  ) {
-      isListening.value = true;
-      startListening((transcript) => {
-          const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
-          console.log("Question is: ", question["Q"]);
-          console.log("User Answer:", transcript);
-          console.log("Correct Answer:", question["A"]);
-          transcription.value = transcript;
-          if (transcript.trim() === question["A"]) {
-              score.value++;
-              console.log("Correct Answer!");
-              playSound("correctaudio.mp3");
-          } else {
-              console.log("Wrong Answer!");
-              playSound("incorrectaudio.mp3");
-          }
-          stopListening();
-          isListening.value = false;
-          numOfAudiosPlayed.value++;
-          if (numOfAudiosPlayed.value < 5) {
-              setTimeout(() => {
-                  playNextQuestion();
-              }, 2000);
-          } else {
-              console.log("Game Over!");
-              setTimeout(() => {
-                  playScore(score.value);
-              }, 2000);
-          }
-      });
-  }
+    if (
+        event.code === "Space" &&
+        !isListening.value &&
+        numOfAudiosPlayed.value < allQuestionslength
+    ) {
+        isListening.value = true;
+        startListening((transcript) => {
+            const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
+            console.log("Question is: ", question["Q"]);
+            console.log("User Answer:", transcript);
+            console.log("Correct Answer:", question["A"]);
+            transcription.value = transcript;
+            const answers = question["A"].map((ans) => ans.toLowerCase());
+            if (answers.includes(transcript.trim().toLowerCase())) {
+                score.value++;
+                console.log("Correct Answer!");
+                playSound("correctaudio.mp3");
+            } else {
+                console.log("Wrong Answer!");
+                playSound("incorrectaudio.mp3");
+            }
+            stopListening();
+            isListening.value = false;
+            numOfAudiosPlayed.value++;
+            if (numOfAudiosPlayed.value < allQuestionslength) {
+                setTimeout(() => {
+                    playNextQuestion();
+                }, 2000);
+            } else {
+                console.log("Game Over!");
+                setTimeout(() => {
+                    playScore(score.value);
+                }, 2000);
+            }
+        });
+    }
 };
 
 // Stop listening on keyup
-const handleKeyUp = (event) => {
-  if (event.code === "Space" && isListening.value) {
-      stopListening();
-      isListening.value = false;
-  }
+const handleKeyUp = async (event) => {
+    if (event.code === "Space" && isListening.value) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        stopListening();
+        isListening.value = false;
+    }
 };
 
 onMounted(() => {
-  // Request microphone access on page load
-  console.log("Requesting microphone access...");
-  requestMicPermission();
+    // Request microphone access on page load
+    console.log("Requesting microphone access...");
+    requestMicPermission();
 
-  // Generate questions
-  generateQuestions();
+    // Generate questions
+    generateQuestions();
 
-  watch(playButton, (newVal) => {
-    if (newVal) {
-      const introAudio = playIntro("/divisionduel/divintro.mp3");
-      currentAudios.push(introAudio);
-      introAudio.onended = playNextQuestion;
-    }
-  });
+    watch(playButton, (newVal) => {
+        if (newVal) {
+            const introAudio = playIntro("/divisionduel/divintro.mp3");
+            currentAudios.push(introAudio);
+            introAudio.onended = playNextQuestion;
+        }
+    });
 
-  window.addEventListener("keydown", handleKeyDown);
-  window.addEventListener("keyup", handleKeyUp);
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
 });
 
 onUnmounted(() => {
-  console.log("Navigated Back!");
-  stopAudios(currentAudios);
-  window.removeEventListener("keydown", handleKeyDown);
-  window.removeEventListener("keyup", handleKeyUp);
+    console.log("Navigated Back!");
+    stopAudios(currentAudios);
+    window.removeEventListener("keydown", handleKeyDown);
+    window.removeEventListener("keyup", handleKeyUp);
 });
 </script>
