@@ -61,51 +61,56 @@
         <!-- Mobile Hamburger Menu -->
         <div v-if="isMobileView" class="absolute top-7 right-0 p-4">
             <button @click="toggleMenu" class="text-xl">&#9776;</button>
-            <ul
-                v-if="isMenuOpen"
-                class="flex flex-col space-y-4 mt-2 bg-white p-4 shadow-md rounded-lg font-poppins font-semibold text-[#151e22]"
+            <transition 
+                enter-active-class="animate-fade-slide-in"
+                leave-active-class="animate-fade-slide-out"
             >
-                <li>
-                    <RouterLink
-                        to="/home"
-                        class="hover:text-[#087bb4]"
-                        @click="toggleMenu"
-                        >Home</RouterLink
-                    >
-                </li>
-                <li>
-                    <RouterLink
-                        to="/about-us"
-                        class="hover:text-[#087bb4]"
-                        @click="toggleMenu"
-                        >About us</RouterLink
-                    >
-                </li>
-                <li>
-                    <RouterLink
-                        to="/our-projects"
-                        class="hover:text-[#087bb4]"
-                        @click="toggleMenu"
-                        >Our projects</RouterLink
-                    >
-                </li>
-                <li>
-                    <RouterLink
-                        to="/impact"
-                        class="hover:text-[#087bb4]"
-                        @click="toggleMenu"
-                        >Impact</RouterLink
-                    >
-                </li>
-                <li>
-                    <RouterLink
-                        to="/game-zone"
-                        class="hover:text-[#087bb4]"
-                        @click="toggleMenu"
-                        >Game zone</RouterLink
-                    >
-                </li>
-            </ul>
+                <ul
+                    v-if="isMenuOpen"
+                    class="flex flex-col space-y-4 mt-2 bg-white p-4 shadow-md rounded-lg font-poppins font-semibold text-[#151e22]"
+                >
+                    <li>
+                        <RouterLink
+                            to="/home"
+                            class="hover:text-[#087bb4]"
+                            @click="toggleMenu"
+                            >Home</RouterLink
+                        >
+                    </li>
+                    <li>
+                        <RouterLink
+                            to="/about-us"
+                            class="hover:text-[#087bb4]"
+                            @click="toggleMenu"
+                            >About us</RouterLink
+                        >
+                    </li>
+                    <li>
+                        <RouterLink
+                            to="/our-projects"
+                            class="hover:text-[#087bb4]"
+                            @click="toggleMenu"
+                            >Our projects</RouterLink
+                        >
+                    </li>
+                    <li>
+                        <RouterLink
+                            to="/impact"
+                            class="hover:text-[#087bb4]"
+                            @click="toggleMenu"
+                            >Impact</RouterLink
+                        >
+                    </li>
+                    <li>
+                        <RouterLink
+                            to="/game-zone"
+                            class="hover:text-[#087bb4]"
+                            @click="toggleMenu"
+                            >Game zone</RouterLink
+                        >
+                    </li>
+                </ul>
+            </transition>
         </div>
     </header>
 
