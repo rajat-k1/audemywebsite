@@ -18,9 +18,6 @@
             }
         }
     ],
-    "hooks": {
-        "build": "npx prisma generate"
-    },
     "rewrites": [
         {
             "source": "/api/generate-tts",
