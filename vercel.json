@@ -6,6 +6,10 @@
             "use": "@vercel/node"
         },
         {
+            "src": "src/pages/api/test_db.js",
+            "use": "@vercel/node"
+        },
+        {
             "src": "package.json",
             "use": "@vercel/static-build",
             "config": {
@@ -18,6 +22,10 @@
         {
             "source": "/api/generate-tts",
             "destination": "/src/pages/api/generate_audio.js"
+        },
+        {
+            "source": "/api/test_db",
+            "destination": "/src/pages/api/test_db.js"
         },
         {
             "source": "/(.*)",
