@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
-
+import { GoogleSignInButton } from "vue3-google-signin";
+import { useRouter } from "vue-router";
 const errors = ref(false);
 const email = ref("");
 const password = ref("");
@@ -47,6 +48,16 @@ const resetErrors = () => {
     setTimeout(() => {
         errors.value = false;
     }, 4000);
+};
+
+// OAUTH
+const router = useRouter();
+const handleLoginSuccess = (response) => {
+    console.log("Login Success");
+    router.push({ name: "Home" });
+};
+const handleLoginError = (error) => {
+    console.log("Login Error", error);
 };
 </script>
 
@@ -171,6 +182,10 @@ const resetErrors = () => {
                     </div>
                 </div>
             </form>
+            <GoogleSignInButton
+                @success="handleLoginSuccess"
+                @error="handleLoginError"
+            ></GoogleSignInButton>
         </div>
     </div>
 </template>
