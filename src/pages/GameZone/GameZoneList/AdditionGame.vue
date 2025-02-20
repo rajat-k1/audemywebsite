@@ -77,7 +77,8 @@ let numOfAudiosPlayed = ref(0),
 let questionsDb = [],
     isListening = ref(false),
     transcription = ref(""),
-    playButton = ref(false);
+    playButton = ref(false),
+    isIntroPlaying = ref(false);
 
 let allQuestionslength = 0;
 
@@ -120,7 +121,9 @@ const playNextQuestion = () => {
 
 // Handle the spacebar events
 const handleKeyDown = (event) => {
-    if (event.code === "KeyR" && numOfAudiosPlayed.value < allQuestionslength) {
+    if (event.code === "KeyR" && 
+        numOfAudiosPlayed.value < allQuestionslength && 
+        !isIntroPlaying.value) {
         playNextQuestion();
         return;
     }
@@ -128,7 +131,8 @@ const handleKeyDown = (event) => {
     if (
         event.code === "Space" &&
         !isListening.value &&
-        numOfAudiosPlayed.value < allQuestionslength
+        numOfAudiosPlayed.value < allQuestionslength &&
+        !isIntroPlaying.value
     ) {
         isListening.value = true;
         startListening((transcript) => {
@@ -183,9 +187,13 @@ onMounted(() => {
 
     watch(playButton, (newVal) => {
         if (newVal) {
+            isIntroPlaying.value = true;
             const introAudio = playIntro("/animalAddition/additionintro.mp3");
             currentAudios.push(introAudio);
-            introAudio.onended = playNextQuestion;
+            introAudio.onended = () => {
+                isIntroPlaying.value = false;
+                playNextQuestion();
+            };
         }
     });
 
