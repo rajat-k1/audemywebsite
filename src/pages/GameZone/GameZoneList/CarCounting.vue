@@ -31,7 +31,7 @@
             >
                 <div class="flex flex-row gap-4">
                     <div class="p-2 px-5 text-[#087bb4]">
-                        &#9432; Hold 'SPACE' to say the answer
+                        &#9432; Hold 'SPACE' to say the answer | Press 'R' to repeat question
                     </div>
                 </div>
                 <div
@@ -131,6 +131,11 @@ const playNextQuestion = async () => {
 
 // Handle the spacebar events
 const handleKeyDown = (event) => {
+    if (event.code === "KeyR" && numOfAudiosPlayed.value < 5) {
+        playNextQuestion();
+        return;
+    }
+
     if (
         event.code === "Space" &&
         !isListening.value &&
