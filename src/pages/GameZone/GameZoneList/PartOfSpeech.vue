@@ -74,7 +74,8 @@ let numOfAudiosPlayed = ref(0),
 let questionsDb = [],
     isListening = ref(false),
     transcription = ref(""),
-    playButton = ref(false);
+    playButton = ref(false),
+    isIntroPlaying = ref(false);
 
 // Generate multiplication questions using Json file
 const generateQuestions = () => {
@@ -113,7 +114,9 @@ const playNextQuestion = () => {
 
 // Handle the spacebar events
 const handleKeyDown = (event) => {
-    if (event.code === "KeyR" && numOfAudiosPlayed.value < 5) {
+    if (event.code === "KeyR" && 
+        numOfAudiosPlayed.value < 5 && 
+        !isIntroPlaying.value) {
         playNextQuestion();
         return;
     }
@@ -121,7 +124,8 @@ const handleKeyDown = (event) => {
     if (
         event.code === "Space" &&
         !isListening.value &&
-        numOfAudiosPlayed.value < 5
+        numOfAudiosPlayed.value < 5 &&
+        !isIntroPlaying.value
     ) {
         isListening.value = true;
         startListening((transcript) => {
@@ -174,9 +178,13 @@ onMounted(() => {
 
     watch(playButton, (newVal) => {
         if (newVal) {
+            isIntroPlaying.value = true;
             const introAudio = playIntro("/partOfSpeech/partofspeechintro.mp3");
             currentAudios.push(introAudio);
-            introAudio.onended = playNextQuestion;
+            introAudio.onended = () => {
+                isIntroPlaying.value = false;
+                playNextQuestion();
+            };
         }
     });
 
