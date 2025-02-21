@@ -21,6 +21,7 @@
         "vercel": "^39.2.5",
         "vue": "^3.4.31",
         "vue-router": "^4.4.0",
+        "vue3-google-login": "^2.0.33",
         "vue3-google-signin": "^2.1.1"
     },
     "devDependencies": {

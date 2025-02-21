@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { GoogleSignInButton } from "vue3-google-signin";
+import { GoogleLogin } from "vue3-google-login";
 import { useRouter } from "vue-router";
 const errors = ref(false);
 const email = ref("");
@@ -52,12 +52,11 @@ const resetErrors = () => {
 
 // OAUTH
 const router = useRouter();
-const handleLoginSuccess = (response) => {
-    console.log("Login Success");
-    router.push({ name: "Home" });
-};
-const handleLoginError = (error) => {
-    console.log("Login Error", error);
+
+const callback = (response) => {
+    // This callback will be triggered when the user selects or login to
+    // his Google account from the popup
+    console.log("Handle the response", response);
 };
 </script>
 
@@ -182,10 +181,7 @@ const handleLoginError = (error) => {
                     </div>
                 </div>
             </form>
-            <GoogleSignInButton
-                @success="handleLoginSuccess"
-                @error="handleLoginError"
-            ></GoogleSignInButton>
+            <GoogleLogin :callback="callback" />
         </div>
     </div>
 </template>
