@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex flex-col justify-center items-center h-screen font-poppins bg-[#FAEDD6]"
+        class="flex flex-col justify-center items-center h-screen font-poppins bg-[#ebc898]"
     >
         <div class="flex mt-2 mb-2 w-1/2">
             <button onclick="history.back()">

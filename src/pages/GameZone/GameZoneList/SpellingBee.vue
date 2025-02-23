@@ -1,51 +1,90 @@
 <template>
-    <div
-        class="flex flex-col justify-center items-center h-screen font-poppins bg-[#FAEDD6]"
-    >
-        <div class="flex mt-2 mb-2 w-1/2">
-            <button onclick="history.back()">
-                <img
+    <div class="min-h-screen font-poppins bg-[#FAE9B6]">
+        <!-- Header -->
+        <GamePagesHeader />
+        
+        <!-- Game Content -->
+        <div class="flex flex-col justify-center items-center h-[calc(100vh-64px)]">
+            <!-- Back button -->
+            <!-- <div class="flex mt-2 mb-2 w-1/2">
+                <button onclick="history.back()">
+                    <img
                     src="/assets/gameImages/buttons/arrow-back.svg"
                     class="bg-white border-2 rounded-lg border-black h-12 p-2 shadow-md hover:bg-gray-300"
                     alt="Back Button Image"
-                />
-            </button>
-        </div>
-        <div class="flex flex-col my-2 mx-56 h-96 justify-center items-center">
-            <div class="m-10 py-4 text-center">
-                <h1 class="text-4.5xl font-bold">Spelling Bee</h1>
-            </div>
-            <div v-if="playButton === false">
-                <button
-                    @click="playButton = true"
-                    class="bg-[#087bb4] text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-[#0d5f8b]"
-                >
-                    Play
+                    />
                 </button>
+            </div> -->
+            
+            <div class="mt-0">
+                <img src="/assets/gameImages/buttons/gameButtons/spellingBee.svg" 
+                alt="Game icon" 
+                class="w-20 h-20">
             </div>
-            <div
-                v-else-if="numOfAudiosPlayed < 5 && playButton === true"
-                class="flex flex-col p-4 justify-center"
-                id="content"
-            >
-                <div class="flex flex-row gap-4">
-                    <div class="p-2 px-5 text-[#087bb4]">
-                        &#9432; Hold 'SPACE' to say the answer | Press 'R' to repeat question
-                    </div>
+            
+            <div class="flex flex-col justify-center items-center">
+                <div class="text-center">
+                    <h1 class="text-4.5xl font-bold">Spelling Bee</h1>
+                    <p class="text-lg mt-2 mb-8">Buzz your way to spelling mastery!</p>
+                </div>
+                <div v-if="playButton === false">
+                    <button
+                        @click="playButton = true"
+                        class="bg-[#087bb4] text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-[#0d5f8b]"
+                    >
+                        Play
+                    </button>
                 </div>
                 <div
-                    id="transcript"
-                    class="text-center text-xl font-bold pt-2 pb-1"
+                    v-else-if="numOfAudiosPlayed < 5 && playButton === true"
+                    class="flex flex-col p-4 justify-center items-center"
+                    id="content"
                 >
-                    You said: {{ transcription }}
+                    <div class="flex flex-row gap-4 mb-6">
+                        <div class="p-2 px-5 text-[#087bb4]">
+                            Hold 'SPACE' to say the answer.
+                        </div>
+                    </div>
+                    <div class="flex gap-4 mb-6">
+                        <!-- Record/Stop Button -->
+                        <button 
+                            class="flex items-center gap-3 px-6 py-3 rounded-xl shadow-md"
+                            :class="isRecording ? 'bg-red-500 text-white' : 'bg-[#0096D6] text-white'"
+                        >
+                            <span class="text-lg font-medium">{{ isRecording ? 'Stop Recording' : 'Record Answer' }}</span>
+                            <img 
+                                :src="isRecording ? '/assets/gameImages/buttons/stop.png' : '/assets/gameImages/buttons/mic.png'"
+                                class="w-6 h-6"
+                                alt="Record Icon"
+                            />
+                        </button>
+
+                        <!-- Repeat Question Button -->
+                        <button 
+                            class="flex items-center gap-3 px-6 py-3 rounded-xl bg-white border-2 border-[#0096D6] text-[#0096D6] shadow-md hover:bg-gray-50"
+                        >
+                            <span class="text-lg font-medium">Repeat Question</span>
+                            <img 
+                                src="/assets/gameImages/buttons/repeat.png"
+                                class="w-6 h-6"
+                                alt="Repeat Icon"
+                            />
+                        </button>
+                    </div>
+                    <div
+                        id="transcript"
+                        class="text-center text-xl font-bold pt-2 pb-1"
+                    >
+                        You said: {{ transcription }}
+                    </div>
                 </div>
-            </div>
-            <div v-else>
-                <div class="text-center text-3xl font-bold pt-2 pb-1">
-                    Game Over
-                </div>
-                <div class="text-center text-xl font-medium pt-2 pb-1">
-                    Score: {{ score }} / 5
+                <div v-else>
+                    <div class="text-center text-3xl font-bold pt-2 pb-1">
+                        Game Over
+                    </div>
+                    <div class="text-center text-xl font-medium pt-2 pb-1">
+                        Score: {{ score }} / 5
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,6 +93,7 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref, watch } from "vue";
+import GamePagesHeader from '../../Header/GamePagesHeader.vue';
 import { requestMicPermission } from "../../../Utilities/requestMicAccess";
 import {
     playIntro,
@@ -75,7 +115,8 @@ let questionsDb = [],
     isListening = ref(false),
     transcription = ref(""),
     playButton = ref(false),
-    isIntroPlaying = ref(false);
+    isIntroPlaying = ref(false),
+    isRecording = ref(false);
 
 // Generate multiplication questions using Json file
 const generateQuestions = () => {
