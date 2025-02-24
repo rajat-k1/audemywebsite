@@ -1,11 +1,20 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { GoogleLogin } from "vue3-google-login";
 import { useRouter } from "vue-router";
 const errors = ref(false);
 const email = ref("");
 const password = ref("");
-let authKey = ref("");
+const authKey = ref("");
+const userSession = ref(null);
+const router = useRouter();
+
+onMounted(() => {
+    const session = localStorage.getItem("audemyUserSession");
+    if (session) {
+        userSession.value = JSON.parse(session);
+    }
+});
 
 const login = (event) => {
     event.preventDefault();
@@ -38,6 +47,11 @@ const login = (event) => {
         })
         .then((data) => {
             console.log("Success:", data);
+            localStorage.setItem(
+                "audemyUserSession",
+                JSON.stringify({ token: authKey.value, user: data.user })
+            );
+            userSession.value = { token: authKey.value, user: data.user };
         })
         .catch((error) => {
             console.error("Error:", error);
@@ -50,13 +64,28 @@ const resetErrors = () => {
     }, 4000);
 };
 
-// OAUTH
-const router = useRouter();
+//**** OAUTH
+
+// const router = useRouter();
+
+// const callback = (response) => {
+//     // This callback will be triggered when the user selects or login to
+//     // his Google account from the popup
+//     console.log("Handle the response", response);
+// };
 
 const callback = (response) => {
-    // This callback will be triggered when the user selects or login to
-    // his Google account from the popup
-    console.log("Handle the response", response);
+    // console.log("Google OAuth response:", response);
+    localStorage.setItem("audemyUserSession", JSON.stringify(response));
+    userSession.value = response;
+    console.log("User logged in");
+    router.push("/game-zone");
+};
+const logout = () => {
+    localStorage.removeItem("audemyUserSession");
+    userSession.value = null;
+    console.log("User logged out");
+    router.push("/login");
 };
 </script>
 
@@ -181,7 +210,23 @@ const callback = (response) => {
                     </div>
                 </div>
             </form>
-            <GoogleLogin :callback="callback" />
+            <!-- <GoogleLogin :callback="callback" /> -->
+            <div class="flex flex-col items-center justify-center gap-4 mt-8">
+                <GoogleLogin
+                    v-if="!userSession"
+                    :callback="callback"
+                    class="py-2 px-4 bg-blue-500 text-white rounded shadow"
+                >
+                    Sign In
+                </GoogleLogin>
+                <button
+                    v-else
+                    @click="logout"
+                    class="py-2 px-4 bg-red-500 text-white rounded shadow"
+                >
+                    Logout
+                </button>
+            </div>
         </div>
     </div>
 </template>
