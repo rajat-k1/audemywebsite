@@ -52,7 +52,7 @@
       return {
         navigationItems: [
           { name: 'Home', path: '/' },
-          { name: 'About us', path: '/about' },
+          { name: 'About us', path: '/about-us' },
           { name: 'Game Zone', path: '/game-zone' }
         ]
       }
