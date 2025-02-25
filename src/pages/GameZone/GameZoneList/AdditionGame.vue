@@ -5,6 +5,16 @@
        <GamePagesHeader />
      </div>
      
+    <!-- div class="flex mt-2 mb-2 w-1/2">
+        <button onclick="history.back()">
+            <img
+                src="/assets/gameImages/buttons/arrow-back.svg"
+                class="bg-white border-2 rounded-lg border-black h-12 p-2 shadow-md hover:bg-gray-300"
+                alt="Back Button Image"
+            />
+        </button>
+    </div -->
+
      <!-- Decorative Elements -->
      <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
        <!-- Sun - Only for desktop -->
