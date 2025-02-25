@@ -15,7 +15,14 @@
                 />
             </button>
         </div -->
-        <div class="flex flex-col my-2 mx-56 h-96 justify-center items-center">
+        <div class="flex flex-col justify-center items-center h-[calc(90vh-64px)] relative z-10">
+            <div class="mt-0">
+                <img 
+                    src="/assets/gameImages/buttons/gameButtons/cc.svg"
+                    alt="Game icon"
+                    class="w-[100px] h-[100px]">
+            </div>
+
             <div class="m-10 py-4 text-center">
                 <h1 class="text-4.5xl font-bold">Car Counting</h1>
             </div>

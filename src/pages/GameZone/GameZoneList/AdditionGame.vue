@@ -16,7 +16,14 @@
         </div-->
 
         <!-- Main Content -->
-        <div class="flex flex-col justify-center items-center h-[calc(90vh-64px)]">
+        <div class="flex flex-col justify-center items-center h-[calc(90vh-64px)] relative z-10">
+            <div class="mt-0">
+                <img 
+                    src="/assets/gameImages/buttons/gameButtons/addition.svg"
+                    alt="Game icon"
+                    class="w-[100px] h-[100px]">
+            </div>
+
             <div class="text-center mb-6">
                 <h1 class="text-4.5xl font-bold">Animal Addition</h1>
             </div>

@@ -15,7 +15,13 @@
         </div-->
         
         <!-- Main Content -->
-        <div class="flex flex-col justify-center items-center h-[calc(90vh-64px)]">
+        <div class="flex flex-col justify-center items-center h-[calc(90vh-64px)] relative z-10">
+            <div class="mt-0">
+                <img 
+                    src="/assets/gameImages/buttons/gameButtons/strawberry.svg"
+                    alt="Game icon"
+                    class="w-[100px] h-[100px]">
+            </div>
             <div class="text-center mb-6">
                 <h1 class="text-4.5xl font-bold">Polar Pairing</h1>
             </div>
