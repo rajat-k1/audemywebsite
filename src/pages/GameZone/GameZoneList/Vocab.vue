@@ -30,7 +30,7 @@
             >
                 <div class="flex flex-row gap-4">
                     <div class="p-2 px-5 text-[#087bb4]">
-                        &#9432; Hold 'SPACE' to say the answer
+                        &#9432; Hold 'SPACE' to say the answer | Press 'R' to repeat question
                     </div>
                 </div>
                 <div
@@ -74,7 +74,8 @@ let numOfAudiosPlayed = ref(0),
 let questionsDb = [],
     isListening = ref(false),
     transcription = ref(""),
-    playButton = ref(false);
+    playButton = ref(false),
+    isIntroPlaying = ref(false);
 
 // Generate multiplication questions using Json file
 const generateQuestions = () => {
@@ -113,10 +114,18 @@ const playNextQuestion = () => {
 
 // Handle the spacebar events
 const handleKeyDown = (event) => {
+    if (event.code === "KeyR" && 
+        numOfAudiosPlayed.value < 5 && 
+        !isIntroPlaying.value) {
+        playNextQuestion();
+        return;
+    }
+
     if (
         event.code === "Space" &&
         !isListening.value &&
-        numOfAudiosPlayed.value < 5
+        numOfAudiosPlayed.value < 5 &&
+        !isIntroPlaying.value
     ) {
         isListening.value = true;
         startListening((transcript) => {
@@ -169,9 +178,13 @@ onMounted(() => {
 
     watch(playButton, (newVal) => {
         if (newVal) {
+            isIntroPlaying.value = true;
             const introAudio = playIntro("/vocabVortex/vortexintro.mp3");
             currentAudios.push(introAudio);
-            introAudio.onended = playNextQuestion;
+            introAudio.onended = () => {
+                isIntroPlaying.value = false;
+                playNextQuestion();
+            };
         }
     });
 

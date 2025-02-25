@@ -25,12 +25,13 @@ const changeCurrentPage = (page) => {
 const logout = () => {
     localStorage.removeItem("audemyUserSession");
     userSession.value = null;
+    console.log("Logged out");
     router.push("/"); // Redirect to login page
 };
 
 // Redirect to login page for manual login
 const login = () => {
-    router.push("/login"); // Assuming "/" is the login page route
+    router.push("/login");
 };
 </script>
 <template>

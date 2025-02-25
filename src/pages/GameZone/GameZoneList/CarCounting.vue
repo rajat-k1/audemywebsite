@@ -31,7 +31,7 @@
             >
                 <div class="flex flex-row gap-4">
                     <div class="p-2 px-5 text-[#087bb4]">
-                        &#9432; Hold 'SPACE' to say the answer
+                        &#9432; Hold 'SPACE' to say the answer | Press 'R' to repeat question
                     </div>
                 </div>
                 <div
@@ -76,7 +76,9 @@ let numOfAudiosPlayed = ref(0),
 let questionsDb = [],
     isListening = ref(false),
     transcription = ref(""),
-    playButton = ref(false);
+    playButton = ref(false),
+    isPlaying = ref(false),
+    isIntroPlaying = ref(false);
 
 // Generate random number of cars as Questions
 const generateQuestions = () => {
@@ -102,7 +104,13 @@ const generateQuestions = () => {
 
 // Play the next question
 const playNextQuestion = async () => {
-    if (numOfAudiosPlayed.value < 5) {
+    if (numOfAudiosPlayed.value < 5 && !isPlaying.value) {
+        isPlaying.value = true;
+        
+        // Stop all current audios
+        stopAudios(currentAudios);
+        currentAudios.length = 0;  // Clear the array
+
         const audiosToPlay = [];
 
         // Add the initial audio
@@ -126,15 +134,26 @@ const playNextQuestion = async () => {
 
         // Add the final audio
         playQuestion("How many cars did you hear? Hold 'SPACE' to say the answer");
+        
+        isPlaying.value = false;
     }
 };
 
 // Handle the spacebar events
 const handleKeyDown = (event) => {
+    if (event.code === "KeyR" && 
+        numOfAudiosPlayed.value < 5 && 
+        !isPlaying.value && 
+        !isIntroPlaying.value) {
+        playNextQuestion();
+        return;
+    }
+
     if (
         event.code === "Space" &&
         !isListening.value &&
-        numOfAudiosPlayed.value < 5
+        numOfAudiosPlayed.value < 5 &&
+        !isIntroPlaying.value
     ) {
         isListening.value = true;
         playSound("ding-sound.mp3");
@@ -186,9 +205,13 @@ onMounted(() => {
 
     watch(playButton, (newVal) => {
         if (newVal) {
-        const introAudio = playIntro("/carCounting/carCountIntro.mp3");
-        currentAudios.push(introAudio);
-        introAudio.onended = playNextQuestion;
+            isIntroPlaying.value = true;
+            const introAudio = playIntro("/carCounting/carCountIntro.mp3");
+            currentAudios.push(introAudio);
+            introAudio.onended = () => {
+                isIntroPlaying.value = false;
+                playNextQuestion();
+            };
         }
     });
 
