@@ -24,11 +24,11 @@
          </div>
          
          <!-- Clouds - Positioned to avoid overlapping buttons -->
-         <div class="absolute left-0 bottom-0">
+         <div class="absolute bottom-0 left-0 z-0" style="bottom: 50px;">
            <img
              src="/assets/gameImages/cloud-bg.png"
              alt="Decorative cloud"
-             class="w-2/3 opacity-80"
+             style="width: 400px; height: auto;"
            />
          </div>
        </div>
@@ -92,12 +92,12 @@
                </button>
              </div>
              
-             <div
+             <!-- div
                id="transcript"
                class="text-center text-xl font-bold pt-2 pb-1"
              >
                You said: {{ transcription }}
-             </div>
+             </div-->
            </div>
            
            <div v-else>
