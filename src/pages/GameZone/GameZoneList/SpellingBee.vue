@@ -17,7 +17,7 @@
        <!-- Decorative Elements -->
        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
          <!-- Sun -->
-         <div class="absolute top-40 right-60 w-32 h-32">
+         <div class="absolute top-20 right-60 w-32 h-32">
            <svg viewBox="0 0 100 100" class="w-full h-full">
              <circle cx="50" cy="50" r="50" fill="#FFD137" />
            </svg>
@@ -39,14 +39,14 @@
            <img 
              src="/assets/gameImages/buttons/gameButtons/spellingBee.svg"
              alt="Game icon"
-             class="w-27 h-27">
+             class="w-[100px] h-[100px]">
          </div>
          
          <div class="flex flex-col justify-center items-center">
            <div class="text-center">
-             <h1 class="text-4.5xl font-bold">Spelling Bee</h1>
-             <p class="text-lg mt-2 mb-8">Buzz your way to spelling mastery!</p>
-           </div>
+            <h1 class="w-[397px] h-[70px] font-poppins font-semibold text-[64px] leading-[70px] tracking-normal">Spelling Bee</h1>
+            <p class="w-[397px] h-[24px] font-poppins font-normal text-[16px] leading-[24px] tracking-normal text-center mt-2 mb-8">Buzz your way to spelling mastery!</p>
+          </div>
            
            <div v-if="playButton === false">
              <button
@@ -62,16 +62,12 @@
              class="flex flex-col p-4 justify-center items-center"
              id="content"
            >
-             <div class="flex flex-row gap-4 mb-6">
-               <div class="p-2 px-5 text-[#087bb4]">
-                 Hold 'SPACE' to say the answer.
-               </div>
-             </div>
              
-             <div class="flex gap-4 mb-6">
-               <!-- Record Answer Button - Updated to match image 2 -->
+             <div class="flex gap-6 mb-6"> <!-- Changed gap from 4 to 6 (24px) -->
+               <!-- Record Answer Button - Updated dimensions and styling -->
                <button
-                 class="flex items-center justify-center gap-2 px-8 py-4 rounded-xl shadow-md bg-[#0096D6] text-white"
+                 class="flex items-center justify-center gap-2.5 w-[234px] h-[116px] pt-5 pr-7 pb-5 pl-7 rounded-[20px] shadow-md bg-[#087BB4] text-white"
+                 style="box-shadow: 10px 10px 20px 0px #32323233;"
                  :class="isRecording ? 'bg-red-500' : ''"
                >
                  <span class="text-lg font-medium">Record Answer</span>
@@ -82,9 +78,10 @@
                  />
                </button>
                
-               <!-- Repeat Question Button - Updated to match image 2 -->
+               <!-- Repeat Question Button - Updated dimensions and styling -->
                <button
-                 class="flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white border border-[#0096D6] text-[#0096D6] shadow-md"
+                 class="flex items-center justify-center gap-2.5 w-[234px] h-[116px] pt-5 pr-7 pb-5 pl-7 rounded-[20px] bg-white border border-[#0096D6] text-[#0096D6] shadow-md"
+                 style="box-shadow: 10px 10px 20px 0px #32323233;"
                >
                  <span class="text-lg font-medium">Repeat Question</span>
                  <img
