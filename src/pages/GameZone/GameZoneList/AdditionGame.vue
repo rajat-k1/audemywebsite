@@ -174,7 +174,7 @@
              Game Over
            </div>
            <div class="text-center text-xl font-medium pt-2 pb-1">
-             Score: {{ score }} / 5
+            Score: {{ score }} / {{ allQuestionslength }}
            </div>
          </div>
        </div>

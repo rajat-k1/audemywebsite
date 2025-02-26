@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen font-poppins bg-[#8FD5F8]">
+    <div class="min-h-screen font-poppins" :class="[isTablet || isMobile ? 'bg-[#E9F8FF]' : 'bg-[#8FD5F8]']">
         <!-- Header -->
         <div class="w-full">
             <GamePagesHeader />
@@ -14,16 +14,86 @@
                 />
             </button>
         </div-->
-        <div class="flex flex-col justify-center items-center h-[calc(90vh-64px)] relative z-10">
-            <div class="mt-0">
-                <img 
-                    src="/assets/gameImages/buttons/gameButtons/ss.svg"
-                    alt="Game icon"
-                    class="w-[100px] h-[100px]">
-            </div>
-            <div class="m-10 py-4 text-center">
-                <h1 class="text-4.5xl font-bold">Shape Shark</h1>
-            </div>
+
+        <!-- Decorative Elements -->
+     <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+       <!-- Sun - Only for desktop -->
+       <div v-if="!isTablet && !isMobile" class="absolute top-20 right-60 w-32 h-32">
+         <svg viewBox="0 0 100 100" class="w-full h-full">
+           <circle cx="50" cy="50" r="50" fill="#FFD137" />
+         </svg>
+       </div>
+       <!-- Clouds - Different for tablet -->
+       <template v-if="isTablet">
+         <!-- Left cloud for tablet -->
+         <div class="absolute left-0 z-0" style="bottom: 150px;">
+           <img
+             src="/assets/gameImages/cloud-bg-Tab-left.png"
+             alt="Decorative cloud"
+             style="width: 300px; height: auto;"
+           />
+           <!-- Paper plane above left cloud -->
+           <div class="absolute" style="width: 82px; height: 82px; top: -350px; left: 50.05px;">
+             <img
+               src="/assets/gameImages/paperPlane.png"
+               alt="Paper plane"
+               style="width: 100%; height: 100%;"
+             />
+           </div>
+         </div>
+         <!-- Right cloud for tablet -->
+         <div class="absolute bottom-0 right-0 z-0" style="bottom: 50px;">
+           <img
+             src="/assets/gameImages/cloud-bg-Tab-right.png"
+             alt="Decorative cloud"
+             style="width: 300px; height: auto;"
+           />
+         </div>
+       </template>
+       <!-- Clouds for desktop -->
+       <template v-else-if="!isMobile">
+         <div class="absolute bottom-0 left-0 z-0" style="bottom: 50px;">
+           <img
+             src="/assets/gameImages/cloud-bg.png"
+             alt="Decorative cloud"
+             style="width: 400px; height: auto;"
+           />
+         </div>
+       </template>
+       <!-- Mobile-specific clouds -->
+       <template v-if="isMobile">
+         <!-- Only right cloud for mobile -->
+         <div class="absolute right-0 z-0" style="bottom: 20px;">
+           <img
+             src="/assets/gameImages/cloud-bg-Tab-right.png"
+             alt="Decorative cloud"
+             style="width: 250px;"
+           />
+         </div>
+       </template>
+     </div>
+
+        <!-- Main Content -->
+     <div class="flex flex-col justify-center items-center relative z-10" :class="[isMobile ? 'h-[calc(90vh-144px)]' : 'h-[calc(90vh-64px)]']">
+       <div class="flex flex-col justify-center items-center mb-8">
+         <!-- Game icon and title - now stacked on top of everything -->
+         <div class="flex flex-col items-center">
+           <div class="mb-2">
+             <img
+               src="/assets/gameImages/buttons/gameButtons/ss.svg"
+               alt="Game icon"
+               class="w-[70px] h-[70px]">
+           </div>
+           <h1
+             :class="[
+               isMobile ? 'text-[56px] leading-[60px]' : 'text-[64px] leading-[70px]'
+             ]"
+             class="font-poppins font-semibold tracking-normal text-center mb-6"
+           >
+           Shape Shark
+           </h1>
+         </div>
+
             <div v-if="playButton === false">
                 <button
                     @click="playButton = true"
@@ -40,29 +110,77 @@
                 class="flex flex-col p-4 justify-center"
                 id="content"
             >
-                <div class="flex flex-row gap-4">
-                    <div class="p-2 px-5 text-[#087bb4]">
-                        &#9432; Hold 'SPACE' to say the answer | Press 'R' to repeat question
-                    </div>
-                </div>
-                <div
-                    id="transcript"
-                    class="text-center text-xl font-bold pt-2 pb-1"
-                >
-                    You said: {{ transcription }}
-                </div>
-            </div>
-            <div v-else>
-                <div class="text-center text-3xl font-bold pt-2 pb-1">
-                    Game Over
-                </div>
-                <div class="text-center text-xl font-medium pt-2 pb-1">
-                    Score: {{ score }} / {{ allQuestionslength }}
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
+                <!-- Different button styling for tablet -->
+           <div :class="[
+             isTablet ? 'flex gap-[25px] mb-6' :
+             isMobile ? 'flex flex-col gap-4 mb-6' :
+             'flex gap-6 mb-6'
+           ]">
+             <!-- Record Answer Button -->
+             <button
+               :class="[
+                 'flex items-center justify-center shadow-md',
+                 isTablet ?
+                   'w-[200px] h-[60px] pt-5 pr-[30px] pb-5 pl-[30px] gap-[10px] rounded-[20px]' :
+                 isMobile ?
+                   'w-full h-[60px] pt-5 pr-[30px] pb-5 pl-[30px] gap-[10px] rounded-[20px]' :
+                   'gap-2.5 w-[234px] h-[116px] pt-5 pr-7 pb-5 pl-7 rounded-[20px]',
+                 isRecording ? 'bg-red-500' : 'bg-[#087BB4]',
+                 'text-white'
+               ]"
+               style="box-shadow: 10px 10px 20px 0px #32323233;"
+             >
+               <span class="text-lg font-medium">{{ isTablet || isMobile ? 'Record' : 'Record Answer' }}</span>
+               <img
+                 src="/assets/gameImages/buttons/mic.png"
+                 class="w-6 h-6"
+                 alt="Record Icon"
+               />
+             </button>
+             
+             <!-- Repeat Question Button -->
+             <button
+               :class="[
+                 'flex items-center justify-center shadow-md',
+                 isTablet ?
+                   'w-[200px] h-[60px] pt-5 pr-[30px] pb-5 pl-[30px] gap-[10px] rounded-[20px]' :
+                 isMobile ?
+                   'w-full h-[60px] pt-5 pr-[30px] pb-5 pl-[30px] gap-[10px] rounded-[20px]' :
+                   'gap-2.5 w-[234px] h-[116px] pt-5 pr-7 pb-5 pl-7 rounded-[20px]',
+                 'bg-white border border-[#0096D6] text-[#0096D6]'
+               ]"
+               style="box-shadow: 10px 10px 20px 0px #32323233;"
+             >
+               <span class="text-lg font-medium">{{ isTablet || isMobile ? 'Repeat' : 'Repeat Question' }}</span>
+               <img
+                 src="/assets/gameImages/buttons/repeat.png"
+                 class="w-6 h-6"
+                 alt="Repeat Icon"
+               />
+             </button>
+           </div>
+           
+           <div
+             id="transcript"
+             class="text-center text-xl font-bold pt-2 pb-1"
+           >
+             You said: {{ transcription }}
+           </div>
+         </div>
+         
+         <!-- Game over section -->
+         <div v-else>
+           <div class="text-center text-3xl font-bold pt-2 pb-1">
+             Game Over
+           </div>
+           <div class="text-center text-xl font-medium pt-2 pb-1">
+            Score: {{ score }} / {{ allQuestionslength }}
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+   </template>
 
 <script setup>
 import { onMounted, onUnmounted, ref, watch } from "vue";
@@ -79,6 +197,32 @@ import {
     startListening,
     stopListening,
 } from "../../../Utilities/speechRecognition";
+
+// Device detection
+const isTablet = ref(false);
+   const isMobile = ref(false);
+   
+   // Check device type on mount and on window resize
+   const checkDeviceType = () => {
+     const width = window.innerWidth;
+     if (width >= 640 && width < 768) {
+       // Small devices (large phones)
+       isTablet.value = false;
+       isMobile.value = true;
+     } else if (width >= 768 && width < 1024) {
+       // Medium devices (tablets)
+       isTablet.value = true;
+       isMobile.value = false;
+     } else if (width >= 1024) {
+       // Large devices (laptops/desktops)
+       isTablet.value = false;
+       isMobile.value = false;
+     } else {
+       // Extra small devices (phones)
+       isTablet.value = false;
+       isMobile.value = true;
+     }
+   };
 
 const currentAudios = [],
     randQueNum = [];
@@ -190,6 +334,10 @@ onMounted(() => {
     console.log("Requesting microphone access...");
     requestMicPermission();
 
+    // Check device type
+    checkDeviceType();
+    window.addEventListener('resize', checkDeviceType);
+
     // Generate questions
     generateQuestions();
 
@@ -214,5 +362,6 @@ onUnmounted(() => {
     stopAudios(currentAudios);
     window.removeEventListener("keydown", handleKeyDown);
     window.removeEventListener("keyup", handleKeyUp);
+    window.removeEventListener('resize', checkDeviceType);
 });
 </script>
