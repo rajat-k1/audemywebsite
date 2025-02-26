@@ -92,6 +92,14 @@
            >
              Animal Addition
            </h1>
+           <p 
+              :class="[
+                isMobile ? 'w-[350px] h-[24px]' : 'w-[397px] h-[24px]'
+              ]" 
+              class="font-poppins font-normal text-[16px] leading-[24px] tracking-normal text-center mt-2 mb-8 text-[#777777]"
+            >
+            Add up the animals!
+            </p>
          </div>
          
          <!-- Play button section -->

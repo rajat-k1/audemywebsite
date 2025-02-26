@@ -92,6 +92,14 @@
            >
            Syllable Sorting
            </h1>
+           <p 
+              :class="[
+                  isMobile ? 'w-[350px] h-[24px]' : 'w-[397px] h-[24px]'
+              ]" 
+              class="font-poppins font-normal text-[16px] leading-[24px] tracking-normal text-center mt-2 mb-8 text-[#777777]"
+              >
+              Can you count the syllables in a given word?
+              </p>
          </div>
         
             <div v-if="playButton === false">
