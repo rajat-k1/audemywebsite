@@ -128,13 +128,9 @@
           isMobile ? 'flex flex-col gap-4 mb-6' : 
           'flex gap-6 mb-6'
         ]">
-          <!-- Record Answer Button -->
+          <!-- Record/Stop Button -->
           <button
-            @mousedown="startRecording"
-            @mouseup="stopRecording"
-            @mouseleave="stopRecording"
-            @touchstart="startRecording"
-            @touchend="stopRecording"
+            @click="toggleRecording"
             :class="[
               'flex items-center justify-center shadow-md',
               isTablet ? 
@@ -149,7 +145,9 @@
             style="box-shadow: 10px 10px 20px 0px #32323233;"
             :disabled="isQuestionPlaying || isIntroPlaying"
           >
-            <span class="text-lg font-medium">{{ isTablet || isMobile ? 'Hold to Record' : 'Hold to Record Answer' }}</span>
+            <span class="text-lg font-medium">
+              {{ isRecording ? 'Stop Recording' : (isTablet || isMobile ? 'Record' : 'Record Answer') }}
+            </span>
             <img
               src="/assets/gameImages/buttons/mic.png"
               class="w-6 h-6"
@@ -168,10 +166,10 @@
                 'w-full h-[60px] pt-5 pr-[30px] pb-5 pl-[30px] gap-[10px] rounded-[20px]' :
                 'gap-2.5 w-[234px] h-[116px] pt-5 pr-7 pb-5 pl-7 rounded-[20px]',
               'bg-white border border-[#0096D6] text-[#0096D6]',
-              (isQuestionPlaying || isIntroPlaying || isRepeatButtonCooldown) ? 'opacity-50 cursor-not-allowed' : ''
+              (isQuestionPlaying || isIntroPlaying || isRepeatButtonCooldown || isRecording) ? 'opacity-50 cursor-not-allowed' : ''
             ]"
             style="box-shadow: 10px 10px 20px 0px #32323233;"
-            :disabled="isQuestionPlaying || isIntroPlaying || isRepeatButtonCooldown"
+            :disabled="isQuestionPlaying || isIntroPlaying || isRepeatButtonCooldown || isRecording"
           >
             <span class="text-lg font-medium">{{ isTablet || isMobile ? 'Repeat' : 'Repeat Question' }}</span>
             <img
@@ -352,63 +350,73 @@ if (!isIntroPlaying.value && !isQuestionPlaying.value && numOfAudiosPlayed.value
 }
 };
 
-// Function for the record button - modified to handle press and hold
-const startRecording = () => {
-// Only start listening if:
-// 1. We're not already listening
-// 2. Haven't played all 5 questions
-// 3. Intro isn't playing
-// 4. Question isn't currently playing (this is the key change)
-if (
-  !isListening.value &&
-  numOfAudiosPlayed.value < 5 &&
-  !isIntroPlaying.value &&
-  !isQuestionPlaying.value  // Only allow recording after question finishes
-) {
-  isListening.value = true;
-  isRecording.value = true;
-  
-  startListening((transcript) => {
-    const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
-    console.log("User Answer:", transcript);
-    transcription.value = transcript;
-    
-    if (transcript.trim().toLowerCase() === question["A"].toLowerCase()) {
-      score.value++;
-      playSound("correctaudio.mp3");
-    } else {
-      playSound("incorrectaudio.mp3");
+// Toggle recording function - click once to start, click again to stop
+const toggleRecording = () => {
+  // If already recording, stop recording and process the answer
+  if (isRecording.value) {
+    // If we're actually listening (as a safety check)
+    if (isListening.value) {
+      stopListening();
+      isListening.value = false;
     }
     
-    stopListening();
-    isListening.value = false;
     isRecording.value = false;
-    numOfAudiosPlayed.value++;
     
-    if (numOfAudiosPlayed.value < 5) {
-      setTimeout(() => {
-        playNextQuestion();
-      }, 2000);
+    // Only process the answer if we have a transcription
+    if (transcription.value) {
+      const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
+      
+      // For spelling bee, compare without spaces and convert to lowercase
+      // This handles cases like "r e d" vs "red"
+      const userSpelling = transcription.value.trim().toLowerCase().replace(/\s+/g, '');
+      const correctSpelling = question["A"].toLowerCase().replace(/\s+/g, '');
+      
+      console.log("User spelling:", userSpelling);
+      console.log("Correct spelling:", correctSpelling);
+      
+      if (userSpelling === correctSpelling) {
+        score.value++;
+        playSound("correctaudio.mp3");
+      } else {
+        playSound("incorrectaudio.mp3");
+      }
+      
+      numOfAudiosPlayed.value++;
+      
+      if (numOfAudiosPlayed.value < 5) {
+        setTimeout(() => {
+          playNextQuestion();
+        }, 2000);
+      } else {
+        // Game Over
+        setTimeout(() => {
+          playScore(score.value);
+        }, 2000);
+      }
     } else {
-      // Game Over
-      setTimeout(() => {
-        playScore(score.value);
-      }, 2000);
+      // If no transcription, just reset without advancing
+      console.log("No transcription recorded");
     }
-  });
-}
-};
-
-// Function to stop recording when button is released
-const stopRecording = () => {
-if (isListening.value) {
-  // Add a 1-second delay before stopping the recording
-  setTimeout(() => {
-    stopListening();
-    isListening.value = false;
-    isRecording.value = false;
-  }, 1000);
-}
+  } 
+  // If not recording and conditions allow, start recording
+  else if (
+    !isListening.value &&
+    numOfAudiosPlayed.value < 5 &&
+    !isIntroPlaying.value &&
+    !isQuestionPlaying.value
+  ) {
+    // Clear previous transcription
+    transcription.value = "";
+    
+    isRecording.value = true;
+    isListening.value = true;
+    
+    // Define a callback that will just update the transcription
+    // but NOT process the answer yet
+    startListening((transcript) => {
+      transcription.value = transcript;
+    });
+  }
 };
 
 onMounted(() => {
