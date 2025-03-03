@@ -18,7 +18,7 @@ const changeCurrentPage = (page) => {
     <div class="px-20">
       <Header
         :textColor="'text-black'"
-        :logoPath="'/assets/images/header/header-logo.png'"
+        :logoPath="'/assets/images/header/header-logo-2.png'"
       />
     </div>
     <div class="w-full pt-10 flex align-center justify-center">
