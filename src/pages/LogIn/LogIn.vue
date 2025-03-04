@@ -2,13 +2,17 @@
 import { ref, onMounted } from "vue";
 import { GoogleLogin } from "vue3-google-login";
 import { useRouter } from "vue-router";
+import { jwtDecode } from "jwt-decode";
+
 const errors = ref(false);
 const email = ref("");
 const password = ref("");
-var authKey = ref("");
+const authKey = ref("");
 const userSession = ref(null);
 const router = useRouter();
 
+//OAUTH
+const userProfile = ref(null);
 
 onMounted(() => {
     const session = localStorage.getItem("audemyUserSession");
@@ -75,8 +79,25 @@ const resetErrors = () => {
 //     console.log("Handle the response", response);
 // };
 
-const callback = async (response) => {
+const callback = (response) => {
     // console.log("Google OAuth response:", response);
+    // Check if we received a credential (JWT)
+    if (response?.credential) {
+        try {
+            // Decode the JWT to extract profile info
+            const decoded = jwtDecode(response.credential);
+            // console.log("Decoded JWT:", decoded);
+
+            // Extract user profile information from decoded JWT
+            userProfile.value = {
+                name: decoded.name,
+                email: decoded.email,
+                imageUrl: decoded.picture, // Profile picture URL
+            };
+        } catch (error) {
+            console.error("Failed to decode JWT:", error);
+        }
+    }
     localStorage.setItem("audemyUserSession", JSON.stringify(response));
     userSession.value = response;
     console.log("User logged in");
@@ -118,7 +139,9 @@ const logout = () => {
             />
         </div>
 
+        <!-- Show login form if not logged in -->
         <div
+            v-if="!userSession"
             class="w-7/12 md:w-full sm:w-full bg-white flex items-center justify-center"
         >
             <form
@@ -143,14 +166,12 @@ const logout = () => {
                             >
                         </div>
                     </div>
-                    <!-- Changed for field here to email -->
                     <div class="mb-[16px]">
                         <label
                             class="block text-[#0C0D0D] mb-1 font-semiBold"
                             for="email"
                             >Email Address</label
                         >
-                        <!-- Added Autocomplete here -->
                         <input
                             v-model="email"
                             type="email"
@@ -211,23 +232,35 @@ const logout = () => {
                     </div>
                 </div>
             </form>
-            <!-- <GoogleLogin :callback="callback" /> -->
+
+            <!-- Google OAuth Login -->
             <div class="flex flex-col items-center justify-center gap-4 mt-8">
-                <GoogleLogin
-                    v-if="!userSession"
-                    :callback="callback"
-                    class="py-2 px-4 bg-blue-500 text-white rounded shadow"
-                >
-                    Sign In
-                </GoogleLogin>
-                <button
-                    v-else
-                    @click="logout"
-                    class="py-2 px-4 bg-red-500 text-white rounded shadow"
-                >
-                    Logout
-                </button>
+                <GoogleLogin :callback="callback" />
             </div>
+        </div>
+
+        <!-- Show logout button if logged in -->
+        <!-- Show user profile and logout button if logged in -->
+        <div
+            v-else
+            class="w-7/12 md:w-full sm:w-full bg-white flex items-center justify-center flex-col gap-4 mt-8"
+        >
+            <div class="text-center">
+                <img
+                    v-if="userProfile?.imageUrl"
+                    :src="userProfile.imageUrl"
+                    alt="User Photo"
+                    class="rounded-full w-[80px] h-[80px] object-cover"
+                />
+                <h3 class="text-2xl mt-4">{{ userProfile?.name }}</h3>
+                <p class="text-lg">{{ userProfile?.email }}</p>
+            </div>
+            <button
+                @click="logout"
+                class="bg-red-500 text-white py-2 px-4 rounded mt-6"
+            >
+                Log Out
+            </button>
         </div>
     </div>
 </template>
