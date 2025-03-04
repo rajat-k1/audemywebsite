@@ -79,7 +79,7 @@ const resetErrors = () => {
 //     console.log("Handle the response", response);
 // };
 
-const callback = (response) => {
+const callback = async (response) => {
     // console.log("Google OAuth response:", response);
     // Check if we received a credential (JWT)
     if (response?.credential) {
@@ -98,17 +98,20 @@ const callback = (response) => {
             console.error("Failed to decode JWT:", error);
         }
     }
-    localStorage.setItem("audemyUserSession", JSON.stringify(response));
-    userSession.value = response;
-    console.log("User logged in");
-    router.push("/game-zone");
-};
-const logout = () => {
-    localStorage.removeItem("audemyUserSession");
-    userSession.value = null;
-    console.log("User logged out");
-    router.push("/login");
-};
+    console.log("Making API call with username:", userProfile.value.email);
+    const dbResponse = await fetch(
+        `/api/db/get_user?username=${userProfile.value.email}`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+    );
+
+    const dbData = await dbResponse.json();
+    console.log("DB Response:", dbData);
+
 </script>
 
 <template>
