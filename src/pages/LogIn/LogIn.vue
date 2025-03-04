@@ -5,9 +5,10 @@ import { useRouter } from "vue-router";
 const errors = ref(false);
 const email = ref("");
 const password = ref("");
-const authKey = ref("");
+var authKey = ref("");
 const userSession = ref(null);
 const router = useRouter();
+
 
 onMounted(() => {
     const session = localStorage.getItem("audemyUserSession");
@@ -74,7 +75,7 @@ const resetErrors = () => {
 //     console.log("Handle the response", response);
 // };
 
-const callback = (response) => {
+const callback = async (response) => {
     // console.log("Google OAuth response:", response);
     localStorage.setItem("audemyUserSession", JSON.stringify(response));
     userSession.value = response;
