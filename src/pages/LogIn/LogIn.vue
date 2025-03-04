@@ -112,17 +112,6 @@ const callback = async (response) => {
     const dbData = await dbResponse.json();
     console.log("DB Response:", dbData);
 
-    localStorage.setItem("audemyUserSession", JSON.stringify(response));
-    userSession.value = response;
-    console.log("User logged in");
-    router.push("/game-zone");
-};
-const logout = () => {
-    localStorage.removeItem("audemyUserSession");
-    userSession.value = null;
-    console.log("User logged out");
-    router.push("/login");
-};
 </script>
 
 <template>
