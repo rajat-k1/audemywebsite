@@ -21,15 +21,15 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: "Method not allowed" });
     }
 
-    const { username } = req.query; // Get email from query params
-    if (!username) {
+    const { email } = req.query; // Get email from query params
+    if (!email) {
         return res.status(400).json({ error: "Email is required" });
     }
 
     try {
         // Fetch user from database using Prisma
         const user = await prisma.user.findUnique({
-            where: { username },
+            where: { email },
         });
 
         if (!user) {

@@ -88,7 +88,7 @@ const callback = async (response) => {
     }
     console.log("Making API call with username:", userProfile.value.email);
     const dbResponse = await fetch(
-        `/api/db/get_user?username=${userProfile.value.email}`,
+        `/api/db/get_user?email=${userProfile.value.email}`,
         {
             method: "GET",
             headers: {
@@ -98,6 +98,24 @@ const callback = async (response) => {
     );
     const dbData = await dbResponse.json();
     console.log("DB Response:", dbData);
+
+    // If user does not exist, create/update with a dummy school field
+    if (!dbData || !dbData.email) {
+        console.log("User not found, creating user with dummy school...");
+        await fetch(`/api/db/update_user_school`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: userProfile.value.email,
+                name: userProfile.value.name,
+                school: "Unknown School", // Dummy school
+            }),
+        });
+    }
+
+    // Session store
     localStorage.setItem("audemyUserSession", JSON.stringify(response));
     userSession.value = response;
     console.log("User logged in");
