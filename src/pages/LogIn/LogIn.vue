@@ -3,34 +3,28 @@ import { ref, onMounted } from "vue";
 import { GoogleLogin } from "vue3-google-login";
 import { useRouter } from "vue-router";
 import { jwtDecode } from "jwt-decode";
-
 const errors = ref(false);
 const email = ref("");
 const password = ref("");
 const authKey = ref("");
 const userSession = ref(null);
 const router = useRouter();
-
 //OAUTH
 const userProfile = ref(null);
-
 onMounted(() => {
     const session = localStorage.getItem("audemyUserSession");
     if (session) {
         userSession.value = JSON.parse(session);
     }
 });
-
 const login = (event) => {
     event.preventDefault();
     errors.value = false;
-
     if (!email.value || !password.value) {
         errors.value = true;
         resetErrors();
         return;
     }
-
     // Send login req data as JSON
     fetch("https://audemy-users-api.fly.dev/login", {
         method: "POST",
@@ -62,23 +56,18 @@ const login = (event) => {
             console.error("Error:", error);
         });
 };
-
 const resetErrors = () => {
     setTimeout(() => {
         errors.value = false;
     }, 4000);
 };
-
 //**** OAUTH
-
 // const router = useRouter();
-
 // const callback = (response) => {
 //     // This callback will be triggered when the user selects or login to
 //     // his Google account from the popup
 //     console.log("Handle the response", response);
 // };
-
 const callback = async (response) => {
     // console.log("Google OAuth response:", response);
     // Check if we received a credential (JWT)
@@ -87,7 +76,6 @@ const callback = async (response) => {
             // Decode the JWT to extract profile info
             const decoded = jwtDecode(response.credential);
             // console.log("Decoded JWT:", decoded);
-
             // Extract user profile information from decoded JWT
             userProfile.value = {
                 name: decoded.name,
@@ -108,12 +96,20 @@ const callback = async (response) => {
             },
         }
     );
-
     const dbData = await dbResponse.json();
     console.log("DB Response:", dbData);
-
+    localStorage.setItem("audemyUserSession", JSON.stringify(response));
+    userSession.value = response;
+    console.log("User logged in");
+    router.push("/game-zone");
+};
+const logout = () => {
+    localStorage.removeItem("audemyUserSession");
+    userSession.value = null;
+    console.log("User logged out");
+    router.push("/login");
+};
 </script>
-
 <template>
     <div
         class="w-full h-screen overflow-hidden bg-[#FFDABA] flex justify-between mobile:flex-row"
@@ -141,7 +137,6 @@ const callback = async (response) => {
                 class="absolute -bottom-[15%] right-0 w-full -z-1"
             />
         </div>
-
         <!-- Show login form if not logged in -->
         <div
             v-if="!userSession"
@@ -235,13 +230,11 @@ const callback = async (response) => {
                     </div>
                 </div>
             </form>
-
             <!-- Google OAuth Login -->
             <div class="flex flex-col items-center justify-center gap-4 mt-8">
                 <GoogleLogin :callback="callback" />
             </div>
         </div>
-
         <!-- Show logout button if logged in -->
         <!-- Show user profile and logout button if logged in -->
         <div
