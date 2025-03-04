@@ -88,7 +88,7 @@ const callback = async (response) => {
     }
     console.log("Making API call with username:", userProfile.value.email);
     const dbResponse = await fetch(
-        `/api/db/get_user?username=${userProfile.value.email}`,
+        `/api/db/get_user?email=${userProfile.value.email}`,
         {
             method: "GET",
             headers: {
