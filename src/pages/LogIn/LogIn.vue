@@ -6,7 +6,7 @@ import { jwtDecode } from "jwt-decode";
 const errors = ref(false);
 const email = ref("");
 const password = ref("");
-const authKey = ref("");
+var authKey = ref("");
 const userSession = ref(null);
 const router = useRouter();
 //OAUTH
