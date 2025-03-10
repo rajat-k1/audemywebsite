@@ -381,7 +381,7 @@ const toggleRecording = () => {
                 if (numOfAudiosPlayed.value < allQuestionslength) {
                     setTimeout(() => {
                         playNextQuestion();
-                    }, 2000);
+                    }, 3000);
                 } else {
                     console.log("Game Over!");
                     setTimeout(() => {
