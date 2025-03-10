@@ -1,7 +1,7 @@
 <template>
   <div
     class="min-h-screen font-poppins"
-    :class="[isTablet || isMobile ? 'bg-[#E9F8FF]' : 'bg-[#6FFFC6]']"
+    :class="[isTablet || isMobile ? 'bg-[#6FFFC6]' : 'bg-[#6FFFC6]']"
   >
     <!-- Header -->
     <div class="w-full">

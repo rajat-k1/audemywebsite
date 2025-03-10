@@ -23,7 +23,7 @@
             <ul class="flex font-poppins font-semibold" 
                 :class="[
                     textColor ?? 'text-[#151e22]',
-                    isTabletView ? 'space-x-2x text-sm' : 'space-x-8'
+                    isTabletView ? 'space-x-2x text-sm' : 'space-x-4'
                 ]">
                 <li>
                     <RouterLink
@@ -182,19 +182,22 @@ const closeMenu = () => {
 
 const checkScreenSize = () => {
     const width = window.innerWidth;
-    
-    if (width < 768) {
-        // Mobile devices
-        isMobileView.value = true;
+    if (width >= 640 && width < 768) {
+        // Small devices (large phones)
         isTabletView.value = false;
+        isMobileView.value = true;
     } else if (width >= 768 && width < 1024) {
         // Medium devices (tablets)
-        isMobileView.value = false;
         isTabletView.value = true;
-    } else {
-        // Desktop devices
         isMobileView.value = false;
+    } else if (width >= 1024) {
+        // Large devices (laptops/desktops)
         isTabletView.value = false;
+        isMobileView.value = false;
+    } else {
+        // Extra small devices (phones)
+        isTabletView.value = false;
+        isMobileView.value = true;
     }
 };
 
