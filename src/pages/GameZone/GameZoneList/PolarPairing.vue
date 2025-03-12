@@ -285,7 +285,8 @@ const goBack = () => {
   console.log("Going back...");
   // Stop all audio playback before navigating away
   stopAudios(currentAudios);
-  window.history.back();
+  // Force navigate to the game zone page
+  window.location.href = "/game-zone";
 };
 
 // Check device type on mount and on window resize
