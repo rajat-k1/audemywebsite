@@ -167,12 +167,12 @@ const logout = () => {
         <!-- Show login form if not logged in -->
         <div
             v-if="!userSession && !showSchoolForm"
-            class="w-7/12 md:w-full sm:w-full bg-white flex items-center justify-center"
+            class="w-7/12 md:w-full sm:w-full bg-white flex flex-col items-center justify-center border-2"
         >
             <form
                 @submit="login"
                 method="post"
-                class="max-h-[350px] w-full flex flex-col justify-center items-center gap-[5%]"
+                class="max-h-[350px] w-full flex flex-col justify-center items-center gap-[5%] my-4"
             >
                 <h1
                     class="text-[36px] text-[#151E22] text-center w-7/12 mobile:w-full mobile:text-[24px] mobile:mb-4"
@@ -249,9 +249,15 @@ const logout = () => {
                 </div>
             </form>
 
+            <div class="flex w-1/2 text-gray-500 items-center justify-center gap-2">
+                <div><hr class="w-52 h-0.5 my-4 bg-gray-500 rounded-sm"/></div>
+                <div>or</div>
+                <div><hr class="w-52 h-0.5 my-4 bg-gray-500 rounded-sm"/></div>
+            </div>
+
             <!-- Google OAuth Login -->
-            <div class="flex flex-col items-center justify-center gap-4 mt-8">
-                <GoogleLogin :callback="callback" />
+            <div class="flex w-full gap-4 items-center justify-center mt-4">
+                <GoogleLogin :callback="callback" class=" flex items-center justify-center gap-4"/>
             </div>
         </div>
 
