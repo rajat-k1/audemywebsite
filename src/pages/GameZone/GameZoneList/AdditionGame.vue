@@ -139,10 +139,10 @@
             </div>
 
             <!-- Play button section -->
-            <div v-if="playButton === false" class="mt-4">
+            <div v-if="playButton === false">
               <button
                 @click="playButton = true"
-                class="bg-[#087bb4] text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-[#0d5f8b]"
+                class="bg-[#087bb4] text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-[#0d5f8b]"
               >
                 Play
               </button>
@@ -153,7 +153,7 @@
               v-else-if="
                 numOfAudiosPlayed < allQuestionslength && playButton === true
               "
-              class="flex flex-col p-4 justify-center items-center w-full max-w-2xl"
+              class="flex flex-col p-4 justify-center"
               id="content"
             >
               <!-- Different button styling for tablet -->
@@ -268,7 +268,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { onMounted, onUnmounted, ref, watch } from "vue";
 import GamePagesHeader from "../../Header/GamePagesHeader.vue";
 import { requestMicPermission } from "../../../Utilities/requestMicAccess";
@@ -319,20 +319,20 @@ const checkDeviceType = () => {
   }
 };
 
-const currentAudios = [],
-  randQueNum = [];
-let numOfAudiosPlayed = ref(0),
-  score = ref(0);
-let questionsDb = [],
-  isListening = ref(false),
-  transcription = ref(""),
-  playButton = ref(false),
-  isIntroPlaying = ref(false),
-  isRecording = ref(false),
-  isButtonCooldown = ref(false);
-let allQuestionslength = 0;
+const currentAudios = [];
+const randQueNum = [];
+const numOfAudiosPlayed = ref(0);
+const score = ref(0);
+const questionsDb = ref([]);
+const isListening = ref(false);
+const transcription = ref("");
+const playButton = ref(false);
+const isIntroPlaying = ref(false);
+const isRecording = ref(false);
+const isButtonCooldown = ref(false);
+const allQuestionslength = ref(0);
 
-// Generate multiplication questions using Json file
+// Generate addition questions using Json file
 const generateQuestions = () => {
   console.log("Generating Questions...");
   fetch("/assets/questionsDb/additionDb.json")
@@ -343,16 +343,16 @@ const generateQuestions = () => {
         ...data["AdditionGame"]["Questions"]["Medium"],
         ...data["AdditionGame"]["Questions"]["Hard"],
       ];
-      allQuestionslength = allQuestions.length;
-      while (randQueNum.length < allQuestionslength) {
+      allQuestionslength.value = allQuestions.length;
+      while (randQueNum.length < allQuestionslength.value) {
         let num = Math.floor(Math.random() * allQuestions.length);
         if (!randQueNum.includes(num)) {
           randQueNum.push(num);
         }
       }
-      questionsDb = allQuestions;
+      questionsDb.value = allQuestions;
       console.log("Questions generated!");
-      console.log(questionsDb);
+      console.log(questionsDb.value);
     })
     .catch((error) => {
       console.error("Error fetching questions:", error);
@@ -361,8 +361,8 @@ const generateQuestions = () => {
 
 // Play the next question
 const playNextQuestion = () => {
-  if (numOfAudiosPlayed.value < allQuestionslength) {
-    const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
+  if (numOfAudiosPlayed.value < allQuestionslength.value) {
+    const question = questionsDb.value[randQueNum[numOfAudiosPlayed.value]];
     console.log(question);
     currentAudios.push(playQuestion(question["Q"]));
   }
@@ -370,12 +370,12 @@ const playNextQuestion = () => {
 
 // Toggle recording state when record button is clicked
 const toggleRecording = () => {
-  if (numOfAudiosPlayed.value < allQuestionslength && !isIntroPlaying.value) {
+  if (numOfAudiosPlayed.value < allQuestionslength.value && !isIntroPlaying.value) {
     if (!isRecording.value) {
       // Start recording
       isRecording.value = true;
       startListening((transcript) => {
-        const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
+        const question = questionsDb.value[randQueNum[numOfAudiosPlayed.value]];
         console.log("Question is: ", question["Q"]);
         console.log("User Answer:", transcript);
         console.log("Correct Answer:", question["A"]);
@@ -395,8 +395,8 @@ const toggleRecording = () => {
         stopListening();
         isRecording.value = false;
         numOfAudiosPlayed.value++;
-        console.log("All Questions Length is: ", allQuestionslength);
-        if (numOfAudiosPlayed.value < allQuestionslength) {
+        console.log("All Questions Length is: ", allQuestionslength.value);
+        if (numOfAudiosPlayed.value < allQuestionslength.value) {
           setTimeout(() => {
             playNextQuestion();
           }, 3000);
@@ -426,7 +426,7 @@ const toggleRecording = () => {
 // Repeat the current question
 const repeatQuestion = () => {
   if (
-    numOfAudiosPlayed.value < allQuestionslength &&
+    numOfAudiosPlayed.value < allQuestionslength.value &&
     !isIntroPlaying.value &&
     !isButtonCooldown.value
   ) {
