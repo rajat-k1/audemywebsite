@@ -3,14 +3,11 @@ import Header from "../../components/Header/Header.vue";
 import GameZoneList from "../GameZone/GameZoneList/GameZoneList.vue";
 import GameProgress from "../GameZone/GameProgress/GameProgress.vue";
 import { ref } from "vue";
-
 const currentPage = ref(1);
-
 const changeCurrentPage = (page) => {
   currentPage.value = page;
 };
 </script>
-
 <template>
   <div
     class="relative bg-white h-full overflow-x-hidden flex flex-col justify-center"
@@ -29,25 +26,25 @@ const changeCurrentPage = (page) => {
         <div class="w-full flex gap-10 mb-10">
           <button
             @click="changeCurrentPage(1)"
-            :class="
+            :class="[
               currentPage == 1
-                ? 'text-[#087BB4] font-semibold'
-                : 'text-[#6E777C]'
-            "
-            class="font-poppins mobile:text-[14px]"
+                ? 'text-[#087BB4] bg-[#e6f3fa] font-semibold border-[#087BB4]'
+                : 'text-[#6E777C] bg-white border-[#6E777C]'
+            ]"
+            class="font-poppins mobile:text-[14px] py-2 px-8 rounded-full border"
           >
-            Language Lab
+            Language Games
           </button>
           <button
             @click="changeCurrentPage(2)"
-            :class="
+            :class="[
               currentPage == 2
-                ? 'text-[#087BB4] font-semibold'
-                : 'text-[#6E777C]'
-            "
-            class="font-poppins mobile:text-[14px]"
+                ? 'text-[#087BB4] bg-[#e6f3fa] font-semibold border-[#087BB4]'
+                : 'text-[#6E777C] bg-white border-[#6E777C]'
+            ]"
+            class="font-poppins mobile:text-[14px] py-2 px-8 rounded-full border"
           >
-            Math Magic
+            Math Games
           </button>
           <!--button
             @click="changeCurrentPage(3)"
