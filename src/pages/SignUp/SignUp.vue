@@ -143,19 +143,7 @@ const submitForm = (event) => {
                     </div>
                 </div>
 
-                <!-- DOB FIELD -->
-                <div class="mb-[16px] mobile:w-full">
-                    <label class="block text-[#0C0D0D] font-semiBold"
-                        >Date of Birth</label
-                    >
-                    <input
-                        type="date"
-                        class="w-full outline-none border border-black h-[48px] px-4 rounded-[8px]"
-                        id="birthday"
-                        name="birthday"
-                        placeholder="MM-DD-YYYY"
-                    />
-                </div>
+         
 
                 <!-- SCHOOL FIELD -->
                 <div class="mb-[16px] mobile:w-full">
