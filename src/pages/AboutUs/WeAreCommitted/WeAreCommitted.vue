@@ -18,9 +18,11 @@ const items = [
 ];
 
 let smallScreen = ref(window.innerWidth <= 450);
+let tabletScreen = ref(window.innerWidth <= 1024 && window.innerWidth > 450);
 
 const updateScreenWidth = () => {
     smallScreen.value = window.innerWidth <= 450;
+    tabletScreen.value = window.innerWidth <= 1024 && window.innerWidth > 450;
 };
 
 onMounted(() => {
@@ -82,7 +84,11 @@ onUnmounted(() => {
             >
                 <img
                     src="/assets/images/our-projects/Mask group.png"
-                    class="absolute w-[90%] object-cover -top-48 -right-40 -z-10 mobile:hidden tablet-cloud"
+                    :class="[
+                        'absolute w-[90%] object-cover -top-48 -z-10 mobile:hidden',
+                        tabletScreen ? '-right-28' : '-right-40',
+                        'tablet-cloud'
+                    ]"
                     alt="Image"
                 />
                 <img
@@ -131,4 +137,3 @@ onUnmounted(() => {
     }
 }
 </style>
-
