@@ -1,52 +1,48 @@
 <script setup>
-import { defineProps, inject } from "vue";
 
+import { defineProps } from "vue";
 const props = defineProps({
   staffTitle: String,
   staff: Array,
 });
 
-// Inject the responsive flags from parent component
-const isTablet = inject('isTablet', false);
-const isMobile = inject('isMobile', false);
 </script>
 
 <template>
-  <div>
-    <!-- Staff Title Section -->
-    <div class="mb-6">
+  <div
+    class="flex justify-between items-center mobile:flex-col tablet:flex-col"
+  >
+    <div class="w-3/12 tablet:w-full mobile:w-full mb-4 tablet:mb-4 items-center">
       <h3
-        class="font-poppins text-2xl tablet:text-[28px] mobile:text-[24px] font-[400]"
+        class="font-poppins text-2xl tablet:text-[32px] mobile:text-[24px] text-start tablet:text-center mobile:text-center font-[400]"
       >
         {{ staffTitle }}
       </h3>
     </div>
-
-    <!-- Staff Grid Section -->
-    <div class="grid tablet:grid-cols-2 desktop:grid-cols-3 gap-x-6 gap-y-10">
-      <!-- Each volunteer card is a self-contained unit -->
+    <div class="w-9/12 tablet:w-full mobile:w-full flex justify-start flex-wrap tablet:flex-col mobile:flex-col">
       <div
+        class="w-4/12 tablet:w-full mobile:w-full mb-8 flex justify-center"
         v-for="volunteer in staff"
         :key="volunteer.name"
-        class="flex flex-col items-center"
       >
-        <!-- Volunteer Image -->
-        <div class="mb-4">
+        <div
+          class="w-[240px] h-[262px] flex flex-col justify-between items-center"
+        >
           <img
             :src="volunteer.image"
             :alt="volunteer.name"
-            class="w-[140px] h-[140px] tablet:w-[120px] tablet:h-[120px] desktop:w-[160px] desktop:h-[160px] rounded-full"
+            class="w-[160px] h-[160px]"
           />
-        </div>
-        
-        <!-- Volunteer Info - always below the image -->
-        <div class="text-center">
-          <h3 class="font-poppins text-[20px] font-bold mb-1">
-            {{ volunteer.name }}
-          </h3>
-          <h4 class="font-poppins text-[16px]">
-            {{ volunteer.role }}
-          </h4>
+          <div class="gap-5">
+            <h3
+              class="text-center font-poppins text-[20px] m-0 w-full"
+            >
+              <b>{{ volunteer.name }}</b>
+            </h3>
+            <h4 class="text-center font-poppins text-[18px] w-full">
+              {{ volunteer.role }}
+            </h4>
+          </div>
         </div>
       </div>
     </div>
