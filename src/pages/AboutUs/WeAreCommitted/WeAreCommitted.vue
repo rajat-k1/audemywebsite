@@ -82,7 +82,7 @@ onUnmounted(() => {
             >
                 <img
                     src="/assets/images/our-projects/Mask group.png"
-                    class="absolute w-[90%] object-cover -top-48 -right-40 -z-10 mobile:hidden"
+                    class="absolute w-[90%] object-cover -top-48 -right-40 -z-10 mobile:hidden tablet-cloud"
                     alt="Image"
                 />
                 <img
@@ -94,7 +94,7 @@ onUnmounted(() => {
             <img
                 src="/assets/images/impact/orangeStar.png"
                 alt="Orange Star"
-                class="absolute bottom-[10rem] left-[52rem] z-10 mobile:hidden"
+                class="absolute bottom-[10rem] left-[52rem] z-10 mobile:hidden tablet:hidden tablet-hide"
             />
             <img
                 src="/assets/images/about-us/blueStar2.svg"
@@ -124,4 +124,11 @@ onUnmounted(() => {
         font-size: 14px;
     }
 }
+
+@media screen and (max-width: 1024px) {
+    .tablet-hide {
+        display: none;
+    }
+}
 </style>
+
