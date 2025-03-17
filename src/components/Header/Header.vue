@@ -180,26 +180,27 @@ const closeMenu = () => {
     document.body.style.overflow = '';
 };
 
-const checkScreenSize = () => {
-    const width = window.innerWidth;
-    if (width >= 640 && width < 768) {
-        // Small devices (large phones)
-        isTabletView.value = false;
-        isMobileView.value = true;
-    } else if (width >= 768 && width < 1024) {
-        // Medium devices (tablets)
-        isTabletView.value = true;
-        isMobileView.value = false;
-    } else if (width >= 1024) {
-        // Large devices (laptops/desktops)
-        isTabletView.value = false;
-        isMobileView.value = false;
-    } else {
-        // Extra small devices (phones)
-        isTabletView.value = false;
-        isMobileView.value = true;
-    }
+const checkDeviceType = () => {
+  const width = window.innerWidth;
+  if (width >= 640 && width < 768) {
+    // Small devices (large phones)
+    isTablet.value = false;
+    isMobile.value = true;
+  } else if (width >= 768 && width <= 1024) { 
+    // Medium devices (tablets, including iPad Pro width)
+    isTablet.value = true;
+    isMobile.value = false;
+  } else if (width > 1024) { 
+    // Large devices (laptops/desktops)
+    isTablet.value = false;
+    isMobile.value = false;
+  } else {
+    // Extra small devices (phones)
+    isTablet.value = false;
+    isMobile.value = true;
+  }
 };
+
 
 // Add resize listener to check screen size
 onMounted(() => {
