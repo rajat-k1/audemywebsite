@@ -371,7 +371,7 @@ const toggleRecording = () => {
         console.log("User Answer:", transcript);
         console.log("Correct Answer:", question["A"]);
         transcription.value = transcript;
-        if (transcript.trim() === question["A"]) {
+        if (question["A"].includes(transcript.trim())) {
           score.value++;
           console.log("Correct Answer!");
           playSound("correctaudio.mp3");
