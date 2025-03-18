@@ -18,7 +18,7 @@
         },
         {
           "Q": "Is the word 'blue' a noun, verb, or adjective?",
-          "A": ["adjective"]
+          "A": ["adjective", "noun"]
         },
         { "Q": "Is the word 'dog' a noun, verb, or adjective?", "A": ["noun"] },
         {
