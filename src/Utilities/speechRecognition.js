@@ -43,7 +43,7 @@ export const startListening = (onResultCallback) => {
     };
 
     recognizer.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
+        const transcript = event.results[0][0].transcript.toLowerCase();
         console.log("Recognized speech:", transcript);
         if (onResultCallback) {
             onResultCallback(transcript);
