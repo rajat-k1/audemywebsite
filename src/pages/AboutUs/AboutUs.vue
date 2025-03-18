@@ -15,8 +15,8 @@ import CallToAction from "./CallToAction/CallToAction.vue";
     <div class="px-20 relative" ref="content">
         <Header :logoPath="'/assets/images/header/header-logo-2.png'" />
         <Foundation />
-        <CarlsJourney />
         <Volunteers />
+        <CarlsJourney />
         <WeAreCommitted />
         <CallToAction />
     </div>
