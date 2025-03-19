@@ -145,9 +145,7 @@
               </button>
             </div>
             <div
-              v-else-if="
-                numOfAudiosPlayed < allQuestionslength && playButton === true
-              "
+              v-else-if="numOfAudiosPlayed < 5 && playButton === true"
               class="flex flex-col p-4 justify-center"
               id="content"
             >
@@ -253,7 +251,7 @@
                 Game Over
               </div>
               <div class="text-center text-xl font-medium pt-2 pb-1">
-                Score: {{ score }} / {{ allQuestionslength }}
+                Score: {{ score }} / 5
               </div>
             </div>
           </div>
@@ -326,8 +324,6 @@ let questionsDb = [],
   isRecording = ref(false),
   isButtonCooldown = ref(false);
 
-let allQuestionslength = 0;
-
 // Generate multiplication questions using Json file
 const generateQuestions = () => {
   console.log("Generating Questions...");
@@ -339,8 +335,9 @@ const generateQuestions = () => {
         ...data["MonkeyMadnessGame"]["Questions"]["Medium"],
         ...data["MonkeyMadnessGame"]["Questions"]["Hard"],
       ];
-      allQuestionslength = allQuestions.length;
-      while (randQueNum.length < allQuestionslength) {
+      
+      // Only generate 5 random questions
+      while (randQueNum.length < 5) {
         let num = Math.floor(Math.random() * allQuestions.length);
         if (!randQueNum.includes(num)) {
           randQueNum.push(num);
@@ -358,7 +355,7 @@ const generateQuestions = () => {
 
 // Play the next question
 const playNextQuestion = () => {
-  if (numOfAudiosPlayed.value < allQuestionslength) {
+  if (numOfAudiosPlayed.value < 5) {
     const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
     console.log(question);
     currentAudios.push(playQuestion(question["Q"]));
@@ -366,52 +363,61 @@ const playNextQuestion = () => {
 };
 
 const toggleRecording = () => {
-  if (numOfAudiosPlayed.value < allQuestionslength && !isIntroPlaying.value) {
+  if (numOfAudiosPlayed.value < 5 && !isIntroPlaying.value) {
     if (!isRecording.value) {
       // Start recording
       isRecording.value = true;
+      
       startListening((transcript) => {
-        const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
-        console.log("Question is: ", question["Q"]);
-        console.log("User Answer:", transcript);
-        console.log("Correct Answer:", question["A"]);
         transcription.value = transcript;
-        const answers = question["A"].map((ans) => ans.toLowerCase());
-        if (answers.includes(transcript.trim().toLowerCase())) {
-          score.value++;
-          console.log("Correct Answer!");
-          playSound("correctaudio.mp3");
-        } else {
-          console.log("Wrong Answer!");
-          playSound("incorrectaudio.mp3");
-          const incorectAudio = "The correct answer is " + question["A"][0];
-          currentAudios.push(playQuestion(incorectAudio));
-        }
-        stopListening();
-        isRecording.value = false;
-        numOfAudiosPlayed.value++;
-        if (numOfAudiosPlayed.value < allQuestionslength) {
+      }, false);
+    } else {
+      isButtonCooldown.value = true;
+      console.log("Processing recording...");
+
+      // Get the final transcript
+      const finalTranscript = transcription.value;
+      
+      // Process the answer
+      const question = questionsDb[randQueNum[numOfAudiosPlayed.value]];
+      console.log("Question is: ", question["Q"]);
+      console.log("User Answer:", finalTranscript);
+      console.log("Correct Answer:", question["A"]);
+      
+      const answers = question["A"].map((ans) => ans.toLowerCase());
+      if (answers.includes(finalTranscript.trim().toLowerCase())) {
+        score.value++;
+        console.log("Correct Answer!");
+        playSound("correctaudio.mp3");
+      } else {
+        console.log("Wrong Answer!");
+        playSound("incorrectaudio.mp3");
+        const incorectAudio = "The correct answer is " + question["A"][0];
+        currentAudios.push(playQuestion(incorectAudio));
+      }
+      
+      // Stop listening
+      stopListening();
+      isRecording.value = false;
+      numOfAudiosPlayed.value++;
+      
+      // Reset transcription for next question
+      setTimeout(() => {
+        transcription.value = "";
+        isButtonCooldown.value = false;
+        console.log("Recording processed and stopped");
+        
+        // Move to next question or end game
+        if (numOfAudiosPlayed.value < 5) {
           setTimeout(() => {
             playNextQuestion();
-          }, 3000);
+          }, 2000);
         } else {
           console.log("Game Over!");
           setTimeout(() => {
             playScore(score.value);
           }, 2000);
         }
-      });
-    } else {
-      // Set button cooldown immediately to disable button
-      isButtonCooldown.value = true;
-      console.log("Processing recording...");
-
-      // Add 1-second delay before stopping the recording
-      setTimeout(() => {
-        stopListening();
-        isRecording.value = false;
-        isButtonCooldown.value = false;
-        console.log("Recording processed and stopped");
       }, 1000);
     }
   }
@@ -419,7 +425,7 @@ const toggleRecording = () => {
 
 const repeatQuestion = () => {
   if (
-    numOfAudiosPlayed.value < allQuestionslength &&
+    numOfAudiosPlayed.value < 5 &&
     !isIntroPlaying.value &&
     !isButtonCooldown.value
   ) {

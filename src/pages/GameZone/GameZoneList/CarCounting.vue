@@ -382,7 +382,7 @@ const playNextQuestion = async () => {
     }
 
     // Add the final audio
-    playQuestion("How many cars did you hear? Hold 'SPACE' to say the answer");
+    playQuestion("How many cars did you hear?");
 
     isPlaying.value = false;
   }
@@ -432,23 +432,44 @@ const toggleRecording = () => {
       // Start recording
       isRecording.value = true;
       playSound("ding-sound.mp3");
+      
       startListening((transcript) => {
-        console.log("User Answer:", transcript);
-        console.log("Correct Answer:", randQueNum[numOfAudiosPlayed.value]);
         transcription.value = transcript;
-        if (transcript.trim() === answers[numOfAudiosPlayed.value]) {
-          score.value++;
-          console.log("Correct Answer!");
-          playSound("correctaudio.mp3");
-        } else {
-          console.log("Wrong Answer!");
-          playSound("incorrectaudio.mp3");
-          const incorectAudio = "The correct answer is " + question["A"][0];
-          currentAudios.push(playQuestion(incorectAudio));
-        }
-        stopListening();
-        isRecording.value = false;
-        numOfAudiosPlayed.value++;
+      }, false); // false parameter indicates continuous mode
+    } else {
+      isButtonCooldown.value = true;
+      console.log("Processing recording...");
+
+      // Get the final transcript
+      const finalTranscript = transcription.value;
+      
+      // Process the answer
+      console.log("User Answer:", finalTranscript);
+      console.log("Correct Answer:", randQueNum[numOfAudiosPlayed.value]);
+      
+      if (finalTranscript.trim().toLowerCase() === answers[numOfAudiosPlayed.value]) {
+        score.value++;
+        console.log("Correct Answer!");
+        playSound("correctaudio.mp3");
+      } else {
+        console.log("Wrong Answer!");
+        playSound("incorrectaudio.mp3");
+        const incorectAudio = "The correct answer is " + answers[numOfAudiosPlayed.value];
+        currentAudios.push(playQuestion(incorectAudio));
+      }
+      
+      // Stop listening
+      stopListening();
+      isRecording.value = false;
+      numOfAudiosPlayed.value++;
+      
+      // Reset transcription for next question
+      setTimeout(() => {
+        transcription.value = "";
+        isButtonCooldown.value = false;
+        console.log("Recording processed and stopped");
+        
+        // Move to next question or end game
         if (numOfAudiosPlayed.value < 5) {
           setTimeout(() => {
             playNextQuestion();
@@ -459,18 +480,6 @@ const toggleRecording = () => {
             playScore(score.value);
           }, 2000);
         }
-      });
-    } else {
-      // Set button cooldown immediately to disable button
-      isButtonCooldown.value = true;
-      console.log("Processing recording...");
-
-      // 1-second delay before stopping recording
-      setTimeout(() => {
-        stopListening();
-        isRecording.value = false;
-        isButtonCooldown.value = false;
-        console.log("Recording processed and stopped");
       }, 1000);
     }
   }
