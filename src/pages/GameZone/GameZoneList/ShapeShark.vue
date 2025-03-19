@@ -301,11 +301,11 @@ const checkDeviceType = () => {
     // Small devices (large phones)
     isTablet.value = false;
     isMobile.value = true;
-  } else if (width >= 768 && width < 1024) {
-    // Medium devices (tablets)
+  } else if (width >= 768 && width <= 1024) { 
+    // Medium devices (tablets, including iPad Pro width)
     isTablet.value = true;
     isMobile.value = false;
-  } else if (width >= 1024) {
+  } else if (width > 1024) { 
     // Large devices (laptops/desktops)
     isTablet.value = false;
     isMobile.value = false;

@@ -124,6 +124,10 @@ const developmentStaff = [
         name: "Shyaka Chaste",
         role: "Developer",
         image: "/assets/images/about-us/volunteers/shyaka.png",
+    },{
+        name: "Prajwala Shambulingappa",
+        role: "Developer",
+        image: "/assets/images/about-us/volunteers/default1.svg",
     },
 ];
 

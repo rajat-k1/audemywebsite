@@ -2,7 +2,7 @@
 
 <template>
     <div
-        class="flex flex-col items-center justify-start mobile:justify-center w-full h-auto mt-24 my-32 tablet:mb-[265px] mobile:mb-[129px]"
+        class="flex flex-col items-center justify-start mobile:justify-center w-full h-auto mt-24 mb-16 tablet:mb-32 mobile:mb-24"
     >
         <img
             src="/assets/images/about-us/top-blue-bg.png"
