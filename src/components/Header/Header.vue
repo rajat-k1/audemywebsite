@@ -181,24 +181,24 @@ const closeMenu = () => {
 };
 
 const checkScreenSize = () => {
-    const width = window.innerWidth;
-    if (width >= 640 && width < 768) {
-        // Small devices (large phones)
-        isTabletView.value = false;
-        isMobileView.value = true;
-    } else if (width >= 768 && width < 1024) {
-        // Medium devices (tablets)
-        isTabletView.value = true;
-        isMobileView.value = false;
-    } else if (width >= 1024) {
-        // Large devices (laptops/desktops)
-        isTabletView.value = false;
-        isMobileView.value = false;
-    } else {
-        // Extra small devices (phones)
-        isTabletView.value = false;
-        isMobileView.value = true;
-    }
+  const width = window.innerWidth;
+  if (width >= 640 && width < 768) {
+    // Small devices (large phones)
+    isTabletView.value = false;
+    isMobileView.value = true;
+  } else if (width >= 768 && width <= 1024) { 
+    // Medium devices (tablets, including iPad Pro width)
+    isTabletView.value = true;
+    isMobileView.value = false;
+  } else if (width > 1024) { 
+    // Large devices (laptops/desktops)
+    isTabletView.value = false;
+    isMobileView.value = false;
+  } else {
+    // Extra small devices (phones)
+    isTabletView.value = false;
+    isMobileView.value = true;
+  }
 };
 
 // Add resize listener to check screen size
@@ -218,18 +218,3 @@ onUnmounted(() => {
     document.body.style.overflow = '';
 });
 </script>
-
-<style scoped>
-.fixed {
-    animation: slideIn 0.3s ease-out forwards;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-</style>

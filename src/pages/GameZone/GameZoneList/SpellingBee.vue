@@ -306,11 +306,11 @@ const checkDeviceType = () => {
     // Small devices (large phones)
     isTablet.value = false;
     isMobile.value = true;
-  } else if (width >= 768 && width < 1024) {
-    // Medium devices (tablets)
+  } else if (width >= 768 && width <= 1024) { 
+    // Medium devices (tablets, including iPad Pro width)
     isTablet.value = true;
     isMobile.value = false;
-  } else if (width >= 1024) {
+  } else if (width > 1024) { 
     // Large devices (laptops/desktops)
     isTablet.value = false;
     isMobile.value = false;
@@ -378,7 +378,7 @@ const toggleRecording = () => {
         console.log("User Answer:", transcript);
         console.log("Correct Answer:", question["A"]);
         transcription.value = transcript;
-        if (transcript.trim().toLowerCase() === question["A"].toLowerCase()) {
+        if (question["A"].map(str => str.toLowerCase()).includes(transcript.trim())) {
           score.value++;
           console.log("Correct Answer!");
           playSound("correctaudio.mp3");
