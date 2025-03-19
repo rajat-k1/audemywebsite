@@ -26,14 +26,33 @@ const initSpeechRecognition = () => {
     return recognition;
 };
 
+// Pre-initialize speech recognition
+export function preInitSpeechRecognition() {
+    if (!recognition) {
+        try {
+            recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.interimResults = true;
+        } catch (error) {
+            console.error('Error pre-initializing speech recognition:', error);
+        }
+    }
+}
+
 // Start Listening
 export function startListening(callback, autoStop = true) {
-    if (!recognition) {
-        recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'en-US';
-        recognition.interimResults = true;
-        recognition.continuous = !autoStop; // Set continuous mode based on parameter
+    // If recognition is already listening, stop it first
+    if (isListening) {
+        stopListening();
     }
+    
+    // Ensure recognition object exists
+    if (!recognition) {
+        preInitSpeechRecognition();
+    }
+    
+    // Set new parameters for this session
+    recognition.continuous = !autoStop;
     
     recognition.onresult = (event) => {
         const transcript = Array.from(event.results)
@@ -41,14 +60,12 @@ export function startListening(callback, autoStop = true) {
             .join('');
         callback(transcript);
         
-        // If set to auto-stop, and this is a final result, stop listening
         if (autoStop && event.results[0].isFinal) {
             stopListening();
         }
     };
     
     recognition.onend = () => {
-        // If continuous mode is on, restart if we're still supposed to be listening
         if (!autoStop && isListening) {
             recognition.start();
         } else {
