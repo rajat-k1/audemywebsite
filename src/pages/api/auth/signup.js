@@ -39,9 +39,7 @@ export default async function handler(req, res) {
 
         //! Create New user in Database
 
-        return res
-            .status(201)
-            .json({ message: "User created successfully", user: newUser });
+        return res.status(201).json({ message: "User created successfully" });
     } catch (error) {
         console.error("Signup Error:", error);
         return res.status(500).json({ error: "Internal Server Error" });
