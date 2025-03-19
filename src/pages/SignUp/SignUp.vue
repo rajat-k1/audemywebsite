@@ -84,7 +84,7 @@ const submitForm = (event) => {
       />
       <img
         :src="Book"
-        class="w-[70px] absolute left-[80%] top-[50%] z-10 mobile:hidden"
+        class="w-[60px] h-[auto] absolute left-[80%] top-[50%] z-10 mobile:hidden tablet:w-[50px]"
         alt=""
       />
       <img
@@ -94,7 +94,7 @@ const submitForm = (event) => {
       />
       <img
         :src="Group1010"
-        class="absolute bottom-[10%] w-[60%] h-[35%] left-[50%] translate-x-[-50%] mobile:w-[60%] mobile:hidden tablet:w-[70%] tablet:h-[25%] tablet:bottom-[14%] tablet:left-[50%] tablet:translate-x-[-50%]"
+        class="absolute bottom-[10%] w-[50%] h-[auto] left-[50%] translate-x-[-50%] mobile:w-[60%] mobile:hidden tablet:w-[65%] tablet:h-[15%] tablet:bottom-[14%] tablet:left-[50%] tablet:translate-x-[-50%]"
         alt=""
       />
     </div>
@@ -112,7 +112,7 @@ const submitForm = (event) => {
       <!-- FORM FIELD -->
       <form
         ref="signupForm"
-        class="mt-[62px] max-w-[48%] mobile:mt-[30px] mobile:px-4 mobile:w-full text-[15px] tablet:p-4 tablet:w-[350px] tablet:mt-[25px]"
+        class="mt-[62px] max-w-[480px] mobile:mt-[30px] mobile:px-4 mobile:w-full text-[15px] tablet:p-4 tablet:w-[350px] tablet:mt-[25px]"
       >
         <!-- FIRST & LAST NAME -->
         <div
