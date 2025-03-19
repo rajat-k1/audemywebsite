@@ -3,6 +3,7 @@ import { ref, onMounted } from "vue";
 import { GoogleLogin } from "vue3-google-login";
 import { useRouter } from "vue-router";
 import { jwtDecode } from "jwt-decode";
+import Cookies from "js-cookie";
 
 const errors = ref(false);
 const email = ref("");
@@ -15,7 +16,7 @@ const showSchoolForm = ref(false); // Control form visibility
 const router = useRouter();
 
 onMounted(() => {
-    const session = localStorage.getItem("audemyUserSession");
+    const session = Cookies.get("audemyUserSession");
     if (session) {
         userSession.value = JSON.parse(session);
     }
@@ -42,9 +43,10 @@ const login = async (event) => {
         const data = await response.json();
         authKey.value = response.headers.get("authorization");
 
-        localStorage.setItem(
+        Cookies.set(
             "audemyUserSession",
-            JSON.stringify({ token: authKey.value, user: data.user })
+            JSON.stringify({ token: authKey.value, user: data.user }),
+            { expires: 7 }
         );
         userSession.value = { token: authKey.value, user: data.user };
     } catch (error) {
@@ -81,7 +83,9 @@ const callback = async (response) => {
         console.log("User not found, prompting for school...");
         showSchoolForm.value = true;
     } else {
-        localStorage.setItem("audemyUserSession", JSON.stringify(response));
+        Cookies.set("audemyUserSession", JSON.stringify(response), {
+            expires: 7,
+        });
         userSession.value = response;
         router.push("/game-zone");
     }
@@ -108,9 +112,10 @@ const updateSchool = async () => {
         console.log("Updated user:", data);
 
         if (data.success) {
-            localStorage.setItem(
+            Cookies.set(
                 "audemyUserSession",
-                JSON.stringify(userProfile.value)
+                JSON.stringify(userProfile.value),
+                { expires: 7 }
             );
             userSession.value = userProfile.value;
             showSchoolForm.value = false;
@@ -122,7 +127,7 @@ const updateSchool = async () => {
 };
 
 const logout = () => {
-    localStorage.removeItem("audemyUserSession");
+    Cookies.remove("audemyUserSession");
     userSession.value = null;
     userProfile.value = null;
     router.push("/login");
@@ -249,15 +254,20 @@ const logout = () => {
                 </div>
             </form>
 
-            <div class="flex w-1/2 text-gray-500 items-center justify-center gap-2">
-                <div><hr class="w-52 h-0.5 my-4 bg-gray-500 rounded-sm"/></div>
+            <div
+                class="flex w-1/2 text-gray-500 items-center justify-center gap-2"
+            >
+                <div><hr class="w-52 h-0.5 my-4 bg-gray-500 rounded-sm" /></div>
                 <div>or</div>
-                <div><hr class="w-52 h-0.5 my-4 bg-gray-500 rounded-sm"/></div>
+                <div><hr class="w-52 h-0.5 my-4 bg-gray-500 rounded-sm" /></div>
             </div>
 
             <!-- Google OAuth Login -->
             <div class="flex w-full gap-4 items-center justify-center mt-4">
-                <GoogleLogin :callback="callback" class=" flex items-center justify-center gap-4"/>
+                <GoogleLogin
+                    :callback="callback"
+                    class="flex items-center justify-center gap-4"
+                />
             </div>
         </div>
 

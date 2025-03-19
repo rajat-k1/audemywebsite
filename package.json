@@ -20,8 +20,9 @@
         "cors": "^2.8.5",
         "dotenv": "^16.4.7",
         "express": "^4.21.2",
-        "jwt-decode": "^4.0.0",
         "google-auth-library": "^9.15.1",
+        "js-cookie": "^3.0.5",
+        "jwt-decode": "^4.0.0",
         "vercel": "^39.2.5",
         "vue": "^3.4.31",
         "vue-router": "^4.4.0",
@@ -29,6 +30,7 @@
         "vue3-google-signin": "^2.1.1"
     },
     "devDependencies": {
+        "@types/js-cookie": "^3.0.6",
         "@vitejs/plugin-vue": "^5.0.5",
         "autoprefixer": "^10.4.19",
         "gh-pages": "^6.2.0",
