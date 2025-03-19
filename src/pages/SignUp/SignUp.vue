@@ -9,47 +9,52 @@ import OrangeStar from "/assets/images/SignUpImg/Group 895.png";
 import Book from "/assets/images/SignUpImg/Group 1106.png";
 import Star from "/assets/images/testimonials/star.svg";
 import fevicon3 from "/src/assets/character/favicon3.png";
+const submitForm = async (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+    // Get form data from the ref
+    const formData = new FormData(signupForm.value);
 
-const submitForm = (event) => {
-  event.preventDefault(); // Prevent default form submission behavior
-  // Get form data from the ref
-  const formData = new FormData(signupForm.value);
+    // Validate if passwords match
+    if (
+        signupForm.value.confirm_password.value !==
+        signupForm.value.password.value
+    ) {
+        console.error("Passwords do not match");
+        return; // Stop if passwords don't match
+    }
 
-  // Validate if passwords match
-  if (
-    signupForm.value.confirm_password.value !== signupForm.value.password.value
-  ) {
-    console.error("Passwords do not match");
-    return; // Stop if passwords don't match
-  }
+    try {
+        const response = await fetch("/api/auth/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                user: {
+                    first_name: signupForm.value.first_name.value,
+                    last_name: signupForm.value.last_name.value,
+                    birthday: signupForm.value.birthday.value,
+                    school_name: signupForm.value.school_name.value,
+                    email: signupForm.value.email.value,
+                    password: signupForm.value.password.value,
+                    confirm_password: signupForm.value.confirm_password.value,
+                },
+            }),
+        });
 
-  // Send form data as JSON
-  fetch("https://audemy-users-api.fly.dev/signup", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      user: {
-        first_name: signupForm.value.first_name.value,
-        last_name: signupForm.value.last_name.value,
-        birthday: signupForm.value.birthday.value,
-        school_name: signupForm.value.school_name.value,
-        email: signupForm.value.email.value,
-        password: signupForm.value.password.value,
-        confirm_password: signupForm.value.confirm_password.value,
-      },
-    }), // Convert the object to JSON
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-      // You can handle the response here (e.g., show a success message)
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      // You can handle errors here
-    });
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Something went wrong");
+        }
+
+        console.log("Success:", data);
+        // Handle success (e.g., redirect, show success message)
+    } catch (error) {
+        console.error("Error:", error.message);
+        // Handle error (e.g., show error message to the user)
+    }
+
 };
 </script>
 <template>
@@ -145,6 +150,9 @@ const submitForm = (event) => {
           </div>
         </div>
 
+
+        <div
+            class="w-7/12 pt-[62px] pb-[162px] mobile:w-full mobile:pt-[20px] mobile:pb-[20px] mobile:px-20 flex flex-col place-items-center"
         <!-- SCHOOL FIELD -->
         <div class="mb-[16px] mobile:w-full w-[100%]">
           <label for="school_name" class="block text-[#0C0D0D] font-semiBold"
@@ -209,6 +217,7 @@ const submitForm = (event) => {
           Already have an Audemy account?
           <a href="login" class="text-[#087BB4] hover:text-[#0C587D]">Log in</a>
         </p>
+
 
         <!-- GET STARTED BTN -->
         <div
