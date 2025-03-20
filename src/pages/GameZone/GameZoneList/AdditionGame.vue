@@ -372,20 +372,15 @@ const playNextQuestion = () => {
 const toggleRecording = () => {
   if (numOfAudiosPlayed.value < 5 && !isIntroPlaying.value) {
     if (!isRecording.value) {
-      // Start recording
       isRecording.value = true;
       
-      // Start listening - we'll modify how this works to be continuous
       startListening((transcript) => {
-        // Just update the transcription in real-time, but don't process the answer yet
         transcription.value = transcript;
-      }, false); // Add 'false' parameter to indicate continuous mode
+      }, false);
     } else {
-      // User clicked to stop recording - now we process the answer
       isButtonCooldown.value = true;
       console.log("Processing recording...");
 
-      // Get the final transcript
       const finalTranscript = transcription.value;
       
       // Process the answer
