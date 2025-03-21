@@ -33,7 +33,7 @@ const submitForm = async (event) => {
                 user: {
                     first_name: signupForm.value.first_name.value,
                     last_name: signupForm.value.last_name.value,
-                    birthday: signupForm.value.birthday.value,
+                    // birthday: signupForm.value.birthday.value,
                     school_name: signupForm.value.school_name.value,
                     email: signupForm.value.email.value,
                     password: signupForm.value.password.value,
