@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         if (!email || !name) {
             return res
                 .status(400)
-                .json({ error: "Email and name are required" });
+                .json({ error: "Email and name and password" });
         }
 
         // Check if user exists
@@ -36,6 +36,7 @@ export default async function handler(req, res) {
                     email,
                     name,
                     school: school || "Unknown School",
+                    password: "defaultdummypassword",
                 },
             });
         }

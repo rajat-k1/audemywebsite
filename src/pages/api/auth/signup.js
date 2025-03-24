@@ -51,7 +51,7 @@ export default async function handler(req, res) {
         const newUser = await prisma.user.create({
             data: {
                 name: `${first_name} ${last_name}`,
-                school_name: school_name,
+                school: school_name,
                 email,
                 password: hashedPassword,
             },

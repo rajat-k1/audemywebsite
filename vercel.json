@@ -22,6 +22,10 @@
             "use": "@vercel/node"
         },
         {
+            "src": "src/pages/api/auth/login.js",
+            "use": "@vercel/node"
+        },
+        {
             "src": "package.json",
             "use": "@vercel/static-build",
             "config": {
@@ -50,6 +54,10 @@
         {
             "source": "/api/auth/signup",
             "destination": "/src/pages/api/auth/signup.js"
+        },
+        {
+            "source": "/api/auth/login",
+            "destination": "/src/pages/api/auth/login.js"
         },
         {
             "source": "/(.*)",

@@ -49,6 +49,8 @@ const submitForm = async (event) => {
         }
 
         console.log("Success:", data);
+        //! Go To login
+
         // Handle success (e.g., redirect, show success message)
     } catch (error) {
         console.error("Error:", error.message);

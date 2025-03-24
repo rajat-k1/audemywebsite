@@ -40,10 +40,14 @@ const login = async (event) => {
             }),
         });
 
+        // // Log response before parsing
+        // const textResponse = await response.text();
+        // console.log("Raw Response:", textResponse);
+
         const data = await response.json();
 
         if (!response.ok) {
-            throw new Error(data.error || "Failed to login");
+            throw new Error(data.message || "Failed to login");
         }
 
         authKey.value = response.headers.get("authorization");
