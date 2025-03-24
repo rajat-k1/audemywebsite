@@ -32,7 +32,7 @@ const login = async (event) => {
     }
 
     try {
-        const response = await fetch("https://audemy-users-api.fly.dev/login", {
+        const response = await fetch("/api/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -41,6 +41,11 @@ const login = async (event) => {
         });
 
         const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Failed to login");
+        }
+
         authKey.value = response.headers.get("authorization");
 
         Cookies.set(
