@@ -45,6 +45,7 @@ const login = async (event) => {
         // console.log("Raw Response:", textResponse);
 
         const data = await response.json();
+        // console.log("Response Data:", data);
 
         if (!response.ok) {
             throw new Error(data.message || "Failed to login");
