@@ -9,6 +9,7 @@ import OrangeStar from "/assets/images/SignUpImg/Group 895.png";
 import Book from "/assets/images/SignUpImg/Group 1106.png";
 import Star from "/assets/images/testimonials/star.svg";
 
+import Cookies from "js-cookie";
 const submitForm = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
     // Get form data from the ref
@@ -50,6 +51,35 @@ const submitForm = async (event) => {
 
         console.log("Success:", data);
         //! Go To login
+        console.log("Signup Successful", data);
+
+        const loginResponse = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                user: {
+                    email: signupForm.value.email.value,
+                    password: signupForm.value.password.value,
+                },
+            }),
+        });
+        const loginData = await loginResponse.json();
+        if (!loginResponse.ok) {
+            throw new Error(loginData.error || "Something went wrong");
+        }
+        console.log("Login Successful", loginData);
+
+        if (loginData.token) {
+            Cookies.set("audemyUserSession", JSON.stringify(loginData.token), {
+                expires: 7,
+            });
+            window.location.href = "/game-zone";
+        } else {
+            throw new Error("Token not found");
+        }
+        signupForm.value.reset();
 
         // Handle success (e.g., redirect, show success message)
     } catch (error) {

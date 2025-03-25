@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
@@ -30,13 +31,19 @@ export default async function handler(req, res) {
                 });
             }
         } else {
-            // Create a new user with a dummy school
+            // Generate a random password
+            const randomPassword = Math.random().toString(36).slice(-12);
+
+            // Hash the password
+            const hashedPassword = await bcrypt.hash(randomPassword, 10);
+
+            // Create a new user with the hashed password
             user = await prisma.user.create({
                 data: {
                     email,
                     name,
                     school: school || "Unknown School",
-                    password: "defaultdummypassword",
+                    password: hashedPassword,
                 },
             });
         }
