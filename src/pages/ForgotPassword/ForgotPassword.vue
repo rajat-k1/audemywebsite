@@ -179,7 +179,7 @@ const logout = () => {
             </button>
         </div>
 
-        <!-- Show login form if not logged in -->
+        <!-- Show Reset form if not logged in -->
         <div
             v-if="!userSession && !showSchoolForm"
             class="w-7/12 md:w-full sm:w-full bg-white flex flex-col items-center justify-center border-2"
@@ -189,23 +189,14 @@ const logout = () => {
                 method="post"
                 class="max-h-[350px] w-full flex flex-col justify-center items-center gap-[5%] my-4"
             >
-                <h1
-                    class="text-[36px] text-[#151E22] text-center w-7/12 mobile:w-full mobile:text-[24px] mobile:mb-4"
+                <div
+                    class="text-[#151E22] text-center w-7/12 mb-10 mobile:w-full  mobile:mb-4"
                 >
-                    Hi there, welcome back!
-                </h1>
-                <div class="w-[70%] max-w-[450px]">
-                    <div class="mt-8 mb-3" v-if="errors">
-                        <div
-                            class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-                            role="alert"
-                        >
-                            <span class="block sm:inline text-center"
-                                >Invalid email and password combination. Try
-                                again!</span
-                            >
-                        </div>
-                    </div>
+                    <h1 class="text-[36px] mobile:text-[24px]">Let's reset your Password</h1>
+                    <div>Enter the email associated with your account and we’ll send you a link to reset your password.</div>
+                </div>
+                
+                <div class="w-7/12 max-w-[450px]">
                     <div class="mb-[16px]">
                         <label
                             class="block text-[#0C0D0D] mb-1 font-semiBold"
@@ -222,33 +213,18 @@ const logout = () => {
                             autocomplete="email"
                         />
                     </div>
-                    <div class="mb-[16px]">
-                        <label
-                            for="password"
-                            class="block text-[#0C0D0D] mb-1 font-semiBold"
-                            >Password</label
-                        >
-                        <input
-                            v-model="password"
-                            type="password"
-                            class="w-full outline-none border-2 border-black py-2 px-2 rounded-[8px]"
-                            id="password"
-                            name="password"
-                            placeholder="Enter your password"
-                        />
-                    </div>
-                    <div class="flex justify-end w-full">
-                        <a href="./forgot-password" class="underline text-[#087BB4] font-medium"
-                            >Forgot password?</a
-                        >
+                    <div class="mb-3" v-if="errors">
+                        <div class="text-red-700" role="alert">
+                            <span class="block sm:inline">No account found with that email address.</span>
+                        </div>
                     </div>
                     <div class="flex justify-start w-full">
                         <h5>
-                            New to Audemy?
+                            Return to
                             <a
-                                href="./signup"
+                                href="./login"
                                 class="underline text-[#087BB4] font-medium"
-                                >Sign Up</a
+                                >Log in</a
                             >
                         </h5>
                     </div>
@@ -258,47 +234,12 @@ const logout = () => {
                             type="submit"
                             class="w-full py-3 font-bold rounded-[8px] bg-[#FE892A] hover:bg-[#ff8d33] border-2 border-black shadow-[4px_4px_0px_black] text-black"
                         >
-                            Log in
+                            Send link to email
                         </button>
                     </div>
                 </div>
             </form>
-
-            <div
-                class="flex w-1/2 text-gray-500 items-center justify-center gap-2"
-            >
-                <div><hr class="w-52 h-0.5 my-4 bg-gray-500 rounded-sm" /></div>
-                <div>or</div>
-                <div><hr class="w-52 h-0.5 my-4 bg-gray-500 rounded-sm" /></div>
-            </div>
-
-            <!-- Google OAuth Login -->
-            <div class="flex w-full gap-4 items-center justify-center mt-4">
-                <GoogleLogin
-                    :callback="callback"
-                    class="flex items-center justify-center gap-4"
-                />
-            </div>
         </div>
 
-        <!-- Show school input if needed -->
-        <div
-            v-if="showSchoolForm"
-            class="w-7/12 bg-white flex items-center justify-center flex-col gap-4"
-        >
-            <h3>Enter Your School</h3>
-            <input
-                v-model="school"
-                type="text"
-                class="border-2 border-black py-2 px-2 rounded-[8px]"
-                placeholder="School Name"
-            />
-            <button
-                @click="updateSchool"
-                class="bg-blue-500 text-white py-2 px-4 rounded mt-4"
-            >
-                Submit
-            </button>
-        </div>
     </div>
 </template>
