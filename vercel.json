@@ -30,6 +30,10 @@
             "use": "@vercel/node"
         },
         {
+            "src": "src/pages/api/reset-password.js",
+            "use": "@vercel/node"
+        },
+        {
             "src": "package.json",
             "use": "@vercel/static-build",
             "config": {
@@ -66,6 +70,10 @@
         {
             "source": "/api/send-email",
             "destination": "/src/pages/api/send-email.js"
+        },
+        {
+            "source": "/api/reset-password",
+            "destination": "/src/pages/api/reset-password.js"
         },
         {
             "source": "/(.*)",

@@ -31,8 +31,8 @@ export default async function handler(req, res) {
         console.log("User found:", user.name);
 
          // Generate reset token
-        const resetToken = jwt.sign({ userId: user.user_id }, process.env.JWT_SECRET, { expiresIn: '5m' });
-        resetLink = `http://localhost:5173/reset-password?token=${resetToken}`;
+        const resetToken = jwt.sign({ userId: user.user_id }, process.env.JWT_SECRET, { expiresIn: '10m' });
+        resetLink = `http://localhost:5173/reset-landing-page?user=${user.name}&token=${resetToken}`;
         console.log("Reset link generated:", resetLink);
 
     } catch (error) {
@@ -75,7 +75,7 @@ export default async function handler(req, res) {
             <hr>
             <p>Hi ${user.name},</p>
             <p>We received a request to reset your password. Click the below link to proceed:<br>
-                <a href="${resetLink}"><b>Reset Password</b></a> <i>(This link will expire in 5 min)</i>
+                <a href="${resetLink}"><b>Reset Password</b></a> <i>(This link will expire in 10 min)</i>
             </p>
             <p>If you did not request to reset your password, it is safe to disregard this message.</p>
 
@@ -88,7 +88,7 @@ export default async function handler(req, res) {
     };
 
     try {
-        //await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptions);
         console.log("Email sent successfully to:", toEmail);
         res.status(200).json({ message: "Email sent successfully" });
     } catch (error) {

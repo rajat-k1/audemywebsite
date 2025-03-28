@@ -1,10 +1,21 @@
 <script setup>
 import { useRouter } from "vue-router";
+import { ref, onMounted } from "vue";
 
 const router = useRouter();
+const user = ref("");
+const token = ref("");
+
+onMounted(() => {
+    const query = new URLSearchParams(window.location.search);
+    user.value = query.get("user");
+    token.value = query.get("token");
+    console.log("User:", user.value);
+    console.log("Token:", token.value);
+});
 
 const toResetPswd = () => {
-    router.push("/reset-password");
+    router.push("/reset-password?user=" + user.value + "&token=" + token.value);
 };
 </script>
 
@@ -47,7 +58,7 @@ const toResetPswd = () => {
                 <div
                     class="text-[#151E22] w-7/12 mb-10 mobile:w-full  mobile:mb-4"
                 >
-                    <h1 class="text-[36px] mobile:text-[24px]">Hello, [NAME]</h1>
+                    <h1 class="text-[36px] mobile:text-[24px]">Hello, {{ user }}</h1>
                     <div>A request has been made to reset your password. If you made this request, please click the button below.</div>
                 </div>
                 

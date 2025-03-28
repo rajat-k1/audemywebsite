@@ -1,151 +1,56 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { GoogleLogin } from "vue3-google-login";
 import { useRouter } from "vue-router";
-import { jwtDecode } from "jwt-decode";
-import Cookies from "js-cookie";
 
 const errors = ref(false);
-const email = ref("");
+var linkExpired = ref(false);
 const password = ref("");
-var authKey = ref("");
-const userSession = ref(null);
-const userProfile = ref(null);
-const school = ref(""); // Store school input
-const showSchoolForm = ref(false); // Control form visibility
+const confirmPassword = ref("");
+const token = ref("");
 const router = useRouter();
 
 onMounted(() => {
-    const session = Cookies.get("audemyUserSession");
-    if (session) {
-        userSession.value = JSON.parse(session);
-    }
+    const query = new URLSearchParams(window.location.search);
+    token.value = query.get("token");
 });
 
-const login = async (event) => {
+const resetConfirm = async (event) => {
     event.preventDefault();
-    errors.value = false;
-    if (!email.value || !password.value) {
+    console.log("password: ", password.value);
+    console.log("confirmPassword: ", confirmPassword.value);
+    console.log("Token: ", token.value);
+
+    if ((password.value != confirmPassword.value) || (password.value.length < 8)) {
         errors.value = true;
-        resetErrors();
-        return;
-    }
+    }else{
+        errors.value = false;
 
-    try {
-        const response = await fetch("/api/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                user: { email: email.value, password: password.value },
-            }),
-        });
-
-        // // Log response before parsing
-        // const textResponse = await response.text();
-        // console.log("Raw Response:", textResponse);
-
-        const data = await response.json();
-        // console.log("Response Data:", data);
-
-        if (!response.ok) {
-            throw new Error(data.message || "Failed to login");
-        }
-
-        authKey.value = response.headers.get("authorization");
-
-        Cookies.set(
-            "audemyUserSession",
-            JSON.stringify({ token: authKey.value, user: data.user }),
-            { expires: 7 }
-        );
-        userSession.value = { token: authKey.value, user: data.user };
-    } catch (error) {
-        console.error("Error:", error);
-    }
-};
-
-const callback = async (response) => {
-    if (response?.credential) {
         try {
-            const decoded = jwtDecode(response.credential);
-            userProfile.value = {
-                name: decoded.name,
-                email: decoded.email,
-                imageUrl: decoded.picture,
-            };
-        } catch (error) {
-            console.error("Failed to decode JWT:", error);
-        }
-    }
-
-    const dbResponse = await fetch(
-        `/api/db/get_user?email=${userProfile.value.email}`,
-        {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        }
-    );
-
-    const dbData = await dbResponse.json();
-    console.log("DB Response:", dbData);
-
-    if (!dbData || !dbData.email) {
-        console.log("User not found, prompting for school...");
-        showSchoolForm.value = true;
-    } else {
-        Cookies.set("audemyUserSession", JSON.stringify(response), {
-            expires: 7,
-        });
-        userSession.value = response;
-        router.push("/game-zone");
-    }
-};
-
-const updateSchool = async () => {
-    if (!school.value) {
-        alert("Please enter your school name.");
-        return;
-    }
-
-    try {
-        const response = await fetch(`/api/db/update_user_school`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                email: userProfile.value.email,
-                name: userProfile.value.name,
-                school: school.value,
-            }),
-        });
-
-        const data = await response.json();
-        console.log("Updated user:", data);
-
-        if (data.success) {
-            Cookies.set(
-                "audemyUserSession",
-                JSON.stringify(userProfile.value),
-                { expires: 7 }
+            const resetResponse = await fetch(
+                `/api/reset-password`,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        token: token.value,
+                        newPassword: password.value,
+                    }),
+                }
             );
-            userSession.value = userProfile.value;
-            showSchoolForm.value = false;
-            router.push("/game-zone");
+            console.log("Reset Password response:", resetResponse);
+            if (resetResponse.status === 500) {
+                linkExpired.value = true;
+                console.error("Link Expired: ");
+            }
+
+            if (resetResponse.status === 200 && linkExpired.value === false) {
+                router.push("/reset-confirm");
+            }
+        } catch (error) {
+            console.error("Error: ", error);
+            errors.value = true;
         }
-    } catch (error) {
-        console.error("Error updating school:", error);
     }
-};
-
-const logout = () => {
-    Cookies.remove("audemyUserSession");
-    userSession.value = null;
-    userProfile.value = null;
-    router.push("/login");
-};
-
-
-const resetConfirm = () => {
-    router.push("/reset-confirm");
 };
 </script>
 
@@ -175,19 +80,9 @@ const resetConfirm = () => {
                 alt="wave icon"
                 class="absolute -bottom-[15%] right-0 w-full -z-1"
             />
-            <button
-                v-if="userSession"
-                @click="logout"
-                class="mt-4 bg-red-500 text-white px-4 py-2 rounded"
-            >
-                Logout
-            </button>
         </div>
 
-        <div
-            v-if="!userSession && !showSchoolForm"
-            class="w-7/12 md:w-full sm:w-full bg-white flex flex-col items-center justify-center border-2"
-        >
+        <div class="w-7/12 md:w-full sm:w-full bg-white flex flex-col items-center justify-center border-2">
             <form
                 @submit="resetConfirm"
                 method="post"
@@ -200,21 +95,20 @@ const resetConfirm = () => {
                 </div>
                 
                 <div class="w-7/12 max-w-[450px]">
-                    <div class="mb-[8px]">
+                    <!-- PASSWORD FIELD -->
+                    <div class="mb-[8px] mobile:w-full">
                         <label
-                            class="block text-[#0C0D0D] mb-1 font-semiBold"
-                            for="email"
+                            for="password"
+                            class="block text-[#0C0D0D] font-semiBold"
+                            >Password</label
                         >
-                            Password
-                        </label>
                         <input
-                            v-model="email"
-                            type="email"
-                            class="w-full outline-none border-2 border-black py-2 px-2 rounded-[8px]"
-                            id="email"
-                            name="email"
-                            placeholder="Enter your email address"
-                            autocomplete="email"
+                            v-model="password"
+                            type="password"
+                            class="w-full outline-none border-2 border-black h-[48px] px-4 rounded-[8px]"
+                            id="password"
+                            name="password"
+                            placeholder="Create your best password"
                         />
                     </div>
 
@@ -224,25 +118,30 @@ const resetConfirm = () => {
                         </div>
                     </div>
 
-                    <div class="mb-[8px]">
+                    <!-- CONFIRM PASSWORD FIELD -->
+                    <div class="mb-[8px] mobile:w-full">
                         <label
-                            class="block text-[#0C0D0D] mb-1 font-semiBold"
-                            for="email"
+                            for="confirm_password"
+                            class="block text-[#0C0D0D] font-semiBold"
                             >Confirm Password</label
                         >
                         <input
-                            v-model="email"
-                            type="email"
-                            class="w-full outline-none border-2 border-black py-2 px-2 rounded-[8px]"
-                            id="email"
-                            name="email"
-                            placeholder="Enter your email address"
-                            autocomplete="email"
+                            v-model="confirmPassword"
+                            type="password"
+                            class="w-full outline-none border-2 border-black h-[48px] px-4 rounded-[8px]"
+                            id="confirm_password"
+                            name="confirm_password"
+                            placeholder="Confirm your password"
                         />
                     </div>
                     <div class="mb-6" v-if="errors">
                         <div role="alert" class="text-red-700">
-                            <span class="block sm:inline">Passwords don’t match</span>
+                            <span class="block sm:inline">Passwords do not match</span>
+                        </div>
+                    </div>
+                    <div class="mb-6" v-if="linkExpired">
+                        <div role="alert" class="text-red-700">
+                            <span class="block sm:inline">Password reset link expired!</span>
                         </div>
                     </div>
                     <div class="flex justify-center w-full pt-4"> 
