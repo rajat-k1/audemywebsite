@@ -26,6 +26,10 @@
             "use": "@vercel/node"
         },
         {
+            "src": "src/pages/api/send-email.js",
+            "use": "@vercel/node"
+        },
+        {
             "src": "package.json",
             "use": "@vercel/static-build",
             "config": {
@@ -58,6 +62,10 @@
         {
             "source": "/api/auth/login",
             "destination": "/src/pages/api/auth/login.js"
+        },
+        {
+            "source": "/api/send-email",
+            "destination": "/src/pages/api/send-email.js"
         },
         {
             "source": "/(.*)",
