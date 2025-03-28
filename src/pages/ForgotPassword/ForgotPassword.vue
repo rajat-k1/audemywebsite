@@ -14,35 +14,28 @@ const sendResetEmail = async (event) => {
     console.log("Sending reset email to:", email.value);
     
     try {
-        const dbResponse = await fetch(
-            `/api/db/get_user?email=${email.value}`,
+        const emailResponse = await fetch(
+            `/api/send-email`,
             {
-                method: "GET",
+                method: "POST",
                 headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: email.value
+                }),
             }
         );
-        const dbData = await dbResponse.json();
-        console.log("DB Response:", dbData);
-        if (dbData.error === 'User not found') {
-            console.error("Error: Email not present- ", error);
+        console.log("Email Response:", emailResponse);
+        if (emailResponse.status === 404) {
+            console.error("Error: Email not present");
             errors.value = true;
-        } else {
-            errors.value = false;
-            const emailResponse = await fetch(
-                `/api/send-email?email=V.josephraj@yahoo.co.in`,
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                }
-            );
-            console.log("Email sent successfully with", emailResponse.status, emailResponse.statusText, "status.");
+        } else{
+            console.log("Email sent successfully.");
+            router.push("/reset-link-sent");
         }
     } catch (error) {
         console.error("Error: Email not present- ", error);
-        errors.value = true; // Set errors to true if there's a network error
-    }
-
-    //router.push("/reset-landing-page"+`?email=${email.value}`);
+        errors.value = true;
+    }    
 };
 </script>
 

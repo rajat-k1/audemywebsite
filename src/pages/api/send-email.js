@@ -1,5 +1,8 @@
 import nodemailer from 'nodemailer';
+import { PrismaClient } from '@prisma/client';
+import jwt from 'jsonwebtoken';
 
+const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
     // Set CORS headers (you can either use "*" for all origins or a specific one like below)
@@ -10,7 +13,32 @@ export default async function handler(req, res) {
         "Content-Type, Authorization"
     );
 
-    console.log("Request received:", req.method, req.url, req.query);
+    console.log("Request received:", req.method, req.url, req.query, req.body);
+    const toEmail = req.body.email
+    console.log("Email received:", toEmail);
+    var user = ''
+    var resetLink = ''
+
+    try {
+        // Fetch user from database using Prisma
+        user = await prisma.user.findUnique({
+            where: { email: toEmail },
+        });
+        console.log("User fetched from database:", user);
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+        console.log("User found:", user.name);
+
+         // Generate reset token
+        const resetToken = jwt.sign({ userId: user.user_id }, process.env.JWT_SECRET, { expiresIn: '5m' });
+        resetLink = `http://localhost:5173/reset-password?token=${resetToken}`;
+        console.log("Reset link generated:", resetLink);
+
+    } catch (error) {
+        console.error("Error fetching user:", error);
+        return res.status(500).json({ error: "Internal Server Error" });
+    }
 
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -23,15 +51,45 @@ export default async function handler(req, res) {
     });
 
     const mailOptions = {
-        from: "V.josephraj26",
-        to: req.query.email,
+        from: process.env.HOST_EMAIL,
+        to: toEmail,
         subject: "Reset Password",
-        text: "Click here to reset your password"
+        html: `
+        <html>
+
+        <head>
+            <style>
+                h1 {
+                    text-align: center;
+                    color: #077BB3;
+                }
+
+                i {
+                    color: #808080;
+                }
+            </style>
+        </head>
+
+        <body>
+            <h1>Audemy</h1>
+            <hr>
+            <p>Hi ${user.name},</p>
+            <p>We received a request to reset your password. Click the below link to proceed:<br>
+                <a href="${resetLink}"><b>Reset Password</b></a> <i>(This link will expire in 5 min)</i>
+            </p>
+            <p>If you did not request to reset your password, it is safe to disregard this message.</p>
+
+            <br>
+            <p>Thank You,<br>The Audemy Team</p>
+        </body>
+
+        </html>
+      `
     };
 
     try {
-        await transporter.sendMail(mailOptions);
-        console.log("Email sent successfully to:", req.query.email);
+        //await transporter.sendMail(mailOptions);
+        console.log("Email sent successfully to:", toEmail);
         res.status(200).json({ message: "Email sent successfully" });
     } catch (error) {
         console.error("Detailed Error:", error.message, error.stack); // Log the full error

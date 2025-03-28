@@ -1,17 +1,10 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { GoogleLogin } from "vue3-google-login";
 import { useRouter } from "vue-router";
-import { jwtDecode } from "jwt-decode";
 import Cookies from "js-cookie";
 
-const errors = ref(false);
-const email = ref("");
-const password = ref("");
-var authKey = ref("");
+
 const userSession = ref(null);
-const userProfile = ref(null);
-const school = ref(""); // Store school input
 const showSchoolForm = ref(false); // Control form visibility
 const router = useRouter();
 
@@ -22,126 +15,9 @@ onMounted(() => {
     }
 });
 
-const login = async (event) => {
-    event.preventDefault();
-    errors.value = false;
-    if (!email.value || !password.value) {
-        errors.value = true;
-        resetErrors();
-        return;
-    }
-
-    try {
-        const response = await fetch("/api/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                user: { email: email.value, password: password.value },
-            }),
-        });
-
-        // // Log response before parsing
-        // const textResponse = await response.text();
-        // console.log("Raw Response:", textResponse);
-
-        const data = await response.json();
-        // console.log("Response Data:", data);
-
-        if (!response.ok) {
-            throw new Error(data.message || "Failed to login");
-        }
-
-        authKey.value = response.headers.get("authorization");
-
-        Cookies.set(
-            "audemyUserSession",
-            JSON.stringify({ token: authKey.value, user: data.user }),
-            { expires: 7 }
-        );
-        userSession.value = { token: authKey.value, user: data.user };
-    } catch (error) {
-        console.error("Error:", error);
-    }
-};
-
-const callback = async (response) => {
-    if (response?.credential) {
-        try {
-            const decoded = jwtDecode(response.credential);
-            userProfile.value = {
-                name: decoded.name,
-                email: decoded.email,
-                imageUrl: decoded.picture,
-            };
-        } catch (error) {
-            console.error("Failed to decode JWT:", error);
-        }
-    }
-
-    const dbResponse = await fetch(
-        `/api/db/get_user?email=${userProfile.value.email}`,
-        {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        }
-    );
-
-    const dbData = await dbResponse.json();
-    console.log("DB Response:", dbData);
-
-    if (!dbData || !dbData.email) {
-        console.log("User not found, prompting for school...");
-        showSchoolForm.value = true;
-    } else {
-        Cookies.set("audemyUserSession", JSON.stringify(response), {
-            expires: 7,
-        });
-        userSession.value = response;
-        router.push("/game-zone");
-    }
-};
-
-const updateSchool = async () => {
-    if (!school.value) {
-        alert("Please enter your school name.");
-        return;
-    }
-
-    try {
-        const response = await fetch(`/api/db/update_user_school`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                email: userProfile.value.email,
-                name: userProfile.value.name,
-                school: school.value,
-            }),
-        });
-
-        const data = await response.json();
-        console.log("Updated user:", data);
-
-        if (data.success) {
-            Cookies.set(
-                "audemyUserSession",
-                JSON.stringify(userProfile.value),
-                { expires: 7 }
-            );
-            userSession.value = userProfile.value;
-            showSchoolForm.value = false;
-            router.push("/game-zone");
-        }
-    } catch (error) {
-        console.error("Error updating school:", error);
-    }
-};
-
-const logout = () => {
-    Cookies.remove("audemyUserSession");
-    userSession.value = null;
-    userProfile.value = null;
-    router.push("/login");
-};
+const forgotPassword = async (event) => {
+    router.push("/forgot-password");
+}
 </script>
 
 <template>
@@ -185,7 +61,7 @@ const logout = () => {
             class="w-7/12 md:w-full sm:w-full bg-white flex flex-col items-center justify-center border-2"
         >
             <form
-                @submit="login"
+                @submit="forgotPassword"
                 method="post"
                 class="max-h-[350px] w-full flex flex-col justify-center items-center gap-[5%] my-4"
             >
