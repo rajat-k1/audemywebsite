@@ -67,7 +67,7 @@ export default async function handler(req, res) {
                     .button:hover {
                         background-color: #ffffff !important;
                         color: #087BB4 !important;
-                        border-color: #087BB4 !important;
+                        border-color: #000000 !important;
                     }
                 </style>
             </head>
