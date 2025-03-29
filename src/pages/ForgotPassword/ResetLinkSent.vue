@@ -9,10 +9,6 @@ const showSchoolForm = ref(false); // Control form visibility
 const router = useRouter();
 
 onMounted(() => {
-    const session = Cookies.get("audemyUserSession");
-    if (session) {
-        userSession.value = JSON.parse(session);
-    }
 });
 
 const forgotPassword = async (event) => {
@@ -46,13 +42,6 @@ const forgotPassword = async (event) => {
                 alt="wave icon"
                 class="absolute -bottom-[15%] right-0 w-full -z-1"
             />
-            <button
-                v-if="userSession"
-                @click="logout"
-                class="mt-4 bg-red-500 text-white px-4 py-2 rounded"
-            >
-                Logout
-            </button>
         </div>
 
         <!-- Show Reset form if not logged in -->

@@ -56,33 +56,79 @@ export default async function handler(req, res) {
         subject: "Reset Password",
         html: `
         <html>
+            <head>
+                <style type="text/css">
+                    /* Hover effect for email clients that support it */
+                    @media screen and (max-width: 600px) {
+                        .button {
+                            width: 100% !important;
+                        }
+                    }
+                    .button:hover {
+                        background-color: #ffffff !important;
+                        color: #087BB4 !important;
+                        border-color: #087BB4 !important;
+                    }
+                </style>
+            </head>
+            <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f9f9f9; color: #333;">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f9f9f9; padding: 20px;">
+                    <tr>
+                        <td align="center">
+                            <table role="presentation" width="100%" max-width="600px" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                
+                                <!-- Header -->
+                                <tr>
+                                    <td align="center" style="padding: 20px 0; border-bottom: 1px solid #eee;">
+                                        <h1 style="margin: 0; font-size: 32px; color: #087BB4; font-weight: bold;">audemy</h1>
+                                    </td>
+                                </tr>
 
-        <head>
-            <style>
-                h1 {
-                    text-align: center;
-                    color: #077BB3;
-                }
+                                <!-- Body -->
+                                <tr>
+                                    <td style="padding: 20px; font-size: 16px; line-height: 1.5; color: #333;">
+                                        <p style="margin: 0 0 16px;">Hi ${user.name},</p>
+                                        <p style="margin: 0 0 16px;">We received a request to reset your password.</p>
+                                        
+                                        <!-- Button Wrapper -->
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin: 20px 0; text-align: center;">
+                                            <tr>
+                                                <td align="center" style="border-radius: 8px;">
+                                                    <a href="${resetLink}" target="_blank" 
+                                                        style="
+                                                            display: inline-block;
+                                                            padding: 12px 24px;
+                                                            font-size: 16px;
+                                                            color: #ffffff;
+                                                            background-color: #087BB4;
+                                                            border: 1px solid black;
+                                                            border-radius: 8px;
+                                                            font-weight: bold;
+                                                            text-decoration: none;
+                                                            border-right: 4px solid black;
+                                                            border-bottom: 4px solid black;
+                                                            transition: all 0.3s ease-in-out;
+                                                        "
+                                                        class="button">
+                                                        Reset my Password
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
 
-                i {
-                    color: #808080;
-                }
-            </style>
-        </head>
-
-        <body>
-            <h1>Audemy</h1>
-            <hr>
-            <p>Hi ${user.name},</p>
-            <p>We received a request to reset your password. Click the below link to proceed:<br>
-                <a href="${resetLink}"><b>Reset Password</b></a> <i>(This link will expire in 10 min)</i>
-            </p>
-            <p>If you did not request to reset your password, it is safe to disregard this message.</p>
-
-            <br>
-            <p>Thank You,<br>The Audemy Team</p>
-        </body>
-
+                                        <p style="margin: 0; font-size: 14px; color: #777;">(This link will expire in 10 minutes)</p>
+                                        <br>
+                                        <p style="margin: 0;">If you did not request to reset your password, it is safe to disregard this message.</p>
+                                        <br>
+                                        <p style="margin: 0;">Thank you,<br>The Audemy Team</p>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </body>
         </html>
       `
     };
