@@ -7,14 +7,14 @@ const user = ref("");
 const token = ref("");
 
 onMounted(() => {
+    // Get the token from the URL query parameters
     const query = new URLSearchParams(window.location.search);
     user.value = query.get("user");
     token.value = query.get("token");
-    console.log("User:", user.value);
-    console.log("Token:", token.value);
 });
 
 const toResetPswd = () => {
+    // Route to reset-password page when continue button is clicked
     router.push("/reset-password?user=" + user.value + "&token=" + token.value);
 };
 </script>

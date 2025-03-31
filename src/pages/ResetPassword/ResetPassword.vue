@@ -2,29 +2,29 @@
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
-const errors = ref(false);
-var linkExpired = ref(false);
+const errors = ref(false);              // flag to display error on frontend
+var linkExpired = ref(false);           // flag for link expired error on frontend
 const password = ref("");
 const confirmPassword = ref("");
 const token = ref("");
 const router = useRouter();
 
 onMounted(() => {
+    // Get the token from the URL query parameters
     const query = new URLSearchParams(window.location.search);
     token.value = query.get("token");
 });
 
 const resetConfirm = async (event) => {
-    event.preventDefault();
-    console.log("password: ", password.value);
-    console.log("confirmPassword: ", confirmPassword.value);
-    console.log("Token: ", token.value);
+    event.preventDefault();     // prevent default form submission which would reload the page
 
+    // pre-condition checks for the password and confirm password fields
     if ((password.value != confirmPassword.value) || (password.value.length < 8)) {
+        // Set the flag to true to display the error message on the frontend
         errors.value = true;
     }else{
         errors.value = false;
-
+        // API call to reset password
         try {
             const resetResponse = await fetch(
                 `/api/reset-password`,
@@ -37,16 +37,20 @@ const resetConfirm = async (event) => {
                     }),
                 }
             );
-            console.log("Reset Password response:", resetResponse);
+
+            // Handle the response from the API based on the status code
+            console.log("Reset Password response:", resetResponse.status);
             if (resetResponse.status === 500) {
                 linkExpired.value = true;
-                console.error("Link Expired: ");
+                console.error("Link Expired");
             }
 
+            // Route to reset-confirm page if password reset was successfull
             if (resetResponse.status === 200 && linkExpired.value === false) {
                 router.push("/reset-confirm");
             }
         } catch (error) {
+            // Throw error and set the flag to true to display the error message on the frontend
             console.error("Error: ", error);
             errors.value = true;
         }
@@ -142,6 +146,11 @@ const resetConfirm = async (event) => {
                     <div class="mb-6" v-if="linkExpired">
                         <div role="alert" class="text-red-700">
                             <span class="block sm:inline">Password reset link expired!</span>
+                            <a
+                                href="./forgot-password"
+                                class="underline text-[#087BB4] font-medium"
+                                >Generate a new link?</a
+                            >
                         </div>
                     </div>
                     <div class="flex justify-center w-full pt-4"> 

@@ -1,18 +1,18 @@
 <script setup>
-import e from "cors";
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
-const errors = ref(false);
-const email = ref("");
+
+
+const errors = ref(false);      // flag to display error on frontend
+const email = ref("");          // email input field value
 const router = useRouter();
 
-onMounted(() => {
-});
-
 const sendResetEmail = async (event) => {
-    event.preventDefault();
+    // prevent default form submission which would reload the page
+    event.preventDefault();     
     console.log("Sending reset email to:", email.value);
     
+    // API call to send reset email
     try {
         const emailResponse = await fetch(
             `/api/send-email`,
@@ -24,15 +24,19 @@ const sendResetEmail = async (event) => {
                 }),
             }
         );
-        console.log("Email Response:", emailResponse);
+        // Handle the response from the API based on the status code
+        console.log("Response:", emailResponse.status)
         if (emailResponse.status === 404) {
-            console.error("Error: Email not present");
+            // Set the flag to true to display the error message on the frontend
+            console.error("Error: User with provided email id not present.");
             errors.value = true;
         } else{
+            // Route to reset-link-sent page if email sent successfully
             console.log("Email sent successfully.");
             router.push("/reset-link-sent");
         }
     } catch (error) {
+        // Set the flag to true to display the error message on the frontend
         console.error("Error: Email not present- ", error);
         errors.value = true;
     }    
@@ -67,7 +71,6 @@ const sendResetEmail = async (event) => {
             />
         </div>
 
-        <!-- Show Reset form if not logged in -->
         <div
             class="w-7/12 md:w-full sm:w-full bg-white flex flex-col items-center justify-center border-2"
         >

@@ -13,10 +13,10 @@ export default async function handler(req, res) {
         "Content-Type, Authorization"
     );
 
-    console.log("Request received:", req.method, req.url, req.query, req.body);
+    // Get email from the Req Body
     const toEmail = req.body.email
-    console.log("Email received:", toEmail);
-    var user = ''
+    console.log("Email to check in db:", toEmail);
+    var user = ''           // Declaring variables to access in all blocks of code
     var resetLink = ''
 
     try {
@@ -30,16 +30,17 @@ export default async function handler(req, res) {
         }
         console.log("User found:", user.name);
 
-         // Generate reset token
+        // Generate reset token using jwt with expiration time
         const resetToken = jwt.sign({ userId: user.user_id }, process.env.JWT_SECRET, { expiresIn: '10m' });
         resetLink = `http://localhost:5173/reset-landing-page?user=${user.name}&token=${resetToken}`;
-        console.log("Reset link generated:", resetLink);
+        console.log("Reset link generated.");
 
     } catch (error) {
         console.error("Error fetching user:", error);
         return res.status(500).json({ error: "Internal Server Error" });
     }
 
+    // Transporter with smtp details and authentication
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 465,
@@ -50,6 +51,7 @@ export default async function handler(req, res) {
         }
     });
 
+    // Set email template and it's details
     const mailOptions = {
         from: process.env.HOST_EMAIL,
         to: toEmail,
@@ -116,11 +118,11 @@ export default async function handler(req, res) {
                                             </tr>
                                         </table>
 
-                                        <p style="margin: 0; font-size: 14px; color: #777;">(This link will expire in 10 minutes)</p>
-                                        <br>
-                                        <p style="margin: 0;">If you did not request to reset your password, it is safe to disregard this message.</p>
-                                        <br>
+                                        <p style="margin: 0;">This link will expire in 10 minutes. If you did not request to reset your password, it is safe to disregard this message.</p>
+                                        <br><br>
                                         <p style="margin: 0;">Thank you,<br>The Audemy Team</p>
+                                        <br>
+                                        <p style="margin: 0; font-size: 12px; color: #777;">Questions? Contact <a href='#'>connect.audemy@gmail.com</a></p>
                                     </td>
                                 </tr>
                                 
@@ -134,11 +136,13 @@ export default async function handler(req, res) {
     };
 
     try {
+        // Send email using transporter and mailOptions set above
         await transporter.sendMail(mailOptions);
         console.log("Email sent successfully to:", toEmail);
         res.status(200).json({ message: "Email sent successfully" });
     } catch (error) {
-        console.error("Detailed Error:", error.message, error.stack); // Log the full error
+        // Log the error details
+        console.error("Detailed Error:", error.message, error.stack);
         res.status(500).json({ error: "Failed to send email", details: error.message, stack: error.stack }); 
     }
 }

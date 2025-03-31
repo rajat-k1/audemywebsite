@@ -14,10 +14,12 @@ export default async function handler(req, res) {
         "Content-Type, Authorization"
     );
 
+    // log statement for records and error tracing
     console.log("Request received:", req.method, req.url, req.query, req.body);
+
+    // variable to get token and newpassword from request body
     const { token, newPassword } = req.body;
-    console.log("Token received:", token);
-    console.log("New Password:", newPassword);
+    
     try {
         console.log("Verifying token...");
         // Verify token
@@ -26,14 +28,11 @@ export default async function handler(req, res) {
         if (!decoded) {
           return res.status(480).json({ message: 'Invalid token or token expired!' });
         }
-        console.log("Decoded token:", decoded);
 
         // Find user with valid token
         const user = await prisma.user.findFirst({
           where: {
             user_id: decoded.userId,
-            //resetPasswordToken: token,
-            //resetPasswordExpires: { gt: new Date() }
           }
         });
     
@@ -41,18 +40,17 @@ export default async function handler(req, res) {
           return res.status(400).json({ message: 'User not found' });
         }
 
+        // Logging user fetched from db found with email for error tracing
         console.log("User found:", user);
     
         // Hash new password
         const hashedPassword = await bcrypt.hash(newPassword, 10);
     
-        // Update password and clear reset token
+        // Update password for the user in the db
         await prisma.user.update({
           where: { user_id: user.user_id },
           data: {
             password: hashedPassword,
-            //resetPasswordToken: null,
-            //resetPasswordExpires: null
           }
         });
         
