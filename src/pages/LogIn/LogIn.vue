@@ -59,6 +59,7 @@ const login = async (event) => {
             { expires: 7 }
         );
         userSession.value = { token: authKey.value, user: data.user };
+        // router.push("/game-zone");
     } catch (error) {
         console.error("Error:", error);
     }
@@ -238,7 +239,9 @@ const logout = () => {
                         />
                     </div>
                     <div class="flex justify-end w-full">
-                        <a href="./forgot-password" class="underline text-[#087BB4] font-medium"
+                        <a
+                            href="./forgot-password"
+                            class="underline text-[#087BB4] font-medium"
                             >Forgot password?</a
                         >
                     </div>
