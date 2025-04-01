@@ -196,7 +196,7 @@ const submitForm = async (event) => {
                     </div>
                 </div>
 
-                <!-- DOB FIELD -->
+                <!-- DOB FIELD >
                 <div class="mb-[16px] mobile:w-full">
                     <label class="block text-[#0C0D0D] font-semiBold"
                         >Date of Birth</label
@@ -208,7 +208,7 @@ const submitForm = async (event) => {
                         name="birthday"
                         placeholder="MM-DD-YYYY"
                     />
-                </div>
+                </div-->
 
                 <!-- SCHOOL FIELD -->
                 <div class="mb-[16px] mobile:w-full">
