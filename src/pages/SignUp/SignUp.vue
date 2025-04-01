@@ -16,10 +16,8 @@ const submitForm = async (event) => {
     const formData = new FormData(signupForm.value);
 
     // Validate if passwords match
-    if (
-        signupForm.value.confirm_password.value !==
-        signupForm.value.password.value
-    ) {
+    const passwordsValid = validatePasswords();
+    if (!passwordsValid) {
         console.error("Passwords do not match");
         return; // Stop if passwords don't match
     }
@@ -88,6 +86,29 @@ const submitForm = async (event) => {
         // Handle error (e.g., show error message to the user)
     }
 };
+
+
+const validatePasswords = () => {
+  // Get the password and confirm password values
+  const password = signupForm.value.password.value;
+  const confirmPassword = signupForm.value.confirm_password.value;
+  
+  // Check if both fields have values
+  if (password && confirmPassword) {
+    // Check if passwords match
+    if (password === confirmPassword) {
+      console.log("✓ Yeye! Passwords are a match.");
+      return true;
+    } else {
+      console.log("✗ Opps! Passwords do not match, Please try again.");
+      return false;
+    }
+  }
+  
+  // If one or both fields are empty, don't validate yet
+  return null;
+};
+
 </script>
 <template>
     <div
@@ -255,6 +276,7 @@ const submitForm = async (event) => {
                         id="password"
                         name="password"
                         placeholder="Create your best password"
+                        @input="validatePasswords"
                     />
                 </div>
 
@@ -271,6 +293,7 @@ const submitForm = async (event) => {
                         id="confirm_password"
                         name="confirm_password"
                         placeholder="Confirm your password"
+                        @input="validatePasswords"
                     />
                 </div>
 
