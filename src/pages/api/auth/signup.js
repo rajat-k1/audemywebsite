@@ -2,9 +2,35 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
+const signupAttempts = {};
+const SIGNUP_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+const SIGNUP_MAX_ATTEMPTS = 5;
 
 export default async function handler(req, res) {
     try {
+        const ip =
+            req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+
+        const now = Date.now();
+        if (!signupAttempts[ip]) {
+            signupAttempts[ip] = [];
+        }
+
+        // Filter out old attempts
+        signupAttempts[ip] = signupAttempts[ip].filter(
+            (timestamp) => now - timestamp < SIGNUP_WINDOW_MS
+        );
+
+        if (signupAttempts[ip].length >= SIGNUP_MAX_ATTEMPTS) {
+            return res
+                .status(429)
+                .json({
+                    error: "Too many signup attempts. Please try again later.",
+                });
+        }
+
+        signupAttempts[ip].push(now);
+
         if (req.method !== "POST") {
             return res.status(405).json({ error: "Method Not Allowed" });
         }
@@ -18,9 +44,6 @@ export default async function handler(req, res) {
             confirm_password,
         } = req.body.user;
 
-        if (req.method !== "POST") {
-            return res.status(405).json({ error: "Method Not Allowed" });
-        }
         // Validate required fields
         if (
             !first_name ||
@@ -31,6 +54,7 @@ export default async function handler(req, res) {
         ) {
             return res.status(400).json({ error: "All fields are required" });
         }
+
         // Validate password match
         if (password !== confirm_password) {
             return res.status(400).json({ error: "Passwords do not match" });
