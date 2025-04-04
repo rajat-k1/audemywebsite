@@ -1,7 +1,7 @@
 <template>
     <header class="relative py-8">
         <!-- Logo Section -->
-        <div class="text-lg font-bold absolute left-4 top-8 z-10">
+        <div class="text-lg font-bold absolute left-4 top-6 z-10">
             <RouterLink to="/home">
                 <img
                     :src="logoPath"
@@ -15,11 +15,11 @@
 
         <!-- Hamburger Button for Mobile -->
         <div v-if="isMobileView" class="absolute right-4 top-8 z-30">
-            <button @click="toggleMenu" class="text-2xl">&#9776;</button>
+            <button @click="toggleMenu" class="text-4xl">&#9776;</button>
         </div>
 
         <!-- Desktop Navigation Links -->
-        <nav v-if="!isMobileView" class="flex justify-center py-2">
+        <nav v-if="!isMobileView" class="flex justify-end items-center gap-4 py-2">
             <ul class="flex font-poppins font-semibold" 
                 :class="[
                     textColor ?? 'text-[#151e22]',
@@ -61,6 +61,18 @@
                     >
                 </li>
             </ul>
+            <div>
+                <router-link
+                    to="/login"
+                    class="flex justify-center items-center login-button text-white font-bold py-3 px-6 rounded-lg border-[1.5px] shadow-[3px_4px_0px_#0C0D0D] border-black bg-[#087BB4] hover:bg-[#0C587D]"
+                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                    &nbsp;Log in
+                </router-link>
+            </div>
         </nav>
 
         <!-- Mobile Menu Overlay -->
@@ -75,8 +87,8 @@
             v-if="isMobileView && isMenuOpen"
             class="fixed inset-y-0 right-0 bg-white z-50 w-4/5 max-w-xs flex flex-col overflow-hidden"
         >
-            <div class="flex justify-end p-4">
-                <button @click="closeMenu" class="text-2xl">&times;</button>
+            <div class="flex justify-end p-7 px-10">
+                <button @click="closeMenu" class="text-4xl">&times;</button>
             </div>
             
             <nav class="flex-1">
@@ -115,6 +127,18 @@
                             class="block py-4 hover:text-[#087bb4]"
                             @click="closeMenu"
                         >Game zone</RouterLink>
+                    </li>
+                    <li>
+                        <router-link
+                            to="/login"
+                            class="flex justify-center items-center login-button text-white font-bold py-3 px-6 rounded-lg border-[1.5px] shadow-[3px_4px_0px_#0C0D0D] border-black bg-[#087BB4] hover:bg-[#0C587D]"
+                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                            &nbsp;Log in
+                        </router-link>
                     </li>
                 </ul>
             </nav>
