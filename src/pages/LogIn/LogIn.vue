@@ -18,7 +18,27 @@ const router = useRouter();
 onMounted(() => {
     const session = Cookies.get("audemyUserSession");
     if (session) {
-        userSession.value = JSON.parse(session);
+        const parsed = JSON.parse(session);
+        // console.log("Parsed session:", parsed);
+        const decoded = jwtDecode(parsed.token) || jwtDecode(parsed);
+        // console.log("Decoded JWT:", decoded);
+        const currentTime = Math.floor(Date.now() / 1000);
+        const toEST = (unix) =>
+            new Date(unix * 1000).toLocaleString("en-US", {
+                timeZone: "America/New_York",
+                hour12: false,
+            });
+
+        console.log("Current Time (EST):", toEST(currentTime));
+        console.log("Expiry Time (EST):", toEST(decoded.exp));
+
+        if (decoded.exp < currentTime) {
+            Cookies.remove("audemyUserSession");
+            userSession.value = null;
+            router.push("/login");
+        } else {
+            userSession.value = parsed;
+        }
     }
 });
 
@@ -56,7 +76,7 @@ const login = async (event) => {
         Cookies.set(
             "audemyUserSession",
             JSON.stringify({ token: authKey.value, user: data.user }),
-            { expires: 7 }
+            { expires: 7 } // Set cookie with token and user data
         );
         userSession.value = { token: authKey.value, user: data.user };
         // router.push("/game-zone");

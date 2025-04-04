@@ -73,7 +73,7 @@ const submitForm = async (event) => {
 
         if (loginData.token) {
             Cookies.set("audemyUserSession", JSON.stringify(loginData.token), {
-                expires: 7,
+                expires: 7, // Set the cookie to expire in 7 days
                 secure: true,
             });
             window.location.href = "/game-zone";
