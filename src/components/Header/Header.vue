@@ -61,7 +61,19 @@
                     >
                 </li>
             </ul>
-            <div>
+            
+            <div v-if="userSession">
+                <button
+                    class="flex justify-center items-center bg-[#FE892A] text-black font-bold py-3 px-6 rounded-lg border-[1.5px] shadow-[3px_4px_0px_#0C0D0D] border-black hover:bg-[#D6711F]"
+                    @click="logout"
+                >Log out&nbsp;
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div v-else>
                 <router-link
                     to="/login"
                     class="flex justify-center items-center login-button text-white font-bold py-3 px-6 rounded-lg border-[1.5px] shadow-[3px_4px_0px_#0C0D0D] border-black bg-[#087BB4] hover:bg-[#0C587D]"
@@ -140,6 +152,13 @@
                             &nbsp;Log in
                         </router-link>
                     </li>
+                    <li v-if="userSession">
+                        <button
+                            class="mt-4 bg-[#FE892A] text-white px-4 py-2 rounded"
+                            @click="logout"
+                        >Logout
+                        </button>
+                    </li>
                 </ul>
             </nav>
 
@@ -173,7 +192,12 @@
 
 <script setup>
 import { defineProps, ref, onMounted, onUnmounted, nextTick } from "vue";
+import Cookies from "js-cookie";
+import { useRouter } from "vue-router";
 
+
+const router = useRouter();
+const userSession = ref(null);
 const props = defineProps({
     logoPath: {
         type: [String, null],
@@ -225,6 +249,12 @@ const checkScreenSize = () => {
   }
 };
 
+const logout = () => {
+    Cookies.remove("audemyUserSession");
+    userSession.value = null;
+    router.push("/game-zone");
+};
+
 // Add resize listener to check screen size
 onMounted(() => {
     // Initial check
@@ -235,6 +265,14 @@ onMounted(() => {
     });
     
     window.addEventListener("resize", checkScreenSize);
+
+    const session = Cookies.get("audemyUserSession");
+    if (session) {
+        const parsed = JSON.parse(session);
+        console.log("Parsed session:", parsed);
+        userSession.value = parsed;
+    }
+    
 });
 
 onUnmounted(() => {

@@ -97,7 +97,7 @@ const login = async (event) => {
             { expires: 7 } // Set cookie with token and user data
         );
         userSession.value = { token: authKey.value, user: data.user };
-        // router.push("/game-zone");
+        router.push("/game-zone");
     } catch (error) {
         console.error("Error:", error);
     }
@@ -347,16 +347,16 @@ const logout = () => {
             v-if="showSchoolForm"
             class="w-7/12 bg-white flex items-center justify-center flex-col gap-4"
         >
-            <h3>Enter Your School</h3>
+            <h3 class="text-[36px] text-[#151E22] text-center w-7/12 mobile:w-full mobile:text-[24px] mobile:mb-4">Enter Your School</h3>
             <input
                 v-model="school"
                 type="text"
-                class="border-2 border-black py-2 px-2 rounded-[8px]"
+                class="border-2 border-black py-2 px-2 rounded-[8px] w-1/2"
                 placeholder="School Name"
             />
             <button
                 @click="updateSchool"
-                class="bg-blue-500 text-white py-2 px-4 rounded mt-4"
+                class="w-[488px] h-[56px] text-white rounded-[8px] bg-[#087BB4] hover:bg-[#0C587D] hover:cursor-pointer border-2 border-black font-semiBold shadow-[4px_4px_0px_black] mobile:w-full"
             >
                 Submit
             </button>
