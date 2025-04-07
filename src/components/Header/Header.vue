@@ -188,6 +188,15 @@
             </div>
         </div>
     </header>
+    <!-- Alert -->
+    <div v-if="showAlert" class="flex justify-between w-1/4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 z-50 rounded fixed bottom-5 right-5 transition-opacity duration-300 ease-in-out transform" role="alert">
+        <span class="block sm:inline"><strong class="font-bold">Log out</strong> successful!</span>
+        <button @click="closeAlert">   
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+        </button>
+    </div>
 </template>
 
 <script setup>
@@ -198,6 +207,7 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 const userSession = ref(null);
+const showAlert = ref(false);
 const props = defineProps({
     logoPath: {
         type: [String, null],
@@ -252,7 +262,15 @@ const checkScreenSize = () => {
 const logout = () => {
     Cookies.remove("audemyUserSession");
     userSession.value = null;
+    showAlert.value = true;
+    setTimeout(() => {
+        showAlert.value = false;
+    }, 3000);
     router.push("/game-zone");
+};
+
+const closeAlert = () => {
+    showAlert.value = false;
 };
 
 // Add resize listener to check screen size
