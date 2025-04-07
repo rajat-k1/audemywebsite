@@ -1,7 +1,12 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch, onMounted } from "vue";
 
 const signupForm = ref(null);
+const passwordsMatch = ref(null);
+const showFeedback = ref(true); // Always show feedback for debugging
+const password = ref('');
+const confirmPassword = ref('');
+const debugMessage = ref('Feedback container should be visible');
 
 import Group1010 from "/assets/images/SignUpImg/Group 1010.png";
 import Group878 from "/assets/images/SignUpImg/Group 878.png";
@@ -15,13 +20,15 @@ const submitForm = async (event) => {
     // Get form data from the ref
     const formData = new FormData(signupForm.value);
 
-    // Validate if passwords match
-    const passwordsValid = validatePasswords();
-    if (!passwordsValid) {
-        console.error("Passwords do not match");
-        return; // Stop if passwords don't match
+    // Force validation check before submission
+    validatePasswords();
+  
+    // Check if passwords match
+    if (!passwordsMatch.value) {
+        debugMessage.value = "Form submission stopped: passwords don't match";
+        return;
     }
-
+  
     try {
         const response = await fetch("/api/auth/signup", {
             method: "POST",
@@ -87,28 +94,55 @@ const submitForm = async (event) => {
     }
 };
 
-
 const validatePasswords = () => {
-  // Get the password and confirm password values
-  const password = signupForm.value.password.value;
-  const confirmPassword = signupForm.value.confirm_password.value;
-  
-  // Check if both fields have values
-  if (password && confirmPassword) {
-    // Check if passwords match
-    if (password === confirmPassword) {
-      console.log("✓ Yeye! Passwords are a match.");
-      return true;
+    console.log("validatePasswords called");
+    
+    // Log current values
+    console.log("Current password:", password.value);
+    console.log("Current confirm password:", confirmPassword.value);
+    console.log("showFeedback before:", showFeedback.value);
+    
+    // Always show feedback
+    showFeedback.value = true;
+    
+    // Check if we can determine match status
+    if (password.value && confirmPassword.value) {
+        // Both fields have values, check if they match
+        passwordsMatch.value = password.value === confirmPassword.value;
+        debugMessage.value = passwordsMatch.value 
+            ? "✓ Yeye! Passwords are a match!" 
+            : "✗ Oops! Passwords do not match. Please Try again.";
+    } else if (confirmPassword.value) {
+        // Only confirm password has a value, they can't match yet
+        passwordsMatch.value = false;
+        debugMessage.value = "✗ Oops! Passwords do not match. Please Try again.";
     } else {
-      console.log("✗ Opps! Passwords do not match, Please try again.");
-      return false;
+        // Either both are empty or only password has a value
+        passwordsMatch.value = null;
+        debugMessage.value = "Please confirm your password";
     }
-  }
-  
-  // If one or both fields are empty, don't validate yet
-  return null;
+    
+    // Log updated state
+    console.log("passwordsMatch after:", passwordsMatch.value);
+    console.log("showFeedback after:", showFeedback.value);
+    console.log(debugMessage.value);
 };
 
+onMounted(() => {
+    console.log("Component mounted");
+    // Force feedback to show for debugging
+    showFeedback.value = true;
+    validatePasswords();
+});
+
+// Watch both password fields for changes
+watch(password, () => {
+    validatePasswords();
+});
+
+watch(confirmPassword, () => {
+    validatePasswords();
+});
 </script>
 <template>
     <div
@@ -247,22 +281,6 @@ const validatePasswords = () => {
                     />
                 </div>
 
-                <!-- EMAIL FIELD -->
-                <div class="mb-[16px] mobile:w-full">
-                    <label
-                        class="block text-[#0C0D0D] font-semiBold"
-                        for="email"
-                        >Email</label
-                    >
-                    <input
-                        type="email"
-                        class="w-full outline-none border border-black h-[48px] px-4 rounded-[8px]"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email address"
-                    />
-                </div>
-
                 <!-- PASSWORD FIELD -->
                 <div class="mb-[16px] mobile:w-full">
                     <label
@@ -271,6 +289,7 @@ const validatePasswords = () => {
                         >Password</label
                     >
                     <input
+                        v-model="password"
                         type="password"
                         class="w-full outline-none border border-black h-[48px] px-4 rounded-[8px]"
                         id="password"
@@ -281,20 +300,41 @@ const validatePasswords = () => {
                 </div>
 
                 <!-- CONFIRM PASSWORD FIELD -->
-                <div class="mb-[16px] mobile:w-full">
+                <div class="mb-[16px] mobile:w-full relative">
                     <label
                         for="confirm_password"
                         class="block text-[#0C0D0D] font-semiBold"
                         >Confirm Password</label
                     >
                     <input
+                        v-model="confirmPassword"
                         type="password"
                         class="w-full outline-none border border-black h-[48px] px-4 rounded-[8px]"
                         id="confirm_password"
                         name="confirm_password"
                         placeholder="Confirm your password"
                         @input="validatePasswords"
-                    />
+                    />                    
+                </div>
+                
+                <!-- Password match feedback container - always visible now -->
+                <div 
+                    class="mb-6 p-3 rounded-lg border-2 shadow-md"
+                    :class="{
+                        'bg-green-100 border-green-500 text-green-800': passwordsMatch === true,
+                        'bg-red-100 border-red-500 text-red-800': passwordsMatch === false,
+                        'bg-gray-100 border-gray-400 text-gray-800': passwordsMatch === null
+                    }"
+                >
+                    <p v-if="passwordsMatch === true" class="flex items-center font-bold">
+                        <span class="text-xl mr-2 text-green-600">✓</span> Yeye! Passwords are a match!
+                    </p>
+                    <p v-else-if="passwordsMatch === false" class="flex items-center font-bold">
+                        <span class="text-xl mr-2 text-red-600">✗</span> Oops! Passwords do not match. Please Try again.
+                    </p>
+                    <p v-else class="flex items-center">
+                        <span class="text-xl mr-2"></span> Please confirm your password
+                    </p>
                 </div>
 
                 <p
