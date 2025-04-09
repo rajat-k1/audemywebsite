@@ -1,7 +1,13 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch, onMounted, computed } from "vue";
 
 const signupForm = ref(null);
+const passwordsMatch = ref(false);
+const showFeedback = ref(true);
+const password = ref('');
+const confirmPassword = ref('');
+const confirmTouched = ref(false);
+const formSubmitted = ref(false);
 
 import Group1010 from "/assets/images/SignUpImg/Group 1010.png";
 import Group878 from "/assets/images/SignUpImg/Group 878.png";
@@ -12,18 +18,19 @@ import Star from "/assets/images/testimonials/star.svg";
 import Cookies from "js-cookie";
 const submitForm = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
-    // Get form data from the ref
-    const formData = new FormData(signupForm.value);
-
-    // Validate if passwords match
-    if (
-        signupForm.value.confirm_password.value !==
-        signupForm.value.password.value
-    ) {
-        console.error("Passwords do not match");
-        return; // Stop if passwords don't match
+    
+    // Set formSubmitted to true
+    formSubmitted.value = true;
+    
+    // Force validation check before submission
+    validatePasswords();
+  
+    // Check if passwords match
+    if (!passwordsMatch.value) {
+        debugMessage.value = "Form submission stopped: passwords don't match";
+        return;
     }
-
+  
     try {
         const response = await fetch("/api/auth/signup", {
             method: "POST",
@@ -80,7 +87,7 @@ const submitForm = async (event) => {
         } else {
             throw new Error("Token not found");
         }
-        signupForm.value.reset();
+        signupForm.value?.reset?.();
 
         // Handle success (e.g., redirect, show success message)
     } catch (error) {
@@ -88,13 +95,99 @@ const submitForm = async (event) => {
         // Handle error (e.g., show error message to the user)
     }
 };
+
+const validatePasswords = () => {
+    
+    // Always show feedback
+    showFeedback.value = true;
+    
+    if (password.value && confirmPassword.value) {
+        // Both fields have values, set match status
+        passwordsMatch.value = password.value === confirmPassword.value;
+        debugMessage.value = passwordsMatch.value
+            ? "Passwords are a match."
+            : "Passwords do not match.";
+    } else if (confirmTouched.value && confirmPassword.value === '') {
+        // If user has interacted with confirm field but it's now empty
+        passwordsMatch.value = false;
+        debugMessage.value = "Please confirm your password";
+    } else if (formSubmitted.value) {
+        // If form was submitted but confirm password is empty
+        passwordsMatch.value = false; 
+        debugMessage.value = "Please confirm your password";
+    } else if (confirmPassword.value) {
+        // Confirm password has a value but doesn't match
+        passwordsMatch.value = false;
+        debugMessage.value = "Passwords do not match.";
+    } else {
+        // Confirm password is empty and never touched
+        passwordsMatch.value = null;
+        debugMessage.value = "Please confirm your password";
+    }
+    
+    console.log("passwordsMatch after:", passwordsMatch.value);
+};
+
+const handleConfirmBlur = () => {
+    confirmTouched.value = true;
+    validatePasswords();
+};
+
+onMounted(() => {
+    // Force feedback to show for debugging
+    showFeedback.value = true;
+    validatePasswords();
+});
+
+// Watch both password fields for changes
+watch(password, () => {
+    validatePasswords();
+});
+
+watch(confirmPassword, () => {
+    validatePasswords();
+});
+
+// Reset formSubmitted when either password changes
+watch([password, confirmPassword], () => {
+    // Reset formSubmitted whenever either password changes after form submission
+    if (formSubmitted.value) {
+        formSubmitted.value = false;
+    }
+    
+    // If user is typing in confirm field, mark it as touched
+    if (confirmPassword.value) {
+        confirmTouched.value = true;
+    }
+});
+
+const feedbackMessage = computed(() => {
+    if (passwordsMatch.value === true) {
+        return "Yeye! Passwords are a match!";
+    } else if (passwordsMatch.value === false) {
+        return "Oops! Passwords do not match. Please Try again.";
+    } else {
+        return "Please confirm your password";
+    }
+});
+
+const feedbackClass = computed(() => {
+    if (passwordsMatch.value === true) {
+        return "bg-green-100 border-green-500 text-green-800";
+    } else if (passwordsMatch.value === false) {
+        return "bg-red-100 border-red-500 text-red-800";
+    } else {
+        return "bg-gray-100 border-gray-400 text-gray-800";
+    }
+});
+
 </script>
+
 <template>
     <div
         class="w-full min-h-screen overflow-auto flex justify-between gap-[98px] font-poppins mobile:flex-col mobile:gap-[20px]"
     >
         <!-- SIDE IMAGE -->
-
         <div
             class="w-5/12 p-0 bg-[#E5F0F5] relative mobile:w-full mobile:h-[40%]"
         >
@@ -196,20 +289,6 @@ const submitForm = async (event) => {
                     </div>
                 </div>
 
-                <!-- DOB FIELD -->
-                <div class="mb-[16px] mobile:w-full">
-                    <label class="block text-[#0C0D0D] font-semiBold"
-                        >Date of Birth</label
-                    >
-                    <input
-                        type="date"
-                        class="w-full outline-none border border-black h-[48px] px-4 rounded-[8px]"
-                        id="birthday"
-                        name="birthday"
-                        placeholder="MM-DD-YYYY"
-                    />
-                </div>
-
                 <!-- SCHOOL FIELD -->
                 <div class="mb-[16px] mobile:w-full">
                     <label
@@ -226,22 +305,6 @@ const submitForm = async (event) => {
                     />
                 </div>
 
-                <!-- EMAIL FIELD -->
-                <div class="mb-[16px] mobile:w-full">
-                    <label
-                        class="block text-[#0C0D0D] font-semiBold"
-                        for="email"
-                        >Email</label
-                    >
-                    <input
-                        type="email"
-                        class="w-full outline-none border border-black h-[48px] px-4 rounded-[8px]"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email address"
-                    />
-                </div>
-
                 <!-- PASSWORD FIELD -->
                 <div class="mb-[16px] mobile:w-full">
                     <label
@@ -250,28 +313,43 @@ const submitForm = async (event) => {
                         >Password</label
                     >
                     <input
+                        v-model="password"
                         type="password"
                         class="w-full outline-none border border-black h-[48px] px-4 rounded-[8px]"
                         id="password"
                         name="password"
                         placeholder="Create your best password"
+                        @input="validatePasswords"
                     />
                 </div>
 
                 <!-- CONFIRM PASSWORD FIELD -->
-                <div class="mb-[16px] mobile:w-full">
+                <div class="mb-[16px] mobile:w-full relative">
                     <label
                         for="confirm_password"
                         class="block text-[#0C0D0D] font-semiBold"
                         >Confirm Password</label
                     >
                     <input
+                        v-model="confirmPassword"
                         type="password"
                         class="w-full outline-none border border-black h-[48px] px-4 rounded-[8px]"
                         id="confirm_password"
                         name="confirm_password"
                         placeholder="Confirm your password"
-                    />
+                        @input="validatePasswords"
+                        @blur="handleConfirmBlur"
+                    />                   
+                </div>
+                
+                <!-- Password match feedback container (Using computed properties) -->
+                <div v-show="confirmTouched"
+                    class="mb-6 p-3 rounded-lg border-2 shadow-md min-h-[56px] text-base font-medium"
+                    :class="feedbackClass"
+                >
+                    <p class="flex items-center font-medium">
+                        {{ feedbackMessage }}
+                    </p>
                 </div>
 
                 <p
