@@ -468,9 +468,8 @@ const toggleRecording = () => {
       console.log("Correct Answer:", randQueNum[numOfAudiosPlayed.value]);
 
       if (
-        finalTranscript.trim().toLowerCase() ===
-        answers[numOfAudiosPlayed.value]
-      ) {
+        finalTranscript.trim().toLowerCase().includes(answers[numOfAudiosPlayed.value].toLowerCase())
+      ){
         score.value++;
         console.log("Correct Answer!");
         playSound("correctaudio.mp3");
@@ -479,7 +478,10 @@ const toggleRecording = () => {
         playSound("incorrectaudio.mp3");
         const incorectAudio =
           "The correct answer is " + answers[numOfAudiosPlayed.value];
-        currentAudios.push(playQuestion(incorectAudio));
+        
+        setTimeout(() => {
+          currentAudios.push(playQuestion(incorectAudio));
+        }, 1000);
       }
 
       // Stop listening

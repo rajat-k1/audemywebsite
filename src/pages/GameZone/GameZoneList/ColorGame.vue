@@ -403,9 +403,9 @@ const toggleRecording = () => {
       console.log("Correct Answer:", question["A"]);
 
       if (
-        question["A"]
-          .map((str) => str.toLowerCase())
-          .includes(finalTranscript.trim().toLowerCase())
+        question["A"].some((answer) =>
+          finalTranscript.trim().toLowerCase().includes(answer.toLowerCase())
+        )
       ) {
         score.value++;
         console.log("Correct Answer!");
@@ -414,7 +414,10 @@ const toggleRecording = () => {
         console.log("Wrong Answer!");
         playSound("incorrectaudio.mp3");
         const incorectAudio = "The correct answer is " + question["A"][0];
-        currentAudios.push(playQuestion(incorectAudio));
+
+        setTimeout(() => {
+          currentAudios.push(playQuestion(incorectAudio));
+        }, 1000);
       }
 
       // Stop listening
