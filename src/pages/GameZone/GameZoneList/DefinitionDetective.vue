@@ -468,11 +468,8 @@ const toggleRecording = () => {
         console.log("User Answer:", finalTranscript);
         console.log("Correct Answer:", currentQuestion.value["A"]);
 
-        if (
-          currentQuestion.value["A"]
-            .map((str) => str.toLowerCase())
-            .includes(finalTranscript.trim().toLowerCase())
-        ) {
+        const answers = currentQuestion.value["A"].map((str) => str.toLowerCase());
+        if (answers.includes(finalTranscript.trim().toLowerCase())) {
           score.value++;
           console.log("Correct Answer!");
           playSound("correctaudio.mp3");
