@@ -410,6 +410,8 @@ const goBack = () => {
   console.log("Going back...");
   // Stop all audio playback before navigating away
   stopAudios(currentAudios);
+  // Save the source category to sessionStorage
+  sessionStorage.setItem("gameCategory", "math");
   // Force navigate to the game zone page
   window.location.href = "/game-zone";
 };
@@ -417,7 +419,7 @@ const goBack = () => {
 /**
  * Generates shape questions using JSON file
  */
- const generateQuestions = () => {
+const generateQuestions = () => {
   console.log("Generating Questions...");
   fetch("/assets/questionsDb/shapeSharkDB.json")
     .then((response) => response.json())
@@ -477,16 +479,24 @@ const toggleRecording = () => {
         console.log("User Answer:", finalTranscript);
         console.log("Correct Answer:", currentQuestion.value["A"]);
 
-        const answers = currentQuestion.value["A"].map((str) => str.toLowerCase());
-        if (answers.includes(finalTranscript.trim().toLowerCase())) {
+        if (
+          currentQuestion.value["A"].some((answer) =>
+            finalTranscript.trim().toLowerCase().includes(answer.toLowerCase())
+          )
+        ) {
           score.value++;
           console.log("Correct Answer!");
           playSound("correctaudio.mp3");
         } else {
           console.log("Wrong Answer!");
+
+          const incorrectAudio =
+            "The correct answer is " + currentQuestion.value["A"][0];
           playSound("incorrectaudio.mp3");
-          const incorectAudio = "The correct answer is " + currentQuestion.value["A"][0];
-          currentAudios.push(playQuestion(incorectAudio));
+
+          setTimeout(() => {
+            currentAudios.push(playQuestion(incorrectAudio));
+          }, 1000);
         }
       }
 

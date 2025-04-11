@@ -417,7 +417,7 @@ const goBack = () => {
 /**
  * Generates syllable questions using JSON file
  */
- const generateQuestions = () => {
+const generateQuestions = () => {
   console.log("Generating Questions...");
   // Generate 5 random numbers for the questions
   while (randQueNum.length < 5) {
@@ -458,7 +458,6 @@ const playNextQuestion = () => {
 const toggleRecording = () => {
   if (numOfAudiosPlayed.value < 5 && !isIntroPlaying.value) {
     if (!isRecording.value) {
-      // Start recording
       isRecording.value = true;
 
       startListening((transcript) => {
@@ -468,25 +467,30 @@ const toggleRecording = () => {
       isButtonCooldown.value = true;
       console.log("Processing recording...");
 
-      // Get the final transcript
       const finalTranscript = transcription.value;
 
-      // Process the answer
       if (currentQuestion.value) {
         console.log("Question is: ", currentQuestion.value["Q"]);
         console.log("User Answer:", finalTranscript);
         console.log("Correct Answer:", currentQuestion.value["A"]);
 
-        const answers = currentQuestion.value["A"].map((str) => str.toLowerCase());
-        if (answers.includes(finalTranscript.trim().toLowerCase())) {
+        if (
+          currentQuestion.value["A"].some((answer) =>
+            finalTranscript.trim().toLowerCase().includes(answer.toLowerCase())
+          )
+        ) {
           score.value++;
           console.log("Correct Answer!");
           playSound("correctaudio.mp3");
         } else {
           console.log("Wrong Answer!");
+          const incorrectAudio =
+            "The correct answer is " + currentQuestion.value["A"][0];
           playSound("incorrectaudio.mp3");
-          const incorectAudio = "The correct answer is " + currentQuestion.value["A"][0];
-          currentAudios.push(playQuestion(incorectAudio));
+
+          setTimeout(() => {
+            currentAudios.push(playQuestion(incorrectAudio));
+          }, 1000);
         }
       }
 
@@ -495,7 +499,6 @@ const toggleRecording = () => {
       isRecording.value = false;
       numOfAudiosPlayed.value++;
 
-      // Reset transcription for next question
       setTimeout(() => {
         transcription.value = "";
         isButtonCooldown.value = false;

@@ -463,20 +463,26 @@ const toggleRecording = () => {
         console.log("Correct Answer:", currentQuestion.value["A"]);
 
         if (
-          currentQuestion.value["A"]
-            .map((str) => str.toLowerCase())
-            .includes(finalTranscript.trim().toLowerCase())
+          currentQuestion.value["A"].some((answer) =>
+            finalTranscript.trim().toLowerCase().includes(answer.toLowerCase())
+          )
         ) {
           score.value++;
           console.log("Correct Answer!");
           playSound("correctaudio.mp3");
         } else {
           console.log("Wrong Answer!");
+          const incorrectAudio =
+            "The correct answer is " + currentQuestion.value["A"][0];
           playSound("incorrectaudio.mp3");
-          const incorectAudio = "The correct answer is " + currentQuestion.value["A"][0];
-          currentAudios.push(playQuestion(incorectAudio));
+
+          // Add slight delay before playing the correct answer audio
+          setTimeout(() => {
+            currentAudios.push(playQuestion(incorrectAudio));
+          }, 1000);
         }
       }
+
       stopListening();
       isRecording.value = false;
       numOfAudiosPlayed.value++;
@@ -508,6 +514,8 @@ const goBack = () => {
   console.log("Going back...");
   // Stop all audio playback before navigating away
   stopAudios(currentAudios);
+  // Save the source category to sessionStorage
+  sessionStorage.setItem("gameCategory", "math");
   // Force navigate to the game zone page
   window.location.href = "/game-zone";
 };

@@ -314,7 +314,9 @@ const recordButtonClasses = computed(() => [
     : "gap-2.5 w-[234px] h-[116px] pt-5 pr-7 pb-5 pl-7 rounded-[20px]",
   isRecording.value ? "bg-red-500" : "bg-[#087BB4]",
   "text-white",
-  isButtonDisabled.value || isPlaying.value ? "opacity-50 cursor-not-allowed" : "",
+  isButtonDisabled.value || isPlaying.value
+    ? "opacity-50 cursor-not-allowed"
+    : "",
 ]);
 
 const recordButtonTitle = computed(() => {
@@ -328,8 +330,7 @@ const recordButtonTitle = computed(() => {
 const repeatButtonTitle = computed(() => {
   if (isIntroPlaying.value)
     return "Please wait until the introduction finishes";
-  if (isPlaying.value)
-    return "Please wait while the question is playing";
+  if (isPlaying.value) return "Please wait while the question is playing";
   if (isButtonCooldown.value)
     return "Please wait before repeating the question again";
   return "Repeat the current question";
@@ -404,6 +405,8 @@ const goBack = () => {
   console.log("Going back...");
   // Stop all audio playback before navigating away
   stopAudios(currentAudios);
+  // Save the source category to sessionStorage
+  sessionStorage.setItem("gameCategory", "math");
   // Force navigate to the game zone page
   window.location.href = "/game-zone";
 };
@@ -499,18 +502,23 @@ const toggleRecording = () => {
       console.log("Correct Answer:", randQueNum[numOfAudiosPlayed.value]);
 
       if (
-        finalTranscript.trim().toLowerCase() ===
-        answers[numOfAudiosPlayed.value]
+        finalTranscript
+          .trim()
+          .toLowerCase()
+          .includes(answers[numOfAudiosPlayed.value].toLowerCase())
       ) {
         score.value++;
         console.log("Correct Answer!");
         playSound("correctaudio.mp3");
       } else {
         console.log("Wrong Answer!");
-        playSound("incorrectaudio.mp3");
         const incorectAudio =
           "The correct answer is " + answers[numOfAudiosPlayed.value];
-        currentAudios.push(playQuestion(incorectAudio));
+        playSound("incorrectaudio.mp3");
+
+        setTimeout(() => {
+          currentAudios.push(playQuestion(incorectAudio));
+        }, 1000);
       }
 
       stopListening();

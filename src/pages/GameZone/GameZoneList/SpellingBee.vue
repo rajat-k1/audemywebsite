@@ -360,9 +360,9 @@ onMounted(() => {
 
   console.log("Requesting microphone access...");
   requestMicPermission();
-  
+
   generateQuestions();
-  
+
   // Watch play button to start intro
   watch(playButton, (newVal) => {
     if (newVal) {
@@ -481,16 +481,23 @@ const toggleRecording = () => {
         console.log("User Answer:", finalTranscript);
         console.log("Correct Answer:", currentQuestion.value["A"]);
 
-        const answers = currentQuestion.value["A"].map((str) => str.toLowerCase());
-        if (answers.includes(finalTranscript.trim().toLowerCase())) {
+        if (
+          currentQuestion.value["A"].some((answer) =>
+            finalTranscript.trim().toLowerCase().includes(answer.toLowerCase())
+          )
+        ) {
           score.value++;
           console.log("Correct Answer!");
           playSound("correctaudio.mp3");
         } else {
           console.log("Wrong Answer!");
+          const incorrectAudio =
+            "The correct answer is " + currentQuestion.value["A"][0];
           playSound("incorrectaudio.mp3");
-          const incorectAudio = "The correct answer is " + currentQuestion.value["A"][0];
-          currentAudios.push(playQuestion(incorectAudio));
+
+          setTimeout(() => {
+            currentAudios.push(playQuestion(incorrectAudio));
+          }, 1000);
         }
       }
 
@@ -530,7 +537,7 @@ const repeatQuestion = () => {
     !isButtonCooldown.value
   ) {
     isButtonCooldown.value = true;
-    
+
     console.log(
       "Repeating question for Spelling Bee game - Question #" +
         (numOfAudiosPlayed.value + 1)

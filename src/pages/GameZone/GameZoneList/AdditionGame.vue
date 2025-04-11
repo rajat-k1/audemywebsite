@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="min-h-screen font-poppins bg-[#FFBCEE]"
-  >
+  <div class="min-h-screen font-poppins bg-[#FFBCEE]">
     <!-- Header -->
     <div class="w-full">
       <GamePagesHeader />
@@ -149,9 +147,7 @@
 
             <!-- Question and answer section -->
             <div
-              v-else-if="
-                numOfAudiosPlayed < 5 && playButton === true
-              "
+              v-else-if="numOfAudiosPlayed < 5 && playButton === true"
               class="flex flex-col p-4 justify-center"
               id="content"
             >
@@ -163,13 +159,16 @@
                   :disabled="isIntroPlaying"
                   :class="{ 'opacity-50 cursor-not-allowed': isIntroPlaying }"
                 >
-                  {{ isIntroPlaying ? 'Please wait...' : 'Start Questions' }}
+                  {{ isIntroPlaying ? "Please wait..." : "Start Questions" }}
                 </button>
               </div>
 
               <!-- Different button styling for tablet -->
               <div
-                v-show="!(isTablet || isMobile) || (!isIntroPlaying && numOfAudiosPlayed > 0)"
+                v-show="
+                  !(isTablet || isMobile) ||
+                  (!isIntroPlaying && numOfAudiosPlayed > 0)
+                "
                 :class="[
                   isTablet
                     ? 'flex gap-[25px] mb-6'
@@ -240,7 +239,10 @@
 
               <div
                 id="transcript"
-                v-show="!(isTablet || isMobile) || (!isIntroPlaying && numOfAudiosPlayed > 0)"
+                v-show="
+                  !(isTablet || isMobile) ||
+                  (!isIntroPlaying && numOfAudiosPlayed > 0)
+                "
                 class="text-center text-xl font-bold pt-2 pb-1"
               >
                 You said: {{ transcription }}
@@ -419,7 +421,7 @@ const generateQuestions = () => {
         ...data["AdditionGame"]["Questions"]["Medium"],
         ...data["AdditionGame"]["Questions"]["Hard"],
       ];
-      
+
       // Only need 5 random questions
       while (randQueNum.length < 5) {
         let num = Math.floor(Math.random() * allQuestions.length);
@@ -453,7 +455,7 @@ const toggleRecording = () => {
   if (numOfAudiosPlayed.value < 5 && !isIntroPlaying.value) {
     if (!isRecording.value) {
       isRecording.value = true;
-      
+
       startListening((transcript) => {
         transcription.value = transcript;
       }, false);
@@ -462,38 +464,44 @@ const toggleRecording = () => {
       console.log("Processing recording...");
 
       const finalTranscript = transcription.value;
-      
+
       // Process the answer
       if (currentQuestion.value) {
         console.log("Question is: ", currentQuestion.value["Q"]);
         console.log("User Answer:", finalTranscript);
         console.log("Correct Answer:", currentQuestion.value["A"]);
-        
-        const answers = currentQuestion.value["A"].map((ans) => ans.toLowerCase());
-        if (answers.includes(finalTranscript.trim().toLowerCase())) {
+
+        if (
+          currentQuestion.value["A"].some((answer) =>
+            finalTranscript.trim().toLowerCase().includes(answer.toLowerCase())
+          )
+        ) {
           score.value++;
           console.log("Correct Answer!");
           playSound("correctaudio.mp3");
         } else {
           console.log("Wrong Answer!");
+          const incorectAudio =
+            "The correct answer is " + currentQuestion.value["A"][0];
           playSound("incorrectaudio.mp3");
-          console.log("Correct Answer is: ", currentQuestion.value["A"]);
-          const incorectAudio = "The correct answer is " + currentQuestion.value["A"][0];
-          currentAudios.push(playQuestion(incorectAudio));
+
+          setTimeout(() => {
+            currentAudios.push(playQuestion(incorectAudio));
+          }, 1000);
         }
       }
-      
+
       // Stop listening
       stopListening();
       isRecording.value = false;
       numOfAudiosPlayed.value++;
-      
+
       // Reset transcription for next question
       setTimeout(() => {
         transcription.value = "";
         isButtonCooldown.value = false;
         console.log("Recording processed and stopped");
-        
+
         // Move to next question or end game
         if (numOfAudiosPlayed.value < 5) {
           setTimeout(() => {
