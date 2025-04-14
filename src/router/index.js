@@ -6,6 +6,11 @@ import GameZone from "../pages/GameZone/GameZone.vue";
 import LogIn from "../pages/LogIn/LogIn.vue";
 import NotFound from "../pages/NotFound/NotFound.vue";
 import SignUp from "../pages/SignUp/SignUp.vue";
+import ForgotPassword from "../pages/ForgotPassword/ForgotPassword.vue";
+import ResetLinkSent from "../pages/ForgotPassword/ResetLinkSent.vue";
+import ResetPassword from "../pages/ResetPassword/ResetPassword.vue";
+import ResetConfirm from "../pages/ResetPassword/ResetConfirm.vue";
+import ResetLandingPage from "../pages/ResetPassword/ResetLandingPage.vue";
 import AboutUs from "../pages/AboutUs/AboutUs.vue";
 import Impact from "../pages/Impact/Impact.vue";
 import AdditionGame from "../pages/GameZone/GameZoneList/AdditionGame.vue";
@@ -35,6 +40,11 @@ const routes = [
     { path: "/about-us", name: "About-Us", component: AboutUs },
     { path: "/login", name: "LogIn", component: LogIn },
     { path: "/signup", name: "Sign Up", component: SignUp },
+    { path: "/forgot-password", name: "Forgot Password", component: ForgotPassword },
+    { path: "/reset-link-sent", name: "Reset Link Sent", component: ResetLinkSent },
+    { path: "/reset-password", name: "Reset Password", component: ResetPassword },
+    { path: "/reset-confirm", name: "Reset Confirm", component: ResetConfirm },
+    { path: "/reset-landing-page", name: "Reset Landing Page", component: ResetLandingPage },
     { path: "/:pathMatch(.*)*", name: "not-found", component: NotFound },
     {
         path: "/game/addition",
